@@ -26,10 +26,10 @@ export function getKlookMainLink(): string {
   return klookRedirect("https://www.klook.com/");
 }
 
-/** 도시별 액티비티 목록 페이지 */
+/** 도시별 액티비티 검색 페이지 */
 export function getKlookDestinationLink(citySlug: string): string {
   const dest = destinationIds[citySlug as keyof typeof destinationIds] ?? citySlug;
-  return klookRedirect(`https://www.klook.com/en-US/city/${dest}/`);
+  return klookRedirect(`https://www.klook.com/en-US/search/?query=${encodeURIComponent(dest)}`);
 }
 
 /** 개별 액티비티 상품 페이지 */
