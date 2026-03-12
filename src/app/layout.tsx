@@ -76,6 +76,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <JsonLd schema={websiteSchema()} />
+        <meta name="agd-partner-manual-verification" />
       </head>
       <body className={`${inter.variable} ${plusJakartaSans.variable} antialiased`}>
         <Header />

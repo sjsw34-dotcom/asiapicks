@@ -120,7 +120,7 @@ const ELEMENTS: Element[] = [
       {
         name: "Siem Reap",
         country: "Cambodia",
-        image: "https://images.unsplash.com/photo-1508159452718-d22f6734a00d?w=600&q=80",
+        image: "https://images.unsplash.com/photo-1768882902762-b0c17224c875?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=600",
       },
       {
         name: "Luang Prabang",
