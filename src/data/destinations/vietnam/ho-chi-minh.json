@@ -1,0 +1,178 @@
+{
+  "id": "ho-chi-minh",
+  "name": "Ho Chi Minh City",
+  "country": "Vietnam",
+  "countryCode": "VN",
+  "flag": "🇻🇳",
+  "description": "Vietnam's relentless, dizzying megacity — a place where French colonial architecture rises above a river of motorbikes, where you can eat the world's best banh mi for $1, and where history, hustle, and heart collide on every street corner.",
+  "heroImage": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1080&q=80",
+  "heroImageCredit": { "name": "Rhand McCoy", "link": "https://unsplash.com/@rhandmccoy" },
+  "quickInfo": {
+    "bestSeason": "Dec-Apr (dry season)",
+    "avgBudget": "$25-70/day",
+    "timezone": "UTC+7",
+    "language": "Vietnamese",
+    "currency": "VND (₫)",
+    "visa": "E-visa available online, 90 days, multiple entry. Free visa-on-arrival for some nationalities."
+  },
+  "agodaCityId": "1395",
+  "klookDestinationId": "ho-chi-minh-city",
+  "hotels": [
+    {
+      "name": "The Common Room Project",
+      "area": "District 1 (Bui Vien)",
+      "priceRange": "$8-22",
+      "rating": 4.5,
+      "tier": "budget",
+      "agodaHotelId": "6262534",
+      "description": "Backpacker haven steps from Bui Vien Walking Street with great social vibe and rooftop bar",
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+    },
+    {
+      "name": "Liberty Central Saigon Citypoint",
+      "area": "District 1 (center)",
+      "priceRange": "$55-95",
+      "rating": 4.5,
+      "tier": "mid-range",
+      "agodaHotelId": "7718927",
+      "description": "Well-located hotel with rooftop pool and panoramic views of Saigon's skyline",
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+    },
+    {
+      "name": "Hotel des Arts Saigon",
+      "area": "District 3",
+      "priceRange": "$120-200",
+      "rating": 4.7,
+      "tier": "mid-range",
+      "agodaHotelId": "9982841",
+      "description": "Art-deco boutique hotel with Indochine-inspired interiors and rooftop infinity pool",
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+    },
+    {
+      "name": "Park Hyatt Saigon",
+      "area": "District 1 (Opera House)",
+      "priceRange": "$220-400",
+      "rating": 4.9,
+      "tier": "luxury",
+      "agodaHotelId": "1123847",
+      "description": "Saigon's most prestigious address — colonial elegance across from the French Opera House",
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+    },
+    {
+      "name": "The Reverie Saigon",
+      "area": "District 1 (Times Square Tower)",
+      "priceRange": "$300-600",
+      "rating": 4.9,
+      "tier": "luxury",
+      "agodaHotelId": "2223847",
+      "description": "Vietnam's most opulent hotel: Italian marble, chandeliers, and butler service on every floor",
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+    }
+  ],
+  "activities": [
+    {
+      "name": "Cu Chi Tunnels Half-Day Tour",
+      "duration": "5 hours",
+      "price": "$25",
+      "category": "history",
+      "klookActivityId": "91923",
+      "description": "Crawl through the legendary Viet Cong tunnel network used during the Vietnam War",
+      "image": "https://images.unsplash.com/photo-1553592077-3458a7f3c41a?w=600&q=80"
+    },
+    {
+      "name": "Mekong Delta Boat & Village Tour",
+      "duration": "Full day",
+      "price": "$35",
+      "category": "day-trip",
+      "klookActivityId": "89234",
+      "description": "Cruise the Mekong by sampan, visit floating markets, taste coconut candy, and cycle through villages",
+      "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80"
+    },
+    {
+      "name": "Saigon Street Food Evening Tour by Motorbike",
+      "duration": "4 hours",
+      "price": "$45",
+      "category": "food-tour",
+      "klookActivityId": "93412",
+      "description": "Ride pillion on a vintage Honda through 10+ hidden food stalls — the ultimate Saigon experience",
+      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80"
+    },
+    {
+      "name": "War Remnants Museum & Reunification Palace",
+      "duration": "4 hours",
+      "price": "$20",
+      "category": "history",
+      "klookActivityId": "87823",
+      "description": "Vietnam's most powerful museum, then tour the historic presidential palace frozen in 1975",
+      "image": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80"
+    },
+    {
+      "name": "Cooking Class: Vietnamese Street Food",
+      "duration": "3 hours",
+      "price": "$35",
+      "category": "cooking-class",
+      "klookActivityId": "94512",
+      "description": "Learn to make pho, banh mi, goi cuon fresh rolls, and Vietnamese iced coffee",
+      "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80"
+    }
+  ],
+  "itinerary": {
+    "3days": [
+      {
+        "day": 1,
+        "title": "Colonial Saigon & History",
+        "items": [
+          { "time": "08:00", "activity": "Ben Thanh Market breakfast (pho bo)", "type": "food" },
+          { "time": "09:30", "activity": "Notre-Dame Cathedral & Central Post Office (French colonial icons)", "type": "attraction" },
+          { "time": "11:00", "activity": "War Remnants Museum + Reunification Palace", "type": "history", "klookId": "87823" },
+          { "time": "14:00", "activity": "District 1 café crawl: cà phê trứng (egg coffee)", "type": "food" },
+          { "time": "16:00", "activity": "Bui Vien Walking Street setup (bars open at 5pm)", "type": "nightlife" },
+          { "time": "19:00", "activity": "Rooftop bar dinner — Saigon skyline views", "type": "food" }
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Cu Chi Tunnels & Street Food Night",
+        "items": [
+          { "time": "08:00", "activity": "Cu Chi Tunnels morning tour", "type": "history", "klookId": "91923" },
+          { "time": "14:00", "activity": "Return, rest at hotel", "type": "rest" },
+          { "time": "15:30", "activity": "Jade Emperor Pagoda (beautiful Buddhist temple)", "type": "attraction" },
+          { "time": "17:30", "activity": "Tan Dinh Market: pink church and street food", "type": "culture" },
+          { "time": "19:30", "activity": "Motorbike street food night tour", "type": "food", "klookId": "93412" }
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Mekong Delta Day Trip",
+        "items": [
+          { "time": "08:00", "activity": "Bus to Mekong Delta (2h)", "type": "transport" },
+          { "time": "10:00", "activity": "Sampan boat through Mekong channels", "type": "attraction", "klookId": "89234" },
+          { "time": "12:00", "activity": "Village lunch: elephant ear fish, hot pot", "type": "food" },
+          { "time": "14:00", "activity": "Cycling through coconut plantations", "type": "outdoor" },
+          { "time": "17:00", "activity": "Return to Ho Chi Minh City", "type": "transport" },
+          { "time": "19:30", "activity": "Vietnamese cooking class farewell dinner", "type": "food", "klookId": "94512" }
+        ]
+      }
+    ]
+  },
+  "practicalInfo": {
+    "gettingThere": "Tan Son Nhat International Airport (SGN) — Vietnam's busiest airport. Direct flights from Singapore, Bangkok, Kuala Lumpur, Seoul, Tokyo, Hong Kong, and many European cities. Taxi to city center: 30 min, ~$8. Grab app recommended.",
+    "localTransport": "Grab is king — use it for everything (motorbike or car). Motorbike taxis (xe om) for adventurous travelers. Buses exist but complex. Walking fine in District 1.",
+    "weather": [
+      { "month": "Jan", "high": 32, "low": 21, "rain": 15 },
+      { "month": "Feb", "high": 33, "low": 22, "rain": 5 },
+      { "month": "Mar", "high": 35, "low": 23, "rain": 12 },
+      { "month": "Apr", "high": 35, "low": 24, "rain": 50 },
+      { "month": "May", "high": 33, "low": 24, "rain": 225 },
+      { "month": "Jun", "high": 32, "low": 24, "rain": 330 },
+      { "month": "Jul", "high": 31, "low": 24, "rain": 295 },
+      { "month": "Aug", "high": 31, "low": 24, "rain": 270 },
+      { "month": "Sep", "high": 31, "low": 23, "rain": 325 },
+      { "month": "Oct", "high": 31, "low": 23, "rain": 265 },
+      { "month": "Nov", "high": 31, "low": 22, "rain": 120 },
+      { "month": "Dec", "high": 31, "low": 21, "rain": 40 }
+    ]
+  },
+  "themes": ["history", "food", "budget", "culture", "nightlife"],
+  "relatedCities": ["hanoi", "da-nang", "bangkok"]
+}

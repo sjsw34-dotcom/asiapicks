@@ -1,0 +1,54 @@
+[
+  {
+    "id": "japan",
+    "name": "Japan",
+    "code": "JP",
+    "flag": "🇯🇵",
+    "region": "East Asia",
+    "currency": "JPY",
+    "language": "Japanese",
+    "visa": "Visa-free for most Western countries (90 days)",
+    "cities": ["tokyo", "osaka", "kyoto", "fukuoka", "okinawa"],
+    "description": "A perfect blend of ultra-modern cities and ancient traditions.",
+    "heroImage": "https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1200"
+  },
+  {
+    "id": "thailand",
+    "name": "Thailand",
+    "code": "TH",
+    "flag": "🇹🇭",
+    "region": "Southeast Asia",
+    "currency": "THB",
+    "language": "Thai",
+    "visa": "Visa exemption 60 days for most nationalities (2024+)",
+    "cities": ["bangkok", "chiang-mai", "phuket", "pattaya"],
+    "description": "Tropical beaches, ornate temples, and legendary street food.",
+    "heroImage": "https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?w=1200"
+  },
+  {
+    "id": "korea",
+    "name": "South Korea",
+    "code": "KR",
+    "flag": "🇰🇷",
+    "region": "East Asia",
+    "currency": "KRW",
+    "language": "Korean",
+    "visa": "Visa-free for most Western countries (90 days)",
+    "cities": ["seoul", "busan", "jeju"],
+    "description": "K-culture, cutting-edge tech, and incredible food all in one.",
+    "heroImage": "https://images.unsplash.com/photo-1538485399081-7191377e8241?w=1200"
+  },
+  {
+    "id": "vietnam",
+    "name": "Vietnam",
+    "code": "VN",
+    "flag": "🇻🇳",
+    "region": "Southeast Asia",
+    "currency": "VND",
+    "language": "Vietnamese",
+    "visa": "E-visa available (90 days, multiple entry)",
+    "cities": ["ho-chi-minh", "hanoi", "da-nang"],
+    "description": "Stunning landscapes, rich history, and the world's best pho.",
+    "heroImage": "https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=1200"
+  }
+]

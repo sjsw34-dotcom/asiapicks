@@ -1,0 +1,179 @@
+{
+  "id": "chiang-mai",
+  "name": "Chiang Mai",
+  "country": "Thailand",
+  "countryCode": "TH",
+  "flag": "🇹🇭",
+  "description": "Thailand's cultural capital in the northern mountains — a haven for digital nomads, temple-hoppers, elephant lovers, and anyone craving a cooler, calmer Thai experience far from the beach crowds.",
+  "heroImage": "https://images.unsplash.com/photo-1512553032473-76b31c6b1d21?w=1080&q=80",
+  "heroImageCredit": { "name": "Damiano Lingauri", "link": "https://unsplash.com/@damiano_lingauri" },
+  "quickInfo": {
+    "bestSeason": "Nov-Feb (cool & dry season)",
+    "avgBudget": "$35-80/day",
+    "timezone": "UTC+7",
+    "language": "Thai (Northern dialect)",
+    "currency": "THB (฿)",
+    "visa": "Visa-on-arrival 30 days for most nationalities; e-Visa available"
+  },
+  "agodaCityId": "7",
+  "klookDestinationId": "chiang-mai",
+  "hotels": [
+    {
+      "name": "Bodega Chiang Mai Hostel",
+      "area": "Nimman Road",
+      "priceRange": "$8-20",
+      "rating": 4.5,
+      "tier": "budget",
+      "agodaHotelId": "9162534",
+      "description": "Party-friendly hostel on trendy Nimman Road with rooftop bar and great social scene",
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+    },
+    {
+      "name": "Tamarind Village",
+      "area": "Old City",
+      "priceRange": "$80-130",
+      "rating": 4.7,
+      "tier": "mid-range",
+      "agodaHotelId": "4418927",
+      "description": "Boutique resort inside the Old City moat, wrapped around a 200-year-old tamarind tree",
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+    },
+    {
+      "name": "Akyra Manor Chiang Mai",
+      "area": "Nimman Road",
+      "priceRange": "$130-200",
+      "rating": 4.8,
+      "tier": "mid-range",
+      "agodaHotelId": "7772841",
+      "description": "Sleek boutique hotel steps from the city's coolest cafes, galleries and restaurants",
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+    },
+    {
+      "name": "Dhara Dhevi Chiang Mai",
+      "area": "Mae Rim Road",
+      "priceRange": "$350-700",
+      "rating": 4.9,
+      "tier": "luxury",
+      "agodaHotelId": "1823847",
+      "description": "Thailand's most spectacular hotel — a recreated Lanna kingdom spreading across 60 acres",
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+    },
+    {
+      "name": "Four Seasons Resort Chiang Mai",
+      "area": "Mae Rim Valley",
+      "priceRange": "$450-900",
+      "rating": 4.9,
+      "tier": "luxury",
+      "agodaHotelId": "1123847",
+      "description": "Lush rice terraces, elephants, and mountain views — the most romantic luxury escape in Asia",
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+    }
+  ],
+  "activities": [
+    {
+      "name": "Ethical Elephant Sanctuary Half-Day",
+      "duration": "4 hours",
+      "price": "$75",
+      "category": "wildlife",
+      "klookActivityId": "31923",
+      "description": "Feed, bathe and walk with rescued elephants at a certified ethical no-riding sanctuary",
+      "image": "https://images.unsplash.com/photo-1559628129-67cf63b72248?w=600&q=80"
+    },
+    {
+      "name": "Doi Inthanon National Park Trekking",
+      "duration": "Full day",
+      "price": "$55",
+      "category": "adventure",
+      "klookActivityId": "28734",
+      "description": "Trek to Thailand's highest peak, twin royal pagodas, and misty hill-tribe villages",
+      "image": "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=600&q=80"
+    },
+    {
+      "name": "Old City Temple Tour (Doi Suthep Included)",
+      "duration": "5 hours",
+      "price": "$30",
+      "category": "guided-tour",
+      "klookActivityId": "25612",
+      "description": "Visit Doi Suthep, Wat Chedi Luang, and Wat Phra Singh with a knowledgeable guide",
+      "image": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80"
+    },
+    {
+      "name": "Thai Cooking Class (Market + 4 Dishes)",
+      "duration": "4 hours",
+      "price": "$35",
+      "category": "cooking-class",
+      "klookActivityId": "22431",
+      "description": "Shop at a local market then cook classic Northern Thai dishes in a garden kitchen",
+      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80"
+    },
+    {
+      "name": "Chiang Rai Golden Triangle Day Trip",
+      "duration": "Full day",
+      "price": "$65",
+      "category": "day-trip",
+      "klookActivityId": "26512",
+      "description": "Visit the White Temple, Blue Temple, and the infamous Golden Triangle opium region",
+      "image": "https://images.unsplash.com/photo-1553592077-3458a7f3c41a?w=600&q=80"
+    }
+  ],
+  "itinerary": {
+    "3days": [
+      {
+        "day": 1,
+        "title": "Old City Temples & Night Bazaar",
+        "items": [
+          { "time": "07:00", "activity": "Monks' alms giving ceremony at Wat Suan Dok", "type": "culture" },
+          { "time": "09:00", "activity": "Old City temple circuit: Chedi Luang + Phra Singh", "type": "attraction", "klookId": "25612" },
+          { "time": "12:00", "activity": "Khao Soi lunch (Chiang Mai's signature curry noodle)", "type": "food" },
+          { "time": "14:30", "activity": "Nimman Road: cafes, galleries, boutiques", "type": "shopping" },
+          { "time": "17:00", "activity": "Doi Suthep temple + mountain views (songthaew)", "type": "attraction" },
+          { "time": "19:30", "activity": "Sunday Walking Street (or Night Bazaar weekdays)", "type": "shopping" }
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Elephants & Jungle Adventure",
+        "items": [
+          { "time": "08:00", "activity": "Transfer to ethical elephant sanctuary", "type": "transport" },
+          { "time": "09:00", "activity": "Morning with rescued elephants — feeding & bathing", "type": "wildlife", "klookId": "31923" },
+          { "time": "13:00", "activity": "Return to city, rest and lunch", "type": "food" },
+          { "time": "15:00", "activity": "Thai massage (1.5 hours, ~$10 in Old City)", "type": "wellness" },
+          { "time": "17:30", "activity": "Wat U Mong forest temple", "type": "attraction" },
+          { "time": "19:30", "activity": "Dinner: Riverside restaurant with live music", "type": "food" }
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Thai Cooking & Doi Inthanon",
+        "items": [
+          { "time": "07:00", "activity": "Market visit for cooking class ingredients", "type": "food" },
+          { "time": "08:00", "activity": "Thai cooking class — 4 dishes", "type": "culture", "klookId": "22431" },
+          { "time": "13:00", "activity": "Drive to Doi Inthanon National Park", "type": "transport" },
+          { "time": "14:30", "activity": "Twin royal pagodas & cloud garden", "type": "attraction", "klookId": "28734" },
+          { "time": "16:30", "activity": "Ang Ka Nature Trail rainforest walk", "type": "outdoor" },
+          { "time": "20:00", "activity": "Back in Chiang Mai, farewell dinner", "type": "food" }
+        ]
+      }
+    ]
+  },
+  "practicalInfo": {
+    "gettingThere": "Chiang Mai International Airport (CNX) has direct flights from Bangkok (1h15min), Singapore, Kuala Lumpur, and other regional hubs. Budget carriers AirAsia and Nok Air run frequent cheap flights.",
+    "localTransport": "Songthaew (red shared trucks) are the main transport — flat rate 30-50 THB. Grab app works well. Rent a scooter for $6/day or bicycle for $3/day in the city.",
+    "weather": [
+      { "month": "Jan", "high": 29, "low": 13, "rain": 5 },
+      { "month": "Feb", "high": 32, "low": 14, "rain": 8 },
+      { "month": "Mar", "high": 35, "low": 18, "rain": 18 },
+      { "month": "Apr", "high": 37, "low": 22, "rain": 55 },
+      { "month": "May", "high": 34, "low": 24, "rain": 160 },
+      { "month": "Jun", "high": 32, "low": 24, "rain": 130 },
+      { "month": "Jul", "high": 31, "low": 23, "rain": 175 },
+      { "month": "Aug", "high": 31, "low": 23, "rain": 225 },
+      { "month": "Sep", "high": 31, "low": 22, "rain": 195 },
+      { "month": "Oct", "high": 30, "low": 20, "rain": 115 },
+      { "month": "Nov", "high": 29, "low": 17, "rain": 35 },
+      { "month": "Dec", "high": 28, "low": 13, "rain": 12 }
+    ]
+  },
+  "themes": ["culture", "adventure", "food", "wellness", "budget"],
+  "relatedCities": ["bangkok", "chiang-rai", "pai"]
+}

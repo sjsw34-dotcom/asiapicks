@@ -1,0 +1,36 @@
+{
+  "agoda": {
+    "cid": "YOUR_AGODA_CID",
+    "baseUrl": "https://www.agoda.com/partners/partnersearch.aspx",
+    "cityIds": {
+      "tokyo": "14727",
+      "osaka": "17067",
+      "kyoto": "17070",
+      "bangkok": "5",
+      "chiang-mai": "189",
+      "seoul": "16532",
+      "busan": "16534",
+      "ho-chi-minh": "3440",
+      "hanoi": "3441"
+    }
+  },
+  "klook": {
+    "aid": "YOUR_KLOOK_AID",
+    "baseUrl": "https://www.klook.com/activity/",
+    "destinationIds": {
+      "tokyo": "tokyo",
+      "osaka": "osaka",
+      "kyoto": "kyoto",
+      "bangkok": "bangkok",
+      "chiang-mai": "chiang-mai",
+      "seoul": "seoul",
+      "busan": "busan",
+      "ho-chi-minh": "ho-chi-minh-city",
+      "hanoi": "hanoi"
+    }
+  },
+  "sajumuse": {
+    "baseUrl": "https://sajumuse.com",
+    "ref": "asiapicks"
+  }
+}

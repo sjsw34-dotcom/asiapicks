@@ -1,0 +1,58 @@
+[
+  {
+    "id": "beach",
+    "name": "Beach & Islands",
+    "icon": "sun",
+    "description": "Crystal-clear waters and white-sand beaches",
+    "cities": ["phuket", "bali", "koh-samui"]
+  },
+  {
+    "id": "culture",
+    "name": "Culture & Heritage",
+    "icon": "landmark",
+    "description": "Temples, palaces, and centuries of history",
+    "cities": ["kyoto", "bangkok", "hanoi"]
+  },
+  {
+    "id": "food",
+    "name": "Food & Culinary",
+    "icon": "utensils",
+    "description": "Street markets, michelin stars, and everything in between",
+    "cities": ["osaka", "bangkok", "ho-chi-minh"]
+  },
+  {
+    "id": "adventure",
+    "name": "Adventure & Outdoors",
+    "icon": "mountain",
+    "description": "Trekking, diving, and adrenaline-pumping experiences",
+    "cities": ["chiang-mai", "seoul", "tokyo"]
+  },
+  {
+    "id": "nightlife",
+    "name": "Nightlife & Entertainment",
+    "icon": "music",
+    "description": "Rooftop bars, night markets, and electric city nights",
+    "cities": ["bangkok", "seoul", "tokyo"]
+  },
+  {
+    "id": "family",
+    "name": "Family-Friendly",
+    "icon": "users",
+    "description": "Safe, fun, and memorable for all ages",
+    "cities": ["tokyo", "seoul", "bangkok"]
+  },
+  {
+    "id": "budget",
+    "name": "Budget Travel",
+    "icon": "wallet",
+    "description": "Incredible experiences without breaking the bank",
+    "cities": ["hanoi", "ho-chi-minh", "chiang-mai"]
+  },
+  {
+    "id": "luxury",
+    "name": "Luxury Getaways",
+    "icon": "gem",
+    "description": "5-star hotels, private tours, and world-class dining",
+    "cities": ["tokyo", "bangkok", "seoul"]
+  }
+]

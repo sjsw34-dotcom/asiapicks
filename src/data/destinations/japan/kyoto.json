@@ -1,0 +1,179 @@
+{
+  "id": "kyoto",
+  "name": "Kyoto",
+  "country": "Japan",
+  "countryCode": "JP",
+  "flag": "🇯🇵",
+  "description": "Japan's ancient imperial capital, where a thousand temples, geisha districts, and bamboo forests transport you to a timeless world of tradition and Zen beauty.",
+  "heroImage": "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1080&q=80",
+  "heroImageCredit": { "name": "Tanner Boriack", "link": "https://unsplash.com/@tannerboriack" },
+  "quickInfo": {
+    "bestSeason": "Mar-May (cherry blossoms), Oct-Nov (fall foliage)",
+    "avgBudget": "$70-130/day",
+    "timezone": "UTC+9",
+    "language": "Japanese",
+    "currency": "JPY (¥)",
+    "visa": "Visa-free for most Western countries (90 days)"
+  },
+  "agodaCityId": "14349",
+  "klookDestinationId": "kyoto",
+  "hotels": [
+    {
+      "name": "Piece Hostel Kyoto",
+      "area": "Karasuma-Oike",
+      "priceRange": "$28-45",
+      "rating": 4.4,
+      "tier": "budget",
+      "agodaHotelId": "6842156",
+      "description": "Stylish hostel with private rooms and social common areas, steps from Nijo Castle",
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+    },
+    {
+      "name": "Kyoto Granbell Hotel",
+      "area": "Shijo-Kawaramachi",
+      "priceRange": "$95-140",
+      "rating": 4.5,
+      "tier": "mid-range",
+      "agodaHotelId": "4518927",
+      "description": "Modern design hotel in the heart of Kyoto's shopping and dining district",
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+    },
+    {
+      "name": "MITSUI GARDEN HOTEL Kyoto Sanjo",
+      "area": "Sanjo",
+      "priceRange": "$130-200",
+      "rating": 4.6,
+      "tier": "mid-range",
+      "agodaHotelId": "3672841",
+      "description": "Elegant hotel blending Japanese aesthetics with contemporary comfort near Pontocho",
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+    },
+    {
+      "name": "Noku Kyoto",
+      "area": "Fuyacho",
+      "priceRange": "$200-320",
+      "rating": 4.7,
+      "tier": "luxury",
+      "agodaHotelId": "9284713",
+      "description": "Boutique luxury hotel in a restored machiya townhouse with Japanese garden",
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+    },
+    {
+      "name": "The Ritz-Carlton Kyoto",
+      "area": "Kamogawa",
+      "priceRange": "$600-1200",
+      "rating": 4.9,
+      "tier": "luxury",
+      "agodaHotelId": "1923847",
+      "description": "Ultra-luxury riverside retreat with Higashiyama mountain views and world-class spa",
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+    }
+  ],
+  "activities": [
+    {
+      "name": "Fushimi Inari & Arashiyama Full-Day Tour",
+      "duration": "8 hours",
+      "price": "$65",
+      "category": "guided-tour",
+      "klookActivityId": "2339",
+      "description": "See iconic torii gates and bamboo grove with an expert local guide",
+      "image": "https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=600&q=80"
+    },
+    {
+      "name": "Geisha District Walking Tour (Gion)",
+      "duration": "3 hours",
+      "price": "$40",
+      "category": "walking-tour",
+      "klookActivityId": "4521",
+      "description": "Evening stroll through Gion's historic streets with chances to spot real geiko",
+      "image": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80"
+    },
+    {
+      "name": "Traditional Tea Ceremony Experience",
+      "duration": "1.5 hours",
+      "price": "$30",
+      "category": "culture",
+      "klookActivityId": "6783",
+      "description": "Participate in an authentic matcha tea ceremony in a historic machiya",
+      "image": "https://images.unsplash.com/photo-1523042854249-2c33a7e1e764?w=600&q=80"
+    },
+    {
+      "name": "Kinkaku-ji & Nijo Castle Combo Ticket",
+      "duration": "Half day",
+      "price": "$18",
+      "category": "attraction",
+      "klookActivityId": "8934",
+      "description": "Skip the queue entry to Kyoto's two most iconic landmarks",
+      "image": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80"
+    },
+    {
+      "name": "Kyoto Day Trip: Nara Deer Park & Todaiji",
+      "duration": "8 hours",
+      "price": "$55",
+      "category": "day-trip",
+      "klookActivityId": "3312",
+      "description": "Visit the sacred deer of Nara and the world's largest wooden building",
+      "image": "https://images.unsplash.com/photo-1553592077-3458a7f3c41a?w=600&q=80"
+    }
+  ],
+  "itinerary": {
+    "3days": [
+      {
+        "day": 1,
+        "title": "Eastern Kyoto: Temples & Geisha Quarter",
+        "items": [
+          { "time": "08:00", "activity": "Fushimi Inari-taisha (early morning = no crowds)", "type": "attraction" },
+          { "time": "11:00", "activity": "Tofuku-ji Temple gardens", "type": "attraction" },
+          { "time": "13:00", "activity": "Lunch at Nishiki Market", "type": "food" },
+          { "time": "15:00", "activity": "Kiyomizu-dera Temple & Sannenzaka slopes", "type": "attraction" },
+          { "time": "17:30", "activity": "Gion district stroll, spot geiko", "type": "culture" },
+          { "time": "19:30", "activity": "Pontocho alley dinner", "type": "food" }
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Western Kyoto: Zen Gardens & Bamboo",
+        "items": [
+          { "time": "09:00", "activity": "Arashiyama Bamboo Grove (before crowds)", "type": "attraction" },
+          { "time": "10:00", "activity": "Tenryu-ji Temple Zen garden", "type": "attraction", "klookId": "2339" },
+          { "time": "12:00", "activity": "Togetsu-kyo Bridge & riverside lunch", "type": "food" },
+          { "time": "14:00", "activity": "Kinkaku-ji (Golden Pavilion)", "type": "attraction" },
+          { "time": "15:30", "activity": "Ryoan-ji famous rock garden", "type": "attraction" },
+          { "time": "17:00", "activity": "Traditional matcha tea ceremony", "type": "culture", "klookId": "6783" }
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Central Kyoto & Nara Day Trip",
+        "items": [
+          { "time": "08:30", "activity": "Nijo Castle (early entry)", "type": "attraction" },
+          { "time": "10:30", "activity": "Nishiki Market food exploration", "type": "food" },
+          { "time": "12:30", "activity": "Shinkansen to Nara (35 min)", "type": "transport" },
+          { "time": "13:30", "activity": "Nara deer park & feed the deer", "type": "attraction", "klookId": "3312" },
+          { "time": "15:00", "activity": "Todaiji Temple giant Buddha", "type": "attraction" },
+          { "time": "17:30", "activity": "Return to Kyoto, farewell kaiseki dinner", "type": "food" }
+        ]
+      }
+    ]
+  },
+  "practicalInfo": {
+    "gettingThere": "Nearest airports: Osaka Kansai (KIX, 75 min by Haruka Express) or Osaka Itami (ITM, 55 min by bus). From Tokyo: 2h15min by Shinkansen Nozomi.",
+    "localTransport": "City buses cover major sights. Day pass ¥700 recommended. Bicycle rental ~¥1,000/day is perfect for the flat city center. JR Pass valid on some lines.",
+    "weather": [
+      { "month": "Jan", "high": 9, "low": 2, "rain": 55 },
+      { "month": "Feb", "high": 10, "low": 2, "rain": 65 },
+      { "month": "Mar", "high": 14, "low": 5, "rain": 105 },
+      { "month": "Apr", "high": 20, "low": 10, "rain": 120 },
+      { "month": "May", "high": 25, "low": 15, "rain": 145 },
+      { "month": "Jun", "high": 28, "low": 20, "rain": 200 },
+      { "month": "Jul", "high": 32, "low": 24, "rain": 210 },
+      { "month": "Aug", "high": 33, "low": 24, "rain": 130 },
+      { "month": "Sep", "high": 28, "low": 20, "rain": 160 },
+      { "month": "Oct", "high": 22, "low": 13, "rain": 110 },
+      { "month": "Nov", "high": 16, "low": 7, "rain": 70 },
+      { "month": "Dec", "high": 11, "low": 3, "rain": 45 }
+    ]
+  },
+  "themes": ["culture", "temples", "history", "food", "photography"],
+  "relatedCities": ["osaka", "nara", "tokyo"]
+}

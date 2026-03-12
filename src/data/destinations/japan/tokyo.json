@@ -1,0 +1,138 @@
+{
+  "id": "tokyo",
+  "name": "Tokyo",
+  "country": "Japan",
+  "countryCode": "JP",
+  "flag": "🇯🇵",
+  "description": "A city of infinite layers — neon-lit skyscrapers beside ancient shrines, Michelin-starred ramen shops, silent forests inside megalopolis. Tokyo is endlessly fascinating, remarkably safe, and surprisingly easy to navigate for first-time visitors.",
+  "heroImage": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&q=80",
+  "heroImageCredit": {
+    "name": "Timo Volz",
+    "link": "https://unsplash.com/@magict1910"
+  },
+  "quickInfo": {
+    "bestSeason": "March–May (cherry blossom), Sep–Nov (autumn)",
+    "avgBudget": "$90–160/day",
+    "timezone": "UTC+9",
+    "language": "Japanese",
+    "currency": "JPY",
+    "visa": "Visa-free for most Western countries (90 days)"
+  },
+  "agodaCityId": "14727",
+  "klookDestinationId": "tokyo",
+  "hotels": [
+    {
+      "name": "Shinjuku Granbell Hotel",
+      "area": "Shinjuku",
+      "priceRange": "$95–140/night",
+      "rating": 4.4,
+      "tier": "mid-range",
+      "agodaHotelId": "462999",
+      "description": "Design-forward boutique hotel a 5-min walk from Shinjuku Station.",
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+    },
+    {
+      "name": "Khaosan Tokyo Origami",
+      "area": "Asakusa",
+      "priceRange": "$30–60/night",
+      "rating": 4.2,
+      "tier": "budget",
+      "agodaHotelId": "1218780",
+      "description": "Popular hostel in historic Asakusa with private rooms and great common areas.",
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+    },
+    {
+      "name": "Park Hyatt Tokyo",
+      "area": "Shinjuku",
+      "priceRange": "$500–900/night",
+      "rating": 4.9,
+      "tier": "luxury",
+      "agodaHotelId": "40804",
+      "description": "Iconic 'Lost in Translation' hotel with unrivalled skyline views and the famous New York Bar.",
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+    }
+  ],
+  "activities": [
+    {
+      "name": "Tokyo Suica/Pasmo IC Card",
+      "duration": "Whole trip",
+      "price": "$15 (deposit)",
+      "category": "transport-pass",
+      "klookActivityId": "9981",
+      "description": "Rechargeable IC card for all trains, subways, and buses — plus convenience store payments.",
+      "image": "https://images.unsplash.com/photo-1571504211935-1c936b327411?w=600&q=80"
+    },
+    {
+      "name": "Tsukiji Outer Market Food Tour",
+      "duration": "3 hours",
+      "price": "$55",
+      "category": "food-tour",
+      "klookActivityId": "17823",
+      "description": "Morning tour sampling the world's freshest sushi, tamagoyaki, and street snacks.",
+      "image": "https://images.unsplash.com/photo-1526040652367-ac003a0475fe?w=600&q=80"
+    },
+    {
+      "name": "teamLab Borderless Digital Art Museum",
+      "duration": "2–3 hours",
+      "price": "$32",
+      "category": "art-culture",
+      "klookActivityId": "54321",
+      "description": "Immersive, boundary-dissolving digital art installation — Tokyo's most Instagrammable experience.",
+      "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&q=80"
+    }
+  ],
+  "itinerary": {
+    "3days": [
+      {
+        "day": 1,
+        "title": "Shinjuku & Shibuya",
+        "items": [
+          { "time": "09:00", "activity": "Meiji Shrine — peaceful forest walk", "type": "attraction" },
+          { "time": "11:30", "activity": "Harajuku Takeshita Street — quirky fashion & crepes", "type": "shopping" },
+          { "time": "14:00", "activity": "Shibuya Crossing & Sky observatory", "type": "attraction" },
+          { "time": "19:00", "activity": "Shinjuku Golden Gai — tiny bar-hopping district", "type": "nightlife" }
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Asakusa & Tokyo Skytree",
+        "items": [
+          { "time": "08:00", "activity": "Tsukiji Outer Market breakfast", "type": "food" },
+          { "time": "10:00", "activity": "Senso-ji Temple in Asakusa", "type": "attraction" },
+          { "time": "13:00", "activity": "Tokyo Skytree — views over the whole city", "type": "attraction" },
+          { "time": "17:00", "activity": "Akihabara — electronics, anime, and arcades", "type": "shopping" }
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ginza, Teamlab & Tokyo Tower",
+        "items": [
+          { "time": "10:00", "activity": "teamLab Borderless digital art", "type": "attraction", "klookId": "54321" },
+          { "time": "13:00", "activity": "Lunch at Ginza food halls (Isetan basement)", "type": "food" },
+          { "time": "16:00", "activity": "Tokyo Tower at sunset", "type": "attraction" },
+          { "time": "19:00", "activity": "Roppongi Hills dinner & nightlife", "type": "nightlife" }
+        ]
+      }
+    ]
+  },
+  "practicalInfo": {
+    "gettingThere": "Narita (NRT) or Haneda (HND) airports. Narita Express to Shinjuku ~90 min; Haneda monorail to Hamamatsucho ~25 min.",
+    "localTransport": "Tokyo Metro and JR lines cover everything. Get a Suica card for seamless tap-and-go on all transit.",
+    "weather": [
+      { "month": "Jan", "high": 10, "low": 2, "rain": 50 },
+      { "month": "Feb", "high": 11, "low": 3, "rain": 55 },
+      { "month": "Mar", "high": 15, "low": 7, "rain": 100 },
+      { "month": "Apr", "high": 20, "low": 12, "rain": 115 },
+      { "month": "May", "high": 24, "low": 17, "rain": 130 },
+      { "month": "Jun", "high": 27, "low": 21, "rain": 175 },
+      { "month": "Jul", "high": 31, "low": 25, "rain": 145 },
+      { "month": "Aug", "high": 32, "low": 26, "rain": 125 },
+      { "month": "Sep", "high": 28, "low": 22, "rain": 180 },
+      { "month": "Oct", "high": 22, "low": 15, "rain": 165 },
+      { "month": "Nov", "high": 17, "low": 9, "rain": 90 },
+      { "month": "Dec", "high": 12, "low": 4, "rain": 45 }
+    ]
+  },
+  "themes": ["culture", "food", "nightlife", "family", "luxury"],
+  "relatedCities": ["osaka", "kyoto", "seoul"]
+}

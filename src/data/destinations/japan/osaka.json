@@ -1,0 +1,136 @@
+{
+  "id": "osaka",
+  "name": "Osaka",
+  "country": "Japan",
+  "countryCode": "JP",
+  "flag": "🇯🇵",
+  "description": "Japan's kitchen and entertainment capital — a city that lives to eat, laugh, and celebrate. Osaka is louder, friendlier, and more indulgent than Tokyo, with world-class street food, electric nightlife, and a welcoming local culture known as 'kuidaore' (eat till you drop).",
+  "heroImage": "https://images.unsplash.com/photo-1590559899731-a382839e5549?w=1200&q=80",
+  "heroImageCredit": {
+    "name": "Nicki Eliza Schinow",
+    "link": "https://unsplash.com/@schienow"
+  },
+  "quickInfo": {
+    "bestSeason": "March–May (cherry blossom), Sep–Nov (autumn foliage)",
+    "avgBudget": "$70–130/day",
+    "timezone": "UTC+9",
+    "language": "Japanese",
+    "currency": "JPY",
+    "visa": "Visa-free for most Western countries (90 days)"
+  },
+  "agodaCityId": "17067",
+  "klookDestinationId": "osaka",
+  "hotels": [
+    {
+      "name": "Cross Hotel Osaka",
+      "area": "Shinsaibashi",
+      "priceRange": "$89–120/night",
+      "rating": 4.5,
+      "tier": "mid-range",
+      "agodaHotelId": "236154",
+      "description": "Stylish hotel in the heart of the shopping district, walking distance to Dotonbori.",
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+    },
+    {
+      "name": "Dormy Inn Namba Premium",
+      "area": "Namba",
+      "priceRange": "$65–90/night",
+      "rating": 4.4,
+      "tier": "budget",
+      "agodaHotelId": "1658232",
+      "description": "Great-value business hotel with onsen bath. Unbeatable location near Namba.",
+      "image": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=600&q=80"
+    },
+    {
+      "name": "Conrad Osaka",
+      "area": "Nakanoshima",
+      "priceRange": "$280–450/night",
+      "rating": 4.8,
+      "tier": "luxury",
+      "agodaHotelId": "1893720",
+      "description": "Spectacular skyline views from the 33rd floor, impeccable service, and top-tier dining.",
+      "image": "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=80"
+    }
+  ],
+  "activities": [
+    {
+      "name": "Osaka Amazing Pass (1-Day)",
+      "duration": "Full Day",
+      "price": "$25",
+      "category": "transport-pass",
+      "klookActivityId": "3248",
+      "description": "Unlimited subway rides + free entry to 40+ attractions including Osaka Castle.",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+    },
+    {
+      "name": "Dotonbori Street Food Night Tour",
+      "duration": "3 hours",
+      "price": "$45",
+      "category": "food-tour",
+      "klookActivityId": "12456",
+      "description": "Guided evening tour sampling takoyaki, okonomiyaki, kushikatsu, and more.",
+      "image": "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80"
+    },
+    {
+      "name": "Universal Studios Japan Express Pass",
+      "duration": "Full Day",
+      "price": "$85",
+      "category": "theme-park",
+      "klookActivityId": "5892",
+      "description": "Skip-the-line access to USJ's best rides including Super Nintendo World.",
+      "image": "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=600&q=80"
+    }
+  ],
+  "itinerary": {
+    "3days": [
+      {
+        "day": 1,
+        "title": "Osaka Castle & Dotonbori",
+        "items": [
+          { "time": "09:00", "activity": "Osaka Castle & Museum", "type": "attraction", "klookId": "3248" },
+          { "time": "12:00", "activity": "Kuromon Market — try fresh sushi and skewers", "type": "food" },
+          { "time": "15:00", "activity": "Shinsekai district & Tsutenkaku Tower", "type": "attraction" },
+          { "time": "18:00", "activity": "Dotonbori night walk + street food crawl", "type": "food" }
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Day Trip to Nara or Universal Studios",
+        "items": [
+          { "time": "09:00", "activity": "Nara — feed the deer, see Todai-ji Temple", "type": "attraction" },
+          { "time": "14:00", "activity": "Back to Osaka — Shinsaibashi shopping", "type": "shopping" },
+          { "time": "19:00", "activity": "Izakaya dinner in Namba", "type": "food" }
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Day Trip to Kyoto",
+        "items": [
+          { "time": "08:00", "activity": "Fushimi Inari Shrine (arrive early!)", "type": "attraction" },
+          { "time": "11:00", "activity": "Gion district & Kinkaku-ji (Golden Pavilion)", "type": "attraction" },
+          { "time": "16:00", "activity": "Return to Osaka — farewell ramen in Namba", "type": "food" }
+        ]
+      }
+    ]
+  },
+  "practicalInfo": {
+    "gettingThere": "Kansai International Airport (KIX) — 50 min by Haruka Express or 70 min by Nankai Line to Namba.",
+    "localTransport": "Osaka Metro covers the whole city. Get the Osaka Amazing Pass for unlimited rides + attraction entry.",
+    "weather": [
+      { "month": "Jan", "high": 9, "low": 3, "rain": 45 },
+      { "month": "Feb", "high": 10, "low": 3, "rain": 60 },
+      { "month": "Mar", "high": 14, "low": 7, "rain": 90 },
+      { "month": "Apr", "high": 20, "low": 12, "rain": 100 },
+      { "month": "May", "high": 25, "low": 17, "rain": 130 },
+      { "month": "Jun", "high": 28, "low": 21, "rain": 175 },
+      { "month": "Jul", "high": 32, "low": 25, "rain": 150 },
+      { "month": "Aug", "high": 33, "low": 26, "rain": 110 },
+      { "month": "Sep", "high": 28, "low": 22, "rain": 150 },
+      { "month": "Oct", "high": 22, "low": 15, "rain": 95 },
+      { "month": "Nov", "high": 16, "low": 9, "rain": 65 },
+      { "month": "Dec", "high": 11, "low": 4, "rain": 45 }
+    ]
+  },
+  "themes": ["food", "culture", "nightlife", "family"],
+  "relatedCities": ["kyoto", "tokyo", "nara"]
+}

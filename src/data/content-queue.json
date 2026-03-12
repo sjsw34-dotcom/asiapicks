@@ -1,0 +1,162 @@
+[
+  {
+    "slug": "3-days-in-tokyo",
+    "title": "3 Days in Tokyo: The Perfect Itinerary for First-Timers",
+    "city": "tokyo",
+    "country": "japan",
+    "category": "travel-guides",
+    "tags": ["tokyo", "japan", "itinerary", "first-time"]
+  },
+  {
+    "slug": "best-street-food-bangkok",
+    "title": "Bangkok Street Food Guide: 15 Must-Try Dishes",
+    "city": "bangkok",
+    "country": "thailand",
+    "category": "travel-guides",
+    "tags": ["bangkok", "thailand", "food", "street-food"]
+  },
+  {
+    "slug": "seoul-on-a-budget",
+    "title": "Seoul on a Budget: How to Explore Korea for Under $50/Day",
+    "city": "seoul",
+    "country": "korea",
+    "category": "travel-tips",
+    "tags": ["seoul", "korea", "budget", "tips"]
+  },
+  {
+    "slug": "osaka-food-guide",
+    "title": "Osaka Food Guide: Everything You Need to Eat in Japan's Kitchen",
+    "city": "osaka",
+    "country": "japan",
+    "category": "travel-guides",
+    "tags": ["osaka", "japan", "food", "guide"]
+  },
+  {
+    "slug": "kyoto-temples-guide",
+    "title": "Kyoto Temple Guide: 10 Must-Visit Shrines and Temples",
+    "city": "kyoto",
+    "country": "japan",
+    "category": "travel-guides",
+    "tags": ["kyoto", "japan", "temples", "culture"]
+  },
+  {
+    "slug": "vietnam-hanoi-vs-hcmc",
+    "title": "Hanoi vs Ho Chi Minh City: Which Vietnam City Should You Visit?",
+    "city": "hanoi",
+    "country": "vietnam",
+    "category": "travel-guides",
+    "tags": ["vietnam", "hanoi", "ho-chi-minh", "comparison"]
+  },
+  {
+    "slug": "saju-travel-guide-element",
+    "title": "Your Saju Element & the Perfect Asia Destination for You",
+    "city": null,
+    "country": null,
+    "category": "saju-travel",
+    "tags": ["saju", "korean-astrology", "travel-destiny", "asia"]
+  },
+  {
+    "slug": "chiang-mai-digital-nomad",
+    "title": "Chiang Mai for Digital Nomads: The Ultimate 2026 Guide",
+    "city": "chiang-mai",
+    "country": "thailand",
+    "category": "travel-tips",
+    "tags": ["chiang-mai", "thailand", "digital-nomad", "remote-work"]
+  },
+  {
+    "slug": "fukuoka-hidden-gem-japan",
+    "title": "Why Fukuoka Is Japan's Most Underrated City",
+    "city": "fukuoka",
+    "country": "japan",
+    "category": "travel-guides",
+    "tags": ["fukuoka", "japan", "ramen", "yatai", "hidden-gem"]
+  },
+  {
+    "slug": "okinawa-beach-guide",
+    "title": "Okinawa Beach Guide: Best Beaches, Snorkeling Spots & Island Tips",
+    "city": "okinawa",
+    "country": "japan",
+    "category": "travel-guides",
+    "tags": ["okinawa", "japan", "beach", "snorkeling", "kerama"]
+  },
+  {
+    "slug": "phuket-vs-koh-samui",
+    "title": "Phuket vs Koh Samui: Which Thai Island is Right for You?",
+    "city": "phuket",
+    "country": "thailand",
+    "category": "travel-guides",
+    "tags": ["phuket", "thailand", "beach", "islands", "comparison"]
+  },
+  {
+    "slug": "pattaya-beyond-nightlife",
+    "title": "Pattaya Beyond the Nightlife: Islands, Culture & Hidden Gems",
+    "city": "pattaya",
+    "country": "thailand",
+    "category": "travel-guides",
+    "tags": ["pattaya", "thailand", "koh-larn", "sanctuary-of-truth"]
+  },
+  {
+    "slug": "busan-weekend-trip",
+    "title": "Perfect 3-Day Busan Trip: Beaches, Fish Markets & Hillside Villages",
+    "city": "busan",
+    "country": "korea",
+    "category": "travel-guides",
+    "tags": ["busan", "korea", "haeundae", "gamcheon", "seafood"]
+  },
+  {
+    "slug": "jeju-itinerary-3-days",
+    "title": "3 Days in Jeju: Volcanoes, Haenyeo Divers & Black Sand Beaches",
+    "city": "jeju",
+    "country": "korea",
+    "category": "travel-guides",
+    "tags": ["jeju", "korea", "hallasan", "haenyeo", "nature"]
+  },
+  {
+    "slug": "ho-chi-minh-first-timer",
+    "title": "Ho Chi Minh City for First-Timers: Districts, Food & Day Trips",
+    "city": "ho-chi-minh",
+    "country": "vietnam",
+    "category": "travel-guides",
+    "tags": ["ho-chi-minh", "saigon", "vietnam", "cu-chi", "mekong"]
+  },
+  {
+    "slug": "da-nang-hoi-an-trip",
+    "title": "Da Nang & Hoi An: The Perfect 5-Day Central Vietnam Itinerary",
+    "city": "da-nang",
+    "country": "vietnam",
+    "category": "travel-guides",
+    "tags": ["da-nang", "hoi-an", "vietnam", "beach", "ancient-town"]
+  },
+  {
+    "slug": "best-hotels-seoul-by-area",
+    "title": "Best Hotels in Seoul by Area: From Gangnam to Hongdae",
+    "city": "seoul",
+    "country": "korea",
+    "category": "hotels-stays",
+    "tags": ["seoul", "korea", "hotels", "accommodation", "neighborhoods"]
+  },
+  {
+    "slug": "kyoto-cherry-blossom-guide",
+    "title": "Kyoto Cherry Blossom Guide: Best Spots, Timing & Crowds",
+    "city": "kyoto",
+    "country": "japan",
+    "category": "travel-guides",
+    "tags": ["kyoto", "japan", "cherry-blossom", "sakura", "spring"]
+  },
+  {
+    "slug": "saju-fire-element-travel",
+    "title": "Fire Element Travel: Why Bangkok is Your Saju-Perfect Destination",
+    "city": "bangkok",
+    "country": "thailand",
+    "category": "saju-travel",
+    "tags": ["saju", "fire-element", "bangkok", "thai-astrology"]
+  },
+  {
+    "slug": "vietnam-budget-backpacking",
+    "title": "Vietnam on $30/Day: The Ultimate Budget Backpacking Guide",
+    "city": null,
+    "country": "vietnam",
+    "category": "travel-tips",
+    "tags": ["vietnam", "budget", "backpacking", "hanoi", "ho-chi-minh"]
+  }
+]

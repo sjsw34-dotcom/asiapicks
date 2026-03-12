@@ -1,0 +1,179 @@
+{
+  "id": "da-nang",
+  "name": "Da Nang",
+  "country": "Vietnam",
+  "countryCode": "VN",
+  "flag": "🇻🇳",
+  "description": "Vietnam's most livable city punches far above its weight — world-class beaches, the ancient trading town of Hoi An 30 minutes away, Ba Na Hills' hilltop French village, and seafood so fresh it almost walks off the grill.",
+  "heroImage": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1080&q=80",
+  "heroImageCredit": { "name": "Denys Nevozhai", "link": "https://unsplash.com/@dnevozhai" },
+  "quickInfo": {
+    "bestSeason": "Feb-Aug (dry & warm season)",
+    "avgBudget": "$30-80/day",
+    "timezone": "UTC+7",
+    "language": "Vietnamese",
+    "currency": "VND (₫)",
+    "visa": "E-visa 90 days, multiple entry. Free for some nationalities."
+  },
+  "agodaCityId": "11242",
+  "klookDestinationId": "da-nang",
+  "hotels": [
+    {
+      "name": "Memory Hostel Da Nang",
+      "area": "My Khe Beach area",
+      "priceRange": "$8-22",
+      "rating": 4.5,
+      "tier": "budget",
+      "agodaHotelId": "7562534",
+      "description": "Friendly beach hostel steps from My Khe, great breakfast and helpful staff",
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+    },
+    {
+      "name": "Novotel Da Nang Premier Han River",
+      "area": "Han River Waterfront",
+      "priceRange": "$85-145",
+      "rating": 4.6,
+      "tier": "mid-range",
+      "agodaHotelId": "5518927",
+      "description": "Stylish riverside hotel with infinity pool and stunning views of the Dragon Bridge",
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+    },
+    {
+      "name": "Fusion Maia Da Nang",
+      "area": "My Khe Beach",
+      "priceRange": "$250-450",
+      "rating": 4.9,
+      "tier": "luxury",
+      "agodaHotelId": "2923847",
+      "description": "All-spa-inclusive luxury resort where every villa includes unlimited spa treatments daily",
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+    },
+    {
+      "name": "Hyatt Regency Da Nang",
+      "area": "Non Nuoc Beach",
+      "priceRange": "$200-380",
+      "rating": 4.8,
+      "tier": "luxury",
+      "agodaHotelId": "3423847",
+      "description": "Beachfront luxury resort with five pools cascading to the white sand of Non Nuoc Beach",
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+    },
+    {
+      "name": "Danang Marriott Resort & Spa",
+      "area": "Son Tra Peninsula",
+      "priceRange": "$160-280",
+      "rating": 4.7,
+      "tier": "mid-range",
+      "agodaHotelId": "7823841",
+      "description": "Lush peninsula resort surrounded by jungle, near Monkey Mountain, stunning bay views",
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+    }
+  ],
+  "activities": [
+    {
+      "name": "Hoi An Ancient Town Full-Day Tour",
+      "duration": "8 hours",
+      "price": "$35",
+      "category": "day-trip",
+      "klookActivityId": "112134",
+      "description": "Explore the UNESCO ancient trading town: Japanese Bridge, tailors, lantern shops, river cruise",
+      "image": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80"
+    },
+    {
+      "name": "Ba Na Hills & Golden Bridge Day Trip",
+      "duration": "Full day",
+      "price": "$55",
+      "category": "attraction",
+      "klookActivityId": "109234",
+      "description": "Longest cable car in the world to the hilltop French village + the famous Giant Hands Bridge",
+      "image": "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=600&q=80"
+    },
+    {
+      "name": "Da Nang Dragon Bridge Fire Show & City Night Tour",
+      "duration": "4 hours",
+      "price": "$25",
+      "category": "guided-tour",
+      "klookActivityId": "113412",
+      "description": "Witness the Dragon Bridge breathe fire (Sat/Sun nights) with a local night food tour",
+      "image": "https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=600&q=80"
+    },
+    {
+      "name": "My Son Sanctuary UNESCO Ruins Tour",
+      "duration": "6 hours",
+      "price": "$30",
+      "category": "history",
+      "klookActivityId": "111512",
+      "description": "Visit 4th-century Cham Hindu temple ruins hidden in a jungle valley — Vietnam's Angkor",
+      "image": "https://images.unsplash.com/photo-1553592077-3458a7f3c41a?w=600&q=80"
+    },
+    {
+      "name": "Marble Mountains & Da Nang Cooking Class",
+      "duration": "5 hours",
+      "price": "$40",
+      "category": "culture",
+      "klookActivityId": "110823",
+      "description": "Explore ancient Buddhist caves and marble workshops, then cook 4 Central Vietnamese dishes",
+      "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80"
+    }
+  ],
+  "itinerary": {
+    "3days": [
+      {
+        "day": 1,
+        "title": "Da Nang City & Beaches",
+        "items": [
+          { "time": "07:00", "activity": "My Khe Beach morning swim (Vietnam's best city beach)", "type": "beach" },
+          { "time": "09:30", "activity": "Marble Mountains cave temples & panoramic views", "type": "attraction", "klookId": "110823" },
+          { "time": "12:00", "activity": "My Khe seafood lunch: grilled clams & fresh fish", "type": "food" },
+          { "time": "14:00", "activity": "Han Market & Dragon Bridge area stroll", "type": "culture" },
+          { "time": "16:00", "activity": "Son Tra Peninsula: Lady Buddha statue viewpoint", "type": "attraction" },
+          { "time": "20:30", "activity": "Dragon Bridge fire/water show (Sat/Sun only)", "type": "attraction", "klookId": "113412" }
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hoi An Ancient Town",
+        "items": [
+          { "time": "08:00", "activity": "Bus or taxi to Hoi An (30 min)", "type": "transport" },
+          { "time": "09:00", "activity": "Ancient town: Japanese Covered Bridge & old merchant houses", "type": "culture", "klookId": "112134" },
+          { "time": "12:00", "activity": "White Rose dumplings & cao lau noodles lunch", "type": "food" },
+          { "time": "14:00", "activity": "Custom tailor fitting (24h turnaround)", "type": "shopping" },
+          { "time": "15:30", "activity": "Bicycle to An Bang Beach (5 km from town)", "type": "beach" },
+          { "time": "18:00", "activity": "Lantern-lit Hoi An evening & boat ride", "type": "culture" }
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ba Na Hills & My Son Ruins",
+        "items": [
+          { "time": "08:00", "activity": "Ba Na Hills cable car & Golden Bridge", "type": "attraction", "klookId": "109234" },
+          { "time": "13:00", "activity": "Ba Na Hills French Village lunch", "type": "food" },
+          { "time": "15:00", "activity": "Return from Ba Na Hills", "type": "transport" },
+          { "time": "16:00", "activity": "Check out pick-up tailor order from Hoi An", "type": "shopping" },
+          { "time": "17:30", "activity": "Non Nuoc Beach sunset", "type": "beach" },
+          { "time": "19:30", "activity": "Farewell dinner: banh xeo sizzling crepe at local restaurant", "type": "food" }
+        ]
+      }
+    ]
+  },
+  "practicalInfo": {
+    "gettingThere": "Da Nang International Airport (DAD) — Vietnam's 3rd busiest. Direct flights from Singapore, Bangkok, Seoul, Tokyo, Taipei, Hong Kong, Kuala Lumpur. Taxi to city: 15 min, $5. Airport near the city center.",
+    "localTransport": "Grab app excellent. Motorbike rental $6-8/day recommended for My Khe beach strip. Taxi metered (Mai Linh/Vinasun). Bicycle rental from Hoi An guesthouses $3/day. No real public transport.",
+    "weather": [
+      { "month": "Jan", "high": 23, "low": 18, "rain": 100 },
+      { "month": "Feb", "high": 24, "low": 19, "rain": 40 },
+      { "month": "Mar", "high": 27, "low": 21, "rain": 25 },
+      { "month": "Apr", "high": 30, "low": 23, "rain": 35 },
+      { "month": "May", "high": 33, "low": 25, "rain": 50 },
+      { "month": "Jun", "high": 34, "low": 26, "rain": 45 },
+      { "month": "Jul", "high": 34, "low": 26, "rain": 80 },
+      { "month": "Aug", "high": 33, "low": 26, "rain": 110 },
+      { "month": "Sep", "high": 31, "low": 24, "rain": 350 },
+      { "month": "Oct", "high": 28, "low": 23, "rain": 610 },
+      { "month": "Nov", "high": 26, "low": 21, "rain": 395 },
+      { "month": "Dec", "high": 23, "low": 18, "rain": 210 }
+    ]
+  },
+  "themes": ["beach", "culture", "history", "food", "day-trips"],
+  "relatedCities": ["hoi-an", "hanoi", "ho-chi-minh"]
+}

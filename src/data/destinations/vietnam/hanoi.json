@@ -1,0 +1,180 @@
+{
+  "id": "hanoi",
+  "name": "Hanoi",
+  "country": "Vietnam",
+  "countryCode": "VN",
+  "flag": "🇻🇳",
+  "description": "Vietnam's ancient capital is a city of contradictions — French cafés next to communist monuments, electric motorbike swarms around thousand-year-old temples, and the world's best bowl of pho served at plastic stools at 6am.",
+  "heroImage": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1080&q=80",
+  "heroImageCredit": { "name": "Jovyn Chamb", "link": "https://unsplash.com/@jovynfc" },
+  "quickInfo": {
+    "bestSeason": "Oct-Apr (cooler & drier)",
+    "avgBudget": "$25-65/day",
+    "timezone": "UTC+7",
+    "language": "Vietnamese",
+    "currency": "VND (₫)",
+    "visa": "E-visa 90 days, multiple entry. Free for some nationalities under bilateral agreements."
+  },
+  "agodaCityId": "1308",
+  "klookDestinationId": "hanoi",
+  "hotels": [
+    {
+      "name": "Little Charm Hanoi Hostel",
+      "area": "Old Quarter",
+      "priceRange": "$8-20",
+      "rating": 4.6,
+      "tier": "budget",
+      "agodaHotelId": "4462534",
+      "description": "Charming family-run hostel in the heart of Hanoi's Old Quarter, rooftop terrace",
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+    },
+    {
+      "name": "La Siesta Premium Hang Be",
+      "area": "Old Quarter",
+      "priceRange": "$60-110",
+      "rating": 4.7,
+      "tier": "mid-range",
+      "agodaHotelId": "8818927",
+      "description": "Award-winning boutique hotel with elegant Vietnamese design, rooftop pool and spa",
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+    },
+    {
+      "name": "Sofitel Legend Metropole Hanoi",
+      "area": "Hoan Kiem District",
+      "priceRange": "$250-500",
+      "rating": 4.9,
+      "tier": "luxury",
+      "agodaHotelId": "1023847",
+      "description": "Vietnam's most storied hotel since 1901 — Ho Chi Minh, Graham Greene, and Charlie Chaplin all slept here",
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+    },
+    {
+      "name": "InterContinental Hanoi Landmark72",
+      "area": "Cau Giay District",
+      "priceRange": "$130-250",
+      "rating": 4.7,
+      "tier": "luxury",
+      "agodaHotelId": "3823847",
+      "description": "Vietnam's tallest building (72 floors) with panoramic city views and rooftop bar",
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+    },
+    {
+      "name": "Hanoi La Castela Hotel",
+      "area": "Old Quarter (Hang Bong)",
+      "priceRange": "$55-90",
+      "rating": 4.6,
+      "tier": "mid-range",
+      "agodaHotelId": "6682841",
+      "description": "Stylish French-influenced boutique hotel steps from Hoan Kiem Lake",
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+    }
+  ],
+  "activities": [
+    {
+      "name": "Ha Long Bay 2D/1N Cruise",
+      "duration": "2 days",
+      "price": "$120",
+      "category": "overnight-tour",
+      "klookActivityId": "101923",
+      "description": "Sail through UNESCO-listed limestone karsts, kayak sea caves, and sleep on a junk boat",
+      "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80"
+    },
+    {
+      "name": "Hanoi Old Quarter Street Food Walk",
+      "duration": "3 hours",
+      "price": "$30",
+      "category": "food-tour",
+      "klookActivityId": "99234",
+      "description": "Eat bun cha, bahn cuon, nem ran, and egg coffee at the locals' favorite spots",
+      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80"
+    },
+    {
+      "name": "Hanoi City Highlights Cyclo & Walking Tour",
+      "duration": "4 hours",
+      "price": "$25",
+      "category": "guided-tour",
+      "klookActivityId": "97612",
+      "description": "Cyclo ride through the 36 Old Quarter streets, Ho Chi Minh Mausoleum, Temple of Literature",
+      "image": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80"
+    },
+    {
+      "name": "Ninh Binh Tam Coc Boat Tour",
+      "duration": "Full day",
+      "price": "$45",
+      "category": "day-trip",
+      "klookActivityId": "102412",
+      "description": "Row boat through rice paddy caves — 'Halong Bay on land' — plus ancient temples",
+      "image": "https://images.unsplash.com/photo-1553592077-3458a7f3c41a?w=600&q=80"
+    },
+    {
+      "name": "Vietnamese Cooking Class in Old Quarter",
+      "duration": "4 hours",
+      "price": "$35",
+      "category": "cooking-class",
+      "klookActivityId": "98512",
+      "description": "Market shopping + cook 4 authentic Northern Vietnamese dishes including fresh pho",
+      "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80"
+    }
+  ],
+  "itinerary": {
+    "3days": [
+      {
+        "day": 1,
+        "title": "Hoan Kiem & Old Quarter",
+        "items": [
+          { "time": "07:00", "activity": "Pho bo breakfast on a plastic stool in the Old Quarter", "type": "food" },
+          { "time": "09:00", "activity": "Hoan Kiem Lake morning walk & Ngoc Son Temple", "type": "attraction" },
+          { "time": "10:30", "activity": "Old Quarter exploration — 36 traditional trade streets", "type": "culture" },
+          { "time": "12:30", "activity": "Bun cha lunch (Obama ate here)", "type": "food" },
+          { "time": "14:00", "activity": "Temple of Literature — Vietnam's first university (1070)", "type": "culture" },
+          { "time": "16:00", "activity": "Ho Chi Minh Mausoleum complex & One Pillar Pagoda", "type": "history" },
+          { "time": "19:30", "activity": "Beer corner (Ta Hien Street) with bia hoi draft beer", "type": "food" }
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Ha Long Bay Cruise",
+        "items": [
+          { "time": "08:00", "activity": "Minibus transfer to Ha Long Bay pier (3.5h)", "type": "transport" },
+          { "time": "12:00", "activity": "Board luxury junk boat, lunch on board", "type": "food" },
+          { "time": "14:00", "activity": "Kayaking through limestone caves", "type": "adventure", "klookId": "101923" },
+          { "time": "16:00", "activity": "Titop Island beach climb & swim", "type": "outdoor" },
+          { "time": "18:00", "activity": "Sunset cocktails on deck", "type": "food" },
+          { "time": "20:00", "activity": "Squid fishing off the back of the boat", "type": "outdoor" }
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ha Long Morning & Hanoi Return",
+        "items": [
+          { "time": "07:00", "activity": "Tai chi on the bow deck at sunrise", "type": "wellness" },
+          { "time": "08:00", "activity": "Breakfast on board, explore final cave", "type": "food" },
+          { "time": "11:00", "activity": "Return to Hanoi harbor", "type": "transport" },
+          { "time": "15:00", "activity": "Back in Hanoi: Old Quarter food walk", "type": "food", "klookId": "99234" },
+          { "time": "17:00", "activity": "Hom Market: silk and handicraft shopping", "type": "shopping" },
+          { "time": "20:00", "activity": "Farewell dinner: Vietnamese BBQ & cha ca fish", "type": "food" }
+        ]
+      }
+    ]
+  },
+  "practicalInfo": {
+    "gettingThere": "Noi Bai International Airport (HAN) — 45 min from city. Airport bus #86 to Old Quarter: 35 min, $1. Grab car to Old Quarter: $8-12. Taxi by meter recommended (avoid unmarked taxis).",
+    "localTransport": "Grab is essential. Cyclos (cycle rickshaws) for tourist sightseeing $5-10/hour. Xe om motorbike taxis for short hops. Old Quarter very walkable. City bus lines exist but complex.",
+    "weather": [
+      { "month": "Jan", "high": 19, "low": 14, "rain": 20 },
+      { "month": "Feb", "high": 20, "low": 15, "rain": 28 },
+      { "month": "Mar", "high": 23, "low": 18, "rain": 40 },
+      { "month": "Apr", "high": 27, "low": 21, "rain": 80 },
+      { "month": "May", "high": 32, "low": 24, "rain": 190 },
+      { "month": "Jun", "high": 33, "low": 26, "rain": 240 },
+      { "month": "Jul", "high": 33, "low": 26, "rain": 290 },
+      { "month": "Aug", "high": 32, "low": 25, "rain": 310 },
+      { "month": "Sep", "high": 31, "low": 24, "rain": 270 },
+      { "month": "Oct", "high": 28, "low": 22, "rain": 130 },
+      { "month": "Nov", "high": 24, "low": 18, "rain": 50 },
+      { "month": "Dec", "high": 20, "low": 15, "rain": 20 }
+    ]
+  },
+  "themes": ["history", "food", "culture", "budget", "day-trips"],
+  "relatedCities": ["ho-chi-minh", "da-nang", "halong"]
+}
