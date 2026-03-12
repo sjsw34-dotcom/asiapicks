@@ -1,13 +1,15 @@
 import ActivityCard from "@/components/cards/ActivityCard";
 import AffiliateDisclosure from "@/components/affiliate/AffiliateDisclosure";
+import KlookWidget from "@/components/affiliate/KlookWidget";
 import type { Activity } from "@/types/destination";
 
 interface ActivitySectionProps {
   activities: Activity[];
   cityName: string;
+  klookWidgetCid?: string;
 }
 
-export default function ActivitySection({ activities, cityName }: ActivitySectionProps) {
+export default function ActivitySection({ activities, cityName, klookWidgetCid }: ActivitySectionProps) {
   return (
     <section className="mt-12">
       <h2 className="text-xl font-bold font-heading text-text-primary mb-2">
@@ -21,6 +23,8 @@ export default function ActivitySection({ activities, cityName }: ActivitySectio
           <ActivityCard key={activity.klookActivityId} activity={activity} />
         ))}
       </div>
+
+      {klookWidgetCid && <KlookWidget cid={klookWidgetCid} />}
     </section>
   );
 }

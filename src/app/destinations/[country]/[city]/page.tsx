@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getCityBySlug, getAllCitySlugs, getRelatedCities } from "@/lib/destinations";
+import affiliates from "@/data/affiliates.json";
 import { generatePageMetadata, touristDestinationSchema, getOGImageUrl } from "@/lib/seo";
 import JsonLd from "@/components/common/JsonLd";
 import CityHero from "@/components/destination/CityHero";
@@ -40,6 +41,7 @@ export default async function CityPage({ params }: Props) {
   if (!city) notFound();
 
   const relatedCities = getRelatedCities(city, 3);
+  const klookWidgetCid = (affiliates.klook.widgetCids as Record<string, string>)[city.id] ?? "";
 
   // Show SajuInsightBox on ~every 3rd city (deterministic, not random)
   const showSaju = (city.name.charCodeAt(0) % 3) === 0;
@@ -67,7 +69,7 @@ export default async function CityPage({ params }: Props) {
         <HotelSection hotels={city.hotels} cityName={city.name} />
 
         {/* Activities */}
-        <ActivitySection activities={city.activities} cityName={city.name} />
+        <ActivitySection activities={city.activities} cityName={city.name} klookWidgetCid={klookWidgetCid} />
 
         {/* Itinerary */}
         <ItineraryTimeline

@@ -15,8 +15,9 @@
     }
   },
   "klook": {
-    "aid": "YOUR_KLOOK_AID",
-    "baseUrl": "https://www.klook.com/activity/",
+    "aid": "115517",
+    "affAdid": "1235589",
+    "redirectBase": "https://affiliate.klook.com/redirect",
     "destinationIds": {
       "tokyo": "tokyo",
       "osaka": "osaka",
@@ -26,7 +27,20 @@
       "seoul": "seoul",
       "busan": "busan",
       "ho-chi-minh": "ho-chi-minh-city",
-      "hanoi": "hanoi"
+      "hanoi": "hanoi",
+      "da-nang": "da-nang"
+    },
+    "widgetCids": {
+      "tokyo": "28",
+      "osaka": "",
+      "kyoto": "",
+      "bangkok": "4",
+      "chiang-mai": "",
+      "seoul": "",
+      "busan": "",
+      "ho-chi-minh": "",
+      "hanoi": "",
+      "da-nang": "74"
     }
   },
   "sajumuse": {
