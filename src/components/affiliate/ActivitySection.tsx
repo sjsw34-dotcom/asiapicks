@@ -3,13 +3,18 @@ import AffiliateDisclosure from "@/components/affiliate/AffiliateDisclosure";
 import KlookWidget from "@/components/affiliate/KlookWidget";
 import type { Activity } from "@/types/destination";
 
+interface KlookWidget {
+  cid: string;
+  adid: string;
+}
+
 interface ActivitySectionProps {
   activities: Activity[];
   cityName: string;
-  klookWidgetCid?: string;
+  klookWidget?: KlookWidget;
 }
 
-export default function ActivitySection({ activities, cityName, klookWidgetCid }: ActivitySectionProps) {
+export default function ActivitySection({ activities, cityName, klookWidget }: ActivitySectionProps) {
   return (
     <section className="mt-12">
       <h2 className="text-xl font-bold font-heading text-text-primary mb-2">
@@ -24,7 +29,7 @@ export default function ActivitySection({ activities, cityName, klookWidgetCid }
         ))}
       </div>
 
-      {klookWidgetCid && <KlookWidget cid={klookWidgetCid} />}
+      {klookWidget?.cid && <KlookWidget cid={klookWidget.cid} adid={klookWidget.adid} />}
     </section>
   );
 }

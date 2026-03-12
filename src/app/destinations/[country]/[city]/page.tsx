@@ -41,7 +41,7 @@ export default async function CityPage({ params }: Props) {
   if (!city) notFound();
 
   const relatedCities = getRelatedCities(city, 3);
-  const klookWidgetCid = (affiliates.klook.widgetCids as Record<string, string>)[city.id] ?? "";
+  const klookWidget = (affiliates.klook.widgets as Record<string, { cid: string; adid: string }>)[city.id];
 
   // Show SajuInsightBox on ~every 3rd city (deterministic, not random)
   const showSaju = (city.name.charCodeAt(0) % 3) === 0;
@@ -69,7 +69,7 @@ export default async function CityPage({ params }: Props) {
         <HotelSection hotels={city.hotels} cityName={city.name} />
 
         {/* Activities */}
-        <ActivitySection activities={city.activities} cityName={city.name} klookWidgetCid={klookWidgetCid} />
+        <ActivitySection activities={city.activities} cityName={city.name} klookWidget={klookWidget} />
 
         {/* Itinerary */}
         <ItineraryTimeline

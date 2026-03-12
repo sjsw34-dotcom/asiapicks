@@ -30,17 +30,17 @@
       "hanoi": "hanoi",
       "da-nang": "da-nang"
     },
-    "widgetCids": {
-      "tokyo": "28",
-      "osaka": "",
-      "kyoto": "",
-      "bangkok": "4",
-      "chiang-mai": "",
-      "seoul": "",
-      "busan": "",
-      "ho-chi-minh": "",
-      "hanoi": "",
-      "da-nang": "74"
+    "widgets": {
+      "tokyo":      { "cid": "28",  "adid": "1235570" },
+      "osaka":      { "cid": "29",  "adid": "1235595" },
+      "kyoto":      { "cid": "30",  "adid": "1235595" },
+      "bangkok":    { "cid": "4",   "adid": "1235570" },
+      "chiang-mai": { "cid": "5",   "adid": "1235595" },
+      "seoul":      { "cid": "13",  "adid": "1235570" },
+      "busan":      { "cid": "46",  "adid": "1235595" },
+      "ho-chi-minh":{ "cid": "33",  "adid": "1235595" },
+      "hanoi":      { "cid": "34",  "adid": "1235595" },
+      "da-nang":    { "cid": "74",  "adid": "1235570" }
     }
   },
   "sajumuse": {

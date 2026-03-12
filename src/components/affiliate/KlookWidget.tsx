@@ -4,9 +4,10 @@ import { useEffect } from 'react';
 
 interface KlookWidgetProps {
   cid: string;
+  adid: string;
 }
 
-export default function KlookWidget({ cid }: KlookWidgetProps) {
+export default function KlookWidget({ cid, adid }: KlookWidgetProps) {
   useEffect(() => {
     if (document.querySelector('script[src*="klook.com/widget"]')) return;
 
@@ -17,13 +18,13 @@ export default function KlookWidget({ cid }: KlookWidgetProps) {
     document.head.appendChild(script);
   }, []);
 
-  if (!cid) return null;
+  if (!cid || !adid) return null;
 
   return (
     <div className="my-8">
       <ins
         className="klk-aff-widget"
-        data-adid="1235570"
+        data-adid={adid}
         data-lang="en-BS"
         data-currency=""
         data-cardH="126"
