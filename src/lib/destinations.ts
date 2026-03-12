@@ -49,11 +49,13 @@ export function getAllCities(): CityData[] {
   return ALL_CITIES;
 }
 
+const toSlug = (s: string) => s.toLowerCase().replace(/\s+/g, "-");
+
 export function getCityBySlug(country: string, city: string): CityData | null {
   return (
     ALL_CITIES.find(
       (c) =>
-        c.country.toLowerCase() === country.toLowerCase() &&
+        toSlug(c.country) === country.toLowerCase() &&
         c.id === city.toLowerCase()
     ) ?? null
   );
@@ -61,7 +63,7 @@ export function getCityBySlug(country: string, city: string): CityData | null {
 
 export function getCitiesByCountry(country: string): CityData[] {
   return ALL_CITIES.filter(
-    (c) => c.country.toLowerCase() === country.toLowerCase()
+    (c) => toSlug(c.country) === country.toLowerCase()
   );
 }
 
