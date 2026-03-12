@@ -25,7 +25,7 @@ const seasonalDeals = [
     destinations: ["tokyo", "osaka"],
     ctaHotel: { label: "Find Hotels in Tokyo", link: getAgodaSearchLink("tokyo") },
     ctaActivity: { label: "Book Sakura Tours", link: getKlookDestinationLink("tokyo") },
-    image: "https://images.unsplash.com/photo-1522383225353-0d5e1e7f8b09?w=800",
+    image: "https://images.unsplash.com/photo-1679392673629-cc4edad1cdd0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=800",
   },
   {
     id: "summer-korea",
