@@ -16,6 +16,7 @@ import HotelSection from "@/components/affiliate/HotelSection";
 import ActivitySection from "@/components/affiliate/ActivitySection";
 import SajuInsightBox from "@/components/saju/SajuInsightBox";
 import ReactMarkdown from "react-markdown";
+import Image from "next/image";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -196,46 +197,78 @@ export default async function BlogPostPage({ params }: Props) {
   if (!dbPost) notFound();
 
   return (
-    <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
-      <header className="mb-8">
-        <span className="text-xs font-medium text-primary uppercase tracking-wide">
-          {dbPost.category.replace(/-/g, " ")}
-        </span>
-        <h1 className="mt-2 text-3xl md:text-4xl font-bold font-heading text-text-primary leading-tight">
-          {dbPost.title}
-        </h1>
-        <p className="mt-4 text-lg text-text-secondary">{dbPost.description}</p>
-        <div className="mt-4 flex items-center gap-3 text-sm text-text-secondary">
-          <span>{dbPost.read_time} min read</span>
-          <span>·</span>
-          <span>
-            {new Date(dbPost.published_at).toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </span>
-        </div>
-      </header>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <div className="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
+        <article>
+          {/* Hero Image */}
+          {dbPost.image && (
+            <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8">
+              <Image
+                src={dbPost.image}
+                alt={dbPost.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 800px"
+                priority
+              />
+            </div>
+          )}
 
-      <AffiliateDisclosure variant="post" />
-
-      <div className="mdx-content">
-        <ReactMarkdown>{dbPost.content}</ReactMarkdown>
-      </div>
-
-      {dbPost.tags?.length > 0 && (
-        <div className="mt-10 pt-6 border-t border-border flex flex-wrap gap-2">
-          {dbPost.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 rounded-full bg-surface text-xs text-text-secondary border border-border"
-            >
-              #{tag}
+          <header className="mb-8">
+            <span className="text-xs font-medium text-primary uppercase tracking-wide">
+              {dbPost.category.replace(/-/g, " ")}
             </span>
-          ))}
-        </div>
-      )}
-    </article>
+            <h1 className="mt-2 text-3xl md:text-4xl font-bold font-heading text-text-primary leading-tight">
+              {dbPost.title}
+            </h1>
+            <p className="mt-4 text-lg text-text-secondary leading-relaxed">
+              {dbPost.description}
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-text-secondary">
+              <span>{dbPost.read_time} min read</span>
+              <span>·</span>
+              <span>
+                {new Date(dbPost.published_at).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </span>
+              {dbPost.city && (
+                <>
+                  <span>·</span>
+                  <span className="capitalize">{dbPost.city}</span>
+                </>
+              )}
+            </div>
+          </header>
+
+          <AffiliateDisclosure variant="post" />
+
+          <div className="mdx-content">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              components={getMDXComponents() as any}
+            >
+              {dbPost.content}
+            </ReactMarkdown>
+          </div>
+
+          {dbPost.tags?.length > 0 && (
+            <div className="mt-10 pt-6 border-t border-border flex flex-wrap gap-2">
+              {dbPost.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 rounded-full bg-surface text-xs text-text-secondary border border-border"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </article>
+      </div>
+    </div>
   );
 }
