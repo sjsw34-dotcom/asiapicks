@@ -1,14 +1,48 @@
 import type { CityData } from "@/types/destination";
 
-// --- Static imports for build-time SSG ---
-import osakaData from "@/data/destinations/japan/osaka.json";
+// Japan
 import tokyoData from "@/data/destinations/japan/tokyo.json";
+import osakaData from "@/data/destinations/japan/osaka.json";
+import kyotoData from "@/data/destinations/japan/kyoto.json";
+import fukuokaData from "@/data/destinations/japan/fukuoka.json";
+import okinawaData from "@/data/destinations/japan/okinawa.json";
+
+// Thailand
 import bangkokData from "@/data/destinations/thailand/bangkok.json";
+import chiangMaiData from "@/data/destinations/thailand/chiang-mai.json";
+import phuketData from "@/data/destinations/thailand/phuket.json";
+import pattayaData from "@/data/destinations/thailand/pattaya.json";
+
+// South Korea
+import seoulData from "@/data/destinations/korea/seoul.json";
+import busanData from "@/data/destinations/korea/busan.json";
+import jejuData from "@/data/destinations/korea/jeju.json";
+
+// Vietnam
+import hanoiData from "@/data/destinations/vietnam/hanoi.json";
+import hoChiMinhData from "@/data/destinations/vietnam/ho-chi-minh.json";
+import daNangData from "@/data/destinations/vietnam/da-nang.json";
 
 const ALL_CITIES: CityData[] = [
-  osakaData as CityData,
+  // Japan
   tokyoData as CityData,
+  osakaData as CityData,
+  kyotoData as CityData,
+  fukuokaData as CityData,
+  okinawaData as CityData,
+  // Thailand
   bangkokData as CityData,
+  chiangMaiData as CityData,
+  phuketData as CityData,
+  pattayaData as CityData,
+  // South Korea
+  seoulData as CityData,
+  busanData as CityData,
+  jejuData as CityData,
+  // Vietnam
+  hanoiData as CityData,
+  hoChiMinhData as CityData,
+  daNangData as CityData,
 ];
 
 export function getAllCities(): CityData[] {
