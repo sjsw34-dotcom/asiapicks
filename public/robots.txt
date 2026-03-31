@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
 
-# Block API routes
+# Block API routes and admin
 Disallow: /api/
+Disallow: /admin/
 
 Sitemap: https://asiapicks.com/sitemap.xml
 Sitemap: https://asiapicks.com/feed.xml

@@ -13,9 +13,9 @@ export default function HotelCard({ hotel }: HotelCardProps) {
   const bookingUrl = getAgodaHotelLink(hotel.agodaHotelId);
 
   return (
-    <article className="rounded-xl border border-border bg-white overflow-hidden hover:shadow-md transition-shadow">
+    <article className="flex flex-col h-full rounded-xl border border-border bg-white overflow-hidden hover:shadow-md transition-shadow">
       {/* Image */}
-      <div className="relative h-44 w-full bg-surface">
+      <div className="relative h-44 w-full bg-surface shrink-0">
         <Image
           src={hotel.image}
           alt={hotel.name}
@@ -26,7 +26,7 @@ export default function HotelCard({ hotel }: HotelCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-4">
+      <div className="flex flex-col flex-1 p-4">
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-semibold font-heading text-text-primary leading-tight">
             {hotel.name}
@@ -46,7 +46,7 @@ export default function HotelCard({ hotel }: HotelCardProps) {
           </span>
         </div>
 
-        <p className="mt-2 text-sm text-text-secondary line-clamp-2">
+        <p className="mt-2 text-sm text-text-secondary line-clamp-2 flex-1">
           {hotel.description}
         </p>
 

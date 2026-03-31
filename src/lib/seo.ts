@@ -77,7 +77,7 @@ export function touristDestinationSchema(city: {
   heroImage: string;
   quickInfo: { bestSeason: string; avgBudget: string };
   id: string;
-  hotels: { name: string; agodaHotelId: string; rating: number }[];
+  hotels: { name: string; agodaHotelId: string; rating: number; ratingCount?: number }[];
 }) {
   return {
     "@context": "https://schema.org",
@@ -99,6 +99,7 @@ export function touristDestinationSchema(city: {
         ratingValue: h.rating,
         bestRating: 5,
         worstRating: 1,
+        ratingCount: h.ratingCount ?? 100,
       },
     })),
     containedInPlace: {
@@ -120,7 +121,7 @@ export function articleSchema(post: {
 }) {
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
     url: `${BASE_URL}/blog/${post.slug}`,

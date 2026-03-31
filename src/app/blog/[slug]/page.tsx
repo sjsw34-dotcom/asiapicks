@@ -105,6 +105,20 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
           {/* Main Content */}
           <article>
+            {/* Hero Image */}
+            {frontmatter.image && (
+              <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8">
+                <Image
+                  src={frontmatter.image}
+                  alt={frontmatter.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  priority
+                />
+              </div>
+            )}
+
             {/* Header */}
             <header className="mb-8">
               <span className="text-xs font-medium text-primary uppercase tracking-wide">
@@ -196,8 +210,28 @@ export default async function BlogPostPage({ params }: Props) {
   const dbPost = await getBlogPost(slug).catch(() => null);
   if (!dbPost) notFound();
 
+  const dbSchemas = [
+    articleSchema({
+      title: dbPost.title,
+      description: dbPost.description,
+      slug,
+      date: dbPost.published_at,
+      updated: dbPost.updated_at,
+      image: dbPost.image ?? undefined,
+      tags: dbPost.tags ?? [],
+      readTime: dbPost.read_time,
+    }),
+    breadcrumbSchema([
+      { name: "Home", href: "/" },
+      { name: "Blog", href: "/blog" },
+      { name: dbPost.category.replace(/-/g, " "), href: `/blog/category/${dbPost.category}` },
+      { name: dbPost.title, href: `/blog/${slug}` },
+    ]),
+  ];
+
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <JsonLd schema={dbSchemas} />
       <div className="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
         <article>
           {/* Hero Image */}

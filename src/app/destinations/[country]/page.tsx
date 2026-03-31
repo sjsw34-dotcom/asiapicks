@@ -10,6 +10,34 @@ import countriesData from "@/data/countries.json";
 
 type Params = { country: string };
 
+const countryMeta: Record<string, { title: string; description: string }> = {
+  japan: {
+    title: "Japan Travel Guide 2026 — Tokyo, Osaka, Kyoto & More",
+    description:
+      "Complete Japan travel guide. Best itineraries, hotels, food, and tips for Tokyo, Osaka, Kyoto, and beyond.",
+  },
+  thailand: {
+    title: "Thailand Travel Guide 2026 — Bangkok, Chiang Mai, Phuket & More",
+    description:
+      "Complete Thailand travel guide. Best itineraries, hotels, street food, and tips for Bangkok, Chiang Mai, and the islands.",
+  },
+  "south-korea": {
+    title: "South Korea Travel Guide 2026 — Seoul, Busan & Beyond",
+    description:
+      "Complete South Korea travel guide. K-culture, food, temples, and nightlife. Best itineraries for Seoul, Busan, and more.",
+  },
+  korea: {
+    title: "South Korea Travel Guide 2026 — Seoul, Busan & Beyond",
+    description:
+      "Complete South Korea travel guide. K-culture, food, temples, and nightlife. Best itineraries for Seoul, Busan, and more.",
+  },
+  vietnam: {
+    title: "Vietnam Travel Guide 2026 — Hanoi, Ho Chi Minh, Da Nang & More",
+    description:
+      "Complete Vietnam travel guide. Street food, history, beaches, and budget tips for Hanoi, Ho Chi Minh City, and Central Vietnam.",
+  },
+};
+
 export function generateStaticParams(): Params[] {
   return countriesData.map((c) => ({ country: c.id }));
 }
@@ -22,9 +50,10 @@ export async function generateMetadata({
   const { country: slug } = await params;
   const country = countriesData.find((c) => c.id === slug);
   if (!country) return {};
+  const custom = countryMeta[slug];
   return generatePageMetadata({
-    title: `${country.name} Travel Guide — Best Cities, Hotels & Tips`,
-    description: `Plan your ${country.name} trip. Explore top cities, find the best hotels on Agoda, book activities on Klook, and get expert travel advice.`,
+    title: custom?.title ?? `${country.name} Travel Guide 2026 — Best Cities, Hotels & Tips`,
+    description: custom?.description ?? `Complete ${country.name} travel guide. Best itineraries, hotels, and tips for your trip.`,
     path: `/destinations/${country.id}`,
     image: country.heroImage,
   });

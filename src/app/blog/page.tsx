@@ -4,9 +4,9 @@ import BlogPostCard from "@/components/cards/BlogPostCard";
 import CategoryFilter from "@/components/blog/CategoryFilter";
 
 export const metadata = generatePageMetadata({
-  title: "Travel Blog — Asia Guides, Tips & Itineraries",
+  title: "Asia Travel Blog — Guides, Itineraries & Tips",
   description:
-    "Expert travel guides, hotel picks, and day-by-day itineraries for Japan, Thailand, South Korea, and Vietnam.",
+    "Expert Asia travel guides with real prices, local tips, and honest hotel reviews. Japan, Korea, Thailand, Vietnam — plan your perfect trip.",
   path: "/blog",
 });
 

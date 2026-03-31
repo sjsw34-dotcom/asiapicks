@@ -11,7 +11,8 @@ export interface UnsplashImage {
 
 export async function getCityImage(
   cityName: string,
-  country: string
+  country: string,
+  perPage: number = 5
 ): Promise<UnsplashImage[]> {
   const accessKey = process.env.UNSPLASH_ACCESS_KEY;
   if (!accessKey) {
@@ -21,7 +22,7 @@ export async function getCityImage(
 
   const query = encodeURIComponent(`${cityName} ${country} travel`);
   const res = await fetch(
-    `https://api.unsplash.com/search/photos?query=${query}&per_page=3&orientation=landscape`,
+    `https://api.unsplash.com/search/photos?query=${query}&per_page=${perPage}&orientation=landscape`,
     {
       headers: { Authorization: `Client-ID ${accessKey}` },
       next: { revalidate: 86400 }, // cache 24h

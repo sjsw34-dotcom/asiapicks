@@ -69,6 +69,38 @@ export async function getExistingSlugs(): Promise<string[]> {
   return rows.map((r) => r.slug as string);
 }
 
+export async function getBlogPostById(id: number): Promise<BlogPost | null> {
+  const db = sql();
+  const rows = await db`SELECT * FROM blog_posts WHERE id = ${id} LIMIT 1`;
+  return (rows[0] as BlogPost) ?? null;
+}
+
+export async function updateBlogPost(
+  id: number,
+  post: Partial<Omit<BlogPost, "id" | "published_at" | "updated_at">>
+): Promise<void> {
+  const db = sql();
+  await db`
+    UPDATE blog_posts SET
+      title = COALESCE(${post.title ?? null}, title),
+      description = COALESCE(${post.description ?? null}, description),
+      category = COALESCE(${post.category ?? null}, category),
+      city = COALESCE(${post.city ?? null}, city),
+      country = COALESCE(${post.country ?? null}, country),
+      tags = COALESCE(${post.tags ?? null}, tags),
+      content = COALESCE(${post.content ?? null}, content),
+      image = COALESCE(${post.image ?? null}, image),
+      read_time = COALESCE(${post.read_time ?? null}, read_time),
+      updated_at = NOW()
+    WHERE id = ${id}
+  `;
+}
+
+export async function deleteBlogPost(id: number): Promise<void> {
+  const db = sql();
+  await db`DELETE FROM blog_posts WHERE id = ${id}`;
+}
+
 export async function insertBlogPost(
   post: Omit<BlogPost, "id" | "published_at" | "updated_at">
 ): Promise<void> {

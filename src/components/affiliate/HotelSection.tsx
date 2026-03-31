@@ -59,9 +59,15 @@ export default function HotelSection({ hotels, cityName }: HotelSectionProps) {
         </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.map((hotel) => (
-            <HotelCard key={hotel.agodaHotelId} hotel={hotel} />
-          ))}
+          {filtered.map((hotel, index) => {
+            const isLastAlone =
+              filtered.length % 3 === 1 && index === filtered.length - 1;
+            return (
+              <div key={hotel.agodaHotelId} className={`flex flex-col${isLastAlone ? " lg:col-start-2" : ""}`}>
+                <HotelCard hotel={hotel} />
+              </div>
+            );
+          })}
         </div>
       )}
     </section>

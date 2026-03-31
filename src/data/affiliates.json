@@ -28,7 +28,12 @@
       "busan": "busan",
       "ho-chi-minh": "ho-chi-minh-city",
       "hanoi": "hanoi",
-      "da-nang": "da-nang"
+      "da-nang": "da-nang",
+      "fukuoka": "fukuoka",
+      "okinawa": "okinawa",
+      "jeju": "jeju",
+      "phuket": "phuket",
+      "pattaya": "pattaya"
     },
     "widgets": {
       "tokyo":      { "cid": "28",  "adid": "1235570" },
@@ -40,7 +45,12 @@
       "busan":      { "cid": "46",  "adid": "1235595" },
       "ho-chi-minh":{ "cid": "33",  "adid": "1235595" },
       "hanoi":      { "cid": "34",  "adid": "1235595" },
-      "da-nang":    { "cid": "74",  "adid": "1235570" }
+      "da-nang":    { "cid": "74",  "adid": "1235570" },
+      "fukuoka":    { "cid": "5209",  "adid": "1247451" },
+      "okinawa":    { "cid": "6484",  "adid": "1247451" },
+      "jeju":       { "cid": "20544", "adid": "1247451" },
+      "phuket":     { "cid": "7",     "adid": "1247451" },
+      "pattaya":    { "cid": "17",    "adid": "1247451" }
     }
   },
   "sajumuse": {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import KlookSideBanner from "@/components/affiliate/KlookSideBanner";
 import JsonLd from "@/components/common/JsonLd";
 import { websiteSchema } from "@/lib/seo";
 import "./globals.css";
@@ -23,11 +24,11 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://asiapicks.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Asiapicks — Your Guide to Asia Travel",
+    default: "Asiapicks — Your Expert Guide to Asia Travel | Japan, Korea, Thailand, Vietnam",
     template: "%s | Asiapicks",
   },
   description:
-    "Discover the best destinations, hotels, and activities across Southeast & East Asia. Expert travel guides, curated itineraries, and exclusive deals.",
+    "Curated Asia travel guides, hotel deals, and itineraries. Expert tips for Japan, South Korea, Thailand, and Vietnam. Book the best hotels on Agoda & tours on Klook.",
   keywords: [
     "Asia travel",
     "Japan travel guide",
@@ -80,7 +81,10 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${plusJakartaSans.variable} antialiased`}>
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <div className="flex justify-center">
+          <main className="min-h-screen flex-1 max-w-[1280px]">{children}</main>
+          <KlookSideBanner />
+        </div>
         <Footer />
       </body>
     </html>

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllCitySlugs } from "@/lib/destinations";
 import { getMDXPosts } from "@/lib/mdx";
+import countriesData from "@/data/countries.json";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://asiapicks.com";
 
@@ -45,7 +46,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.5,
     },
+    {
+      url: `${BASE_URL}/affiliate-disclosure`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/privacy`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/terms`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
   ];
+
+  // ── Country pages ───────────────────────────────────
+  const countryRoutes: MetadataRoute.Sitemap = countriesData.map((c) => ({
+    url: `${BASE_URL}/destinations/${c.id}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
 
   // ── City pages ──────────────────────────────────────
   const citySlugs = getAllCitySlugs();
@@ -101,6 +128,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticRoutes,
+    ...countryRoutes,
     ...cityRoutes,
     ...categoryRoutes,
     ...mdxRoutes,

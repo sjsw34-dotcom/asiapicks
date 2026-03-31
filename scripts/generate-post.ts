@@ -30,6 +30,11 @@ if (!ANTHROPIC_API_KEY) {
   process.exit(1);
 }
 
+if (!UNSPLASH_ACCESS_KEY) {
+  console.error("❌  UNSPLASH_ACCESS_KEY is not set — images are required for all posts");
+  process.exit(1);
+}
+
 // ── Types ────────────────────────────────────────────────────────────────────
 interface QueueItem {
   slug: string;
@@ -75,7 +80,6 @@ function loadCityData(country: string, city: string): object | null {
 async function fetchUnsplashImage(
   query: string
 ): Promise<UnsplashResult | null> {
-  if (!UNSPLASH_ACCESS_KEY) return null;
   try {
     const encoded = encodeURIComponent(query);
     const res = await fetch(
@@ -84,6 +88,10 @@ async function fetchUnsplashImage(
         headers: { Authorization: `Client-ID ${UNSPLASH_ACCESS_KEY}` },
       }
     );
+    if (!res.ok) {
+      console.error(`    Unsplash API error: ${res.status} ${res.statusText}`);
+      return null;
+    }
     const data = (await res.json()) as {
       results: {
         urls: { regular: string };
@@ -96,9 +104,26 @@ async function fetchUnsplashImage(
       url: photo.urls.regular,
       credit: { name: photo.user.name, link: photo.user.links.html },
     };
-  } catch {
+  } catch (err) {
+    console.error(`    Unsplash fetch error:`, err);
     return null;
   }
+}
+
+/**
+ * Try multiple search queries to guarantee an image is found.
+ * Returns the first successful result, or null if all queries fail.
+ */
+async function fetchUnsplashImageWithRetries(
+  queries: string[]
+): Promise<UnsplashResult | null> {
+  for (const query of queries) {
+    console.log(`    Trying Unsplash query: "${query}"`);
+    const result = await fetchUnsplashImage(query);
+    if (result) return result;
+    console.log(`    No results for "${query}", trying next...`);
+  }
+  return null;
 }
 
 function today(): string {
@@ -210,19 +235,31 @@ async function main() {
     console.log(`    No city data found — generating without context`);
   }
 
-  // Fetch Unsplash image
-  const imageQuery = item.city
-    ? `${item.city} ${item.country} travel`
-    : `${item.title} asia travel`;
+  // Fetch Unsplash image — build multiple fallback queries
+  const imageQueries: string[] = [];
+  if (item.city && item.country) {
+    imageQueries.push(`${item.city} ${item.country} travel`);
+    imageQueries.push(`${item.city} ${item.country}`);
+    imageQueries.push(`${item.city} cityscape`);
+  }
+  if (item.country) {
+    imageQueries.push(`${item.country} travel`);
+  }
+  // Generic fallbacks from title keywords
+  imageQueries.push(`${item.title} asia travel`);
+  imageQueries.push("asia travel destination");
 
-  console.log(`    Fetching Unsplash image for: "${imageQuery}"`);
-  const unsplash = await fetchUnsplashImage(imageQuery);
+  console.log(`    Fetching Unsplash image...`);
+  const unsplash = await fetchUnsplashImageWithRetries(imageQueries);
 
   if (unsplash) {
-    console.log(`    Image: ${unsplash.url.slice(0, 60)}...`);
+    console.log(`    ✅ Image: ${unsplash.url.slice(0, 60)}...`);
     console.log(`    Credit: ${unsplash.credit.name}`);
   } else {
-    console.log(`    No Unsplash image found (key missing or API error)`);
+    console.error(`\n❌  Failed to fetch Unsplash image after ${imageQueries.length} queries.`);
+    console.error(`    Post will NOT be saved without an image.`);
+    console.error(`    Check UNSPLASH_ACCESS_KEY and API rate limits.`);
+    process.exit(1);
   }
 
   // Call Claude API
@@ -249,18 +286,13 @@ async function main() {
   let mdxContent = rawContent.text.trim();
 
   // Replace image placeholders with actual Unsplash data
-  if (unsplash) {
-    mdxContent = mdxContent
-      .replace(/"PLACEHOLDER_IMAGE"/, `"${unsplash.url}"`)
-      .replace(
-        /"PLACEHOLDER_CREDIT"/,
-        `"Photo by ${unsplash.credit.name} on Unsplash"`
-      );
-  } else {
-    mdxContent = mdxContent
-      .replace(/"PLACEHOLDER_IMAGE"/, `""`)
-      .replace(/"PLACEHOLDER_CREDIT"/, `""`);
-  }
+  // (unsplash is guaranteed non-null — script exits above if image fetch fails)
+  mdxContent = mdxContent
+    .replace(/"PLACEHOLDER_IMAGE"/, `"${unsplash.url}"`)
+    .replace(
+      /"PLACEHOLDER_CREDIT"/,
+      `"Photo by ${unsplash.credit.name} on Unsplash"`
+    );
 
   // Ensure the file starts with the frontmatter fence
   if (!mdxContent.startsWith("---")) {

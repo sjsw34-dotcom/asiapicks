@@ -3,9 +3,9 @@ import { getAgodaSearchLink, getKlookDestinationLink } from "@/lib/affiliates";
 import Link from "next/link";
 
 export const metadata = generatePageMetadata({
-  title: "Asia Travel Deals & Promotions — Hotels & Activities",
+  title: "Asia Travel Deals 2026 — Best Hotel & Activity Promotions",
   description:
-    "Discover the best Asia travel deals for 2026. Seasonal hotel discounts on Agoda, skip-the-line activity deals on Klook, and curated trip ideas by budget.",
+    "Seasonal travel deals for Japan, Korea, Thailand & Vietnam. Cherry blossom hotels, summer Seoul stays, and budget Bangkok finds. Save with Agoda & Klook.",
   path: "/deals",
 });
 

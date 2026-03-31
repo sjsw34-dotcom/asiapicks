@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props) {
   const city = getCityBySlug(country, citySlug);
   if (!city) return {};
   return generatePageMetadata({
-    title: `${city.name} Travel Guide — Best Hotels, Things to Do & Tips`,
+    title: `${city.name} Travel Guide 2026 — Things to Do, Hotels & Tips`,
     description: `Plan your trip to ${city.name}. Find the best hotels, top activities, a ${city.itinerary["3days"].length}-day itinerary, and practical travel tips for ${city.country}.`,
     path: `/destinations/${country}/${citySlug}`,
     image: getOGImageUrl(

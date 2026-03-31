@@ -317,6 +317,141 @@ sajuInsightText: ""                # 커스텀 사주 메시지 (선택)
 
 ---
 
+## Blog Content Strategy — 4-Track Keyword System
+
+핵심 전략: "saju travel"은 단독으로 검색량이 없다. 대신 "astrology travel" / "zodiac travel" 시장이 폭발적 성장 중이다(Skyscanner 보고서: 18-34세 40%+ 관심). 이 거대한 검색 풀에 "Korean Saju = Eastern alternative to Western zodiac"로 진입한 뒤, Saju 앵글로 차별화한다.
+
+### Track A: Astrology × Travel (최우선 — 성장 시장 진입 + Saju 전환)
+"astrology travel", "zodiac travel" 등 고볼륨 키워드로 진입하되, 글 안에서 "But Korea has its own ancient system called Saju..."로 자연스럽게 전환. 경쟁사들은 모두 Western zodiac만 다룸 → Saju 앵글이 차별화.
+
+타겟 키워드 예시:
+- best travel destination by zodiac sign 2026
+- astrology travel guide / astrology based travel
+- where to travel based on birthday
+- astrocartography Asia destinations
+- zodiac travel 2026 / zodiac sign travel destinations
+- travel horoscope 2026 / best travel month astrology
+- zodiac compatibility travel / best couple trip by zodiac
+- astrology travel quiz
+- birth chart travel destinations
+- spiritual travel destinations Asia
+
+포스트 구조 (Track A 전용):
+- 도입부: 서양 zodiac 기반 여행 트렌드 언급 (검색 의도 충족)
+- 중반: "But there's an older, more precise system from Korea..." → Saju/Five Elements 소개
+- 본문: 5원소별 또는 zodiac별 아시아 도시 매칭 (구체적 추천)
+- 하단 CTA: "Discover your birth element → sajumuse.com Free Reading" + 도시별 Agoda/Klook 링크
+
+Track A 필수 포스트 (우선 발행):
+1. "Best Travel Destination by Zodiac Sign — Plus a Korean Secret Most Travelers Miss"
+2. "Astrocartography Asia: Which City Matches Your Energy?"
+3. "Where to Travel Based on Your Birthday: Western Zodiac vs Korean Saju"
+4. "Your 2026 Travel Horoscope: The Best Months & Destinations (Zodiac + Saju)"
+5. "Astrology Travel Quiz: Which Asian City Is Your Destiny?"
+6. "5 Elements Travel Guide: Wood to Kyoto, Fire to Bangkok, Water to Bali"
+7. "Zodiac Compatibility Travel: Best Couple Trips for Every Sign"
+8. "Spiritual Travel Destinations in Asia: From Temples to Birth Charts"
+
+### Track B: 롱테일 여행 키워드 (트래픽, 낮은 경쟁)
+일반 키워드("Tokyo guide") 대신 매우 구체적인 롱테일.
+"도시 + 구체적 주제 + 2026" 형태.
+
+타겟 키워드 예시:
+- tokyo ramen guide by area / best ramen tokyo 2026
+- bangkok night market best / bangkok night market ranking
+- seoul cafe guide aesthetic / seoul cafe hopping
+- osaka street food dotonbori prices
+- kyoto rainy day things to do
+- chiang mai digital nomad guide
+- hanoi old quarter walking guide
+- vietnam coffee guide / egg coffee hanoi
+- japan rail pass worth it 2026
+- thailand visa 2026 / thailand visa free countries
+- seoul subway guide / seoul metro tips
+- first time asia travel mistakes
+- best sim card asia travel / esim asia 2026
+- japan daily budget / how much japan trip cost
+- busan day trip from seoul / ktx busan worth it
+
+CTA: Agoda (숙소) + Klook (액티비티/교통)
+
+### Track C: "Best Hotel" 키워드 (Agoda 전환)
+"best hotels in [city]" + 니치 조건으로 경쟁 낮춤.
+
+타겟 키워드 예시:
+- best hotels near shinjuku station
+- best ryokan kyoto under 200
+- best hotels chiang mai old city
+- best capsule hotels tokyo
+- where to stay busan / busan best area
+- best hostels bangkok solo travelers
+- best hotels hanoi old quarter 2026
+- best onsen hotel near tokyo
+
+CTA: 각 호텔 Agoda 직접 링크
+
+### Track D: Saju × Travel 니치 (독점, 크로스 트래픽)
+Track A에서 Saju에 관심 갖게 된 사람들이 더 깊이 파고드는 콘텐츠.
+sajumuse.com 전환의 핵심 퍼널.
+
+타겟 키워드 예시:
+- five elements travel guide / birth element travel
+- wood element travel destinations
+- fire element travel destinations
+- earth element travel destinations
+- metal element travel destinations
+- water element travel destinations
+- korean astrology travel / saju travel guide
+- day master vacation style
+- saju compatibility travel partner
+- best travel year by birth chart
+
+CTA: sajumuse.com Free Reading + 도시별 Agoda/Klook
+
+### 발행 비율
+Track A(Astrology Travel) : Track B(롱테일) : Track C(호텔) : Track D(Saju 니치) = 3 : 4 : 1.5 : 1.5
+
+### 발행 우선순위
+1순위: Track A "astrology travel" 진입 포스트 5개 (시장 선점)
+2순위: Track D 오행 5개 포스트 (Saju 심화)
+3순위: Track C 호텔 포스트 3개 (Agoda 수익)
+4순위: Track B 롱테일 5개 (트래픽 기반)
+이후 위 비율대로 지속
+
+### 포스트 구조
+- H1: 타겟 키워드 포함 제목
+- 도입부: 여행자 공감 + 트렌드 언급 (2~3문단)
+- 본문 H2 섹션 4~8개
+- 실제 가격 정보(원/달러) 필수 포함
+- 교통 정보 구체적으로
+- Track A 포스트: Western zodiac 도입 → Saju 전환 구조
+- Track B/C 포스트: 하단에 "Your birth element might explain why you love this city → Find out" 1줄 + sajumuse 링크 (선택)
+- Track D 포스트: 사주/오행 앵글 전체에 녹임
+- 비용 요약 테이블 포함 (Travel Guide)
+
+### 톤 & 스타일
+- 타겟: 영어권 아시아 여행자 (25~40세), 특히 astrology/spirituality에 관심 있는 밀레니얼/Gen Z
+- 톤: 실제 가본 사람처럼 구체적이고 솔직, 약간의 mystical 느낌 허용 (Track A/D)
+- Track A: "Cosmopolitan meets spiritual travel blog" 느낌
+- Track B/C: 실용적 여행 가이드 (현재 busan-weekend-trip 스타일 유지)
+- Track D: sajumuse 블로그와 비슷하되 여행 앵글
+
+### CTA 규칙
+- Agoda 호텔 링크: 숙소 언급 시 자연스럽게 삽입
+- Klook 액티비티 링크: 투어/교통 언급 시 삽입
+- sajumuse.com 링크: Track A/D는 적극적, Track B/C는 하단에 가볍게
+- affiliate disclosure 포스트 상단에 포함 (현재와 동일)
+
+### SEO 규칙
+- Title tag: 50~60자, 타겟 키워드 + 도시명 앞쪽
+- Meta description: 150~160자
+- URL: /blog/[키워드-slug]
+- 콘텐츠 길이: 2,000~4,000 단어
+- 내부 링크: 관련 포스트 2~3개 + destination 페이지 + saju-travel 페이지
+- 이미지 alt text에 키워드 + 도시명
+
+---
+
 ## Affiliate Link Generation
 
 ```typescript

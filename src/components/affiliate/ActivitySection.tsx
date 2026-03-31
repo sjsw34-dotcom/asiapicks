@@ -24,9 +24,15 @@ export default function ActivitySection({ activities, cityName, klookWidget }: A
       <AffiliateDisclosure variant="page" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {activities.map((activity) => (
-          <ActivityCard key={activity.klookActivityId} activity={activity} />
-        ))}
+        {activities.map((activity, index) => {
+          const isLastAlone =
+            activities.length % 3 === 1 && index === activities.length - 1;
+          return (
+            <div key={activity.klookActivityId} className={`flex flex-col${isLastAlone ? " lg:col-start-2" : ""}`}>
+              <ActivityCard activity={activity} />
+            </div>
+          );
+        })}
       </div>
 
       {klookWidget?.cid && <KlookWidget cid={klookWidget.cid} adid={klookWidget.adid} />}

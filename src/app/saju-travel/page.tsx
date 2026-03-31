@@ -6,9 +6,9 @@ import ElementDestinations from "@/components/saju/ElementDestinations";
 import BlogPostCard from "@/components/cards/BlogPostCard";
 
 export const metadata = generatePageMetadata({
-  title: "Saju Travel — Find Your Destined Asian Destination",
+  title: "Astrology Travel: Find Your Perfect Asia Destination by Birth Element",
   description:
-    "Discover which Asian city aligns with your Saju birth elements. The ancient Korean system of destiny analysis applied to modern travel planning.",
+    "Discover which Asian city matches your energy using Korean Saju astrology. A fresh alternative to zodiac travel — Wood to Kyoto, Fire to Bangkok, Water to Bali.",
   path: "/saju-travel",
 });
 

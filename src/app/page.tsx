@@ -5,10 +5,34 @@ import ThemeCarousel from "@/components/home/ThemeCarousel";
 import LatestPosts from "@/components/home/LatestPosts";
 import SajuTravelBanner from "@/components/home/SajuTravelBanner";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://asiapicks.com";
+
 export const metadata: Metadata = {
-  title: "Asiapicks — Your Guide to Asia Travel",
+  title: "Asiapicks — Your Expert Guide to Asia Travel | Japan, Korea, Thailand, Vietnam",
   description:
-    "Discover the best destinations, hotels, and activities across Southeast & East Asia. Expert travel guides, curated itineraries, and exclusive deals on Agoda and Klook.",
+    "Curated Asia travel guides, hotel deals, and itineraries. Expert tips for Japan, South Korea, Thailand, and Vietnam. Book the best hotels on Agoda & tours on Klook.",
+  alternates: { canonical: BASE_URL },
+  openGraph: {
+    title: "Asiapicks — Your Expert Guide to Asia Travel",
+    description:
+      "Curated Asia travel guides, hotel deals, and itineraries. Expert tips for Japan, South Korea, Thailand, and Vietnam.",
+    url: BASE_URL,
+    type: "website",
+    images: [
+      {
+        url: `${BASE_URL}/api/og?title=Asiapicks — Your Expert Guide to Asia Travel`,
+        width: 1200,
+        height: 630,
+        alt: "Asiapicks",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Asiapicks — Your Expert Guide to Asia Travel",
+    description:
+      "Curated Asia travel guides, hotel deals, and itineraries. Expert tips for Japan, South Korea, Thailand, and Vietnam.",
+  },
 };
 
 export default function HomePage() {

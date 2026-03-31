@@ -70,13 +70,20 @@ export function getMDXComponents(): MDXComponents {
       </a>
     ),
     img: ({ src, alt }) => (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={src}
-        alt={alt ?? ""}
-        className="my-6 w-full rounded-xl object-cover"
-        loading="lazy"
-      />
+      <figure className="my-6">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt ?? ""}
+          className="w-full rounded-xl object-cover max-h-[480px]"
+          loading="lazy"
+        />
+        {alt && (
+          <figcaption className="mt-2 text-center text-xs text-text-secondary">
+            {alt}
+          </figcaption>
+        )}
+      </figure>
     ),
 
     // ── Table ────────────────────────────────────────

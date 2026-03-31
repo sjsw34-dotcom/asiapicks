@@ -33,10 +33,10 @@ const values = [
 ];
 
 const coverage = [
-  { flag: "🇯🇵", country: "Japan", cities: ["Tokyo", "Osaka", "Kyoto"] },
-  { flag: "🇹🇭", country: "Thailand", cities: ["Bangkok", "Chiang Mai"] },
-  { flag: "🇰🇷", country: "South Korea", cities: ["Seoul", "Busan"] },
-  { flag: "🇻🇳", country: "Vietnam", cities: ["Ho Chi Minh City", "Hanoi"] },
+  { flag: "🇯🇵", country: "Japan", cities: ["Tokyo", "Osaka", "Kyoto", "Fukuoka", "Okinawa"] },
+  { flag: "🇹🇭", country: "Thailand", cities: ["Bangkok", "Chiang Mai", "Phuket", "Pattaya"] },
+  { flag: "🇰🇷", country: "South Korea", cities: ["Seoul", "Busan", "Jeju"] },
+  { flag: "🇻🇳", country: "Vietnam", cities: ["Ho Chi Minh City", "Hanoi", "Da Nang"] },
 ];
 
 const partners = [

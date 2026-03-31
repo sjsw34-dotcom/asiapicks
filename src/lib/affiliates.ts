@@ -1,16 +1,16 @@
 import affiliateConfig from "@/data/affiliates.json";
 
 // ─── Agoda (Hotels only) ──────────────────────────────────────────────────────
+// appu.kr 경유 제휴 링크 (아고다 직접 제휴 대신 사용)
 
-export function getAgodaSearchLink(citySlug: string): string {
-  const { cid, baseUrl, cityIds } = affiliateConfig.agoda;
-  const cityId = cityIds[citySlug as keyof typeof cityIds] ?? "";
-  return `${baseUrl}?pcs=1&cid=${cid}&city=${cityId}`;
+const AGODA_AFFILIATE_URL = "https://lpweb.kr/click.php?m=agoda&a=A100693729&l=0000";
+
+export function getAgodaSearchLink(_citySlug: string): string {
+  return AGODA_AFFILIATE_URL;
 }
 
-export function getAgodaHotelLink(hotelId: string): string {
-  const { cid } = affiliateConfig.agoda;
-  return `https://www.agoda.com/partners/partnersearch.aspx?pcs=1&cid=${cid}&hid=${hotelId}`;
+export function getAgodaHotelLink(_hotelId: string): string {
+  return AGODA_AFFILIATE_URL;
 }
 
 // ─── Klook (Activities only) ──────────────────────────────────────────────────
