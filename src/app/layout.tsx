@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import KlookSideBanner from "@/components/affiliate/KlookSideBanner";
 import JsonLd from "@/components/common/JsonLd";
 import { websiteSchema } from "@/lib/seo";
 import "./globals.css";
@@ -81,10 +80,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${plusJakartaSans.variable} antialiased`}>
         <Header />
-        <div className="flex justify-center">
-          <main className="min-h-screen flex-1 max-w-[1280px]">{children}</main>
-          <KlookSideBanner />
-        </div>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>
