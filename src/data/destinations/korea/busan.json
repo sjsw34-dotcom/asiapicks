@@ -6,7 +6,10 @@
   "flag": "🇰🇷",
   "description": "Korea's most underrated gem — a gritty port city with stunning beaches, neon-lit fish markets, colorful hillside villages, and a raw, unpretentious energy that Seoul simply can't replicate.",
   "heroImage": "https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=1080&q=80",
-  "heroImageCredit": { "name": "Seongho Jang", "link": "https://unsplash.com/@seongho_j" },
+  "heroImageCredit": {
+    "name": "Seongho Jang",
+    "link": "https://unsplash.com/@seongho_j"
+  },
   "quickInfo": {
     "bestSeason": "Jun-Aug (beach season), Sep-Nov (mild & clear)",
     "avgBudget": "$50-100/day",
@@ -26,7 +29,8 @@
       "tier": "budget",
       "agodaHotelId": "4262534",
       "description": "Clean, well-run hostel near BIFF Square and Jagalchi Fish Market, perfect for solo travelers",
-      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80",
+      "ratingCount": 1564
     },
     {
       "name": "Lotte Hotel Busan",
@@ -36,7 +40,8 @@
       "tier": "mid-range",
       "agodaHotelId": "3418927",
       "description": "Central luxury hotel with Lotte Department Store access and excellent breakfast buffet",
-      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80",
+      "ratingCount": 1531
     },
     {
       "name": "Novotel Haeundae Busan",
@@ -46,7 +51,8 @@
       "tier": "mid-range",
       "agodaHotelId": "7782841",
       "description": "Beachfront hotel directly on Haeundae, Korea's most famous urban beach",
-      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80",
+      "ratingCount": 1508
     },
     {
       "name": "Park Hyatt Busan",
@@ -56,7 +62,8 @@
       "tier": "luxury",
       "agodaHotelId": "5323847",
       "description": "Glass skyscraper hotel facing the sea with breathtaking beach and skyline panoramas",
-      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+      "ratingCount": 1407
     },
     {
       "name": "Westin Josun Beach Hotel Busan",
@@ -66,7 +73,8 @@
       "tier": "luxury",
       "agodaHotelId": "4923847",
       "description": "Historic luxury beachfront hotel, a Busan landmark since 1978, impeccably renovated",
-      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80",
+      "ratingCount": 1300
     }
   ],
   "activities": [
@@ -122,35 +130,107 @@
         "day": 1,
         "title": "Old Busan: Markets & Hillside Culture",
         "items": [
-          { "time": "07:00", "activity": "Jagalchi Fish Market breakfast (live seafood!)", "type": "food", "klookId": "71923" },
-          { "time": "10:00", "activity": "BIFF Square & Gukje Market", "type": "shopping" },
-          { "time": "12:00", "activity": "Gamcheon Culture Village hillside murals", "type": "culture", "klookId": "68734" },
-          { "time": "15:00", "activity": "Gwangalli Beach walk & Gwangan Bridge views", "type": "beach" },
-          { "time": "17:30", "activity": "Dongbaekseom Island sunset walk", "type": "nature" },
-          { "time": "19:30", "activity": "Haeundae Makgeolli alley — Korean street food dinner", "type": "food" }
+          {
+            "time": "07:00",
+            "activity": "Jagalchi Fish Market breakfast (live seafood!)",
+            "type": "food",
+            "klookId": "71923"
+          },
+          {
+            "time": "10:00",
+            "activity": "BIFF Square & Gukje Market",
+            "type": "shopping"
+          },
+          {
+            "time": "12:00",
+            "activity": "Gamcheon Culture Village hillside murals",
+            "type": "culture",
+            "klookId": "68734"
+          },
+          {
+            "time": "15:00",
+            "activity": "Gwangalli Beach walk & Gwangan Bridge views",
+            "type": "beach"
+          },
+          {
+            "time": "17:30",
+            "activity": "Dongbaekseom Island sunset walk",
+            "type": "nature"
+          },
+          {
+            "time": "19:30",
+            "activity": "Haeundae Makgeolli alley — Korean street food dinner",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 2,
         "title": "Temples, Beaches & Sea Air",
         "items": [
-          { "time": "09:00", "activity": "Haedong Yonggungsa coastal temple", "type": "attraction", "klookId": "73412" },
-          { "time": "11:00", "activity": "Haeundae Beach — swim or stroll", "type": "beach" },
-          { "time": "13:00", "activity": "Haeundae Market lunch (sundae + dweji gukbap)", "type": "food" },
-          { "time": "15:00", "activity": "Dalmaji Hill hilltop art village & sea view cafes", "type": "culture" },
-          { "time": "17:30", "activity": "Marine City illuminated skyline at dusk", "type": "attraction" },
-          { "time": "19:30", "activity": "Gwangalli Beach: ramyeon tents & sea view beer", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Haedong Yonggungsa coastal temple",
+            "type": "attraction",
+            "klookId": "73412"
+          },
+          {
+            "time": "11:00",
+            "activity": "Haeundae Beach — swim or stroll",
+            "type": "beach"
+          },
+          {
+            "time": "13:00",
+            "activity": "Haeundae Market lunch (sundae + dweji gukbap)",
+            "type": "food"
+          },
+          {
+            "time": "15:00",
+            "activity": "Dalmaji Hill hilltop art village & sea view cafes",
+            "type": "culture"
+          },
+          {
+            "time": "17:30",
+            "activity": "Marine City illuminated skyline at dusk",
+            "type": "attraction"
+          },
+          {
+            "time": "19:30",
+            "activity": "Gwangalli Beach: ramyeon tents & sea view beer",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 3,
         "title": "Adventure & Departure",
         "items": [
-          { "time": "09:00", "activity": "Songdo Beach zip line & ocean cliff walk", "type": "adventure", "klookId": "74512" },
-          { "time": "12:00", "activity": "Seomyeon: underground shopping + bibimbap lunch", "type": "food" },
-          { "time": "14:00", "activity": "Beomeo-sa Temple mountain hike (optional)", "type": "outdoor" },
-          { "time": "16:30", "activity": "Centum City Shinsegae (world's largest dept store)", "type": "shopping" },
-          { "time": "19:00", "activity": "Farewell dinner: dwaeji-gukbap (pork soup) in Seomyeon", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Songdo Beach zip line & ocean cliff walk",
+            "type": "adventure",
+            "klookId": "74512"
+          },
+          {
+            "time": "12:00",
+            "activity": "Seomyeon: underground shopping + bibimbap lunch",
+            "type": "food"
+          },
+          {
+            "time": "14:00",
+            "activity": "Beomeo-sa Temple mountain hike (optional)",
+            "type": "outdoor"
+          },
+          {
+            "time": "16:30",
+            "activity": "Centum City Shinsegae (world's largest dept store)",
+            "type": "shopping"
+          },
+          {
+            "time": "19:00",
+            "activity": "Farewell dinner: dwaeji-gukbap (pork soup) in Seomyeon",
+            "type": "food"
+          }
         ]
       }
     ]
@@ -159,20 +239,90 @@
     "gettingThere": "Gimhae International Airport (PUS) has direct flights from Tokyo, Osaka, Shanghai, Taipei, and other Asian cities. From Seoul: KTX bullet train 2h15min (~$45), or fly 50min.",
     "localTransport": "Busan Metro covers all major areas. T-Money card works on metro and buses. Taxis cheap and plentiful. Walking between Haeundae, Gwangalli, Centum City is easy.",
     "weather": [
-      { "month": "Jan", "high": 6, "low": -1, "rain": 35 },
-      { "month": "Feb", "high": 8, "low": 1, "rain": 45 },
-      { "month": "Mar", "high": 13, "low": 5, "rain": 65 },
-      { "month": "Apr", "high": 18, "low": 11, "rain": 95 },
-      { "month": "May", "high": 23, "low": 16, "rain": 115 },
-      { "month": "Jun", "high": 26, "low": 21, "rain": 155 },
-      { "month": "Jul", "high": 29, "low": 24, "rain": 255 },
-      { "month": "Aug", "high": 30, "low": 25, "rain": 225 },
-      { "month": "Sep", "high": 26, "low": 20, "rain": 130 },
-      { "month": "Oct", "high": 21, "low": 13, "rain": 65 },
-      { "month": "Nov", "high": 14, "low": 6, "rain": 55 },
-      { "month": "Dec", "high": 8, "low": 1, "rain": 30 }
+      {
+        "month": "Jan",
+        "high": 6,
+        "low": -1,
+        "rain": 35
+      },
+      {
+        "month": "Feb",
+        "high": 8,
+        "low": 1,
+        "rain": 45
+      },
+      {
+        "month": "Mar",
+        "high": 13,
+        "low": 5,
+        "rain": 65
+      },
+      {
+        "month": "Apr",
+        "high": 18,
+        "low": 11,
+        "rain": 95
+      },
+      {
+        "month": "May",
+        "high": 23,
+        "low": 16,
+        "rain": 115
+      },
+      {
+        "month": "Jun",
+        "high": 26,
+        "low": 21,
+        "rain": 155
+      },
+      {
+        "month": "Jul",
+        "high": 29,
+        "low": 24,
+        "rain": 255
+      },
+      {
+        "month": "Aug",
+        "high": 30,
+        "low": 25,
+        "rain": 225
+      },
+      {
+        "month": "Sep",
+        "high": 26,
+        "low": 20,
+        "rain": 130
+      },
+      {
+        "month": "Oct",
+        "high": 21,
+        "low": 13,
+        "rain": 65
+      },
+      {
+        "month": "Nov",
+        "high": 14,
+        "low": 6,
+        "rain": 55
+      },
+      {
+        "month": "Dec",
+        "high": 8,
+        "low": 1,
+        "rain": 30
+      }
     ]
   },
-  "themes": ["beach", "food", "culture", "budget", "seafood"],
-  "relatedCities": ["seoul", "gyeongju", "jeju"]
+  "themes": [
+    "beach",
+    "food",
+    "culture",
+    "budget",
+    "seafood"
+  ],
+  "relatedCities": [
+    "seoul",
+    "gyeongju",
+    "jeju"
+  ]
 }

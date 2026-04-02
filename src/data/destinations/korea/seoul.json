@@ -6,7 +6,10 @@
   "flag": "🇰🇷",
   "description": "A city where ancient palaces stand beside neon-lit K-pop studios, where Buddhist monks and tech CEOs ride the same immaculate subway, and where every street corner reveals another layer of 5,000 years of Korean culture.",
   "heroImage": "https://images.unsplash.com/photo-1538485399081-7191377e8241?w=1080&q=80",
-  "heroImageCredit": { "name": "Solen Feyissa", "link": "https://unsplash.com/@solenfeyissa" },
+  "heroImageCredit": {
+    "name": "Solen Feyissa",
+    "link": "https://unsplash.com/@solenfeyissa"
+  },
   "quickInfo": {
     "bestSeason": "Apr-May (cherry blossoms), Sep-Nov (fall foliage)",
     "avgBudget": "$60-120/day",
@@ -26,7 +29,8 @@
       "tier": "budget",
       "agodaHotelId": "1162534",
       "description": "Well-located hostel near Gyeongbokgung Palace and Insadong, great for solo travelers",
-      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80",
+      "ratingCount": 1759
     },
     {
       "name": "Hotel Naru Seoul MGallery",
@@ -36,7 +40,8 @@
       "tier": "mid-range",
       "agodaHotelId": "8718927",
       "description": "Boutique hotel with Han River views and a hip, design-forward aesthetic",
-      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80",
+      "ratingCount": 1676
     },
     {
       "name": "Signiel Seoul",
@@ -46,7 +51,8 @@
       "tier": "luxury",
       "agodaHotelId": "6823847",
       "description": "Ultra-luxury hotel on floors 76-101 of the Lotte World Tower with panoramic city views",
-      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+      "ratingCount": 1098
     },
     {
       "name": "Four Seasons Hotel Seoul",
@@ -56,7 +62,8 @@
       "tier": "luxury",
       "agodaHotelId": "4523847",
       "description": "Flagship luxury hotel at the foot of Bukhansan Mountain with impeccable Korean hospitality",
-      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80",
+      "ratingCount": 1096
     },
     {
       "name": "Ryse Hotel Seoul",
@@ -66,7 +73,8 @@
       "tier": "mid-range",
       "agodaHotelId": "7823841",
       "description": "Art-driven boutique hotel in the youth culture hub of Hongdae with excellent rooftop bar",
-      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80",
+      "ratingCount": 1390
     }
   ],
   "activities": [
@@ -122,35 +130,108 @@
         "day": 1,
         "title": "Ancient Seoul: Palaces & Tradition",
         "items": [
-          { "time": "09:00", "activity": "Gyeongbokgung Palace in hanbok (changing of guard at 10am)", "type": "culture", "klookId": "58734" },
-          { "time": "12:00", "activity": "Gwanghwamun Square & Cheonggyecheon Stream walk", "type": "attraction" },
-          { "time": "13:00", "activity": "Insadong for lunch and traditional crafts shopping", "type": "food" },
-          { "time": "15:00", "activity": "Bukchon Hanok Village (Korea's most photographed street)", "type": "culture" },
-          { "time": "17:30", "activity": "Namsan N Seoul Tower & cable car at dusk", "type": "attraction", "klookId": "59812" },
-          { "time": "20:00", "activity": "Myeongdong night market: Korean fried chicken + cosmetics", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Gyeongbokgung Palace in hanbok (changing of guard at 10am)",
+            "type": "culture",
+            "klookId": "58734"
+          },
+          {
+            "time": "12:00",
+            "activity": "Gwanghwamun Square & Cheonggyecheon Stream walk",
+            "type": "attraction"
+          },
+          {
+            "time": "13:00",
+            "activity": "Insadong for lunch and traditional crafts shopping",
+            "type": "food"
+          },
+          {
+            "time": "15:00",
+            "activity": "Bukchon Hanok Village (Korea's most photographed street)",
+            "type": "culture"
+          },
+          {
+            "time": "17:30",
+            "activity": "Namsan N Seoul Tower & cable car at dusk",
+            "type": "attraction",
+            "klookId": "59812"
+          },
+          {
+            "time": "20:00",
+            "activity": "Myeongdong night market: Korean fried chicken + cosmetics",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 2,
         "title": "Modern Seoul: Gangnam & Food",
         "items": [
-          { "time": "09:00", "activity": "DMZ border tour (full morning)", "type": "culture", "klookId": "56234" },
-          { "time": "15:00", "activity": "Gangnam: COEX Mall, K-pop district", "type": "culture", "klookId": "61923" },
-          { "time": "17:00", "activity": "Lotte World Tower Sky31 Observation Deck", "type": "attraction" },
-          { "time": "19:00", "activity": "Korean BBQ dinner in Gangnam-gu", "type": "food" },
-          { "time": "21:00", "activity": "Apgujeong Rodeo Street & dessert cafes", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "DMZ border tour (full morning)",
+            "type": "culture",
+            "klookId": "56234"
+          },
+          {
+            "time": "15:00",
+            "activity": "Gangnam: COEX Mall, K-pop district",
+            "type": "culture",
+            "klookId": "61923"
+          },
+          {
+            "time": "17:00",
+            "activity": "Lotte World Tower Sky31 Observation Deck",
+            "type": "attraction"
+          },
+          {
+            "time": "19:00",
+            "activity": "Korean BBQ dinner in Gangnam-gu",
+            "type": "food"
+          },
+          {
+            "time": "21:00",
+            "activity": "Apgujeong Rodeo Street & dessert cafes",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 3,
         "title": "Street Culture & Night Markets",
         "items": [
-          { "time": "09:00", "activity": "Dongdaemun Design Plaza (DDP) architecture", "type": "culture" },
-          { "time": "10:30", "activity": "Gwangjang Market — bindaetteok and gimbap breakfast", "type": "food" },
-          { "time": "12:30", "activity": "Hongdae: street performances, indie shops", "type": "culture" },
-          { "time": "15:00", "activity": "Ihwa Mural Village stroll", "type": "culture" },
-          { "time": "17:00", "activity": "Korean Street Food Tour — night begins", "type": "food", "klookId": "63412" },
-          { "time": "21:00", "activity": "Han River Park picnic with convenience store snacks", "type": "outdoor" }
+          {
+            "time": "09:00",
+            "activity": "Dongdaemun Design Plaza (DDP) architecture",
+            "type": "culture"
+          },
+          {
+            "time": "10:30",
+            "activity": "Gwangjang Market — bindaetteok and gimbap breakfast",
+            "type": "food"
+          },
+          {
+            "time": "12:30",
+            "activity": "Hongdae: street performances, indie shops",
+            "type": "culture"
+          },
+          {
+            "time": "15:00",
+            "activity": "Ihwa Mural Village stroll",
+            "type": "culture"
+          },
+          {
+            "time": "17:00",
+            "activity": "Korean Street Food Tour — night begins",
+            "type": "food",
+            "klookId": "63412"
+          },
+          {
+            "time": "21:00",
+            "activity": "Han River Park picnic with convenience store snacks",
+            "type": "outdoor"
+          }
         ]
       }
     ]
@@ -159,20 +240,90 @@
     "gettingThere": "Incheon International Airport (ICN) — one of the world's best. Direct flights from most global cities. Airport Railroad Express (AREX) to Seoul Station: 43 min, $9. Taxi: 60-80 min, $60.",
     "localTransport": "Seoul Metro is world-class — clean, cheap, on time. T-Money card works on subway, bus, and taxi. Kakao T app for taxis. Naver Maps or Kakao Maps (better than Google for Korea).",
     "weather": [
-      { "month": "Jan", "high": 2, "low": -6, "rain": 25 },
-      { "month": "Feb", "high": 5, "low": -3, "rain": 40 },
-      { "month": "Mar", "high": 11, "low": 2, "rain": 45 },
-      { "month": "Apr", "high": 18, "low": 8, "rain": 75 },
-      { "month": "May", "high": 24, "low": 14, "rain": 95 },
-      { "month": "Jun", "high": 28, "low": 19, "rain": 130 },
-      { "month": "Jul", "high": 30, "low": 23, "rain": 375 },
-      { "month": "Aug", "high": 31, "low": 23, "rain": 345 },
-      { "month": "Sep", "high": 26, "low": 17, "rain": 140 },
-      { "month": "Oct", "high": 19, "low": 10, "rain": 50 },
-      { "month": "Nov", "high": 10, "low": 2, "rain": 55 },
-      { "month": "Dec", "high": 3, "low": -4, "rain": 20 }
+      {
+        "month": "Jan",
+        "high": 2,
+        "low": -6,
+        "rain": 25
+      },
+      {
+        "month": "Feb",
+        "high": 5,
+        "low": -3,
+        "rain": 40
+      },
+      {
+        "month": "Mar",
+        "high": 11,
+        "low": 2,
+        "rain": 45
+      },
+      {
+        "month": "Apr",
+        "high": 18,
+        "low": 8,
+        "rain": 75
+      },
+      {
+        "month": "May",
+        "high": 24,
+        "low": 14,
+        "rain": 95
+      },
+      {
+        "month": "Jun",
+        "high": 28,
+        "low": 19,
+        "rain": 130
+      },
+      {
+        "month": "Jul",
+        "high": 30,
+        "low": 23,
+        "rain": 375
+      },
+      {
+        "month": "Aug",
+        "high": 31,
+        "low": 23,
+        "rain": 345
+      },
+      {
+        "month": "Sep",
+        "high": 26,
+        "low": 17,
+        "rain": 140
+      },
+      {
+        "month": "Oct",
+        "high": 19,
+        "low": 10,
+        "rain": 50
+      },
+      {
+        "month": "Nov",
+        "high": 10,
+        "low": 2,
+        "rain": 55
+      },
+      {
+        "month": "Dec",
+        "high": 3,
+        "low": -4,
+        "rain": 20
+      }
     ]
   },
-  "themes": ["culture", "food", "kpop", "history", "shopping"],
-  "relatedCities": ["busan", "jeju", "tokyo"]
+  "themes": [
+    "culture",
+    "food",
+    "kpop",
+    "history",
+    "shopping"
+  ],
+  "relatedCities": [
+    "busan",
+    "jeju",
+    "tokyo"
+  ]
 }

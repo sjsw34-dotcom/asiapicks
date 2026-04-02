@@ -6,7 +6,10 @@
   "flag": "🇯🇵",
   "description": "Japan's most livable city and gateway to Kyushu — famous for tonkotsu ramen, yatai street stalls, friendly locals, and a laid-back vibe that feels nothing like Tokyo.",
   "heroImage": "https://images.unsplash.com/photo-1607619662634-3ac55ec0e216?w=1080&q=80",
-  "heroImageCredit": { "name": "Jezael Melgoza", "link": "https://unsplash.com/@jezael" },
+  "heroImageCredit": {
+    "name": "Jezael Melgoza",
+    "link": "https://unsplash.com/@jezael"
+  },
   "quickInfo": {
     "bestSeason": "Mar-May, Sep-Nov",
     "avgBudget": "$60-110/day",
@@ -26,7 +29,8 @@
       "tier": "budget",
       "agodaHotelId": "7162534",
       "description": "Friendly backpacker hostel near Hakata Station, great for solo travellers",
-      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80",
+      "ratingCount": 1695
     },
     {
       "name": "Dormy Inn Hakata Gion",
@@ -36,7 +40,8 @@
       "tier": "mid-range",
       "agodaHotelId": "2314876",
       "description": "Japanese business hotel chain known for natural hot spring baths and late-night ramen service",
-      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80",
+      "ratingCount": 1617
     },
     {
       "name": "Canal City Washington Hotel",
@@ -46,7 +51,8 @@
       "tier": "mid-range",
       "agodaHotelId": "8823412",
       "description": "Convenient hotel inside the famous Canal City shopping complex",
-      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80",
+      "ratingCount": 1596
     },
     {
       "name": "The Lively Fukuoka",
@@ -56,7 +62,8 @@
       "tier": "luxury",
       "agodaHotelId": "5591827",
       "description": "Trendy design hotel in the heart of Tenjin with rooftop bar and stunning city views",
-      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80",
+      "ratingCount": 1248
     },
     {
       "name": "Hilton Fukuoka Sea Hawk",
@@ -66,7 +73,8 @@
       "tier": "luxury",
       "agodaHotelId": "1023847",
       "description": "Iconic tower hotel with Hakata Bay views, enormous pool and direct shopping mall access",
-      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+      "ratingCount": 1154
     }
   ],
   "activities": [
@@ -122,36 +130,112 @@
         "day": 1,
         "title": "Hakata & Food Heaven",
         "items": [
-          { "time": "09:00", "activity": "Kushida Shrine (Hakata's oldest shrine)", "type": "attraction" },
-          { "time": "10:30", "activity": "Canal City Hakata (walk & coffee)", "type": "shopping" },
-          { "time": "12:00", "activity": "Lunch: bowl of authentic Ichiran tonkotsu ramen", "type": "food" },
-          { "time": "14:00", "activity": "Fukuoka City Museum", "type": "culture" },
-          { "time": "16:00", "activity": "Momochi Seaside & Fukuoka Tower sunset", "type": "attraction" },
-          { "time": "19:30", "activity": "Yatai food stall dinner in Nakasu", "type": "food", "klookId": "11923" }
+          {
+            "time": "09:00",
+            "activity": "Kushida Shrine (Hakata's oldest shrine)",
+            "type": "attraction"
+          },
+          {
+            "time": "10:30",
+            "activity": "Canal City Hakata (walk & coffee)",
+            "type": "shopping"
+          },
+          {
+            "time": "12:00",
+            "activity": "Lunch: bowl of authentic Ichiran tonkotsu ramen",
+            "type": "food"
+          },
+          {
+            "time": "14:00",
+            "activity": "Fukuoka City Museum",
+            "type": "culture"
+          },
+          {
+            "time": "16:00",
+            "activity": "Momochi Seaside & Fukuoka Tower sunset",
+            "type": "attraction"
+          },
+          {
+            "time": "19:30",
+            "activity": "Yatai food stall dinner in Nakasu",
+            "type": "food",
+            "klookId": "11923"
+          }
         ]
       },
       {
         "day": 2,
         "title": "Dazaifu & Yanagawa Day Trip",
         "items": [
-          { "time": "09:00", "activity": "Train to Dazaifu (40 min)", "type": "transport" },
-          { "time": "10:00", "activity": "Dazaifu Tenman-gu shrine & plum garden", "type": "attraction" },
-          { "time": "12:00", "activity": "Umegae mochi (local sweet) tasting on shrine street", "type": "food" },
-          { "time": "13:30", "activity": "Train to Yanagawa (45 min)", "type": "transport" },
-          { "time": "14:30", "activity": "Yanagawa canal punting boat ride", "type": "attraction", "klookId": "9234" },
-          { "time": "19:00", "activity": "Return to Fukuoka, dinner at Tenjin izakaya", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Train to Dazaifu (40 min)",
+            "type": "transport"
+          },
+          {
+            "time": "10:00",
+            "activity": "Dazaifu Tenman-gu shrine & plum garden",
+            "type": "attraction"
+          },
+          {
+            "time": "12:00",
+            "activity": "Umegae mochi (local sweet) tasting on shrine street",
+            "type": "food"
+          },
+          {
+            "time": "13:30",
+            "activity": "Train to Yanagawa (45 min)",
+            "type": "transport"
+          },
+          {
+            "time": "14:30",
+            "activity": "Yanagawa canal punting boat ride",
+            "type": "attraction",
+            "klookId": "9234"
+          },
+          {
+            "time": "19:00",
+            "activity": "Return to Fukuoka, dinner at Tenjin izakaya",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 3,
         "title": "Tenjin & Ramen Farewell",
         "items": [
-          { "time": "09:00", "activity": "Ohori Park morning jog or cycling", "type": "outdoor", "klookId": "16234" },
-          { "time": "11:00", "activity": "Tenjin underground shopping mall", "type": "shopping" },
-          { "time": "13:00", "activity": "Ramen making class", "type": "culture", "klookId": "13847" },
-          { "time": "15:30", "activity": "Hakata traditional crafts shopping", "type": "shopping" },
-          { "time": "17:00", "activity": "Sumiyoshi Shrine (peaceful escape)", "type": "attraction" },
-          { "time": "19:00", "activity": "Final dinner: motsunabe (offal hotpot) — Fukuoka specialty", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Ohori Park morning jog or cycling",
+            "type": "outdoor",
+            "klookId": "16234"
+          },
+          {
+            "time": "11:00",
+            "activity": "Tenjin underground shopping mall",
+            "type": "shopping"
+          },
+          {
+            "time": "13:00",
+            "activity": "Ramen making class",
+            "type": "culture",
+            "klookId": "13847"
+          },
+          {
+            "time": "15:30",
+            "activity": "Hakata traditional crafts shopping",
+            "type": "shopping"
+          },
+          {
+            "time": "17:00",
+            "activity": "Sumiyoshi Shrine (peaceful escape)",
+            "type": "attraction"
+          },
+          {
+            "time": "19:00",
+            "activity": "Final dinner: motsunabe (offal hotpot) — Fukuoka specialty",
+            "type": "food"
+          }
         ]
       }
     ]
@@ -160,20 +244,89 @@
     "gettingThere": "Fukuoka Airport (FUK) is just 2 subway stops from Hakata Station — 5 minutes! International flights from Seoul, Taipei, Hong Kong, Shanghai. From Tokyo: 5h by Shinkansen or 1h45min by flight.",
     "localTransport": "Subway system covers major areas. Nimoca IC card works on subway, buses and trams. City is very walkable — Hakata and Tenjin are just 20 min walk apart.",
     "weather": [
-      { "month": "Jan", "high": 10, "low": 3, "rain": 68 },
-      { "month": "Feb", "high": 11, "low": 3, "rain": 72 },
-      { "month": "Mar", "high": 15, "low": 7, "rain": 115 },
-      { "month": "Apr", "high": 20, "low": 12, "rain": 130 },
-      { "month": "May", "high": 25, "low": 17, "rain": 160 },
-      { "month": "Jun", "high": 28, "low": 22, "rain": 285 },
-      { "month": "Jul", "high": 32, "low": 26, "rain": 270 },
-      { "month": "Aug", "high": 33, "low": 26, "rain": 175 },
-      { "month": "Sep", "high": 29, "low": 22, "rain": 175 },
-      { "month": "Oct", "high": 23, "low": 15, "rain": 90 },
-      { "month": "Nov", "high": 17, "low": 9, "rain": 80 },
-      { "month": "Dec", "high": 12, "low": 4, "rain": 65 }
+      {
+        "month": "Jan",
+        "high": 10,
+        "low": 3,
+        "rain": 68
+      },
+      {
+        "month": "Feb",
+        "high": 11,
+        "low": 3,
+        "rain": 72
+      },
+      {
+        "month": "Mar",
+        "high": 15,
+        "low": 7,
+        "rain": 115
+      },
+      {
+        "month": "Apr",
+        "high": 20,
+        "low": 12,
+        "rain": 130
+      },
+      {
+        "month": "May",
+        "high": 25,
+        "low": 17,
+        "rain": 160
+      },
+      {
+        "month": "Jun",
+        "high": 28,
+        "low": 22,
+        "rain": 285
+      },
+      {
+        "month": "Jul",
+        "high": 32,
+        "low": 26,
+        "rain": 270
+      },
+      {
+        "month": "Aug",
+        "high": 33,
+        "low": 26,
+        "rain": 175
+      },
+      {
+        "month": "Sep",
+        "high": 29,
+        "low": 22,
+        "rain": 175
+      },
+      {
+        "month": "Oct",
+        "high": 23,
+        "low": 15,
+        "rain": 90
+      },
+      {
+        "month": "Nov",
+        "high": 17,
+        "low": 9,
+        "rain": 80
+      },
+      {
+        "month": "Dec",
+        "high": 12,
+        "low": 4,
+        "rain": 65
+      }
     ]
   },
-  "themes": ["food", "culture", "budget", "nightlife"],
-  "relatedCities": ["osaka", "hiroshima", "nagasaki"]
+  "themes": [
+    "food",
+    "culture",
+    "budget",
+    "nightlife"
+  ],
+  "relatedCities": [
+    "osaka",
+    "hiroshima",
+    "nagasaki"
+  ]
 }

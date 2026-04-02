@@ -6,7 +6,10 @@
   "flag": "🇰🇷",
   "description": "Korea's Hawaii — a volcanic island of black lava rock beaches, tangerine orchards, diving grandmothers (haenyeo), waterfalls that fall into the sea, and the country's highest peak draped in clouds.",
   "heroImage": "https://images.unsplash.com/photo-1688545365131-424b9ba769ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080",
-  "heroImageCredit": { "name": "Sookyung An", "link": "https://unsplash.com/@aniask" },
+  "heroImageCredit": {
+    "name": "Sookyung An",
+    "link": "https://unsplash.com/@aniask"
+  },
   "quickInfo": {
     "bestSeason": "Apr-Jun (flowers), Sep-Nov (clear skies)",
     "avgBudget": "$60-120/day",
@@ -26,7 +29,8 @@
       "tier": "budget",
       "agodaHotelId": "5362534",
       "description": "Clean guesthouse close to the new Jeju Dream Tower and city bus lines",
-      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80",
+      "ratingCount": 1556
     },
     {
       "name": "Jeju Shinhwa World Landing Resort",
@@ -36,7 +40,8 @@
       "tier": "mid-range",
       "agodaHotelId": "9918927",
       "description": "Mega resort complex with water park, casino, K-drama filming locations, and family facilities",
-      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80",
+      "ratingCount": 1371
     },
     {
       "name": "Maison Glad Jeju",
@@ -46,7 +51,8 @@
       "tier": "mid-range",
       "agodaHotelId": "8882841",
       "description": "Smart hotel with rooftop bar overlooking the sea and Hallasan mountain backdrop",
-      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80",
+      "ratingCount": 1449
     },
     {
       "name": "Lotte Hotel Jeju",
@@ -56,7 +62,8 @@
       "tier": "luxury",
       "agodaHotelId": "2923847",
       "description": "Iconic white castle hotel on Jungmun's cliff, Korea's premier resort destination",
-      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80",
+      "ratingCount": 1140
     },
     {
       "name": "Ananti at Cheongna Jeju",
@@ -66,7 +73,8 @@
       "tier": "luxury",
       "agodaHotelId": "1223847",
       "description": "Ultra-luxury cliffside resort with Seopjikoji views and private Korean spa facilities",
-      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+      "ratingCount": 1131
     }
   ],
   "activities": [
@@ -122,35 +130,107 @@
         "day": 1,
         "title": "Eastern Jeju: Craters & Coastline",
         "items": [
-          { "time": "06:00", "activity": "Seongsan Ilchulbong sunrise hike (UNESCO)", "type": "outdoor" },
-          { "time": "09:00", "activity": "Haenyeo village breakfast: fresh sea catches", "type": "food" },
-          { "time": "11:00", "activity": "Manjanggul lava tube cave exploration", "type": "attraction", "klookId": "82412" },
-          { "time": "14:00", "activity": "Hamdeok Beach swim", "type": "beach" },
-          { "time": "16:00", "activity": "Jeju Folk Village Museum", "type": "culture" },
-          { "time": "19:00", "activity": "Black pork BBQ dinner in Jeju City", "type": "food" }
+          {
+            "time": "06:00",
+            "activity": "Seongsan Ilchulbong sunrise hike (UNESCO)",
+            "type": "outdoor"
+          },
+          {
+            "time": "09:00",
+            "activity": "Haenyeo village breakfast: fresh sea catches",
+            "type": "food"
+          },
+          {
+            "time": "11:00",
+            "activity": "Manjanggul lava tube cave exploration",
+            "type": "attraction",
+            "klookId": "82412"
+          },
+          {
+            "time": "14:00",
+            "activity": "Hamdeok Beach swim",
+            "type": "beach"
+          },
+          {
+            "time": "16:00",
+            "activity": "Jeju Folk Village Museum",
+            "type": "culture"
+          },
+          {
+            "time": "19:00",
+            "activity": "Black pork BBQ dinner in Jeju City",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 2,
         "title": "Hallasan Hike & Nature",
         "items": [
-          { "time": "07:00", "activity": "Hallasan summit hike via Seongpanak trail", "type": "outdoor", "klookId": "81923" },
-          { "time": "15:00", "activity": "Descent, hot spring soak in Yeomiji", "type": "wellness" },
-          { "time": "17:00", "activity": "Jeju botanical garden Yeomiji", "type": "nature" },
-          { "time": "19:30", "activity": "Jungmun Saekdal Beach sunset", "type": "beach" },
-          { "time": "21:00", "activity": "Seafood dinner: abalone porridge at a local restaurant", "type": "food" }
+          {
+            "time": "07:00",
+            "activity": "Hallasan summit hike via Seongpanak trail",
+            "type": "outdoor",
+            "klookId": "81923"
+          },
+          {
+            "time": "15:00",
+            "activity": "Descent, hot spring soak in Yeomiji",
+            "type": "wellness"
+          },
+          {
+            "time": "17:00",
+            "activity": "Jeju botanical garden Yeomiji",
+            "type": "nature"
+          },
+          {
+            "time": "19:30",
+            "activity": "Jungmun Saekdal Beach sunset",
+            "type": "beach"
+          },
+          {
+            "time": "21:00",
+            "activity": "Seafood dinner: abalone porridge at a local restaurant",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 3,
         "title": "West Coast & Haenyeo Culture",
         "items": [
-          { "time": "09:00", "activity": "Haenyeo diving cultural experience", "type": "culture", "klookId": "78734" },
-          { "time": "12:00", "activity": "Cheonjiyeon Waterfall walk", "type": "nature" },
-          { "time": "13:30", "activity": "Jeju food & tangerine market tour", "type": "food", "klookId": "79812" },
-          { "time": "15:30", "activity": "Jusangjeolli lava columns (stunning hexagonal basalt)", "type": "nature" },
-          { "time": "17:00", "activity": "Iho Tewoo Beach — white and black sand", "type": "beach" },
-          { "time": "19:30", "activity": "Farewell: Hallabong tangerine dessert & jeju soju", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Haenyeo diving cultural experience",
+            "type": "culture",
+            "klookId": "78734"
+          },
+          {
+            "time": "12:00",
+            "activity": "Cheonjiyeon Waterfall walk",
+            "type": "nature"
+          },
+          {
+            "time": "13:30",
+            "activity": "Jeju food & tangerine market tour",
+            "type": "food",
+            "klookId": "79812"
+          },
+          {
+            "time": "15:30",
+            "activity": "Jusangjeolli lava columns (stunning hexagonal basalt)",
+            "type": "nature"
+          },
+          {
+            "time": "17:00",
+            "activity": "Iho Tewoo Beach — white and black sand",
+            "type": "beach"
+          },
+          {
+            "time": "19:30",
+            "activity": "Farewell: Hallabong tangerine dessert & jeju soju",
+            "type": "food"
+          }
         ]
       }
     ]
@@ -159,20 +239,90 @@
     "gettingThere": "Jeju International Airport (CJU) is Korea's busiest domestic route from Seoul (1 hour, flights every 30 min). Some direct international flights from Tokyo, Osaka, Shanghai, Hong Kong, and Taipei.",
     "localTransport": "Car rental essential to see the island properly (~$35-50/day). Intercity buses exist but slow. Taxis plentiful. E-bikes and scooters available to rent. Some attractions walkable via Jeju Olle trails.",
     "weather": [
-      { "month": "Jan", "high": 8, "low": 2, "rain": 75 },
-      { "month": "Feb", "high": 9, "low": 3, "rain": 80 },
-      { "month": "Mar", "high": 13, "low": 7, "rain": 95 },
-      { "month": "Apr", "high": 18, "low": 12, "rain": 120 },
-      { "month": "May", "high": 22, "low": 17, "rain": 135 },
-      { "month": "Jun", "high": 26, "low": 21, "rain": 200 },
-      { "month": "Jul", "high": 29, "low": 25, "rain": 300 },
-      { "month": "Aug", "high": 30, "low": 25, "rain": 270 },
-      { "month": "Sep", "high": 27, "low": 21, "rain": 160 },
-      { "month": "Oct", "high": 22, "low": 15, "rain": 85 },
-      { "month": "Nov", "high": 16, "low": 9, "rain": 90 },
-      { "month": "Dec", "high": 10, "low": 4, "rain": 70 }
+      {
+        "month": "Jan",
+        "high": 8,
+        "low": 2,
+        "rain": 75
+      },
+      {
+        "month": "Feb",
+        "high": 9,
+        "low": 3,
+        "rain": 80
+      },
+      {
+        "month": "Mar",
+        "high": 13,
+        "low": 7,
+        "rain": 95
+      },
+      {
+        "month": "Apr",
+        "high": 18,
+        "low": 12,
+        "rain": 120
+      },
+      {
+        "month": "May",
+        "high": 22,
+        "low": 17,
+        "rain": 135
+      },
+      {
+        "month": "Jun",
+        "high": 26,
+        "low": 21,
+        "rain": 200
+      },
+      {
+        "month": "Jul",
+        "high": 29,
+        "low": 25,
+        "rain": 300
+      },
+      {
+        "month": "Aug",
+        "high": 30,
+        "low": 25,
+        "rain": 270
+      },
+      {
+        "month": "Sep",
+        "high": 27,
+        "low": 21,
+        "rain": 160
+      },
+      {
+        "month": "Oct",
+        "high": 22,
+        "low": 15,
+        "rain": 85
+      },
+      {
+        "month": "Nov",
+        "high": 16,
+        "low": 9,
+        "rain": 90
+      },
+      {
+        "month": "Dec",
+        "high": 10,
+        "low": 4,
+        "rain": 70
+      }
     ]
   },
-  "themes": ["nature", "beach", "culture", "hiking", "family"],
-  "relatedCities": ["busan", "seoul", "okinawa"]
+  "themes": [
+    "nature",
+    "beach",
+    "culture",
+    "hiking",
+    "family"
+  ],
+  "relatedCities": [
+    "busan",
+    "seoul",
+    "okinawa"
+  ]
 }

@@ -29,7 +29,8 @@
       "tier": "budget",
       "agodaHotelId": "414696",
       "description": "Trendy hostel-hotel hybrid near the BTS Skytrain, great social scene and private rooms available.",
-      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80",
+      "ratingCount": 1815
     },
     {
       "name": "Chatrium Hotel Riverside Bangkok",
@@ -39,7 +40,8 @@
       "tier": "mid-range",
       "agodaHotelId": "59440",
       "description": "Stunning Chao Phraya River views with free shuttle boat to major sights.",
-      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+      "ratingCount": 1335
     },
     {
       "name": "Mandarin Oriental Bangkok",
@@ -49,7 +51,8 @@
       "tier": "luxury",
       "agodaHotelId": "3940",
       "description": "A legendary 148-year-old hotel. The most iconic address in all of Southeast Asia.",
-      "image": "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=80",
+      "ratingCount": 1277
     }
   ],
   "activities": [
@@ -96,32 +99,92 @@
         "day": 1,
         "title": "Grand Palace & Riverside Temples",
         "items": [
-          { "time": "08:00", "activity": "Grand Palace & Wat Phra Kaew (arrive early before crowds)", "type": "attraction", "klookId": "2847" },
-          { "time": "11:30", "activity": "Wat Pho — reclining Buddha & traditional Thai massage", "type": "attraction" },
-          { "time": "13:30", "activity": "Lunch at local riverside restaurant", "type": "food" },
-          { "time": "15:30", "activity": "Cross the river to Wat Arun (Temple of Dawn)", "type": "attraction" },
-          { "time": "19:00", "activity": "Asiatique riverfront night market for dinner", "type": "food" }
+          {
+            "time": "08:00",
+            "activity": "Grand Palace & Wat Phra Kaew (arrive early before crowds)",
+            "type": "attraction",
+            "klookId": "2847"
+          },
+          {
+            "time": "11:30",
+            "activity": "Wat Pho — reclining Buddha & traditional Thai massage",
+            "type": "attraction"
+          },
+          {
+            "time": "13:30",
+            "activity": "Lunch at local riverside restaurant",
+            "type": "food"
+          },
+          {
+            "time": "15:30",
+            "activity": "Cross the river to Wat Arun (Temple of Dawn)",
+            "type": "attraction"
+          },
+          {
+            "time": "19:00",
+            "activity": "Asiatique riverfront night market for dinner",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 2,
         "title": "Street Food & Modern Bangkok",
         "items": [
-          { "time": "09:00", "activity": "Chatuchak Weekend Market (Sat/Sun only)", "type": "shopping" },
-          { "time": "12:00", "activity": "Lunch at Or Tor Kor fresh market", "type": "food" },
-          { "time": "15:00", "activity": "Siam area — MBK Center, Siam Paragon", "type": "shopping" },
-          { "time": "18:00", "activity": "Street Food Tour by Tuk Tuk", "type": "food", "klookId": "7291" },
-          { "time": "22:00", "activity": "Rooftop bar at Lebua State Tower (Sky Bar)", "type": "nightlife" }
+          {
+            "time": "09:00",
+            "activity": "Chatuchak Weekend Market (Sat/Sun only)",
+            "type": "shopping"
+          },
+          {
+            "time": "12:00",
+            "activity": "Lunch at Or Tor Kor fresh market",
+            "type": "food"
+          },
+          {
+            "time": "15:00",
+            "activity": "Siam area — MBK Center, Siam Paragon",
+            "type": "shopping"
+          },
+          {
+            "time": "18:00",
+            "activity": "Street Food Tour by Tuk Tuk",
+            "type": "food",
+            "klookId": "7291"
+          },
+          {
+            "time": "22:00",
+            "activity": "Rooftop bar at Lebua State Tower (Sky Bar)",
+            "type": "nightlife"
+          }
         ]
       },
       {
         "day": 3,
         "title": "Floating Markets Day Trip",
         "items": [
-          { "time": "07:00", "activity": "Damnoen Saduak Floating Market tour", "type": "attraction", "klookId": "9012" },
-          { "time": "13:00", "activity": "Return to Bangkok — Jim Thompson House", "type": "attraction" },
-          { "time": "17:00", "activity": "Sukhumvit street food & Night Bazaar", "type": "food" },
-          { "time": "20:00", "activity": "Muay Thai live show", "type": "entertainment", "klookId": "4563" }
+          {
+            "time": "07:00",
+            "activity": "Damnoen Saduak Floating Market tour",
+            "type": "attraction",
+            "klookId": "9012"
+          },
+          {
+            "time": "13:00",
+            "activity": "Return to Bangkok — Jim Thompson House",
+            "type": "attraction"
+          },
+          {
+            "time": "17:00",
+            "activity": "Sukhumvit street food & Night Bazaar",
+            "type": "food"
+          },
+          {
+            "time": "20:00",
+            "activity": "Muay Thai live show",
+            "type": "entertainment",
+            "klookId": "4563"
+          }
         ]
       }
     ]
@@ -130,20 +193,89 @@
     "gettingThere": "Suvarnabhumi Airport (BKK) is 45 min by Airport Rail Link to central Bangkok ($2). Don Mueang Airport (DMK) serves budget airlines, 45 min by bus.",
     "localTransport": "BTS Skytrain and MRT subway for tourist areas. Grab app for taxis — always use metered taxis or Grab over tuk-tuks for longer distances.",
     "weather": [
-      { "month": "Jan", "high": 32, "low": 22, "rain": 10 },
-      { "month": "Feb", "high": 33, "low": 24, "rain": 20 },
-      { "month": "Mar", "high": 35, "low": 26, "rain": 30 },
-      { "month": "Apr", "high": 36, "low": 27, "rain": 60 },
-      { "month": "May", "high": 34, "low": 26, "rain": 200 },
-      { "month": "Jun", "high": 33, "low": 26, "rain": 150 },
-      { "month": "Jul", "high": 32, "low": 25, "rain": 175 },
-      { "month": "Aug", "high": 32, "low": 25, "rain": 200 },
-      { "month": "Sep", "high": 32, "low": 25, "rain": 300 },
-      { "month": "Oct", "high": 31, "low": 24, "rain": 230 },
-      { "month": "Nov", "high": 31, "low": 23, "rain": 50 },
-      { "month": "Dec", "high": 31, "low": 21, "rain": 10 }
+      {
+        "month": "Jan",
+        "high": 32,
+        "low": 22,
+        "rain": 10
+      },
+      {
+        "month": "Feb",
+        "high": 33,
+        "low": 24,
+        "rain": 20
+      },
+      {
+        "month": "Mar",
+        "high": 35,
+        "low": 26,
+        "rain": 30
+      },
+      {
+        "month": "Apr",
+        "high": 36,
+        "low": 27,
+        "rain": 60
+      },
+      {
+        "month": "May",
+        "high": 34,
+        "low": 26,
+        "rain": 200
+      },
+      {
+        "month": "Jun",
+        "high": 33,
+        "low": 26,
+        "rain": 150
+      },
+      {
+        "month": "Jul",
+        "high": 32,
+        "low": 25,
+        "rain": 175
+      },
+      {
+        "month": "Aug",
+        "high": 32,
+        "low": 25,
+        "rain": 200
+      },
+      {
+        "month": "Sep",
+        "high": 32,
+        "low": 25,
+        "rain": 300
+      },
+      {
+        "month": "Oct",
+        "high": 31,
+        "low": 24,
+        "rain": 230
+      },
+      {
+        "month": "Nov",
+        "high": 31,
+        "low": 23,
+        "rain": 50
+      },
+      {
+        "month": "Dec",
+        "high": 31,
+        "low": 21,
+        "rain": 10
+      }
     ]
   },
-  "themes": ["food", "culture", "nightlife", "budget"],
-  "relatedCities": ["chiang-mai", "phuket", "ho-chi-minh"]
+  "themes": [
+    "food",
+    "culture",
+    "nightlife",
+    "budget"
+  ],
+  "relatedCities": [
+    "chiang-mai",
+    "phuket",
+    "ho-chi-minh"
+  ]
 }

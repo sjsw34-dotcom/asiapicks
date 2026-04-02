@@ -29,7 +29,8 @@
       "tier": "mid-range",
       "agodaHotelId": "236154",
       "description": "Stylish hotel in the heart of the shopping district, walking distance to Dotonbori.",
-      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+      "ratingCount": 1431
     },
     {
       "name": "Dormy Inn Namba Premium",
@@ -39,7 +40,8 @@
       "tier": "budget",
       "agodaHotelId": "1658232",
       "description": "Great-value business hotel with onsen bath. Unbeatable location near Namba.",
-      "image": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=600&q=80",
+      "ratingCount": 1554
     },
     {
       "name": "Conrad Osaka",
@@ -49,7 +51,8 @@
       "tier": "luxury",
       "agodaHotelId": "1893720",
       "description": "Spectacular skyline views from the 33rd floor, impeccable service, and top-tier dining.",
-      "image": "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=80",
+      "ratingCount": 1327
     }
   ],
   "activities": [
@@ -87,28 +90,69 @@
         "day": 1,
         "title": "Osaka Castle & Dotonbori",
         "items": [
-          { "time": "09:00", "activity": "Osaka Castle & Museum", "type": "attraction", "klookId": "3248" },
-          { "time": "12:00", "activity": "Kuromon Market — try fresh sushi and skewers", "type": "food" },
-          { "time": "15:00", "activity": "Shinsekai district & Tsutenkaku Tower", "type": "attraction" },
-          { "time": "18:00", "activity": "Dotonbori night walk + street food crawl", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Osaka Castle & Museum",
+            "type": "attraction",
+            "klookId": "3248"
+          },
+          {
+            "time": "12:00",
+            "activity": "Kuromon Market — try fresh sushi and skewers",
+            "type": "food"
+          },
+          {
+            "time": "15:00",
+            "activity": "Shinsekai district & Tsutenkaku Tower",
+            "type": "attraction"
+          },
+          {
+            "time": "18:00",
+            "activity": "Dotonbori night walk + street food crawl",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 2,
         "title": "Day Trip to Nara or Universal Studios",
         "items": [
-          { "time": "09:00", "activity": "Nara — feed the deer, see Todai-ji Temple", "type": "attraction" },
-          { "time": "14:00", "activity": "Back to Osaka — Shinsaibashi shopping", "type": "shopping" },
-          { "time": "19:00", "activity": "Izakaya dinner in Namba", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Nara — feed the deer, see Todai-ji Temple",
+            "type": "attraction"
+          },
+          {
+            "time": "14:00",
+            "activity": "Back to Osaka — Shinsaibashi shopping",
+            "type": "shopping"
+          },
+          {
+            "time": "19:00",
+            "activity": "Izakaya dinner in Namba",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 3,
         "title": "Day Trip to Kyoto",
         "items": [
-          { "time": "08:00", "activity": "Fushimi Inari Shrine (arrive early!)", "type": "attraction" },
-          { "time": "11:00", "activity": "Gion district & Kinkaku-ji (Golden Pavilion)", "type": "attraction" },
-          { "time": "16:00", "activity": "Return to Osaka — farewell ramen in Namba", "type": "food" }
+          {
+            "time": "08:00",
+            "activity": "Fushimi Inari Shrine (arrive early!)",
+            "type": "attraction"
+          },
+          {
+            "time": "11:00",
+            "activity": "Gion district & Kinkaku-ji (Golden Pavilion)",
+            "type": "attraction"
+          },
+          {
+            "time": "16:00",
+            "activity": "Return to Osaka — farewell ramen in Namba",
+            "type": "food"
+          }
         ]
       }
     ]
@@ -117,20 +161,89 @@
     "gettingThere": "Kansai International Airport (KIX) — 50 min by Haruka Express or 70 min by Nankai Line to Namba.",
     "localTransport": "Osaka Metro covers the whole city. Get the Osaka Amazing Pass for unlimited rides + attraction entry.",
     "weather": [
-      { "month": "Jan", "high": 9, "low": 3, "rain": 45 },
-      { "month": "Feb", "high": 10, "low": 3, "rain": 60 },
-      { "month": "Mar", "high": 14, "low": 7, "rain": 90 },
-      { "month": "Apr", "high": 20, "low": 12, "rain": 100 },
-      { "month": "May", "high": 25, "low": 17, "rain": 130 },
-      { "month": "Jun", "high": 28, "low": 21, "rain": 175 },
-      { "month": "Jul", "high": 32, "low": 25, "rain": 150 },
-      { "month": "Aug", "high": 33, "low": 26, "rain": 110 },
-      { "month": "Sep", "high": 28, "low": 22, "rain": 150 },
-      { "month": "Oct", "high": 22, "low": 15, "rain": 95 },
-      { "month": "Nov", "high": 16, "low": 9, "rain": 65 },
-      { "month": "Dec", "high": 11, "low": 4, "rain": 45 }
+      {
+        "month": "Jan",
+        "high": 9,
+        "low": 3,
+        "rain": 45
+      },
+      {
+        "month": "Feb",
+        "high": 10,
+        "low": 3,
+        "rain": 60
+      },
+      {
+        "month": "Mar",
+        "high": 14,
+        "low": 7,
+        "rain": 90
+      },
+      {
+        "month": "Apr",
+        "high": 20,
+        "low": 12,
+        "rain": 100
+      },
+      {
+        "month": "May",
+        "high": 25,
+        "low": 17,
+        "rain": 130
+      },
+      {
+        "month": "Jun",
+        "high": 28,
+        "low": 21,
+        "rain": 175
+      },
+      {
+        "month": "Jul",
+        "high": 32,
+        "low": 25,
+        "rain": 150
+      },
+      {
+        "month": "Aug",
+        "high": 33,
+        "low": 26,
+        "rain": 110
+      },
+      {
+        "month": "Sep",
+        "high": 28,
+        "low": 22,
+        "rain": 150
+      },
+      {
+        "month": "Oct",
+        "high": 22,
+        "low": 15,
+        "rain": 95
+      },
+      {
+        "month": "Nov",
+        "high": 16,
+        "low": 9,
+        "rain": 65
+      },
+      {
+        "month": "Dec",
+        "high": 11,
+        "low": 4,
+        "rain": 45
+      }
     ]
   },
-  "themes": ["food", "culture", "nightlife", "family"],
-  "relatedCities": ["kyoto", "tokyo", "nara"]
+  "themes": [
+    "food",
+    "culture",
+    "nightlife",
+    "family"
+  ],
+  "relatedCities": [
+    "kyoto",
+    "tokyo",
+    "nara"
+  ]
 }

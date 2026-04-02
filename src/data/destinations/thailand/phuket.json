@@ -6,7 +6,10 @@
   "flag": "🇹🇭",
   "description": "Thailand's largest island — an intoxicating mix of emerald-green waters, dramatic limestone cliffs, white-sand beaches, vibrant nightlife, and a booming luxury resort scene that keeps travelers coming back.",
   "heroImage": "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=1080&q=80",
-  "heroImageCredit": { "name": "Andrzej Suwara", "link": "https://unsplash.com/@andrzejsuwara" },
+  "heroImageCredit": {
+    "name": "Andrzej Suwara",
+    "link": "https://unsplash.com/@andrzejsuwara"
+  },
   "quickInfo": {
     "bestSeason": "Nov-Apr (dry season)",
     "avgBudget": "$50-150/day",
@@ -26,7 +29,8 @@
       "tier": "budget",
       "agodaHotelId": "8162534",
       "description": "Award-winning design hostel minutes from Patong Beach with pool and social bar",
-      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80",
+      "ratingCount": 1506
     },
     {
       "name": "Kata Rocks Resort",
@@ -36,7 +40,8 @@
       "tier": "mid-range",
       "agodaHotelId": "5518927",
       "description": "Stunning cliff-top resort with infinity pool overlooking Kata Beach and the Andaman Sea",
-      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80",
+      "ratingCount": 1685
     },
     {
       "name": "Centara Grand Beach Resort Phuket",
@@ -46,7 +51,8 @@
       "tier": "mid-range",
       "agodaHotelId": "8882841",
       "description": "Large beachfront resort with multiple pools, kids club, and direct beach access at Karon",
-      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80",
+      "ratingCount": 1525
     },
     {
       "name": "Anantara Layan Phuket Resort",
@@ -56,7 +62,8 @@
       "tier": "luxury",
       "agodaHotelId": "3623847",
       "description": "Secluded luxury resort on a private beach cove with jungle pool villas",
-      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80",
+      "ratingCount": 1198
     },
     {
       "name": "Trisara Phuket",
@@ -66,7 +73,8 @@
       "tier": "luxury",
       "agodaHotelId": "2223847",
       "description": "Private ocean pool villas carved into a hillside with arguably Phuket's finest views",
-      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+      "ratingCount": 1250
     }
   ],
   "activities": [
@@ -122,36 +130,112 @@
         "day": 1,
         "title": "Patong Beach & Old Town",
         "items": [
-          { "time": "09:00", "activity": "Morning swim at Patong Beach", "type": "beach" },
-          { "time": "11:00", "activity": "Rent a scooter, drive to Old Phuket Town", "type": "transport" },
-          { "time": "12:00", "activity": "Old Town food walk & Sino-Portuguese street art", "type": "food", "klookId": "44823" },
-          { "time": "15:00", "activity": "Big Buddha hilltop visit", "type": "attraction", "klookId": "38612" },
-          { "time": "17:00", "activity": "Kata Beach sunset swim", "type": "beach" },
-          { "time": "20:00", "activity": "Bangla Road nightlife or Banzaan Market dinner", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Morning swim at Patong Beach",
+            "type": "beach"
+          },
+          {
+            "time": "11:00",
+            "activity": "Rent a scooter, drive to Old Phuket Town",
+            "type": "transport"
+          },
+          {
+            "time": "12:00",
+            "activity": "Old Town food walk & Sino-Portuguese street art",
+            "type": "food",
+            "klookId": "44823"
+          },
+          {
+            "time": "15:00",
+            "activity": "Big Buddha hilltop visit",
+            "type": "attraction",
+            "klookId": "38612"
+          },
+          {
+            "time": "17:00",
+            "activity": "Kata Beach sunset swim",
+            "type": "beach"
+          },
+          {
+            "time": "20:00",
+            "activity": "Bangla Road nightlife or Banzaan Market dinner",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 2,
         "title": "Phang Nga Bay Island Hopping",
         "items": [
-          { "time": "07:30", "activity": "Pickup for Phang Nga Bay speedboat tour", "type": "transport" },
-          { "time": "09:30", "activity": "James Bond Island & limestone karsts kayaking", "type": "attraction", "klookId": "42134" },
-          { "time": "12:00", "activity": "Seafood lunch on floating village", "type": "food" },
-          { "time": "14:00", "activity": "Sea cave kayaking through lagoons", "type": "adventure" },
-          { "time": "17:30", "activity": "Return to Phuket", "type": "transport" },
-          { "time": "19:30", "activity": "Surin Beach dinner at beachside restaurant", "type": "food" }
+          {
+            "time": "07:30",
+            "activity": "Pickup for Phang Nga Bay speedboat tour",
+            "type": "transport"
+          },
+          {
+            "time": "09:30",
+            "activity": "James Bond Island & limestone karsts kayaking",
+            "type": "attraction",
+            "klookId": "42134"
+          },
+          {
+            "time": "12:00",
+            "activity": "Seafood lunch on floating village",
+            "type": "food"
+          },
+          {
+            "time": "14:00",
+            "activity": "Sea cave kayaking through lagoons",
+            "type": "adventure"
+          },
+          {
+            "time": "17:30",
+            "activity": "Return to Phuket",
+            "type": "transport"
+          },
+          {
+            "time": "19:30",
+            "activity": "Surin Beach dinner at beachside restaurant",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 3,
         "title": "Phi Phi Islands Escape",
         "items": [
-          { "time": "08:00", "activity": "Speedboat to Phi Phi Islands", "type": "transport" },
-          { "time": "10:00", "activity": "Snorkel at coral gardens near Phi Phi Leh", "type": "water-sports", "klookId": "39234" },
-          { "time": "12:00", "activity": "Lunch at Phi Phi Don village", "type": "food" },
-          { "time": "13:30", "activity": "Maya Bay beach visit (The Beach film spot)", "type": "beach" },
-          { "time": "15:30", "activity": "Viking Cave viewpoint", "type": "attraction" },
-          { "time": "17:00", "activity": "Return ferry, arrive Phuket by sunset", "type": "transport" }
+          {
+            "time": "08:00",
+            "activity": "Speedboat to Phi Phi Islands",
+            "type": "transport"
+          },
+          {
+            "time": "10:00",
+            "activity": "Snorkel at coral gardens near Phi Phi Leh",
+            "type": "water-sports",
+            "klookId": "39234"
+          },
+          {
+            "time": "12:00",
+            "activity": "Lunch at Phi Phi Don village",
+            "type": "food"
+          },
+          {
+            "time": "13:30",
+            "activity": "Maya Bay beach visit (The Beach film spot)",
+            "type": "beach"
+          },
+          {
+            "time": "15:30",
+            "activity": "Viking Cave viewpoint",
+            "type": "attraction"
+          },
+          {
+            "time": "17:00",
+            "activity": "Return ferry, arrive Phuket by sunset",
+            "type": "transport"
+          }
         ]
       }
     ]
@@ -160,20 +244,90 @@
     "gettingThere": "Phuket International Airport (HKT) has direct flights from Singapore, KL, Hong Kong, Seoul, and all major Asian hubs. Bangkok to Phuket: 1h30min, many daily flights from $25.",
     "localTransport": "Grab works in Phuket (always use it — metered taxis notorious for overcharging). Scooter rental $8-12/day. Shared songthaew between beaches $20-40. No public buses.",
     "weather": [
-      { "month": "Jan", "high": 31, "low": 22, "rain": 34 },
-      { "month": "Feb", "high": 32, "low": 22, "rain": 28 },
-      { "month": "Mar", "high": 33, "low": 23, "rain": 44 },
-      { "month": "Apr", "high": 33, "low": 24, "rain": 100 },
-      { "month": "May", "high": 32, "low": 24, "rain": 200 },
-      { "month": "Jun", "high": 31, "low": 24, "rain": 215 },
-      { "month": "Jul", "high": 31, "low": 24, "rain": 245 },
-      { "month": "Aug", "high": 31, "low": 24, "rain": 265 },
-      { "month": "Sep", "high": 30, "low": 23, "rain": 305 },
-      { "month": "Oct", "high": 30, "low": 23, "rain": 265 },
-      { "month": "Nov", "high": 31, "low": 23, "rain": 145 },
-      { "month": "Dec", "high": 31, "low": 22, "rain": 55 }
+      {
+        "month": "Jan",
+        "high": 31,
+        "low": 22,
+        "rain": 34
+      },
+      {
+        "month": "Feb",
+        "high": 32,
+        "low": 22,
+        "rain": 28
+      },
+      {
+        "month": "Mar",
+        "high": 33,
+        "low": 23,
+        "rain": 44
+      },
+      {
+        "month": "Apr",
+        "high": 33,
+        "low": 24,
+        "rain": 100
+      },
+      {
+        "month": "May",
+        "high": 32,
+        "low": 24,
+        "rain": 200
+      },
+      {
+        "month": "Jun",
+        "high": 31,
+        "low": 24,
+        "rain": 215
+      },
+      {
+        "month": "Jul",
+        "high": 31,
+        "low": 24,
+        "rain": 245
+      },
+      {
+        "month": "Aug",
+        "high": 31,
+        "low": 24,
+        "rain": 265
+      },
+      {
+        "month": "Sep",
+        "high": 30,
+        "low": 23,
+        "rain": 305
+      },
+      {
+        "month": "Oct",
+        "high": 30,
+        "low": 23,
+        "rain": 265
+      },
+      {
+        "month": "Nov",
+        "high": 31,
+        "low": 23,
+        "rain": 145
+      },
+      {
+        "month": "Dec",
+        "high": 31,
+        "low": 22,
+        "rain": 55
+      }
     ]
   },
-  "themes": ["beach", "island-hopping", "nightlife", "luxury", "adventure"],
-  "relatedCities": ["krabi", "ko-samui", "bangkok"]
+  "themes": [
+    "beach",
+    "island-hopping",
+    "nightlife",
+    "luxury",
+    "adventure"
+  ],
+  "relatedCities": [
+    "krabi",
+    "ko-samui",
+    "bangkok"
+  ]
 }

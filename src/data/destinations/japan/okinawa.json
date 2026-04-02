@@ -6,7 +6,10 @@
   "flag": "🇯🇵",
   "description": "Japan's tropical paradise — a chain of subtropical islands with crystal-clear turquoise water, world-class coral reefs, distinct Ryukyu culture, and some of the world's longest-living people.",
   "heroImage": "https://images.unsplash.com/photo-1664888883235-dd2b4055ae26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080",
-  "heroImageCredit": { "name": "Artem Beliaikin", "link": "https://unsplash.com/@belart84" },
+  "heroImageCredit": {
+    "name": "Artem Beliaikin",
+    "link": "https://unsplash.com/@belart84"
+  },
   "quickInfo": {
     "bestSeason": "Apr-Jun (warm, pre-rainy season), Oct-Nov",
     "avgBudget": "$80-160/day",
@@ -26,7 +29,8 @@
       "tier": "budget",
       "agodaHotelId": "8842156",
       "description": "Charming guesthouse in Naha's Kokusai Street area, great base for exploring the island",
-      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80",
+      "ratingCount": 1611
     },
     {
       "name": "Okinawa Marriott Resort & Spa",
@@ -36,7 +40,8 @@
       "tier": "mid-range",
       "agodaHotelId": "3318927",
       "description": "Beachfront resort with stunning ocean views, multiple pools, and direct beach access",
-      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80",
+      "ratingCount": 1591
     },
     {
       "name": "Vessel Hotel Campana Okinawa",
@@ -46,7 +51,8 @@
       "tier": "mid-range",
       "agodaHotelId": "6672841",
       "description": "Ferris wheel views from your room, next to the lively American Village entertainment area",
-      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80",
+      "ratingCount": 1631
     },
     {
       "name": "The Busena Terrace Beach Resort",
@@ -56,7 +62,8 @@
       "tier": "luxury",
       "agodaHotelId": "2923847",
       "description": "Award-winning luxury resort on its own private peninsula with pristine coral beach",
-      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80",
+      "ratingCount": 1168
     },
     {
       "name": "Halekulani Okinawa",
@@ -66,7 +73,8 @@
       "tier": "luxury",
       "agodaHotelId": "4123847",
       "description": "Okinawa's most prestigious luxury resort, five infinity pools cascading to the ocean",
-      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+      "ratingCount": 1273
     }
   ],
   "activities": [
@@ -122,36 +130,110 @@
         "day": 1,
         "title": "Naha City & Ryukyu Culture",
         "items": [
-          { "time": "09:00", "activity": "Shurijo Castle early entry", "type": "attraction" },
-          { "time": "11:00", "activity": "Tsuboya pottery street and ceramics shopping", "type": "culture" },
-          { "time": "13:00", "activity": "Makishi Public Market lunch (fresh seafood)", "type": "food" },
-          { "time": "15:00", "activity": "Kokusai Street shopping and Okinawan sweets", "type": "shopping" },
-          { "time": "17:30", "activity": "Sunset at Cape Maeda", "type": "nature" },
-          { "time": "19:30", "activity": "Orion beer and goya champuru dinner", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Shurijo Castle early entry",
+            "type": "attraction"
+          },
+          {
+            "time": "11:00",
+            "activity": "Tsuboya pottery street and ceramics shopping",
+            "type": "culture"
+          },
+          {
+            "time": "13:00",
+            "activity": "Makishi Public Market lunch (fresh seafood)",
+            "type": "food"
+          },
+          {
+            "time": "15:00",
+            "activity": "Kokusai Street shopping and Okinawan sweets",
+            "type": "shopping"
+          },
+          {
+            "time": "17:30",
+            "activity": "Sunset at Cape Maeda",
+            "type": "nature"
+          },
+          {
+            "time": "19:30",
+            "activity": "Orion beer and goya champuru dinner",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 2,
         "title": "Kerama Islands Snorkeling Day",
         "items": [
-          { "time": "08:00", "activity": "Ferry to Kerama Islands", "type": "transport" },
-          { "time": "09:30", "activity": "Snorkeling over Kerama coral reefs & sea turtles", "type": "water-sports", "klookId": "21934" },
-          { "time": "12:00", "activity": "BBQ lunch on Zamami Island beach", "type": "food" },
-          { "time": "14:00", "activity": "Free beach time / kayaking", "type": "outdoor" },
-          { "time": "17:00", "activity": "Ferry back to Naha", "type": "transport" },
-          { "time": "19:00", "activity": "Ryukyu izakaya dinner in Naha", "type": "food" }
+          {
+            "time": "08:00",
+            "activity": "Ferry to Kerama Islands",
+            "type": "transport"
+          },
+          {
+            "time": "09:30",
+            "activity": "Snorkeling over Kerama coral reefs & sea turtles",
+            "type": "water-sports",
+            "klookId": "21934"
+          },
+          {
+            "time": "12:00",
+            "activity": "BBQ lunch on Zamami Island beach",
+            "type": "food"
+          },
+          {
+            "time": "14:00",
+            "activity": "Free beach time / kayaking",
+            "type": "outdoor"
+          },
+          {
+            "time": "17:00",
+            "activity": "Ferry back to Naha",
+            "type": "transport"
+          },
+          {
+            "time": "19:00",
+            "activity": "Ryukyu izakaya dinner in Naha",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 3,
         "title": "Northern Okinawa & Churaumi Aquarium",
         "items": [
-          { "time": "09:00", "activity": "Drive north to Yanbaru forest", "type": "transport" },
-          { "time": "10:30", "activity": "Hiji Waterfall short hike", "type": "outdoor" },
-          { "time": "12:30", "activity": "Ocean Expo Park lunch", "type": "food" },
-          { "time": "14:00", "activity": "Churaumi Aquarium (whale sharks!)", "type": "attraction", "klookId": "17823" },
-          { "time": "16:30", "activity": "Nakijin Castle ruins and coastal views", "type": "attraction" },
-          { "time": "19:00", "activity": "Drive back, dinner at American Village", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Drive north to Yanbaru forest",
+            "type": "transport"
+          },
+          {
+            "time": "10:30",
+            "activity": "Hiji Waterfall short hike",
+            "type": "outdoor"
+          },
+          {
+            "time": "12:30",
+            "activity": "Ocean Expo Park lunch",
+            "type": "food"
+          },
+          {
+            "time": "14:00",
+            "activity": "Churaumi Aquarium (whale sharks!)",
+            "type": "attraction",
+            "klookId": "17823"
+          },
+          {
+            "time": "16:30",
+            "activity": "Nakijin Castle ruins and coastal views",
+            "type": "attraction"
+          },
+          {
+            "time": "19:00",
+            "activity": "Drive back, dinner at American Village",
+            "type": "food"
+          }
         ]
       }
     ]
@@ -160,20 +242,90 @@
     "gettingThere": "Naha Airport (OKA) has direct flights from Tokyo (2h30min), Osaka (2h), and international connections from Taipei, Hong Kong, Seoul, and Shanghai.",
     "localTransport": "Yui Rail monorail covers central Naha. Car rental essential for exploring the rest of the island (~$40/day). Buses are slow. IC card: OKICA.",
     "weather": [
-      { "month": "Jan", "high": 18, "low": 13, "rain": 107 },
-      { "month": "Feb", "high": 19, "low": 13, "rain": 120 },
-      { "month": "Mar", "high": 21, "low": 16, "rain": 161 },
-      { "month": "Apr", "high": 24, "low": 19, "rain": 166 },
-      { "month": "May", "high": 27, "low": 22, "rain": 231 },
-      { "month": "Jun", "high": 30, "low": 25, "rain": 247 },
-      { "month": "Jul", "high": 32, "low": 27, "rain": 141 },
-      { "month": "Aug", "high": 32, "low": 27, "rain": 240 },
-      { "month": "Sep", "high": 30, "low": 25, "rain": 260 },
-      { "month": "Oct", "high": 27, "low": 22, "rain": 153 },
-      { "month": "Nov", "high": 24, "low": 18, "rain": 110 },
-      { "month": "Dec", "high": 20, "low": 15, "rain": 102 }
+      {
+        "month": "Jan",
+        "high": 18,
+        "low": 13,
+        "rain": 107
+      },
+      {
+        "month": "Feb",
+        "high": 19,
+        "low": 13,
+        "rain": 120
+      },
+      {
+        "month": "Mar",
+        "high": 21,
+        "low": 16,
+        "rain": 161
+      },
+      {
+        "month": "Apr",
+        "high": 24,
+        "low": 19,
+        "rain": 166
+      },
+      {
+        "month": "May",
+        "high": 27,
+        "low": 22,
+        "rain": 231
+      },
+      {
+        "month": "Jun",
+        "high": 30,
+        "low": 25,
+        "rain": 247
+      },
+      {
+        "month": "Jul",
+        "high": 32,
+        "low": 27,
+        "rain": 141
+      },
+      {
+        "month": "Aug",
+        "high": 32,
+        "low": 27,
+        "rain": 240
+      },
+      {
+        "month": "Sep",
+        "high": 30,
+        "low": 25,
+        "rain": 260
+      },
+      {
+        "month": "Oct",
+        "high": 27,
+        "low": 22,
+        "rain": 153
+      },
+      {
+        "month": "Nov",
+        "high": 24,
+        "low": 18,
+        "rain": 110
+      },
+      {
+        "month": "Dec",
+        "high": 20,
+        "low": 15,
+        "rain": 102
+      }
     ]
   },
-  "themes": ["beach", "diving", "culture", "family", "luxury"],
-  "relatedCities": ["tokyo", "taipei", "ishigaki"]
+  "themes": [
+    "beach",
+    "diving",
+    "culture",
+    "family",
+    "luxury"
+  ],
+  "relatedCities": [
+    "tokyo",
+    "taipei",
+    "ishigaki"
+  ]
 }

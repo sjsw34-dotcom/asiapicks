@@ -6,7 +6,10 @@
   "flag": "🇹🇭",
   "description": "Thailand's most misunderstood city — yes, it has wild nightlife, but it's also home to beautiful islands, world-class water parks, upscale rooftop bars, and a surprisingly family-friendly side that most tourists never discover.",
   "heroImage": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1080&q=80",
-  "heroImageCredit": { "name": "Alexandr Bormotin", "link": "https://unsplash.com/@aabormotin" },
+  "heroImageCredit": {
+    "name": "Alexandr Bormotin",
+    "link": "https://unsplash.com/@aabormotin"
+  },
   "quickInfo": {
     "bestSeason": "Nov-Mar (dry season)",
     "avgBudget": "$30-90/day",
@@ -26,7 +29,8 @@
       "tier": "budget",
       "agodaHotelId": "7562534",
       "description": "Funky design hotel with rooftop infinity pool and city views at a surprisingly affordable price",
-      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80",
+      "ratingCount": 1522
     },
     {
       "name": "Dusit Thani Pattaya",
@@ -36,7 +40,8 @@
       "tier": "mid-range",
       "agodaHotelId": "6618927",
       "description": "Thai luxury brand hotel on the beachfront with large pool and classic Thai hospitality",
-      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80",
+      "ratingCount": 1488
     },
     {
       "name": "Hilton Pattaya",
@@ -46,7 +51,8 @@
       "tier": "mid-range",
       "agodaHotelId": "9982841",
       "description": "Premium downtown hotel with infinity edge pool and panoramic Pattaya Bay views",
-      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80",
+      "ratingCount": 1462
     },
     {
       "name": "Cape Dara Resort",
@@ -56,7 +62,8 @@
       "tier": "luxury",
       "agodaHotelId": "4423847",
       "description": "Cliff-top luxury resort on a private headland away from the crowds, stunning sea views",
-      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80",
+      "ratingCount": 1212
     },
     {
       "name": "Intercontinental Pattaya Resort",
@@ -66,7 +73,8 @@
       "tier": "luxury",
       "agodaHotelId": "3323847",
       "description": "Ultra-premium hilltop resort with private funicular to beach and legendary Sunday brunch",
-      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+      "ratingCount": 1094
     }
   ],
   "activities": [
@@ -122,34 +130,103 @@
         "day": 1,
         "title": "Beaches & Temples",
         "items": [
-          { "time": "09:00", "activity": "Jomtien Beach morning swim", "type": "beach" },
-          { "time": "11:00", "activity": "Sanctuary of Truth visit", "type": "attraction", "klookId": "46234" },
-          { "time": "13:30", "activity": "Lunch: seafood at Naklua fish market", "type": "food" },
-          { "time": "15:00", "activity": "Viewpoint Hill (Khao Phra Tamnak) & city panorama", "type": "attraction" },
-          { "time": "17:00", "activity": "Pattaya Walking Street early evening stroll", "type": "culture" },
-          { "time": "20:00", "activity": "Rooftop bar dinner with bay views", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Jomtien Beach morning swim",
+            "type": "beach"
+          },
+          {
+            "time": "11:00",
+            "activity": "Sanctuary of Truth visit",
+            "type": "attraction",
+            "klookId": "46234"
+          },
+          {
+            "time": "13:30",
+            "activity": "Lunch: seafood at Naklua fish market",
+            "type": "food"
+          },
+          {
+            "time": "15:00",
+            "activity": "Viewpoint Hill (Khao Phra Tamnak) & city panorama",
+            "type": "attraction"
+          },
+          {
+            "time": "17:00",
+            "activity": "Pattaya Walking Street early evening stroll",
+            "type": "culture"
+          },
+          {
+            "time": "20:00",
+            "activity": "Rooftop bar dinner with bay views",
+            "type": "food"
+          }
         ]
       },
       {
         "day": 2,
         "title": "Coral Island Escape",
         "items": [
-          { "time": "08:00", "activity": "Speedboat to Koh Larn (Coral Island)", "type": "transport" },
-          { "time": "09:30", "activity": "Snorkeling at Tawaen Beach", "type": "water-sports", "klookId": "52134" },
-          { "time": "12:00", "activity": "Beach barbecue seafood lunch", "type": "food" },
-          { "time": "13:30", "activity": "Explore Koh Larn by rented scooter", "type": "outdoor" },
-          { "time": "16:00", "activity": "Return speedboat to Pattaya", "type": "transport" },
-          { "time": "19:30", "activity": "Muay Thai evening bout", "type": "entertainment", "klookId": "49812" }
+          {
+            "time": "08:00",
+            "activity": "Speedboat to Koh Larn (Coral Island)",
+            "type": "transport"
+          },
+          {
+            "time": "09:30",
+            "activity": "Snorkeling at Tawaen Beach",
+            "type": "water-sports",
+            "klookId": "52134"
+          },
+          {
+            "time": "12:00",
+            "activity": "Beach barbecue seafood lunch",
+            "type": "food"
+          },
+          {
+            "time": "13:30",
+            "activity": "Explore Koh Larn by rented scooter",
+            "type": "outdoor"
+          },
+          {
+            "time": "16:00",
+            "activity": "Return speedboat to Pattaya",
+            "type": "transport"
+          },
+          {
+            "time": "19:30",
+            "activity": "Muay Thai evening bout",
+            "type": "entertainment",
+            "klookId": "49812"
+          }
         ]
       },
       {
         "day": 3,
         "title": "Water Park & Floating Market",
         "items": [
-          { "time": "09:00", "activity": "Cartoon Network Water Park (full day)", "type": "family", "klookId": "48923" },
-          { "time": "14:00", "activity": "Pattaya Floating Market", "type": "culture", "klookId": "51234" },
-          { "time": "17:00", "activity": "Nong Nooch Tropical Garden sunset stroll", "type": "nature" },
-          { "time": "19:00", "activity": "Dinner: Pattaya Bay sunset cruise", "type": "food" }
+          {
+            "time": "09:00",
+            "activity": "Cartoon Network Water Park (full day)",
+            "type": "family",
+            "klookId": "48923"
+          },
+          {
+            "time": "14:00",
+            "activity": "Pattaya Floating Market",
+            "type": "culture",
+            "klookId": "51234"
+          },
+          {
+            "time": "17:00",
+            "activity": "Nong Nooch Tropical Garden sunset stroll",
+            "type": "nature"
+          },
+          {
+            "time": "19:00",
+            "activity": "Dinner: Pattaya Bay sunset cruise",
+            "type": "food"
+          }
         ]
       }
     ]
@@ -158,20 +235,90 @@
     "gettingThere": "Nearest airport: U-Tapao Pattaya (UTP) with some budget flights. Most travelers fly to Bangkok Suvarnabhumi (BKK) then take a bus or taxi (2h, $10-20 by bus). Private transfer ~$40.",
     "localTransport": "Baht buses (songthaew) circle the city for 10 THB flat. Grab app available. Scooter rental $8-10/day. Walking Street and beach road walkable.",
     "weather": [
-      { "month": "Jan", "high": 31, "low": 21, "rain": 25 },
-      { "month": "Feb", "high": 32, "low": 22, "rain": 28 },
-      { "month": "Mar", "high": 33, "low": 24, "rain": 45 },
-      { "month": "Apr", "high": 34, "low": 25, "rain": 70 },
-      { "month": "May", "high": 33, "low": 25, "rain": 165 },
-      { "month": "Jun", "high": 32, "low": 25, "rain": 130 },
-      { "month": "Jul", "high": 32, "low": 25, "rain": 145 },
-      { "month": "Aug", "high": 32, "low": 24, "rain": 175 },
-      { "month": "Sep", "high": 31, "low": 24, "rain": 260 },
-      { "month": "Oct", "high": 31, "low": 23, "rain": 185 },
-      { "month": "Nov", "high": 31, "low": 22, "rain": 65 },
-      { "month": "Dec", "high": 31, "low": 21, "rain": 25 }
+      {
+        "month": "Jan",
+        "high": 31,
+        "low": 21,
+        "rain": 25
+      },
+      {
+        "month": "Feb",
+        "high": 32,
+        "low": 22,
+        "rain": 28
+      },
+      {
+        "month": "Mar",
+        "high": 33,
+        "low": 24,
+        "rain": 45
+      },
+      {
+        "month": "Apr",
+        "high": 34,
+        "low": 25,
+        "rain": 70
+      },
+      {
+        "month": "May",
+        "high": 33,
+        "low": 25,
+        "rain": 165
+      },
+      {
+        "month": "Jun",
+        "high": 32,
+        "low": 25,
+        "rain": 130
+      },
+      {
+        "month": "Jul",
+        "high": 32,
+        "low": 25,
+        "rain": 145
+      },
+      {
+        "month": "Aug",
+        "high": 32,
+        "low": 24,
+        "rain": 175
+      },
+      {
+        "month": "Sep",
+        "high": 31,
+        "low": 24,
+        "rain": 260
+      },
+      {
+        "month": "Oct",
+        "high": 31,
+        "low": 23,
+        "rain": 185
+      },
+      {
+        "month": "Nov",
+        "high": 31,
+        "low": 22,
+        "rain": 65
+      },
+      {
+        "month": "Dec",
+        "high": 31,
+        "low": 21,
+        "rain": 25
+      }
     ]
   },
-  "themes": ["beach", "nightlife", "family", "budget", "water-sports"],
-  "relatedCities": ["bangkok", "ko-chang", "rayong"]
+  "themes": [
+    "beach",
+    "nightlife",
+    "family",
+    "budget",
+    "water-sports"
+  ],
+  "relatedCities": [
+    "bangkok",
+    "ko-chang",
+    "rayong"
+  ]
 }
