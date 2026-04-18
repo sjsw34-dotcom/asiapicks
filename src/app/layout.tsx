@@ -3,7 +3,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/common/JsonLd";
-import { websiteSchema } from "@/lib/seo";
+import { websiteSchema, organizationSchema } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -75,6 +75,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <JsonLd schema={organizationSchema()} />
         <JsonLd schema={websiteSchema()} />
         <meta name="agd-partner-manual-verification" />
       </head>

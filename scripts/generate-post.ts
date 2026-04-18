@@ -284,8 +284,8 @@ description: "<write 150-155 char meta description>"
 date: "${today()}"
 updated: "${today()}"
 category: "${item.category}"
-city: "${item.city ?? ""}"
-country: "${item.country ?? ""}"
+city: ${item.city ? `"${item.city}"` : "null"}
+country: ${item.country ? `"${item.country}"` : "null"}
 tags: [${item.tags.map((t) => `"${t}"`).join(", ")}]
 image: "${images[0]?.url ?? ""}"
 heroImageCredit: "Photo by ${images[0]?.credit.name ?? "Unsplash"} on Unsplash"

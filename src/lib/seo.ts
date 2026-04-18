@@ -55,10 +55,13 @@ export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${BASE_URL}/#website`,
     name: "Asiapicks",
     url: BASE_URL,
     description:
       "Expert travel guides, hotel recommendations, and activity bookings for Southeast & East Asia.",
+    publisher: { "@id": `${BASE_URL}/#organization` },
+    inLanguage: "en-US",
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -67,6 +70,22 @@ export function websiteSchema() {
       },
       "query-input": "required name=search_term_string",
     },
+  };
+}
+
+export function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${BASE_URL}/#organization`,
+    name: "Asiapicks",
+    url: BASE_URL,
+    logo: `${BASE_URL}/logo.png`,
+    description:
+      "Asiapicks curates travel guides, hotel deals, and activities across Japan, Korea, Thailand, and Vietnam.",
+    sameAs: [
+      "https://sajumuse.com",
+    ],
   };
 }
 

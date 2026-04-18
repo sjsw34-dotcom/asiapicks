@@ -72,7 +72,8 @@ export function getRelatedMDXPosts(current: MDXPost, limit = 3): MDXPost[] {
     .filter(
       (p) =>
         p.frontmatter.category === current.frontmatter.category ||
-        p.frontmatter.city === current.frontmatter.city
+        (!!p.frontmatter.city &&
+          p.frontmatter.city === current.frontmatter.city)
     )
     .slice(0, limit);
 }
