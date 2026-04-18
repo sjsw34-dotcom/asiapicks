@@ -1,9 +1,9 @@
 import affiliateConfig from "@/data/affiliates.json";
 
 // ─── Agoda (Hotels only) ──────────────────────────────────────────────────────
-// appu.kr 경유 제휴 링크 (아고다 직접 제휴 대신 사용)
+// linkmoa.kr 경유 제휴 링크 (아고다 직접 제휴 대신 사용)
 
-const AGODA_AFFILIATE_URL = "https://lpweb.kr/click.php?m=agoda&a=A100693729&l=0000";
+const AGODA_AFFILIATE_URL = "https://linkmoa.kr/click.php?m=agoda&a=A100693729&l=0000";
 
 export function getAgodaSearchLink(_citySlug: string): string {
   return AGODA_AFFILIATE_URL;
