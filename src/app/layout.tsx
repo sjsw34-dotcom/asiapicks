@@ -3,6 +3,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/common/JsonLd";
+import AdScript, { ADSENSE_CLIENT_ID } from "@/components/ads/AdScript";
 import { websiteSchema, organizationSchema } from "@/lib/seo";
 import "./globals.css";
 
@@ -78,11 +79,13 @@ export default function RootLayout({
         <JsonLd schema={organizationSchema()} />
         <JsonLd schema={websiteSchema()} />
         <meta name="agd-partner-manual-verification" />
+        <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
       </head>
       <body className={`${inter.variable} ${plusJakartaSans.variable} antialiased`}>
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <AdScript />
       </body>
     </html>
   );

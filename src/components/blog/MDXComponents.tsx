@@ -1,5 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import AffiliateCTA from "@/components/affiliate/AffiliateCTA";
+import InArticleAd from "@/components/ads/InArticleAd";
+import AdUnit from "@/components/ads/AdUnit";
 
 /**
  * Custom MDX component mapping.
@@ -106,5 +108,7 @@ export function getMDXComponents(): MDXComponents {
 
     // ── Custom Components (usable directly in MDX) ───
     AffiliateCTA,
+    InArticleAd,
+    AdUnit,
   };
 }

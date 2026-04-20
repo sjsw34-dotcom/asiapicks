@@ -15,6 +15,7 @@ import AffiliateDisclosure from "@/components/affiliate/AffiliateDisclosure";
 import HotelSection from "@/components/affiliate/HotelSection";
 import ActivitySection from "@/components/affiliate/ActivitySection";
 import SajuInsightBox from "@/components/saju/SajuInsightBox";
+import InArticleAd from "@/components/ads/InArticleAd";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 
@@ -166,6 +167,9 @@ export default async function BlogPostPage({ params }: Props) {
               />
             </div>
 
+            {/* In-article ad after main content */}
+            <InArticleAd />
+
             {/* Auto-injected sections from frontmatter */}
             {frontmatter.showHotels && city && (
               <HotelSection hotels={city.hotels} cityName={city.name} />
@@ -288,6 +292,8 @@ export default async function BlogPostPage({ params }: Props) {
               {dbPost.content}
             </ReactMarkdown>
           </div>
+
+          <InArticleAd />
 
           {dbPost.tags?.length > 0 && (
             <div className="mt-10 pt-6 border-t border-border flex flex-wrap gap-2">
