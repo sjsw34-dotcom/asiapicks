@@ -32,6 +32,7 @@ jobs:
 
       # ── 4. Generate blog post ────────────────────────────────────────────
       - name: Generate blog post
+        id: generate
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
@@ -56,3 +57,18 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git commit -m "auto: new blog post $(date +%Y-%m-%d)"
           git push
+
+      # ── 7. Ping IndexNow (Bing/Yandex; Google is sitemap-only) ───────────
+      # Sleep first so Vercel finishes deploying the new post before crawlers fetch it.
+      - name: Ping IndexNow
+        if: steps.changes.outputs.changed == 'true' && steps.generate.outputs.slug != ''
+        env:
+          SLUG: ${{ steps.generate.outputs.slug }}
+        run: |
+          sleep 180
+          KEY="a3f2e7c8b1d49f6e2c8a4b7d1f3e9c2a"
+          POST_URL="https://asiapicks.com/blog/${SLUG}"
+          curl -sS -X POST "https://api.indexnow.org/IndexNow" \
+            -H "Content-Type: application/json" \
+            -d "{\"host\":\"asiapicks.com\",\"key\":\"${KEY}\",\"keyLocation\":\"https://asiapicks.com/${KEY}.txt\",\"urlList\":[\"${POST_URL}\",\"https://asiapicks.com/sitemap.xml\"]}" \
+            -w "\nIndexNow status: %{http_code}\n" || true

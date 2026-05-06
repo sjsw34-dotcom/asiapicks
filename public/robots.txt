@@ -6,4 +6,3 @@ Disallow: /api/
 Disallow: /admin/
 
 Sitemap: https://asiapicks.com/sitemap.xml
-Sitemap: https://asiapicks.com/feed.xml

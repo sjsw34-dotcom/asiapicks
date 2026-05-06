@@ -438,6 +438,11 @@ async function main() {
 
   console.log(`\n✅  Saved to: ${outPath}`);
   console.log(`    Words: ~${mdxContent.split(/\s+/).length}`);
+
+  // Expose slug to GitHub Actions for downstream IndexNow ping
+  if (process.env.GITHUB_OUTPUT) {
+    fs.appendFileSync(process.env.GITHUB_OUTPUT, `slug=${item.slug}\n`);
+  }
 }
 
 main().catch((err) => {

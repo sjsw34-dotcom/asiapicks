@@ -1,16 +1,21 @@
 import affiliateConfig from "@/data/affiliates.json";
 
 // ─── Agoda (Hotels only) ──────────────────────────────────────────────────────
-// linkmoa.kr 경유 제휴 링크 (아고다 직접 제휴 대신 사용)
+// TODO: 직접 Agoda 어필리에이트 승인되면 cid/pcs 파라미터 추가. 지금은 수수료 0 직링크.
 
-const AGODA_AFFILIATE_URL = "https://linkmoa.kr/click.php?m=agoda&a=A100693729&l=0000";
+const { cityIds: agodaCityIds } = affiliateConfig.agoda;
 
-export function getAgodaSearchLink(_citySlug: string): string {
-  return AGODA_AFFILIATE_URL;
+export function getAgodaSearchLink(citySlug: string): string {
+  const cityId = agodaCityIds[citySlug as keyof typeof agodaCityIds];
+  return cityId
+    ? `https://www.agoda.com/search?city=${cityId}`
+    : `https://www.agoda.com/`;
 }
 
-export function getAgodaHotelLink(_hotelId: string): string {
-  return AGODA_AFFILIATE_URL;
+export function getAgodaHotelLink(hotelId: string): string {
+  return hotelId
+    ? `https://www.agoda.com/hotel/${hotelId}.html`
+    : `https://www.agoda.com/`;
 }
 
 // ─── Klook (Activities only) ──────────────────────────────────────────────────

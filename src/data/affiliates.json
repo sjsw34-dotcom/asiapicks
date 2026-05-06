@@ -1,7 +1,5 @@
 {
   "agoda": {
-    "cid": "YOUR_AGODA_CID",
-    "baseUrl": "https://www.agoda.com/partners/partnersearch.aspx",
     "cityIds": {
       "tokyo": "14727",
       "osaka": "17067",
