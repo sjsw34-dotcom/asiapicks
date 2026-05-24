@@ -1,0 +1,42 @@
+name: Index All Posts (Google)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run — list URLs without submitting"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Submit sitemap URLs to Google Indexing API
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          NEXT_PUBLIC_BASE_URL: https://asiapicks.com
+          DRY: ${{ inputs.dry_run }}
+        run: |
+          if [ "$DRY" = "true" ]; then
+            npx tsx scripts/index-all-posts.ts --dry
+          else
+            npx tsx scripts/index-all-posts.ts
+          fi
