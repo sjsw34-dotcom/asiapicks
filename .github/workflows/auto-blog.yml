@@ -1,10 +1,11 @@
 name: Auto Blog Post
 
 on:
-  schedule:
-    # Every day at 21:00 UTC = 06:00 KST (next day)
-    - cron: "0 21 * * *"
-  workflow_dispatch: # allow manual run from GitHub Actions UI
+  # Daily schedule paused 2026-08-21 — site is on hold, no new posts wanted.
+  # To resume, uncomment the two lines below (21:00 UTC = 06:00 KST next day).
+  # schedule:
+  #   - cron: "0 21 * * *"
+  workflow_dispatch: # manual run only, from the GitHub Actions UI
 
 jobs:
   generate:
