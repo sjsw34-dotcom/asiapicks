@@ -1,29 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Colors - Primary */
   --color-primary: #0D9488;
   --color-primary-light: #14B8A6;
   --color-primary-dark: #0F766E;
-
-  /* Colors - Secondary (Coral) */
   --color-secondary: #F97316;
-  --color-secondary-light: #FB923C;
   --color-secondary-dark: #EA580C;
-
-  /* Colors - Accent (Purple / Saju) */
-  --color-accent: #8B5CF6;
-  --color-accent-light: #A78BFA;
-  --color-accent-dark: #7C3AED;
-
-  /* Colors - Neutral */
   --color-background: #FFFFFF;
   --color-surface: #F8FAFC;
   --color-text-primary: #1E293B;
   --color-text-secondary: #64748B;
   --color-border: #E2E8F0;
-
-  /* Fonts */
   --font-sans: var(--font-inter);
   --font-heading: var(--font-plus-jakarta-sans);
 }
@@ -34,22 +21,11 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4 {
   font-family: var(--font-heading), var(--font-sans), system-ui, sans-serif;
 }
 
-/* Hide scrollbar (for carousels) */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* MDX blog content base font size */
-.mdx-content {
+.content-body {
   font-size: 1.0625rem;
   line-height: 1.75;
-  color: #1E293B;
 }

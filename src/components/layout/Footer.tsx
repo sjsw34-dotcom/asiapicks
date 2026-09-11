@@ -1,87 +1,46 @@
 import Link from "next/link";
+import { CITIES } from "@/data/taxonomy";
+import { SITE } from "@/lib/site";
 
-const footerSections = [
-  {
-    title: "Destinations",
-    links: [
-      { href: "/destinations/japan", label: "Japan" },
-      { href: "/destinations/thailand", label: "Thailand" },
-      { href: "/destinations/korea", label: "South Korea" },
-      { href: "/destinations/vietnam", label: "Vietnam" },
-    ],
-  },
-  {
-    title: "Explore",
-    links: [
-      { href: "/blog", label: "Travel Blog" },
-      { href: "/deals", label: "Deals & Promos" },
-      { href: "/saju-travel", label: "Saju Travel" },
-      { href: "/about", label: "About Us" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { href: "/privacy", label: "Privacy Policy" },
-      { href: "/terms", label: "Terms of Use" },
-      { href: "/affiliate-disclosure", label: "Affiliate Disclosure" },
-    ],
-  },
+const TRUST = [
+  { href: "/about", label: "About" },
+  { href: "/editorial-policy", label: "Editorial Policy" },
+  { href: "/how-we-choose", label: "How We Choose Recommendations" },
+  { href: "/affiliate-disclosure", label: "Affiliate Disclosure" },
+  { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-surface border-t border-border">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <span className="text-xl font-bold font-heading text-primary">
-              Asiapicks
-            </span>
-            <p className="mt-3 text-sm text-text-secondary leading-relaxed">
-              Your trusted guide to the best destinations, hotels, and
-              experiences across Asia.
-            </p>
-
-          </div>
-
-          {/* Link Sections */}
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h3 className="text-sm font-semibold text-text-primary mb-3">
-                {section.title}
-              </h3>
-              <ul className="space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-text-secondary hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <footer className="mt-20 border-t border-border bg-surface">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-3 sm:px-6">
+        <div>
+          <p className="font-heading text-lg font-bold text-primary">{SITE.name}</p>
+          <p className="mt-2 text-sm text-text-secondary">{SITE.tagline}</p>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-text-secondary">
-            &copy; {new Date().getFullYear()} Asiapicks. All rights
-            reserved.
-          </p>
-          <Link
-            href="/affiliate-disclosure"
-            className="text-xs text-text-secondary hover:text-primary transition-colors"
-          >
-            Affiliate Disclosure: We earn commissions from Agoda &amp; Klook at no extra cost to you.
-          </Link>
-        </div>
+        <nav aria-label="Destinations">
+          <p className="text-sm font-semibold text-text-primary">South Korea</p>
+          <ul className="mt-3 space-y-2 text-sm">
+            <li><Link href="/korea" className="text-text-secondary hover:text-primary">South Korea travel guide</Link></li>
+            {CITIES.filter((c) => c.slug !== "incheon").map((c) => (
+              <li key={c.slug}><Link href={`/korea/${c.slug}`} className="text-text-secondary hover:text-primary">{c.name} travel guide</Link></li>
+            ))}
+          </ul>
+        </nav>
+        <nav aria-label="About AsiaPicks">
+          <p className="text-sm font-semibold text-text-primary">About</p>
+          <ul className="mt-3 space-y-2 text-sm">
+            {TRUST.map((t) => (
+              <li key={t.href}><Link href={t.href} className="text-text-secondary hover:text-primary">{t.label}</Link></li>
+            ))}
+          </ul>
+        </nav>
       </div>
+      <p className="border-t border-border px-4 py-6 text-center text-xs text-text-secondary">
+        © {new Date().getFullYear()} {SITE.name}. Some links are affiliate links; we may earn a commission at no extra cost to you.
+      </p>
     </footer>
   );
 }

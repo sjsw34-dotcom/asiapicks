@@ -1,95 +1,31 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
+import { CITIES } from "@/data/taxonomy";
+import { SITE } from "@/lib/site";
 
-const navLinks = [
-  { href: "/destinations", label: "Destinations" },
-  { href: "/blog", label: "Blog" },
-  { href: "/deals", label: "Deals" },
-  { href: "/saju-travel", label: "Saju Travel" },
+const NAV = [
+  { href: "/korea", label: "South Korea" },
+  ...CITIES.filter((c) => c.slug !== "incheon").map((c) => ({ href: `/korea/${c.slug}`, label: c.name })),
+  { href: "/korea/planning", label: "Plan Your Trip" },
 ];
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold font-heading text-primary">
-              Asiapicks
-            </span>
-          </Link>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  link.label === "Saju Travel"
-                    ? "text-accent"
-                    : "text-text-secondary"
-                }`}
-              >
-                {link.label}
-              </Link>
+    <header className="border-b border-border bg-white">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Link href="/" className="font-heading text-2xl font-bold text-primary">{SITE.name}</Link>
+        <nav aria-label="Main" className="hidden items-center gap-6 md:flex">
+          {NAV.map((n) => (
+            <Link key={n.href} href={n.href} className="text-sm font-medium text-text-secondary hover:text-primary">{n.label}</Link>
+          ))}
+        </nav>
+        <details className="relative md:hidden">
+          <summary className="cursor-pointer list-none rounded-md px-3 py-2 text-sm font-medium text-text-secondary" aria-label="Open menu">Menu</summary>
+          <nav aria-label="Mobile" className="absolute right-0 z-50 mt-2 w-56 rounded-xl border border-border bg-white p-2 shadow-lg">
+            {NAV.map((n) => (
+              <Link key={n.href} href={n.href} className="block rounded-lg px-3 py-2 text-sm text-text-primary hover:bg-surface">{n.label}</Link>
             ))}
           </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-text-secondary"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-            >
-              {mobileOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile Nav */}
-        {mobileOpen && (
-          <nav className="md:hidden border-t border-border py-4 space-y-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`block text-sm font-medium px-2 py-1 transition-colors hover:text-primary ${
-                  link.label === "Saju Travel"
-                    ? "text-accent"
-                    : "text-text-secondary"
-                }`}
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        )}
+        </details>
       </div>
     </header>
   );

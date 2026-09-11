@@ -1,94 +1,37 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import JsonLd from "@/components/common/JsonLd";
-import AdScript, { ADSENSE_CLIENT_ID } from "@/components/ads/AdScript";
-import { websiteSchema, organizationSchema } from "@/lib/seo";
+import JsonLd from "@/components/content/JsonLd";
+import { SITE } from "@/lib/site";
+import { organizationSchema, websiteSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://asiapicks.com";
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
+const jakarta = Plus_Jakarta_Sans({ variable: "--font-plus-jakarta-sans", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
-  title: {
-    default: "Asiapicks — Your Expert Guide to Asia Travel | Japan, Korea, Thailand, Vietnam",
-    template: "%s | Asiapicks",
-  },
-  description:
-    "Curated Asia travel guides, hotel deals, and itineraries. Expert tips for Japan, South Korea, Thailand, and Vietnam. Book the best hotels on Agoda & tours on Klook.",
-  keywords: [
-    "Asia travel",
-    "Japan travel guide",
-    "Thailand travel",
-    "Korea travel",
-    "Vietnam travel",
-    "Agoda hotels",
-    "Klook activities",
-    "Southeast Asia",
-  ],
-  authors: [{ name: "Asiapicks", url: BASE_URL }],
-  creator: "Asiapicks",
-  publisher: "Asiapicks",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    siteName: "Asiapicks",
-    images: [
-      {
-        url: `${BASE_URL}/api/og?title=Asiapicks — Your Guide to Asia Travel`,
-        width: 1200,
-        height: 630,
-        alt: "Asiapicks",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@asiapicks",
-  },
+  metadataBase: new URL(SITE.baseUrl),
+  title: { default: `${SITE.name}: Asia travel planning, starting with South Korea`, template: `%s | ${SITE.name}` },
+  description: SITE.tagline,
+  applicationName: SITE.name,
+  openGraph: { siteName: SITE.name, locale: SITE.locale, type: "website" },
+  twitter: { card: "summary_large_image" },
   ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-    ? {
-        verification: {
-          google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-        },
-      }
+    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
     : {}),
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <head>
-        <JsonLd schema={organizationSchema()} />
-        <JsonLd schema={websiteSchema()} />
-        <meta name="agd-partner-manual-verification" />
-        <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
-      </head>
-      <body className={`${inter.variable} ${plusJakartaSans.variable} antialiased`}>
+      <body className={`${inter.variable} ${jakarta.variable} antialiased`}>
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main id="main" className="min-h-[60vh]">{children}</main>
         <Footer />
-        <AdScript />
+        <Analytics />
       </body>
     </html>
   );
