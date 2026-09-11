@@ -1,5 +1,5 @@
 import type { ContentIndex } from "@/lib/content/loader";
-import { LEGACY, classifyLegacy } from "@/lib/legacy/legacy";
+import { LEGACY, classifyLegacy, isGone } from "@/lib/legacy/legacy";
 import { result } from "./types";
 
 export function redirectsCheck(idx: ContentIndex, inventory: string[], extraLivePaths: Set<string>, production: boolean) {
@@ -11,6 +11,10 @@ export function redirectsCheck(idx: ContentIndex, inventory: string[], extraLive
       const msg = `redirect ${red.from} -> ${red.to}: target is not published yet`;
       (production ? r.errors : r.warnings).push(msg);
     }
+  }
+  // The proxy answers gone prefixes with 410 before any page renders, so a live page there would be unreachable.
+  for (const p of live) {
+    if (isGone(p)) r.errors.push(`live page ${p} matches a gone prefix; the proxy would serve 410 instead of the page`);
   }
   for (const p of inventory) {
     if (classifyLegacy(p, live) === "unhandled") r.errors.push(`legacy URL ${p} has no redirect, 410 rule or live page`);

@@ -1,7 +1,11 @@
-const stripFences = (body: string) => body.replace(/```[\s\S]*?```/g, "");
+export const stripFences = (body: string) => body.replace(/```[\s\S]*?```/g, "");
 
 export const usesAffiliateComponents = (body: string) =>
   /<(Offer|OfferList|ComparisonTable|BookingCTA)\b/.test(stripFences(body));
+
+/** Layout rule shared by articles, hubs, categories and trust pages: show the affiliate disclosure near the top. */
+export const needsDisclosure = (body: string, offerIds: readonly string[] = []) =>
+  offerIds.length > 0 || usesAffiliateComponents(body);
 
 export const hasMdxH1 = (body: string) => /^#\s+\S/m.test(stripFences(body));
 

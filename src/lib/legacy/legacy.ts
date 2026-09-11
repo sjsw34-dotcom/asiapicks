@@ -1,4 +1,5 @@
 import data from "@/data/legacy-urls.json";
+import { GONE_PAGE_LINKS } from "@/data/navigation";
 
 export const LEGACY: { redirects: { from: string; to: string }[]; gonePrefixes: string[] } = data;
 
@@ -21,5 +22,4 @@ export const GONE_HTML = `<!doctype html><html lang="en"><head><meta charset="ut
 <body style="font-family:system-ui,sans-serif;max-width:40rem;margin:4rem auto;padding:0 1rem;color:#1E293B">
 <h1>This page has been removed</h1>
 <p>AsiaPicks now focuses on South Korea travel. Start here:</p>
-<ul><li><a href="/korea">South Korea travel guide</a></li><li><a href="/korea/seoul">Seoul</a></li>
-<li><a href="/korea/busan">Busan</a></li><li><a href="/korea/jeju">Jeju</a></li></ul></body></html>`;
+<ul>${GONE_PAGE_LINKS.map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join("")}</ul></body></html>`;

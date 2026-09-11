@@ -2,7 +2,9 @@ import Link from "next/link";
 import type { ContentIndex, Hub } from "@/lib/content/loader";
 import { breadcrumbSchema, destinationSchema, faqSchema } from "@/lib/seo/schema";
 import { getImage } from "@/lib/images/registry";
+import { needsDisclosure } from "@/lib/content/body";
 import Figure from "@/components/media/Figure";
+import Disclosure from "@/components/affiliate/Disclosure";
 import JsonLd from "./JsonLd";
 import Breadcrumbs, { breadcrumbsFor } from "./Breadcrumbs";
 import AnswerBox from "./AnswerBox";
@@ -29,6 +31,7 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
         <h1 className="font-heading text-3xl font-bold md:text-4xl">{hub.fm.title}</h1>
         <ArticleMeta updatedAt={hub.fm.updatedAt} author={hub.fm.author} />
       </header>
+      {needsDisclosure(hub.body) ? <Disclosure /> : null}
       <AnswerBox summary={hub.fm.summary} />
       {image ? <Figure id={image.id} priority /> : null}
       {categories.length > 0 ? (

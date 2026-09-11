@@ -1,6 +1,6 @@
 import type { Article, ContentIndex } from "@/lib/content/loader";
 import { relatedArticles, nextStep } from "@/lib/content/links";
-import { usesAffiliateComponents } from "@/lib/content/body";
+import { needsDisclosure } from "@/lib/content/body";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/seo/schema";
 import { getImage } from "@/lib/images/registry";
 import { absoluteUrl } from "@/lib/site";
@@ -21,7 +21,7 @@ import RelatedGuides from "./RelatedGuides";
 export default function ArticleLayout({ article, idx }: { article: Article; idx: ContentIndex }) {
   const { fm } = article;
   const crumbs = breadcrumbsFor(article);
-  const hasAffiliate = fm.offers.length > 0 || usesAffiliateComponents(article.body);
+  const hasAffiliate = needsDisclosure(article.body, fm.offers);
   const image = fm.featuredImage ? getImage(fm.featuredImage) : null;
   const schemas: object[] = [articleSchema(article, image ? absoluteUrl(image.src) : undefined), breadcrumbSchema(crumbs)];
   if (fm.faqs.length > 0) schemas.push(faqSchema(fm.faqs));

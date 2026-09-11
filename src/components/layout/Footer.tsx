@@ -1,16 +1,6 @@
 import Link from "next/link";
-import { CITIES } from "@/data/taxonomy";
+import { FOOTER_DESTINATIONS, FOOTER_TRUST } from "@/data/navigation";
 import { SITE } from "@/lib/site";
-
-const TRUST = [
-  { href: "/about", label: "About" },
-  { href: "/editorial-policy", label: "Editorial Policy" },
-  { href: "/how-we-choose", label: "How We Choose Recommendations" },
-  { href: "/affiliate-disclosure", label: "Affiliate Disclosure" },
-  { href: "/contact", label: "Contact" },
-  { href: "/privacy", label: "Privacy" },
-  { href: "/terms", label: "Terms" },
-];
 
 export default function Footer() {
   return (
@@ -23,16 +13,15 @@ export default function Footer() {
         <nav aria-label="Destinations">
           <p className="text-sm font-semibold text-text-primary">South Korea</p>
           <ul className="mt-3 space-y-2 text-sm">
-            <li><Link href="/korea" className="text-text-secondary hover:text-primary">South Korea travel guide</Link></li>
-            {CITIES.filter((c) => c.slug !== "incheon").map((c) => (
-              <li key={c.slug}><Link href={`/korea/${c.slug}`} className="text-text-secondary hover:text-primary">{c.name} travel guide</Link></li>
+            {FOOTER_DESTINATIONS.map((d) => (
+              <li key={d.href}><Link href={d.href} className="text-text-secondary hover:text-primary">{d.label}</Link></li>
             ))}
           </ul>
         </nav>
         <nav aria-label="About AsiaPicks">
           <p className="text-sm font-semibold text-text-primary">About</p>
           <ul className="mt-3 space-y-2 text-sm">
-            {TRUST.map((t) => (
+            {FOOTER_TRUST.map((t) => (
               <li key={t.href}><Link href={t.href} className="text-text-secondary hover:text-primary">{t.label}</Link></li>
             ))}
           </ul>

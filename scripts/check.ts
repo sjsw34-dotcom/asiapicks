@@ -10,6 +10,7 @@ import { seoCheck } from "@/lib/checks/seo";
 import { redirectsCheck } from "@/lib/checks/redirects";
 import { releaseCheck } from "@/lib/checks/release";
 import { factsCheck } from "@/lib/checks/facts";
+import { navigationCheck } from "@/lib/checks/navigation";
 import { staticLivePaths, type CheckResult } from "@/lib/checks/types";
 
 function main() {
@@ -23,8 +24,9 @@ function main() {
   const today = new Date().toISOString().slice(0, 10);
 
   const results: CheckResult[] = [
-    contentCheck(idx, images, offers),
+    contentCheck(idx, images, offers, production),
     linksCheck(idx, live),
+    navigationCheck(idx, live, production),
     imagesCheck(images, path.join(process.cwd(), "public")),
     seoCheck(idx),
     redirectsCheck(idx, inventory, live, production),

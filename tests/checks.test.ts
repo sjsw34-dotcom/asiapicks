@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import path from "node:path";
-import { loadContent, type ContentIndex, type Article, type Hub } from "@/lib/content/loader";
+import { loadContent, type ContentIndex, type Article, type Hub, type CategoryPage } from "@/lib/content/loader";
 import { contentCheck } from "@/lib/checks/content";
 import { linksCheck } from "@/lib/checks/links";
 import { imagesCheck } from "@/lib/checks/images";
@@ -161,4 +161,85 @@ test("release check in production warns about unconfigured providers without fai
   const r = releaseCheck(idx, offers, { NODE_ENV: "production", CONTACT_EMAIL: "hello@asiapicks.com" } as NodeJS.ProcessEnv, true);
   assert.match(r.warnings.join("\n"), /Viator/);
   assert.deepEqual(r.errors, []);
+});
+
+// --- Final whole-branch review fixes ---
+
+function withCategory(base: ContentIndex, patch: (c: CategoryPage) => CategoryPage): ContentIndex {
+  const src = base.categories.find((c) => c.path === "/korea/planning")!;
+  const changed = patch({ ...src, fm: { ...src.fm } });
+  const categories = base.categories.map((c) => (c === src ? changed : c));
+  const byPath = new Map(base.byPath);
+  byPath.set(changed.path, changed);
+  return { ...base, categories, byPath };
+}
+
+const offer = (id: string, patch: Partial<Offer> = {}): Offer => ({
+  id,
+  provider: "creatrip",
+  kind: "ticket",
+  title: "Palace entry ticket",
+  summary: "Skip the ticket line at the palace gate.",
+  targetUrl: "https://creatrip.com/en",
+  destination: "korea/seoul",
+  tags: [],
+  ...patch,
+});
+
+test("unknown offer and image ids in hub and category bodies are errors", () => {
+  const hub = withHub(idx, (h) => ({ ...h, body: `${h.body}\n<OfferList ids="x" />` }));
+  assert.match(contentCheck(hub, new Map(), new Map()).errors.join("\n"), /korea\/_hub\.mdx: unknown offer "x"/);
+  const cat = withCategory(idx, (c) => ({ ...c, body: `${c.body}\n<Figure id="no-such-figure" />\n<BookingCTA id="y" />` }));
+  const errors = contentCheck(cat, new Map(), new Map()).errors.join("\n");
+  assert.match(errors, /_categories\/planning\.mdx: unknown image "no-such-figure"/);
+  assert.match(errors, /_categories\/planning\.mdx: unknown offer "y"/);
+});
+
+test("seed category intro is an error only in production", () => {
+  const bySummary = withCategory(idx, (c) => ({ ...c, fm: { ...c.fm, summary: "SEED CONTENT intro." } }));
+  const byBody = withCategory(idx, (c) => ({ ...c, body: "SEED CONTENT." }));
+  for (const seeded of [bySummary, byBody]) {
+    assert.match(contentCheck(seeded, new Map(), new Map(), true).errors.join("\n"), /planning\.mdx: seed content/);
+    assert.deepEqual(contentCheck(seeded, new Map(), new Map(), false).errors, []);
+  }
+});
+
+test("seed offer is an error only in production", () => {
+  for (const o of [offer("seed-a", { summary: "SEED CONTENT offer." }), offer("seed-b", { title: "SEED CONTENT title" })]) {
+    const offers = new Map([[o.id, o]]);
+    assert.match(contentCheck(idx, new Map(), offers, true).errors.join("\n"), new RegExp(`offer "${o.id}": seed content`));
+    assert.deepEqual(contentCheck(idx, new Map(), offers, false).errors, []);
+  }
+});
+
+test("offer image missing from the image registry is an error", () => {
+  const offers = new Map([["palace-ticket", offer("palace-ticket", { image: "missing-image" })]]);
+  assert.match(contentCheck(idx, new Map(), offers).errors.join("\n"), /offer "palace-ticket": unknown image "missing-image"/);
+  const images = loadImages(path.join(process.cwd(), "tests/fixtures/images"));
+  const ok = new Map([["palace-ticket", offer("palace-ticket", { image: "gyeongbokgung-gate" })]]);
+  assert.deepEqual(contentCheck(idx, images, ok).errors, []);
+});
+
+test("provider URLs hardcoded in MDX bodies are errors", () => {
+  const article = withArticle(idx, (a) => ({ ...a, body: `${a.body}\n[book](https://www.viator.com/x)` }));
+  assert.match(
+    contentCheck(article, new Map(), new Map()).errors.join("\n"),
+    /how-to-pay-in-korea\.mdx: provider URL https:\/\/www\.viator\.com\/x/,
+  );
+  const hub = withHub(idx, (h) => ({ ...h, body: `${h.body}\n<a href="https://KR.Trip.com/hotels">hotels</a>` }));
+  assert.match(contentCheck(hub, new Map(), new Map()).errors.join("\n"), /_hub\.mdx: provider URL/);
+  const cat = withCategory(idx, (c) => ({ ...c, body: `${c.body}\n[spot](https://creatrip.com/en/spot/1)` }));
+  assert.match(contentCheck(cat, new Map(), new Map()).errors.join("\n"), /planning\.mdx: provider URL/);
+  const official = withArticle(idx, (a) => ({
+    ...a,
+    body: `${a.body}\n[AREX](https://www.arex.or.kr/) and [a blog](https://notviator.com/x)`,
+  }));
+  assert.deepEqual(contentCheck(official, new Map(), new Map()).errors, []);
+});
+
+test("a live page under a gone prefix is an error (the proxy would 410 it)", () => {
+  const withSearch: ContentIndex = { ...idx, byPath: new Map(idx.byPath) };
+  withSearch.byPath.set("/search", idx.hubs[0]);
+  assert.match(redirectsCheck(withSearch, [], live, false).errors.join("\n"), /\/search.*410/);
+  assert.equal(redirectsCheck(idx, [], live, false).errors.some((e) => e.includes("410")), false);
 });

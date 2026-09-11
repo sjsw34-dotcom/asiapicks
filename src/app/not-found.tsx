@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NOT_FOUND_LINKS } from "@/data/navigation";
 
 export default function NotFound() {
   return (
@@ -6,10 +7,9 @@ export default function NotFound() {
       <h1 className="font-heading text-3xl font-bold">Page not found</h1>
       <p className="mt-4 text-text-secondary">This page does not exist. Start from one of our South Korea guides.</p>
       <p className="mt-6 flex flex-wrap justify-center gap-4">
-        <Link href="/korea" className="text-primary underline">South Korea</Link>
-        <Link href="/korea/seoul" className="text-primary underline">Seoul</Link>
-        <Link href="/korea/busan" className="text-primary underline">Busan</Link>
-        <Link href="/korea/jeju" className="text-primary underline">Jeju</Link>
+        {NOT_FOUND_LINKS.map((l) => (
+          <Link key={l.href} href={l.href} className="text-primary underline">{l.label}</Link>
+        ))}
       </p>
     </div>
   );

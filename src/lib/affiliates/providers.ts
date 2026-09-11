@@ -12,6 +12,14 @@ export const PROVIDER_HOSTS: Record<ProviderId, string[]> = {
   tripcom: ["www.trip.com", "trip.com", "us.trip.com"],
 };
 
+const ALL_PROVIDER_HOSTS = Object.values(PROVIDER_HOSTS).flat();
+
+/** True for a provider host or any subdomain of one (e.g. kr.trip.com). */
+export const isProviderHost = (host: string) => {
+  const h = host.toLowerCase().replace(/\.$/, "");
+  return ALL_PROVIDER_HOSTS.some((p) => h === p || h.endsWith(`.${p}`));
+};
+
 const v = (env: NodeJS.ProcessEnv, key: string) => env[key]?.trim() || "";
 
 export function isProviderConfigured(p: ProviderId, env: NodeJS.ProcessEnv = process.env): boolean {

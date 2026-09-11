@@ -1,5 +1,7 @@
 import type { CategoryPage } from "@/lib/content/loader";
 import { breadcrumbSchema } from "@/lib/seo/schema";
+import { needsDisclosure } from "@/lib/content/body";
+import Disclosure from "@/components/affiliate/Disclosure";
 import JsonLd from "./JsonLd";
 import Breadcrumbs, { breadcrumbsFor } from "./Breadcrumbs";
 import AnswerBox from "./AnswerBox";
@@ -13,6 +15,7 @@ export default function CategoryLayout({ page }: { page: CategoryPage }) {
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <Breadcrumbs items={crumbs} />
       <h1 className="mt-6 font-heading text-3xl font-bold md:text-4xl">{page.fm.title}</h1>
+      {needsDisclosure(page.body) ? <Disclosure /> : null}
       <AnswerBox summary={page.fm.summary} />
       <Mdx source={page.body} sourceSlug={`category-${page.category}`} />
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
