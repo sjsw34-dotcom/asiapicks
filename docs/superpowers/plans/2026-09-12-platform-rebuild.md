@@ -1042,32 +1042,32 @@ import { buildAffiliateUrl, isProviderConfigured } from "@/lib/affiliates/provid
 import { loadOffers, offerSchema, parseIdList } from "@/lib/affiliates/offers";
 
 const env = {
-  VIATOR_PID: "P00319575", VIATOR_MCID: "42383",
-  CREATRIP_AFF_CODE: "z2aiofi",
-  TRIPCOM_ALLIANCE_ID: "10527938", TRIPCOM_SID: "331072155",
+  VIATOR_PID: "P00000001", VIATOR_MCID: "11111",
+  CREATRIP_AFF_CODE: "testcode",
+  TRIPCOM_ALLIANCE_ID: "1234567", TRIPCOM_SID: "7654321",
 } as unknown as NodeJS.ProcessEnv;
 
 test("viator link carries pid, mcid, medium and campaign", () => {
   const { url, tracked } = buildAffiliateUrl("viator", "https://www.viator.com/Seoul/d973", "dmz-tours", env);
   const u = new URL(url);
   assert.equal(tracked, true);
-  assert.equal(u.searchParams.get("pid"), "P00319575");
-  assert.equal(u.searchParams.get("mcid"), "42383");
+  assert.equal(u.searchParams.get("pid"), "P00000001");
+  assert.equal(u.searchParams.get("mcid"), "11111");
   assert.equal(u.searchParams.get("medium"), "link");
   assert.equal(u.searchParams.get("campaign"), "dmz-tours");
 });
 
 test("creatrip link carries utm_source and aff_id", () => {
   const u = new URL(buildAffiliateUrl("creatrip", "https://creatrip.com/en/spot/123", "hanbok-rental", env).url);
-  assert.equal(u.searchParams.get("utm_source"), "AFF-z2aiofi");
-  assert.equal(u.searchParams.get("aff_id"), "AFF-z2aiofi");
+  assert.equal(u.searchParams.get("utm_source"), "AFF-testcode");
+  assert.equal(u.searchParams.get("aff_id"), "AFF-testcode");
   assert.equal(u.searchParams.get("utm_campaign"), "hanbok-rental");
 });
 
 test("trip.com link carries Allianceid, SID, trip_sub1", () => {
   const u = new URL(buildAffiliateUrl("tripcom", "https://www.trip.com/hotels/", "where-to-stay-in-seoul", env).url);
-  assert.equal(u.searchParams.get("Allianceid"), "10527938");
-  assert.equal(u.searchParams.get("SID"), "331072155");
+  assert.equal(u.searchParams.get("Allianceid"), "1234567");
+  assert.equal(u.searchParams.get("SID"), "7654321");
   assert.equal(u.searchParams.get("trip_sub1"), "where-to-stay-in-seoul");
 });
 
