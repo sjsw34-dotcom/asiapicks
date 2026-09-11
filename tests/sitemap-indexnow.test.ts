@@ -5,7 +5,7 @@ import fs from "node:fs";
 import os from "node:os";
 import { loadContent } from "@/lib/content/loader";
 import { buildSitemapEntries } from "@/lib/seo/sitemap";
-import { indexNowPayload, findIndexNowKey } from "@/lib/indexnow";
+import { indexNowPayload, findIndexNowKey, isCanonicalUrl } from "@/lib/indexnow";
 import { escapeXml } from "@/lib/seo/feed";
 import robots from "@/app/robots";
 import { GET as feedGet } from "@/app/feed.xml/route";
@@ -30,6 +30,15 @@ test("indexnow payload targets the canonical host", () => {
 test("indexnow key is found from env first, then public/", () => {
   assert.equal(findIndexNowKey(path.join(process.cwd(), "public"), { INDEXNOW_KEY: "fromenv" } as unknown as NodeJS.ProcessEnv), "fromenv");
   assert.equal(findIndexNowKey(path.join(process.cwd(), "public"), {} as NodeJS.ProcessEnv), "a3f2e7c8b1d49f6e2c8a4b7d1f3e9c2a");
+});
+
+test("isCanonicalUrl accepts only https URLs on the canonical host", () => {
+  assert.equal(isCanonicalUrl("https://asiapicks.com/korea"), true);
+  assert.equal(isCanonicalUrl("https://asiapicks.com.evil.com/x"), false);
+  assert.equal(isCanonicalUrl("https://asiapicks.comX/x"), false);
+  assert.equal(isCanonicalUrl("http://asiapicks.com/korea"), false);
+  assert.equal(isCanonicalUrl("https://www.asiapicks.com/korea"), false);
+  assert.equal(isCanonicalUrl("not a url"), false);
 });
 
 test("indexnow key throws when none is configured", () => {

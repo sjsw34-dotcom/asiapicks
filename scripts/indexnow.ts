@@ -1,6 +1,6 @@
-import { indexNowPayload, findIndexNowKey } from "@/lib/indexnow";
+import { indexNowPayload, findIndexNowKey, isCanonicalUrl } from "@/lib/indexnow";
 
-const urls = process.argv.slice(2).filter((u) => u.startsWith("https://asiapicks.com"));
+const urls = process.argv.slice(2).filter(isCanonicalUrl);
 if (urls.length === 0) {
   console.error("Usage: npx tsx scripts/indexnow.ts https://asiapicks.com/korea/... [more urls]");
   process.exit(1);
