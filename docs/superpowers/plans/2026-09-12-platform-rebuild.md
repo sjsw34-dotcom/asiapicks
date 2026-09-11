@@ -20,7 +20,7 @@
 - Every page is statically generated. No client JS except the mobile nav toggle and `@vercel/analytics`.
 - No AdSense, no Klook, no Agoda, no sajumuse, no Unsplash, no Neon DB, no Google Indexing API anywhere.
 - MDX component props are strings only (next-mdx-remote 6 `blockJS` default strips JS expressions). Lists are comma-separated strings: `ids="a,b"`.
-- Affiliate links: `rel="sponsored nofollow noopener"`, `target="_blank"`. No ratings, no provider copy, no provider photos, no Product/Offer/AggregateRating schema.
+- Affiliate links: tracked links (provider IDs configured) `rel="sponsored nofollow noopener"`; partner links without configured IDs `rel="nofollow noopener"`; both `target="_blank"`. No ratings, no provider copy, no provider photos, no Product/Offer/AggregateRating schema.
 - Affiliate IDs come only from env: `VIATOR_PID`, `VIATOR_MCID`, `CREATRIP_AFF_CODE`, `TRIPCOM_ALLIANCE_ID`, `TRIPCOM_SID`. Empty → plain link.
 - Content statuses: `draft` (never built), `review` (built only when `VERCEL_ENV=preview` or `NODE_ENV=development`, always `noindex`), `published`.
 - Tests: `node:test` + `node:assert/strict`, run with `npm test` (= `tsx --test "tests/**/*.test.ts"`). No new test framework.

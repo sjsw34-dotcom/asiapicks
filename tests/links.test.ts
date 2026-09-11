@@ -82,6 +82,22 @@ test("relatedArticles ignores manual paths that don't exist", () => {
   assert.equal(rel.length, 1);
 });
 
+test("relatedArticles de-duplicates repeated manual paths", () => {
+  const src = idx.articles.find((x) => x.fm.slug === "incheon-airport-to-seoul")!;
+  const modified = {
+    ...src,
+    fm: { ...src.fm, relatedArticles: ["/korea/how-to-pay-in-korea", "/korea/how-to-pay-in-korea"] },
+  };
+  const modifiedIdx: typeof idx = {
+    ...idx,
+    articles: idx.articles.map((a) => (a === src ? modified : a)),
+    byPath: new Map([...idx.byPath]),
+  };
+  modifiedIdx.byPath.set(modified.path, modified);
+  const rel = relatedArticles(modified, modifiedIdx, 3);
+  assert.deepEqual(rel.map((r) => r.path), ["/korea/how-to-pay-in-korea"]);
+});
+
 test("extractInternalLinks ignores protocol-relative links", () => {
   const body = '[x](//cdn.example.com/a) [y](/real/path)';
   assert.deepEqual(extractInternalLinks(body), ["/real/path"]);

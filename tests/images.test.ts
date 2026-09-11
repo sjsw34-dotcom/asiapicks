@@ -32,6 +32,20 @@ test("decorative image may have empty alt", () => {
   assert.equal(r.success, true);
 });
 
+test("third-party (KOGL/CC) images require sourceUrl; owned and AI images do not", () => {
+  const base = {
+    id: "x", src: "/images/x.jpg", width: 10, height: 10, alt: "a palace gate", decorative: false,
+    credit: "Korea Tourism Organization", aiGenerated: false,
+  };
+  const kogl = imageSchema.safeParse({ ...base, license: "KOGL Type 1" });
+  assert.equal(kogl.success, false);
+  assert.ok(kogl.error?.issues.some((i) => i.path.join(".") === "sourceUrl"));
+  assert.equal(imageSchema.safeParse({ ...base, license: "CC BY-SA 4.0", credit: "Wikimedia Commons user" }).success, false);
+  assert.equal(imageSchema.safeParse({ ...base, license: "KOGL Type 1", sourceUrl: "https://phoko.visitkorea.or.kr/" }).success, true);
+  assert.equal(imageSchema.safeParse({ ...base, license: "Owned", credit: "AsiaPicks" }).success, true);
+  assert.equal(imageSchema.safeParse({ ...base, license: "AI-generated", credit: "AsiaPicks", aiGenerated: true }).success, true);
+});
+
 test("id/filename mismatch throws", () => {
   assert.throws(() => loadImages(mismatchDir), /does not match file name/);
 });

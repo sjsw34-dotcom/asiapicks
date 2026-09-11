@@ -43,6 +43,26 @@ test("proxy: www host redirects 308 to apex, preserving path and query", async (
   assert.equal(res.headers.get("location"), "https://asiapicks.com/korea?x=1");
 });
 
+test("proxy: mixed-case www host redirects 308 to the canonical base URL", async () => {
+  const { proxy } = await import("@/proxy");
+  const { NextRequest } = await import("next/server");
+  const res = proxy(
+    new NextRequest("https://WWW.asiapicks.com/korea/seoul?x=1", { headers: { host: "WWW.asiapicks.com" } })
+  );
+  assert.equal(res.status, 308);
+  assert.equal(res.headers.get("location"), "https://asiapicks.com/korea/seoul?x=1");
+});
+
+test("proxy: www redirect target comes from SITE.baseUrl, not the Host header", async () => {
+  const { proxy } = await import("@/proxy");
+  const { NextRequest } = await import("next/server");
+  const res = proxy(
+    new NextRequest("https://www.evil.example/korea", { headers: { host: "www.evil.example" } })
+  );
+  assert.equal(res.status, 308);
+  assert.equal(res.headers.get("location"), "https://asiapicks.com/korea");
+});
+
 test("proxy: gone prefix on apex host returns 410 with noindex and removal copy", async () => {
   const { proxy } = await import("@/proxy");
   const { NextRequest } = await import("next/server");

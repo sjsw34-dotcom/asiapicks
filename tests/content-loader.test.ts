@@ -34,6 +34,17 @@ test("category without published articles is not generated", () => {
   assert.equal(idx.categories.find((c) => c.path === "/korea/seoul/food"), undefined);
 });
 
+test("category members are sorted like idx.articles (updatedAt desc)", () => {
+  const idx = loadContent({ root: path.join(process.cwd(), "tests/fixtures/content-sort"), includeReview: false });
+  const cat = idx.categories.find((c) => c.path === "/korea/planning");
+  assert.ok(cat);
+  assert.deepEqual(cat.articles.map((a) => a.fm.slug), ["b-newer-guide", "a-older-guide"]);
+  assert.deepEqual(
+    cat.articles.map((a) => a.path),
+    idx.articles.filter((a) => a.fm.category === "planning").map((a) => a.path),
+  );
+});
+
 test("invalid frontmatter throws with file path", () => {
   const badRoot = path.join(process.cwd(), "tests/fixtures/content-bad");
   assert.throws(() => loadContent({ root: badRoot, includeReview: false }), /content-bad.*bad\.mdx/s);

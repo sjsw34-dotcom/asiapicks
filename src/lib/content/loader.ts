@@ -39,6 +39,8 @@ function read<T extends z.ZodType>(file: string, schema: T): { fm: z.infer<T>; b
   return { fm: parsed.data, body: content };
 }
 
+const byUpdatedDesc = (a: Article, b: Article) => b.fm.updatedAt.localeCompare(a.fm.updatedAt);
+
 const visible = (status: ContentStatus, includeReview: boolean) =>
   status === "published" || (includeReview && status === "review");
 
@@ -93,7 +95,9 @@ export function loadContent(opts: { root?: string; includeReview?: boolean } = {
         const category = name.replace(/\.mdx$/, "");
         const file = path.join(catDir, name);
         const { fm, body } = read(file, categorySchema);
-        const members = articles.filter((a) => a.country === country && a.city === city && a.fm.category === category);
+        const members = articles
+          .filter((a) => a.country === country && a.city === city && a.fm.category === category)
+          .sort(byUpdatedDesc);
         if (members.length === 0) continue;
         categories.push({
           kind: "category", fm, body, country, city, category,
@@ -103,7 +107,7 @@ export function loadContent(opts: { root?: string; includeReview?: boolean } = {
     }
   }
 
-  articles.sort((a, b) => b.fm.updatedAt.localeCompare(a.fm.updatedAt));
+  articles.sort(byUpdatedDesc);
   const byPath = new Map<string, ContentNode>();
   for (const node of [...hubs, ...categories, ...articles]) {
     if (byPath.has(node.path)) throw new Error(`Duplicate path ${node.path} (${node.file})`);

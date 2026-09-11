@@ -40,7 +40,8 @@ function score(a: Article, b: Article): number {
 export function relatedArticles(a: Article, idx: ContentIndex, limit = 3): Article[] {
   const manual = a.fm.relatedArticles
     .map((p) => idx.byPath.get(p))
-    .filter((n): n is Article => !!n && n.kind === "article" && n.path !== a.path);
+    .filter((n): n is Article => !!n && n.kind === "article" && n.path !== a.path)
+    .filter((n, i, all) => all.indexOf(n) === i);
   const scored = idx.articles
     .filter((b) => b.path !== a.path && !manual.includes(b))
     .map((b) => ({ b, s: score(a, b) }))

@@ -34,6 +34,8 @@ First expertise: South Korea. English only. Design spec: `docs/superpowers/specs
 - One BookingCTA per article, after the informational sections. No sticky bars, popups or widget scripts.
 - Never show ratings, provider descriptions or provider photos. No Product/Offer/AggregateRating schema.
 - IDs only from env (`VIATOR_PID`, `VIATOR_MCID`, `CREATRIP_AFF_CODE`, `TRIPCOM_ALLIANCE_ID`, `TRIPCOM_SID`).
+- Link attributes: tracked affiliate links (provider IDs configured) use `rel="sponsored nofollow noopener"`; partner links without configured IDs use `rel="nofollow noopener"`. Both use `target="_blank"`.
+- Providers are linked only through `<Offer>`, `<OfferList>`, `<ComparisonTable>`, `<BookingCTA>`. Never put a provider URL in an MDX body.
 
 ## Image rules
 - Real places: KTO Photo Korea (KOGL type 1) or Wikimedia Commons with credit and license.

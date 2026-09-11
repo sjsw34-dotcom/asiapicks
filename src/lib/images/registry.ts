@@ -16,7 +16,11 @@ export const imageSchema = z
     sourceUrl: z.url().optional(),
     aiGenerated: z.boolean().default(false),
   })
-  .refine((v) => v.decorative || v.alt.trim().length > 0, { message: "alt is required unless decorative", path: ["alt"] });
+  .refine((v) => v.decorative || v.alt.trim().length > 0, { message: "alt is required unless decorative", path: ["alt"] })
+  // Third-party licenses (KOGL, Creative Commons) need a link back to the source for attribution; owned/AI images may omit it.
+  .refine((v) => !/^(KOGL|CC)/i.test(v.license.trim()) || !!v.sourceUrl, {
+    message: "sourceUrl is required for KOGL and CC licensed images", path: ["sourceUrl"],
+  });
 
 export type ImageEntry = z.infer<typeof imageSchema>;
 
