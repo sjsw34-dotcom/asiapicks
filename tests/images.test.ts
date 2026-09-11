@@ -1,9 +1,11 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import path from "node:path";
-import { loadImages, imageSchema } from "@/lib/images/registry";
+import { loadImages, imageSchema, getImage } from "@/lib/images/registry";
 
 const dir = path.join(process.cwd(), "tests/fixtures/images");
+const mismatchDir = path.join(process.cwd(), "tests/fixtures/images-mismatch");
+const invalidDir = path.join(process.cwd(), "tests/fixtures/images-invalid");
 
 test("loads image entries keyed by id", () => {
   const images = loadImages(dir);
@@ -27,4 +29,16 @@ test("decorative image may have empty alt", () => {
     credit: "AsiaPicks", license: "Owned", aiGenerated: false,
   });
   assert.equal(r.success, true);
+});
+
+test("id/filename mismatch throws", () => {
+  assert.throws(() => loadImages(mismatchDir), /does not match file name/);
+});
+
+test("schema-invalid entry throws", () => {
+  assert.throws(() => loadImages(invalidDir), /Invalid image entry/);
+});
+
+test("getImage with unknown id throws", () => {
+  assert.throws(() => getImage("no-such-image"), /Unknown image id/);
 });

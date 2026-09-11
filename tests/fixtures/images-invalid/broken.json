@@ -1,0 +1,11 @@
+{
+  "id": "broken",
+  "src": "/images/broken.jpg",
+  "width": 800,
+  "height": 600,
+  "alt": "",
+  "decorative": false,
+  "credit": "Test",
+  "license": "Test",
+  "aiGenerated": false
+}

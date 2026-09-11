@@ -1,0 +1,11 @@
+{
+  "id": "wrong-id",
+  "src": "/images/test.jpg",
+  "width": 800,
+  "height": 600,
+  "alt": "Test image",
+  "decorative": false,
+  "credit": "Test",
+  "license": "Test",
+  "aiGenerated": false
+}
