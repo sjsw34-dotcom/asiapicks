@@ -1,0 +1,12 @@
+{
+  "id": "dmz-half-day-tour",
+  "provider": "viator",
+  "kind": "tour",
+  "title": "Half-day DMZ tour from Seoul",
+  "summary": "Morning departures from central Seoul. Good for travelers with only one free morning.",
+  "priceText": "typically $45–80 per person",
+  "priceCheckedAt": "2026-09-10",
+  "targetUrl": "https://www.viator.com/Seoul/d973",
+  "destination": "korea/seoul",
+  "tags": ["dmz", "day-trip"]
+}

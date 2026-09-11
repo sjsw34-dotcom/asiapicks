@@ -1,0 +1,10 @@
+{
+  "id": "broken",
+  "provider": "viator",
+  "kind": "tour",
+  "title": "Broken offer",
+  "summary": "Provider host does not match target URL host.",
+  "targetUrl": "https://www.trip.com/x",
+  "destination": "korea/seoul",
+  "tags": []
+}

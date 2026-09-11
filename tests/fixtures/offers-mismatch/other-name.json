@@ -1,0 +1,10 @@
+{
+  "id": "wrong-id",
+  "provider": "viator",
+  "kind": "tour",
+  "title": "Wrong id offer",
+  "summary": "The id field does not match the file name.",
+  "targetUrl": "https://www.viator.com/Seoul/d973",
+  "destination": "korea/seoul",
+  "tags": []
+}
