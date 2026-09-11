@@ -6,7 +6,8 @@ export default function robots(): MetadataRoute.Robots {
     return { rules: [{ userAgent: "*", disallow: "/" }] };
   }
   return {
-    rules: [{ userAgent: "*", allow: "/", disallow: ["/api/"] }],
+    // /api/og is the default og:image; it must stay crawlable while the rest of /api/ is blocked.
+    rules: [{ userAgent: "*", allow: ["/", "/api/og"], disallow: ["/api/"] }],
     sitemap: absoluteUrl("/sitemap.xml"),
   };
 }

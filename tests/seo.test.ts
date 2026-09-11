@@ -84,11 +84,26 @@ test("article schema reflects frontmatter", () => {
   assert.equal("aggregateRating" in s, false);
 });
 
-test("destination schema for city hub", () => {
+test("city hub schema is a CollectionPage about the city (spec §9)", () => {
   const h = idx.hubs.find((x) => x.path === "/korea/seoul")!;
   const s = destinationSchema(h);
-  assert.equal(s["@type"], "TouristDestination");
-  assert.equal(s.name, "Seoul");
+  assert.equal(s["@type"], "CollectionPage");
+  assert.equal(s.name, "Seoul Travel Guide");
+  assert.equal(s.url, "https://asiapicks.com/korea/seoul");
+  assert.equal(s.inLanguage, "en");
+  assert.equal(s.publisher["@id"], organizationSchema()["@id"]);
+  assert.equal(s.about["@type"], "TouristDestination");
+  assert.equal(s.about.name, "Seoul");
+  const article = idx.articles.find((a) => a.path === "/korea/seoul/incheon-airport-to-seoul")!;
+  assert.deepEqual(s.about, articleSchema(article).about);
+});
+
+test("country hub schema is a CollectionPage about the Country", () => {
+  const h = idx.hubs.find((x) => x.path === "/korea")!;
+  const s = destinationSchema(h);
+  assert.equal(s["@type"], "CollectionPage");
+  assert.equal(s.url, "https://asiapicks.com/korea");
+  assert.deepEqual(s.about, { "@type": "Country", name: "South Korea" });
 });
 
 test("breadcrumbs and escaping", () => {

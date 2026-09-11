@@ -81,12 +81,12 @@ test("robots disallows everything on preview and omits the sitemap", () => {
   }
 });
 
-test("robots allows crawling outside preview and points at the sitemap", () => {
+test("robots allows crawling outside preview, keeps /api/og (default og:image) crawlable and points at the sitemap", () => {
   const prev = process.env.VERCEL_ENV;
   delete process.env.VERCEL_ENV;
   try {
     const r = robots();
-    assert.deepEqual(r.rules, [{ userAgent: "*", allow: "/", disallow: ["/api/"] }]);
+    assert.deepEqual(r.rules, [{ userAgent: "*", allow: ["/", "/api/og"], disallow: ["/api/"] }]);
     assert.equal(r.sitemap, "https://asiapicks.com/sitemap.xml");
   } finally {
     if (prev === undefined) delete process.env.VERCEL_ENV;

@@ -88,16 +88,21 @@ export function articleSchema(a: Article, imageUrl?: string) {
   };
 }
 
+/**
+ * Hub page node. Spec §9: TouristDestination/Country appear only via `about`, never as the page's own type,
+ * so the hub is a CollectionPage about the same place node articles use.
+ */
 export function destinationSchema(h: Hub) {
-  const c = getCountry(h.country);
-  const ci = h.city ? getCity(h.country, h.city) : undefined;
   return {
     "@context": "https://schema.org",
-    "@type": ci ? "TouristDestination" : "Country",
-    name: ci?.name ?? c?.name,
+    "@type": "CollectionPage",
+    name: h.fm.title,
     description: h.fm.description,
     url: absoluteUrl(h.path),
-    ...(ci ? { containedInPlace: { "@type": "Country", name: c?.name } } : {}),
+    inLanguage: "en",
+    isPartOf: { "@id": SITE_ID },
+    publisher: { "@id": ORG_ID },
+    about: placeNode(h.country, h.city),
   };
 }
 
