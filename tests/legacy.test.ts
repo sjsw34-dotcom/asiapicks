@@ -64,3 +64,23 @@ test("proxy: apex host, live path passes through untouched", async () => {
   assert.equal(res.headers.get("location"), null);
   assert.notEqual(res.status, 410);
 });
+
+test("proxy matcher excludes only segment-anchored infra paths, not substrings", async () => {
+  const { config } = await import("@/proxy");
+  const re = new RegExp(`^${config.matcher[0]}$`);
+
+  for (const p of ["/icon", "/icon-guide-to-korea", "/korea", "/blog/x", "/images-guide"]) {
+    assert.ok(re.test(p), `expected matcher to match ${p}`);
+  }
+  for (const p of [
+    "/_next/static/chunk.js",
+    "/api/og",
+    "/images/a.jpg",
+    "/favicon.ico",
+    "/sitemap.xml",
+    "/robots.txt",
+    "/feed.xml",
+  ]) {
+    assert.ok(!re.test(p), `expected matcher not to match ${p}`);
+  }
+});
