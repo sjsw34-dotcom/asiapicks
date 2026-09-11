@@ -1,10 +1,21 @@
 import { SITE, absoluteUrl } from "@/lib/site";
 import { getEditor } from "@/data/editors";
-import { getCity, getCountry } from "@/data/taxonomy";
+import { CITIES, COUNTRIES, getCity, getCountry } from "@/data/taxonomy";
 import type { Article, Hub } from "@/lib/content/loader";
 
 const ORG_ID = `${SITE.baseUrl}/#organization`;
 const SITE_ID = `${SITE.baseUrl}/#website`;
+
+function knowsAboutTopics(): string[] {
+  const topics: string[] = [];
+  for (const country of COUNTRIES) {
+    topics.push(`${country.name} travel`);
+    for (const city of CITIES.filter((c) => c.country === country.slug)) {
+      topics.push(`${city.name} travel`);
+    }
+  }
+  return topics;
+}
 
 export function organizationSchema() {
   return {
@@ -15,7 +26,7 @@ export function organizationSchema() {
     url: SITE.baseUrl,
     logo: absoluteUrl("/icon"),
     description: SITE.description,
-    knowsAbout: ["South Korea travel", "Seoul travel", "Busan travel", "Jeju travel", "Gyeongju travel"],
+    knowsAbout: knowsAboutTopics(),
   };
 }
 

@@ -1,8 +1,17 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import path from "node:path";
-import { buildMetadata } from "@/lib/seo/metadata";
-import { articleSchema, breadcrumbSchema, jsonLdString, organizationSchema, destinationSchema } from "@/lib/seo/schema";
+import { buildMetadata, ogImageUrl } from "@/lib/seo/metadata";
+import {
+  articleSchema,
+  breadcrumbSchema,
+  destinationSchema,
+  faqSchema,
+  jsonLdString,
+  organizationSchema,
+  profilePageSchema,
+  websiteSchema,
+} from "@/lib/seo/schema";
 import { loadContent } from "@/lib/content/loader";
 
 const idx = loadContent({ root: path.join(process.cwd(), "tests/fixtures/content"), includeReview: false });
@@ -20,6 +29,49 @@ test("organization uses the entity description", () => {
   const org = organizationSchema();
   assert.equal(org.name, "AsiaPicks");
   assert.equal(org.description, "AsiaPicks, an Asia travel discovery and planning website");
+});
+
+test("organization knowsAbout derives from taxonomy", () => {
+  const org = organizationSchema();
+  assert.deepEqual(org.knowsAbout, [
+    "South Korea travel",
+    "Seoul travel",
+    "Busan travel",
+    "Jeju travel",
+    "Gyeongju travel",
+    "Incheon travel",
+  ]);
+});
+
+test("websiteSchema references the organization", () => {
+  const site = websiteSchema();
+  assert.equal(site["@type"], "WebSite");
+  assert.equal(site.name, "AsiaPicks");
+  assert.equal(site.url, "https://asiapicks.com");
+  assert.equal(site.publisher["@id"], organizationSchema()["@id"]);
+});
+
+test("faqSchema builds Question/Answer nodes", () => {
+  const f = faqSchema([{ q: "Q1?", a: "A1." }]);
+  assert.equal(f["@type"], "FAQPage");
+  assert.equal(f.mainEntity[0]["@type"], "Question");
+  assert.equal(f.mainEntity[0].name, "Q1?");
+  assert.equal(f.mainEntity[0].acceptedAnswer.text, "A1.");
+});
+
+test("profilePageSchema wraps the editor", () => {
+  const p = profilePageSchema("editorial");
+  assert.equal(p["@type"], "ProfilePage");
+  assert.equal(p.mainEntity.name, "AsiaPicks Editorial Team");
+  assert.equal(p.mainEntity["@type"], "Organization");
+});
+
+test("ogImageUrl encodes title and eyebrow", () => {
+  const url = ogImageUrl("Hello & more", "Seoul");
+  assert.equal(url.startsWith("https://asiapicks.com/api/og?"), true);
+  const params = new URL(url).searchParams;
+  assert.equal(params.get("title"), "Hello & more");
+  assert.equal(params.get("eyebrow"), "Seoul");
 });
 
 test("article schema reflects frontmatter", () => {
