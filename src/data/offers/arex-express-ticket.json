@@ -1,0 +1,10 @@
+{
+  "id": "arex-express-ticket",
+  "provider": "creatrip",
+  "kind": "transfer",
+  "title": "AREX Express train ticket (seed)",
+  "summary": "SEED CONTENT offer for platform verification.",
+  "targetUrl": "https://creatrip.com/en",
+  "destination": "korea/seoul",
+  "tags": ["seed"]
+}
