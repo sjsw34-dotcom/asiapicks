@@ -38,3 +38,18 @@ test("invalid frontmatter throws with file path", () => {
   const badRoot = path.join(process.cwd(), "tests/fixtures/content-bad");
   assert.throws(() => loadContent({ root: badRoot, includeReview: false }), /content-bad.*bad\.mdx/s);
 });
+
+test("slug/file name mismatch throws", () => {
+  const badRoot = path.join(process.cwd(), "tests/fixtures/content-slug-mismatch");
+  assert.throws(() => loadContent({ root: badRoot, includeReview: false }), /does not match file name/);
+});
+
+test("unknown category throws", () => {
+  const badRoot = path.join(process.cwd(), "tests/fixtures/content-bad-category");
+  assert.throws(() => loadContent({ root: badRoot, includeReview: false }), /Unknown category/);
+});
+
+test("duplicate output path throws", () => {
+  const badRoot = path.join(process.cwd(), "tests/fixtures/content-duplicate");
+  assert.throws(() => loadContent({ root: badRoot, includeReview: false }), /Duplicate path \/korea\/seoul/);
+});
