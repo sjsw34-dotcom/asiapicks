@@ -1,0 +1,22 @@
+{
+  "redirects": [
+    { "from": "/blog", "to": "/korea" },
+    { "from": "/destinations", "to": "/" },
+    { "from": "/destinations/korea", "to": "/korea" },
+    { "from": "/destinations/korea/seoul", "to": "/korea/seoul" },
+    { "from": "/destinations/korea/busan", "to": "/korea/busan" },
+    { "from": "/destinations/korea/jeju", "to": "/korea/jeju" },
+    { "from": "/blog/best-hotels-seoul-by-area", "to": "/korea/seoul/where-to-stay-in-seoul" },
+    { "from": "/blog/where-to-stay-busan", "to": "/korea/busan/where-to-stay-in-busan" },
+    { "from": "/blog/seoul-dmz-tour-guide", "to": "/korea/seoul/dmz-tours" },
+    { "from": "/blog/jeju-itinerary-3-days", "to": "/korea/jeju/jeju-without-a-car" },
+    { "from": "/blog/3-days-in-seoul", "to": "/korea/seoul" },
+    { "from": "/blog/seoul-on-a-budget", "to": "/korea/seoul" },
+    { "from": "/blog/seoul-palace-tour", "to": "/korea/seoul" },
+    { "from": "/blog/seoul-subway-guide", "to": "/korea/seoul/transportation" },
+    { "from": "/blog/busan-weekend-trip", "to": "/korea/busan" },
+    { "from": "/blog/busan-day-trip-from-seoul", "to": "/korea/busan" },
+    { "from": "/blog/best-hotels-jeju-island-by-area", "to": "/korea/jeju" }
+  ],
+  "gonePrefixes": ["/blog", "/destinations", "/saju-travel", "/deals", "/search", "/admin", "/api/admin", "/ads.txt"]
+}
