@@ -6,6 +6,7 @@ import { loadImages, imageSchema, getImage } from "@/lib/images/registry";
 const dir = path.join(process.cwd(), "tests/fixtures/images");
 const mismatchDir = path.join(process.cwd(), "tests/fixtures/images-mismatch");
 const invalidDir = path.join(process.cwd(), "tests/fixtures/images-invalid");
+const malformedDir = path.join(process.cwd(), "tests/fixtures/images-malformed");
 
 test("loads image entries keyed by id", () => {
   const images = loadImages(dir);
@@ -41,4 +42,8 @@ test("schema-invalid entry throws", () => {
 
 test("getImage with unknown id throws", () => {
   assert.throws(() => getImage("no-such-image"), /Unknown image id/);
+});
+
+test("malformed JSON throws with file path", () => {
+  assert.throws(() => loadImages(malformedDir), /Invalid JSON in image entry.*bad-syntax\.json/);
 });

@@ -30,7 +30,13 @@ export function loadImages(dir: string = DEFAULT_DIR): Map<string, ImageEntry> {
   if (fs.existsSync(dir)) {
     for (const name of fs.readdirSync(dir).filter((f) => f.endsWith(".json"))) {
       const file = path.join(dir, name);
-      const parsed = imageSchema.safeParse(JSON.parse(fs.readFileSync(file, "utf-8")));
+      let json: unknown;
+      try {
+        json = JSON.parse(fs.readFileSync(file, "utf-8"));
+      } catch (err) {
+        throw new Error(`Invalid JSON in image entry ${file}: ${(err as Error).message}`);
+      }
+      const parsed = imageSchema.safeParse(json);
       if (!parsed.success) {
         throw new Error(`Invalid image entry ${file}: ${parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ")}`);
       }
