@@ -1,12 +1,68 @@
 import Link from "next/link";
+import { getContent } from "@/lib/content/loader";
+import { buildMetadata } from "@/lib/seo/metadata";
 import { SITE } from "@/lib/site";
+import ArticleCard from "@/components/content/ArticleCard";
+
+export const metadata = buildMetadata({
+  title: `${SITE.name}: Asia travel planning, starting with South Korea`,
+  description: SITE.tagline,
+  path: "/",
+  absoluteTitle: true,
+});
 
 export default function HomePage() {
+  const idx = getContent();
+  const countryHub = idx.hubs.find((h) => h.country === "korea" && !h.city);
+  const cityHubs = idx.hubs.filter((h) => h.country === "korea" && h.city);
+  const beforeYouGo = idx.articles.filter((a) => a.country === "korea" && !a.city && a.fm.journeyStage === "planning").slice(0, 5);
+  const recent = idx.articles.slice(0, 6);
+
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="font-heading text-4xl font-bold">{SITE.name}</h1>
-      <p className="mt-4 text-text-secondary">{SITE.tagline}</p>
-      <Link href="/korea" className="mt-6 inline-block text-primary underline">South Korea travel guide</Link>
+    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <section className="max-w-3xl">
+        <h1 className="font-heading text-4xl font-bold leading-tight md:text-5xl">
+          {SITE.name}: plan your Asia trip, starting with South Korea
+        </h1>
+        <p className="mt-4 text-lg text-text-secondary">{SITE.tagline}</p>
+        {countryHub ? (
+          <Link href={countryHub.path} className="mt-6 inline-flex rounded-lg bg-primary px-5 py-3 font-medium text-white hover:bg-primary-dark">
+            Start with the South Korea travel guide
+          </Link>
+        ) : null}
+      </section>
+
+      {cityHubs.length > 0 ? (
+        <section className="mt-16">
+          <h2 className="font-heading text-2xl font-bold">Where to go in South Korea</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {cityHubs.map((h) => (
+              <Link key={h.path} href={h.path} className="block rounded-xl border border-border p-5 hover:border-primary">
+                <p className="font-heading text-lg font-semibold">{h.fm.title}</p>
+                <p className="mt-2 text-sm text-text-secondary">{h.fm.summary}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {beforeYouGo.length > 0 ? (
+        <section className="mt-16">
+          <h2 className="font-heading text-2xl font-bold">Before you go to Korea</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {beforeYouGo.map((a) => <ArticleCard key={a.path} article={a} />)}
+          </div>
+        </section>
+      ) : null}
+
+      {recent.length > 0 ? (
+        <section className="mt-16">
+          <h2 className="font-heading text-2xl font-bold">Recently updated guides</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {recent.map((a) => <ArticleCard key={a.path} article={a} />)}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }
