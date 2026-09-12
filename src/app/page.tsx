@@ -11,6 +11,7 @@ import JsonLd from "@/components/content/JsonLd";
 import Mdx from "@/components/content/Mdx";
 import FAQ from "@/components/content/FAQ";
 import SourceList from "@/components/content/SourceList";
+import ImageCredits from "@/components/media/ImageCredits";
 
 const home = () => getStaticPage("home");
 
@@ -45,6 +46,8 @@ export default function HomePage() {
   const beforeYouGo = idx.articles.filter((a) => a.country === "korea" && !a.city && a.fm.journeyStage === "planning").slice(0, 5);
   const recent = idx.articles.slice(0, 6);
   const planningGuides = beforeYouGo.length > 0 ? beforeYouGo : recent;
+  const cardImages = cityHubs.map((h) => h.fm.featuredImage).filter((id): id is string => !!id);
+  const creditIds = [HERO, ...cardImages];
 
   return (
     <div>
@@ -71,22 +74,16 @@ export default function HomePage() {
           </div>
         </div>
 
-        <figure className="m-0">
-          <Image
-            src={hero.src}
-            width={hero.width}
-            height={hero.height}
-            alt={hero.alt}
-            sizes="(max-width: 1024px) 100vw, 520px"
-            priority
-            className="h-64 w-full rounded-2xl object-cover sm:h-80 lg:h-[26rem]"
-          />
-          <figcaption className="mt-2 text-xs text-text-secondary">
-            <a href={hero.sourceUrl} rel="noopener" target="_blank" className="underline underline-offset-2">
-              {hero.credit} ({hero.license})
-            </a>
-          </figcaption>
-        </figure>
+        {/* Uncaptioned on purpose: the credit lives in the image credits at the foot. */}
+        <Image
+          src={hero.src}
+          width={hero.width}
+          height={hero.height}
+          alt={hero.alt}
+          sizes="(max-width: 1024px) 100vw, 520px"
+          priority
+          className="h-64 w-full rounded-2xl object-cover sm:h-80 lg:h-[26rem]"
+        />
       </section>
 
       {/* The answer board: the four questions with their answers, not decorative stats. */}
@@ -157,6 +154,7 @@ export default function HomePage() {
         <details className="mt-8 rounded-xl border border-border p-5">
           <summary className="cursor-pointer font-heading font-semibold">Sources and verification</summary>
           <SourceList sources={fm.sources} />
+          <ImageCredits ids={creditIds} />
         </details>
       </section>
     </div>
