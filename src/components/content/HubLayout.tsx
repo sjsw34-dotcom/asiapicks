@@ -3,7 +3,9 @@ import type { ContentIndex, Hub } from "@/lib/content/loader";
 import { breadcrumbSchema, destinationSchema, faqSchema } from "@/lib/seo/schema";
 import { getImage } from "@/lib/images/registry";
 import { needsDisclosure, headings } from "@/lib/content/body";
+import { bodyImageIds } from "@/lib/checks/content";
 import Figure from "@/components/media/Figure";
+import ImageCredits from "@/components/media/ImageCredits";
 import Disclosure from "@/components/affiliate/Disclosure";
 import JsonLd from "./JsonLd";
 import Breadcrumbs, { breadcrumbsFor } from "./Breadcrumbs";
@@ -68,6 +70,7 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
       ))}
       <FAQ faqs={hub.fm.faqs} />
       <SourceList sources={hub.fm.sources} />
+      <ImageCredits ids={[hub.fm.featuredImage, ...bodyImageIds(hub.body)]} />
     </article>
   );
 }

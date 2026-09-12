@@ -7,6 +7,8 @@ import Breadcrumbs, { breadcrumbsFor } from "./Breadcrumbs";
 import AnswerBox from "./AnswerBox";
 import Mdx from "./Mdx";
 import ArticleCard from "./ArticleCard";
+import ImageCredits from "@/components/media/ImageCredits";
+import { bodyImageIds } from "@/lib/checks/content";
 
 export default function CategoryLayout({ page }: { page: CategoryPage }) {
   const crumbs = breadcrumbsFor(page);
@@ -21,6 +23,7 @@ export default function CategoryLayout({ page }: { page: CategoryPage }) {
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         {page.articles.map((a) => <ArticleCard key={a.path} article={a} />)}
       </div>
+      <ImageCredits ids={bodyImageIds(page.body)} />
     </div>
   );
 }

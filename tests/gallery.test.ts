@@ -18,10 +18,11 @@ test("Gallery is registered in the MDX component map", () => {
   assert.match(mdx, /Gallery/, "Gallery must be available to MDX bodies");
 });
 
-test("Gallery credits every image, because CC BY-SA requires attribution per image", () => {
-  const src = fs.readFileSync(path.join(process.cwd(), "src/components/media/Gallery.tsx"), "utf-8");
-  // Each rendered item must surface credit and licence, not just the first.
-  assert.match(src, /credit/, "Gallery must render the photographer credit");
-  assert.match(src, /license/, "Gallery must render the licence");
-  assert.match(src, /sourceUrl/, "Gallery must link back to the source");
+test("Gallery and Figure print no credit line, because the page attributes its images once", () => {
+  for (const file of ["src/components/media/Gallery.tsx", "src/components/media/Figure.tsx"]) {
+    const src = fs.readFileSync(path.join(process.cwd(), file), "utf-8");
+    assert.doesNotMatch(src, /img\.credit|img\.license/, `${file} must leave attribution to ImageCredits`);
+    // The AI disclosure is not a licence line and stays on the image itself.
+    assert.match(src, /Illustration \(AI-generated\)/, `${file} must keep the AI-generated label`);
+  }
 });

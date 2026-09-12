@@ -19,3 +19,17 @@ test("the home page attributes its hero and its card images, which render withou
   assert.match(page, /creditIds\b[^\n]*HERO/, "credits must include the hero image");
   assert.match(page, /creditIds\b[^\n]*featuredImage|cardImages/, "credits must include the destination card images");
 });
+
+test("every layout that can render an image also renders its credits", () => {
+  const layouts = [
+    "src/components/content/ArticleLayout.tsx",
+    "src/components/content/HubLayout.tsx",
+    "src/components/content/CategoryLayout.tsx",
+    "src/components/content/StaticPage.tsx",
+  ];
+  for (const file of layouts) {
+    const src = read(file);
+    assert.match(src, /<ImageCredits ids=\{/, `${file} must attribute the images it renders`);
+    assert.match(src, /bodyImageIds\(/, `${file} must include images used in the MDX body`);
+  }
+});

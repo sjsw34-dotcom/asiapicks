@@ -1,12 +1,14 @@
 import type { Article, ContentIndex } from "@/lib/content/loader";
 import { relatedArticles, nextStep } from "@/lib/content/links";
 import { needsDisclosure, headings } from "@/lib/content/body";
+import { bodyImageIds } from "@/lib/checks/content";
 import { answerLabel, leadsWithStandfirst } from "@/lib/content/templates";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/seo/schema";
 import { getImage } from "@/lib/images/registry";
 import { absoluteUrl } from "@/lib/site";
 import { getCategory } from "@/data/taxonomy";
 import Figure from "@/components/media/Figure";
+import ImageCredits from "@/components/media/ImageCredits";
 import Disclosure from "@/components/affiliate/Disclosure";
 import OfferList from "@/components/affiliate/OfferList";
 import JsonLd from "./JsonLd";
@@ -56,6 +58,7 @@ export default function ArticleLayout({ article, idx }: { article: Article; idx:
       ) : null}
       <FAQ faqs={fm.faqs} />
       <SourceList sources={fm.sources} />
+      <ImageCredits ids={[fm.featuredImage, ...bodyImageIds(article.body)]} />
       <NextStep article={nextStep(article, idx)} />
       <RelatedGuides articles={relatedArticles(article, idx, 4)} />
     </article>

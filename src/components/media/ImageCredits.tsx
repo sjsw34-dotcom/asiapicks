@@ -1,13 +1,13 @@
 import { getImage } from "@/lib/images/registry";
 
 /**
- * Attribution for images that render without a caption of their own: the home
- * hero and the destination cards. CC BY-SA and KOGL both require the credit to
- * appear on the page, but a caption under every thumbnail crowds a page whose
- * job is to route people onward, so the credits are collected in one place.
+ * Attribution for every image a page renders. CC BY-SA and KOGL require the
+ * credit to appear on the page that uses the photograph, but a credit line
+ * under each image reads as clutter on a page whose job is to answer a
+ * question, so they are collected here once.
  */
-export default function ImageCredits({ ids }: { ids: string[] }) {
-  const images = [...new Set(ids)].map(getImage);
+export default function ImageCredits({ ids }: { ids: (string | null | undefined)[] }) {
+  const images = [...new Set(ids.filter((id): id is string => !!id))].map(getImage);
   if (images.length === 0) return null;
   return (
     <section className="mt-8 border-t border-border pt-6">
