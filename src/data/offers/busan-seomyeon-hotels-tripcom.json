@@ -1,0 +1,10 @@
+{
+  "id": "busan-seomyeon-hotels-tripcom",
+  "provider": "tripcom",
+  "kind": "hotel",
+  "title": "Hotels in Seomyeon",
+  "summary": "Seomyeon listings on Trip.com, the central interchange district rather than the beach.",
+  "targetUrl": "https://us.trip.com/hotels/busan-hotels-list-253/zone3014/",
+  "destination": "korea/busan",
+  "tags": ["hotel", "seomyeon"]
+}

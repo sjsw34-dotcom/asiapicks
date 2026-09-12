@@ -1,0 +1,10 @@
+{
+  "id": "busan-hotels-tripcom",
+  "provider": "tripcom",
+  "kind": "hotel",
+  "title": "Busan hotels",
+  "summary": "Trip.com's Busan listings, filterable by area, for comparing the coast against the centre on your dates.",
+  "targetUrl": "https://www.trip.com/hotels/busan-hotels-list-253/",
+  "destination": "korea/busan",
+  "tags": ["hotel", "busan"]
+}

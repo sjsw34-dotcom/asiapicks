@@ -1,0 +1,10 @@
+{
+  "id": "seoul-dmz-tours-viator",
+  "provider": "viator",
+  "kind": "tour",
+  "title": "DMZ tours from Seoul",
+  "summary": "Viator's DMZ listings, covering the half-day and full-day tours that run from central Seoul.",
+  "targetUrl": "https://www.viator.com/Seoul-attractions/DMZ/d973-a8969",
+  "destination": "korea/seoul",
+  "tags": ["tour", "dmz", "day-trip"]
+}
