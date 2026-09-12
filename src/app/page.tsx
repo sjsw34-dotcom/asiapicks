@@ -11,6 +11,7 @@ import JsonLd from "@/components/content/JsonLd";
 import Mdx from "@/components/content/Mdx";
 import FAQ from "@/components/content/FAQ";
 import SourceList from "@/components/content/SourceList";
+import Outline, { WithOutline } from "@/components/content/Outline";
 
 const home = () => getStaticPage("home");
 
@@ -135,26 +136,9 @@ export default function HomePage() {
 
       {/* The argument behind the board. Kept below it: readers scan first, read second. */}
       <section className="mx-auto max-w-7xl px-5 pb-14 sm:px-6">
-        <div className="gap-14 lg:grid lg:grid-cols-[minmax(0,68ch)_1fr]">
-          <div className="min-w-0">
-            <Mdx source={body} sourceSlug="page-home" />
-          </div>
-          <nav aria-label="On this page" className="mt-12 lg:mt-2">
-            <div className="lg:sticky lg:top-8">
-              <p className="font-heading text-sm font-semibold">On this page</p>
-              <ul className="mt-3 space-y-2 border-l border-border pl-4 text-sm">
-                {outline.map((h) => (
-                  <li key={h.id}>
-                    <a href={`#${h.id}`} className="text-text-secondary underline-offset-2 hover:text-primary hover:underline">{h.text}</a>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-5 max-w-[28ch] border-l border-border pl-4 text-xs leading-relaxed text-text-secondary">
-                Every figure on this page was checked on {formatDate(fm.updatedAt)} against the sources listed at the foot.
-              </p>
-            </div>
-          </nav>
-        </div>
+        <WithOutline outline={<Outline headings={outline} checkedAt={fm.updatedAt} />}>
+          <Mdx source={body} sourceSlug="page-home" />
+        </WithOutline>
       </section>
 
       {beforeYouGo.length > 0 || recent.length > 0 ? (

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ContentIndex, Hub } from "@/lib/content/loader";
 import { breadcrumbSchema, destinationSchema, faqSchema } from "@/lib/seo/schema";
 import { getImage } from "@/lib/images/registry";
-import { needsDisclosure } from "@/lib/content/body";
+import { needsDisclosure, headings } from "@/lib/content/body";
 import Figure from "@/components/media/Figure";
 import Disclosure from "@/components/affiliate/Disclosure";
 import JsonLd from "./JsonLd";
@@ -10,6 +10,7 @@ import Breadcrumbs, { breadcrumbsFor } from "./Breadcrumbs";
 import AnswerBox from "./AnswerBox";
 import ArticleMeta from "./ArticleMeta";
 import Mdx from "./Mdx";
+import Outline, { WithOutline } from "./Outline";
 import FAQ from "./FAQ";
 import SourceList from "./SourceList";
 import ArticleCard from "./ArticleCard";
@@ -24,7 +25,7 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
   const slug = hub.city ?? hub.country;
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <article className="mx-auto max-w-7xl px-5 py-10 sm:px-6">
       <JsonLd data={schemas} />
       <Breadcrumbs items={crumbs} />
       <header className="mt-6">
@@ -41,7 +42,9 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
           ))}
         </nav>
       ) : null}
-      <Mdx source={hub.body} sourceSlug={`hub-${slug}`} />
+      <WithOutline outline={<Outline headings={headings(hub.body)} checkedAt={hub.fm.sources.length > 0 ? hub.fm.updatedAt : undefined} />}>
+        <Mdx source={hub.body} sourceSlug={`hub-${slug}`} />
+      </WithOutline>
       {cityHubs.length > 0 ? (
         <section className="mt-12">
           <h2 className="font-heading text-2xl font-bold">City guides</h2>
