@@ -1,6 +1,7 @@
 import type { Article, ContentIndex } from "@/lib/content/loader";
 import { relatedArticles, nextStep } from "@/lib/content/links";
 import { needsDisclosure } from "@/lib/content/body";
+import { answerLabel, leadsWithStandfirst } from "@/lib/content/templates";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/seo/schema";
 import { getImage } from "@/lib/images/registry";
 import { absoluteUrl } from "@/lib/site";
@@ -37,7 +38,11 @@ export default function ArticleLayout({ article, idx }: { article: Article; idx:
         <ArticleMeta updatedAt={fm.updatedAt} factCheckedAt={fm.factCheckedAt} author={fm.author} />
       </header>
       {hasAffiliate ? <Disclosure /> : null}
-      <AnswerBox summary={fm.summary} />
+      {leadsWithStandfirst(fm.template) ? (
+        <p className="mt-6 text-xl leading-relaxed text-text-secondary">{fm.summary}</p>
+      ) : (
+        <AnswerBox summary={fm.summary} label={answerLabel(fm.template)} />
+      )}
       {image ? <Figure id={image.id} priority /> : null}
       <Mdx source={article.body} sourceSlug={fm.slug} />
       {fm.offers.length > 0 ? (

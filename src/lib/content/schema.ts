@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TEMPLATES } from "./templates";
 
 const isoDate = z.iso.date();
 
@@ -19,7 +20,7 @@ export const articleSchema = z.object({
   description: z.string().min(50),
   slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
   category: z.string().min(1),
-  template: z.enum(["guide", "comparison", "best-of", "itinerary", "where-to-stay"]),
+  template: z.enum(TEMPLATES),
   journeyStage: z.enum(["discovery", "planning", "comparison", "booking", "on-trip"]),
   searchIntent: z.enum(["informational", "commercial", "transactional"]),
   primaryKeyword: z.string().min(1),

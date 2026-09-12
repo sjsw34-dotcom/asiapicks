@@ -29,6 +29,37 @@ First expertise: South Korea. English only. Design spec: `docs/superpowers/specs
 - No word-count targets. No H1 in MDX bodies (the page renders the H1 from `title`).
 - MDX component props are strings only: `<OfferList ids="a,b" />`.
 
+## Templates (every article picks one; it decides the writing, not just the layout)
+
+`template` is an editorial instruction. A site where every piece is shaped the same
+reads as machine output, however good the facts are. Pick the shape the question
+deserves, then write in that shape's register.
+
+- **guide** — procedural. The reader has a task: get from A to B, buy the card, claim
+  the refund. Short paragraphs, steps in order, the number they need in the sentence
+  they need it. Question-style H2s with the answer in the first sentence.
+- **comparison** — verdict first. Open with the pick and the one condition that would
+  change it, then the table, then why. Terse. No throat-clearing. The table is the
+  body of the piece, not an illustration of it.
+- **where-to-stay** — opinionated by area. Each area gets a character sentence, who it
+  suits, who it does not, and the trade-off in plain terms. Recommendations labelled
+  "Our pick".
+- **itinerary** — day by day, written as a sequence with travel times between stops.
+  Prose, not bullets, because the point is the shape of a day.
+- **best-of** — ranked and justified. Every entry says why it beats the next one.
+  A list with no argument is a directory, not an article.
+- **essay** — argues rather than answers. Statement headings, longer paragraphs, one
+  idea developed. Use it for discovery-stage pieces where the reader has no task yet:
+  why October, what the fare rise says about Korean transit, why Gyeongju is skipped.
+  The summary renders as a standfirst, not a "Short answer" box.
+
+Two rules bind every template, essays included. Facts still carry a source and a
+`checkedAt`, and no piece may claim a first-hand visit. An essay here is analytical,
+not experiential: it may argue about a place, never pretend to have stood in it.
+
+The direct-answer rule applies to question-style H2s. An essay using statement
+headings is not exempt from clarity, only from that specific device.
+
 ## Affiliate rules
 - Viator = tours/day trips, Creatrip = Korea-specific experiences/tickets/beauty/K-pop/hanbok, Trip.com = hotels + KTX.
 - One BookingCTA per article, after the informational sections. No sticky bars, popups or widget scripts.
