@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import type { MDXComponents } from "mdx/types";
 import Figure from "@/components/media/Figure";
+import Gallery from "@/components/media/Gallery";
 import OfferCard from "@/components/affiliate/OfferCard";
 import OfferList from "@/components/affiliate/OfferList";
 import ComparisonTable from "@/components/affiliate/ComparisonTable";
@@ -33,6 +34,7 @@ export default function Mdx({ source, sourceSlug }: { source: string; sourceSlug
         <a href={href} target="_blank" rel="noopener" className="text-primary underline underline-offset-2">{children}</a>
       ),
     Figure,
+    Gallery: ({ ids, columns }: { ids: string; columns?: string }) => <Gallery ids={ids} columns={columns} />,
     Callout,
     QuickFacts,
     Verdict,

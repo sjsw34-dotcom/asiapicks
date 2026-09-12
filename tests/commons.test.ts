@@ -10,6 +10,7 @@ import {
   imageFileName,
   commonsSearchUrl,
   commonsInfoUrl,
+  targetDimensions,
   type CommonsImageInfo,
 } from "@/lib/images/commons";
 
@@ -139,4 +140,21 @@ test("commonsInfoUrl requests imageinfo with extmetadata for many titles at once
   assert.equal(u.searchParams.get("prop"), "imageinfo");
   assert.equal(u.searchParams.get("titles"), "File:A.jpg|File:B.jpg");
   assert.match(u.searchParams.get("iiprop") ?? "", /extmetadata/);
+});
+
+test("targetDimensions downscales wide images and never upscales", () => {
+  assert.deepEqual(targetDimensions(6404, 4269, 2400), { width: 2400, height: 1600 });
+  assert.deepEqual(targetDimensions(6000, 4000, 2400), { width: 2400, height: 1600 });
+  // Already within budget: left untouched rather than enlarged.
+  assert.deepEqual(targetDimensions(1600, 1200, 2400), { width: 1600, height: 1200 });
+  assert.deepEqual(targetDimensions(2400, 1000, 2400), { width: 2400, height: 1000 });
+  // Portrait orientation is bounded by width too, matching the layout constraint.
+  assert.deepEqual(targetDimensions(3818, 5992, 2400), { width: 2400, height: 3767 });
+});
+
+test("toImageEntry records the stored dimensions, not the Commons originals", () => {
+  const c = parseImageInfo("File:X.jpg", INFO);
+  const e = toImageEntry(c, { id: "x", alt: "x", dimensions: { width: 2400, height: 1600 } });
+  assert.equal(e.width, 2400);
+  assert.equal(e.height, 1600);
 });

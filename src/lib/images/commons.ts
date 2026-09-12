@@ -109,11 +109,26 @@ export function parseImageInfo(title: string, info: CommonsImageInfo): CommonsCa
   };
 }
 
+/**
+ * Commons originals run to 6000px and 12MB. The widest our layout ever needs is
+ * a full-bleed hero on a high-density screen, so we store at most this and let
+ * next/image derive the rest. Keeps the repository from filling with originals
+ * nobody serves.
+ */
+export const MAX_IMAGE_WIDTH = 2400;
+
+export function targetDimensions(width: number, height: number, maxWidth: number = MAX_IMAGE_WIDTH) {
+  if (width <= maxWidth) return { width, height };
+  return { width: maxWidth, height: Math.round((height * maxWidth) / width) };
+}
+
 export interface EntryInput {
   id: string;
   alt: string;
   caption?: string;
   decorative?: boolean;
+  /** Dimensions actually stored on disk, when the file was resized on the way in. */
+  dimensions?: { width: number; height: number };
 }
 
 /**
@@ -127,8 +142,8 @@ export function toImageEntry(c: CommonsCandidate, input: EntryInput): ImageEntry
   const parsed = imageSchema.safeParse({
     id: input.id,
     src: `/images/${imageFileName(input.id, c.mime)}`,
-    width: c.width,
-    height: c.height,
+    width: input.dimensions?.width ?? c.width,
+    height: input.dimensions?.height ?? c.height,
     alt: input.alt.trim(),
     decorative: input.decorative ?? false,
     caption: input.caption,

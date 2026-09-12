@@ -12,7 +12,10 @@ const ATTR = (name: string, attr: string) => new RegExp(`<${name}\\b[^>]*\\b${at
 const SEED = /SEED CONTENT/;
 const URL_TOKEN = /(?:https?:)?\/\/[^\s)"'<>\]]+/gi;
 
-export const bodyImageIds = (body: string) => [...body.matchAll(ATTR("Figure", "id"))].map((m) => m[1]);
+export const bodyImageIds = (body: string) => [
+  ...[...body.matchAll(ATTR("Figure", "id"))].map((m) => m[1]),
+  ...[...body.matchAll(ATTR("Gallery", "ids"))].flatMap((m) => parseIdList(m[1])),
+];
 
 export const bodyOfferIds = (body: string) => [
   ...[...body.matchAll(ATTR("Offer", "id"))].map((m) => m[1]),

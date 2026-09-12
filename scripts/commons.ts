@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import sharp from "sharp";
 import path from "node:path";
 import {
   commonsSearchUrl,
@@ -6,6 +7,7 @@ import {
   parseImageInfo,
   toImageEntry,
   imageFileName,
+  targetDimensions,
   type CommonsCandidate,
   type CommonsImageInfo,
 } from "@/lib/images/commons";
@@ -74,29 +76,47 @@ async function search(query: string, limit: number) {
   console.log(`  npx tsx scripts/commons.ts add "${usable[0].title}" <image-id> --alt "<alt text>"`);
 }
 
+/** Re-encode at the stored width. Keeps the source format so PNG stays PNG. */
+async function resize(input: Buffer, mime: string, width: number): Promise<Buffer> {
+  const img = sharp(input).resize({ width, withoutEnlargement: true });
+  if (mime === "image/png") return img.png({ compressionLevel: 9 }).toBuffer();
+  if (mime === "image/webp") return img.webp({ quality: 82 }).toBuffer();
+  return img.jpeg({ quality: 82, mozjpeg: true }).toBuffer();
+}
+
 async function add(title: string, id: string, alt: string, caption?: string) {
   const [candidate] = await candidatesFor([title]);
   if (!candidate) throw new Error(`Commons has no file named ${title}`);
 
-  // Validate before writing anything: this throws on non-free, wrong format or bad id/alt.
-  const entry = toImageEntry(candidate, { id, alt, caption });
+  // Validate before downloading anything: throws on non-free, wrong format or bad id/alt.
+  toImageEntry(candidate, { id, alt, caption });
 
   const entryFile = path.join(ENTRY_DIR, `${id}.json`);
   if (fs.existsSync(entryFile)) throw new Error(`Image id "${id}" already exists: ${entryFile}`);
 
   const res = await fetch(candidate.fileUrl, { headers: { "user-agent": UA } });
   if (!res.ok) throw new Error(`Download failed (${res.status}) for ${candidate.fileUrl}`);
-  const bytes = Buffer.from(await res.arrayBuffer());
+  const original = Buffer.from(await res.arrayBuffer());
+
+  const dimensions = targetDimensions(candidate.width, candidate.height);
+  const bytes = await resize(original, candidate.mime, dimensions.width);
+  // Rebuild with the dimensions actually on disk, so next/image is not told a lie.
+  const stored = toImageEntry(candidate, { id, alt, caption, dimensions });
 
   fs.mkdirSync(IMAGE_DIR, { recursive: true });
   fs.mkdirSync(ENTRY_DIR, { recursive: true });
   fs.writeFileSync(path.join(IMAGE_DIR, imageFileName(id, candidate.mime)), bytes);
-  fs.writeFileSync(entryFile, `${JSON.stringify(entry, null, 2)}\n`);
+  fs.writeFileSync(entryFile, `${JSON.stringify(stored, null, 2)}\n`);
 
-  console.log(`Added "${id}" (${entry.width}x${entry.height}, ${Math.round(bytes.length / 1024)} KB)`);
-  console.log(`  ${entry.src}`);
+  const saved = Math.round((1 - bytes.length / original.length) * 100);
+  console.log(
+    `Added "${id}" (${stored.width}x${stored.height}, ${Math.round(bytes.length / 1024)} KB` +
+      (saved > 0 ? `, ${saved}% smaller than the ${candidate.width}x${candidate.height} original` : "") +
+      ")",
+  );
+  console.log(`  ${stored.src}`);
   console.log(`  ${entryFile}`);
-  console.log(`  credit: ${entry.credit} (${entry.license})`);
+  console.log(`  credit: ${stored.credit} (${stored.license})`);
   console.log(`\nUse it in MDX:  <Figure id="${id}" />`);
 }
 
