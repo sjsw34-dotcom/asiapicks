@@ -5,7 +5,7 @@ import { getStaticPage } from "@/lib/content/pages";
 import { getImage } from "@/lib/images/registry";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/seo/schema";
-import { formatDate } from "@/lib/content/body";
+import { formatDate, headings } from "@/lib/content/body";
 import ArticleCard from "@/components/content/ArticleCard";
 import JsonLd from "@/components/content/JsonLd";
 import Mdx from "@/components/content/Mdx";
@@ -40,6 +40,7 @@ export default function HomePage() {
   const { fm, body } = home();
   const idx = getContent();
   const hero = getImage(HERO);
+  const outline = headings(body);
   const countryHub = idx.hubs.find((h) => h.country === "korea" && !h.city);
   const cityHubs = idx.hubs.filter((h) => h.country === "korea" && h.city);
   const beforeYouGo = idx.articles.filter((a) => a.country === "korea" && !a.city && a.fm.journeyStage === "planning").slice(0, 5);
@@ -50,9 +51,9 @@ export default function HomePage() {
       {fm.faqs.length > 0 ? <JsonLd data={faqSchema(fm.faqs)} /> : null}
 
       {/* Hero: the headline and a real place, side by side, so neither waits for a scroll. */}
-      <section className="mx-auto grid max-w-6xl items-center gap-10 px-4 pt-10 pb-14 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pt-16">
+      <section className="mx-auto grid max-w-7xl items-center gap-10 px-5 pt-10 pb-14 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pt-16">
         <div>
-          <h1 className="font-heading text-4xl font-bold leading-[1.08] tracking-tight md:text-5xl">{fm.title}</h1>
+          <h1 className="font-heading text-4xl font-bold leading-[1.15] tracking-tight md:text-5xl md:leading-[1.08]">{fm.title}</h1>
           <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-text-secondary">
             Four decisions settle a first trip: how long, which month, what you need before you fly, and what moving
             around costs. Every figure on this site carries its source and the day we checked it.
@@ -90,7 +91,7 @@ export default function HomePage() {
 
       {/* The answer board: the four questions with their answers, not decorative stats. */}
       <section aria-label="The four decisions" className="border-y border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6">
           <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             {DECISIONS.map((d) => (
               <a key={d.q} href={d.href} className="group bg-background p-6 transition-colors hover:bg-surface">
@@ -104,7 +105,7 @@ export default function HomePage() {
       </section>
 
       {cityHubs.length > 0 || countryHub ? (
-        <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <section className="mx-auto max-w-7xl px-5 py-14 sm:px-6">
           <h2 className="font-heading text-2xl font-bold">Where to go</h2>
           <div className={`mt-6 grid gap-5 ${gridFor(cityHubs.length)}`}>
             {cityHubs.map((h) => {
@@ -133,15 +134,32 @@ export default function HomePage() {
       ) : null}
 
       {/* The argument behind the board. Kept below it: readers scan first, read second. */}
-      <section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6">
-        <div className="max-w-[68ch]">
-          <Mdx source={body} sourceSlug="page-home" />
+      <section className="mx-auto max-w-7xl px-5 pb-14 sm:px-6">
+        <div className="gap-14 lg:grid lg:grid-cols-[minmax(0,68ch)_1fr]">
+          <div className="min-w-0">
+            <Mdx source={body} sourceSlug="page-home" />
+          </div>
+          <nav aria-label="On this page" className="mt-12 lg:mt-2">
+            <div className="lg:sticky lg:top-8">
+              <p className="font-heading text-sm font-semibold">On this page</p>
+              <ul className="mt-3 space-y-2 border-l border-border pl-4 text-sm">
+                {outline.map((h) => (
+                  <li key={h.id}>
+                    <a href={`#${h.id}`} className="text-text-secondary underline-offset-2 hover:text-primary hover:underline">{h.text}</a>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 max-w-[28ch] border-l border-border pl-4 text-xs leading-relaxed text-text-secondary">
+                Every figure on this page was checked on {formatDate(fm.updatedAt)} against the sources listed at the foot.
+              </p>
+            </div>
+          </nav>
         </div>
       </section>
 
       {beforeYouGo.length > 0 || recent.length > 0 ? (
         <section className="border-t border-border bg-surface">
-          <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+          <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6">
             <h2 className="font-heading text-2xl font-bold">{beforeYouGo.length > 0 ? "Before you go" : "Recently updated"}</h2>
             <div className={`mt-6 grid gap-5 ${gridFor((beforeYouGo.length > 0 ? beforeYouGo : recent).length)}`}>
               {(beforeYouGo.length > 0 ? beforeYouGo : recent).map((a) => <ArticleCard key={a.path} article={a} />)}
@@ -150,10 +168,15 @@ export default function HomePage() {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
-        <div className="max-w-[68ch]">
-          <FAQ faqs={fm.faqs} />
-          <SourceList sources={fm.sources} />
+      {/* Same two-column rhythm as the prose above, so the page keeps one spine. */}
+      <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-6">
+        <div className="gap-14 lg:grid lg:grid-cols-[minmax(0,68ch)_1fr]">
+          <div className="min-w-0">
+            <FAQ faqs={fm.faqs} />
+          </div>
+          <div className="min-w-0">
+            <SourceList sources={fm.sources} />
+          </div>
         </div>
       </section>
     </div>
