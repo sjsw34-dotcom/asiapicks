@@ -1,0 +1,10 @@
+{
+  "id": "seoul-gangnam-hotels-tripcom",
+  "provider": "tripcom",
+  "kind": "hotel",
+  "title": "Hotels in Gangnam",
+  "summary": "Gangnam-gu listings on Trip.com, south of the river and built around business and shopping.",
+  "targetUrl": "https://www.trip.com/hotels/seoul-hotels-list-274/location94221/",
+  "destination": "korea/seoul",
+  "tags": ["hotel", "gangnam"]
+}

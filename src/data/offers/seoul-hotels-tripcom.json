@@ -1,0 +1,10 @@
+{
+  "id": "seoul-hotels-tripcom",
+  "provider": "tripcom",
+  "kind": "hotel",
+  "title": "Seoul hotels",
+  "summary": "Trip.com's Seoul listings, filterable by neighbourhood, for comparing what each area costs on your dates.",
+  "targetUrl": "https://www.trip.com/hotels/seoul-hotels-list-274/",
+  "destination": "korea/seoul",
+  "tags": ["hotel", "seoul"]
+}

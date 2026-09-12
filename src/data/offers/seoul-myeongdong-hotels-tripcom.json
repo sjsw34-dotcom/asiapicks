@@ -1,0 +1,10 @@
+{
+  "id": "seoul-myeongdong-hotels-tripcom",
+  "provider": "tripcom",
+  "kind": "hotel",
+  "title": "Hotels near Myeongdong",
+  "summary": "Myeongdong listings on Trip.com, the area most first-time visitors end up comparing first.",
+  "targetUrl": "https://www.trip.com/hotels/seoul-hotels-list-274/zone705/",
+  "destination": "korea/seoul",
+  "tags": ["hotel", "myeongdong"]
+}
