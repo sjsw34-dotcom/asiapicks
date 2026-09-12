@@ -5,18 +5,17 @@ import { getStaticPage } from "@/lib/content/pages";
 import { getImage } from "@/lib/images/registry";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/seo/schema";
-import { formatDate, headings } from "@/lib/content/body";
+import { formatDate } from "@/lib/content/body";
 import ArticleCard from "@/components/content/ArticleCard";
 import JsonLd from "@/components/content/JsonLd";
 import Mdx from "@/components/content/Mdx";
 import FAQ from "@/components/content/FAQ";
 import SourceList from "@/components/content/SourceList";
-import Outline, { WithOutline } from "@/components/content/Outline";
 
 const home = () => getStaticPage("home");
 
-/** Few cards should not scatter across a four-wide grid; widen them instead. */
-const gridFor = (n: number) => (n <= 1 ? "sm:grid-cols-1 lg:max-w-md" : n === 2 ? "sm:grid-cols-2 lg:max-w-3xl" : "sm:grid-cols-2 lg:grid-cols-3");
+/** Keep a set of four destinations balanced, with room to grow. */
+const gridFor = (n: number) => n <= 1 ? "grid-cols-1" : n <= 4 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3";
 const HERO = "seoul-bukchon-hanok-street";
 
 /**
@@ -25,9 +24,9 @@ const HERO = "seoul-bukchon-hanok-street";
  */
 const DECISIONS = [
   { q: "How long do you need?", a: "5 days", note: "Covers Seoul properly. Eight to ten adds Busan or Jeju.", href: "#how-many-days-do-you-need" },
-  { q: "Which month?", a: "October", note: "20.1°C and about 50mm of rain, against 415mm in July.", href: "#which-month-should-you-pick" },
-  { q: "Paperwork before you fly?", a: "None, for now", note: "Visa-free nationals need no K-ETA until 31 Dec 2026.", href: "#do-you-need-a-visa-or-a-k-eta" },
-  { q: "What is a subway ride?", a: "1,550 won", note: "Seoul, on a transit card. Busan runs 1,600 to 1,800.", href: "#what-does-getting-around-cost" },
+  { q: "Which month?", a: "October", note: "Seoul highs average 20.1°C (68°F), with less rain than summer.", href: "#which-month-should-you-pick" },
+  { q: "Paperwork before you fly?", a: "Check your entry rules", note: "K-ETA exemption does not automatically waive the arrival card.", href: "#do-you-need-a-visa-or-a-k-eta" },
+  { q: "What is a subway ride?", a: "KRW 1,550", note: "Seoul, on a transit card. Busan runs KRW 1,600 to 1,800.", href: "#what-does-getting-around-cost" },
 ];
 
 export const metadata = buildMetadata({
@@ -41,23 +40,23 @@ export default function HomePage() {
   const { fm, body } = home();
   const idx = getContent();
   const hero = getImage(HERO);
-  const outline = headings(body);
   const countryHub = idx.hubs.find((h) => h.country === "korea" && !h.city);
   const cityHubs = idx.hubs.filter((h) => h.country === "korea" && h.city);
   const beforeYouGo = idx.articles.filter((a) => a.country === "korea" && !a.city && a.fm.journeyStage === "planning").slice(0, 5);
   const recent = idx.articles.slice(0, 6);
+  const planningGuides = beforeYouGo.length > 0 ? beforeYouGo : recent;
 
   return (
     <div>
       {fm.faqs.length > 0 ? <JsonLd data={faqSchema(fm.faqs)} /> : null}
 
       {/* Hero: the headline and a real place, side by side, so neither waits for a scroll. */}
-      <section className="mx-auto grid max-w-7xl items-center gap-10 px-5 pt-10 pb-14 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pt-16">
+      <section className="mx-auto grid max-w-7xl items-center gap-8 px-5 pt-8 pb-10 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:py-14">
         <div>
           <h1 className="font-heading text-4xl font-bold leading-[1.15] tracking-tight md:text-5xl md:leading-[1.08]">{fm.title}</h1>
           <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-text-secondary">
-            Four decisions settle a first trip: how long, which month, what you need before you fly, and what moving
-            around costs. Every figure on this site carries its source and the day we checked it.
+            Choose your cities, work out the costs and check what you need before you fly.
+            Practical guides with sources and clear next steps.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-4">
             {countryHub ? (
@@ -80,7 +79,7 @@ export default function HomePage() {
             alt={hero.alt}
             sizes="(max-width: 1024px) 100vw, 520px"
             priority
-            className="h-72 w-full rounded-2xl object-cover sm:h-96 lg:h-[32rem]"
+            className="h-64 w-full rounded-2xl object-cover sm:h-80 lg:h-[26rem]"
           />
           <figcaption className="mt-2 text-xs text-text-secondary">
             <a href={hero.sourceUrl} rel="noopener" target="_blank" className="underline underline-offset-2">
@@ -95,9 +94,9 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6">
           <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             {DECISIONS.map((d) => (
-              <a key={d.q} href={d.href} className="group bg-background p-6 transition-colors hover:bg-surface">
+              <a key={d.q} href={d.href} className="group bg-background p-6 transition-colors hover:bg-surface focus-visible:-outline-offset-4">
                 <p className="font-heading text-sm font-semibold text-text-secondary">{d.q}</p>
-                <p className="mt-3 font-heading text-2xl font-bold text-primary group-hover:underline">{d.a}</p>
+                <p className="mt-3 font-heading text-xl font-bold text-primary group-hover:underline">{d.a}</p>
                 <p className="mt-2 text-sm leading-relaxed text-text-secondary">{d.note}</p>
               </a>
             ))}
@@ -106,7 +105,7 @@ export default function HomePage() {
       </section>
 
       {cityHubs.length > 0 || countryHub ? (
-        <section className="mx-auto max-w-7xl px-5 py-14 sm:px-6">
+        <section className="mx-auto max-w-7xl px-5 py-10 sm:px-6 lg:py-12">
           <h2 className="font-heading text-2xl font-bold">Where to go</h2>
           <div className={`mt-6 grid gap-5 ${gridFor(cityHubs.length)}`}>
             {cityHubs.map((h) => {
@@ -119,8 +118,8 @@ export default function HomePage() {
                       width={img.width}
                       height={img.height}
                       alt=""
-                      sizes="(max-width: 640px) 100vw, 360px"
-                      className="h-44 w-full object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 616px"
+                      className="h-44 w-full object-cover sm:h-48"
                     />
                   ) : null}
                   <div className="p-5">
@@ -134,34 +133,31 @@ export default function HomePage() {
         </section>
       ) : null}
 
-      {/* The argument behind the board. Kept below it: readers scan first, read second. */}
-      <section className="mx-auto max-w-7xl px-5 pb-14 sm:px-6">
-        <WithOutline outline={<Outline headings={outline} checkedAt={fm.updatedAt} />}>
-          <Mdx source={body} sourceSlug="page-home" />
-        </WithOutline>
+      {/* A short planning overview; the answer board links directly to its headings. */}
+      <section className="mx-auto max-w-3xl px-5 pb-10 sm:px-6">
+        <Mdx source={body} sourceSlug="page-home" />
       </section>
 
-      {beforeYouGo.length > 0 || recent.length > 0 ? (
-        <section className="border-t border-border bg-surface">
-          <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6">
-            <h2 className="font-heading text-2xl font-bold">{beforeYouGo.length > 0 ? "Before you go" : "Recently updated"}</h2>
-            <div className={`mt-6 grid gap-5 ${gridFor((beforeYouGo.length > 0 ? beforeYouGo : recent).length)}`}>
-              {(beforeYouGo.length > 0 ? beforeYouGo : recent).map((a) => <ArticleCard key={a.path} article={a} />)}
+      {planningGuides.length > 0 ? (
+        <section className="mx-auto max-w-5xl px-5 sm:px-6">
+          <div className={`rounded-2xl bg-surface p-6 sm:p-8 ${planningGuides.length === 1 ? "grid items-center gap-6 md:grid-cols-[1fr_2fr]" : ""}`}>
+            <div>
+              <h2 className="font-heading text-2xl font-bold">{beforeYouGo.length > 0 ? "Before you go" : "Recently updated"}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-text-secondary">A closer look at the details that shape your trip.</p>
+            </div>
+            <div className={`grid gap-5 ${planningGuides.length === 1 ? "" : `mt-6 ${gridFor(planningGuides.length)}`}`}>
+              {planningGuides.map((a) => <ArticleCard key={a.path} article={a} />)}
             </div>
           </div>
         </section>
       ) : null}
 
-      {/* Same two-column rhythm as the prose above, so the page keeps one spine. */}
-      <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-6">
-        <div className="gap-14 lg:grid lg:grid-cols-[minmax(0,68ch)_1fr]">
-          <div className="min-w-0">
-            <FAQ faqs={fm.faqs} />
-          </div>
-          <div className="min-w-0">
-            <SourceList sources={fm.sources} />
-          </div>
-        </div>
+      <section className="mx-auto max-w-3xl px-5 pb-4 sm:px-6">
+        <FAQ faqs={fm.faqs} collapsible />
+        <details className="mt-8 rounded-xl border border-border p-5">
+          <summary className="cursor-pointer font-heading font-semibold">Sources and verification</summary>
+          <SourceList sources={fm.sources} />
+        </details>
       </section>
     </div>
   );

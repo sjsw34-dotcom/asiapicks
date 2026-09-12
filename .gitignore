@@ -45,3 +45,6 @@ next-env.d.ts
 
 # subagent-driven-development workspaces
 .superpowers/
+
+# browser-driving debug output (screenshots, console logs)
+.playwright-mcp/

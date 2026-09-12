@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #0D9488;
+  --color-primary: #0F766E;
   --color-primary-light: #14B8A6;
-  --color-primary-dark: #0F766E;
+  --color-primary-dark: #115E59;
   --color-secondary: #F97316;
   --color-secondary-dark: #EA580C;
   --color-background: #FFFFFF;
@@ -19,6 +19,13 @@ body {
   background: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+@layer base {
+  :where(a, button, summary, input, select, textarea):focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 4px;
+  }
 }
 
 h1, h2, h3, h4 {
