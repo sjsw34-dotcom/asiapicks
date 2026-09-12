@@ -10,7 +10,8 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test \"tests/**/*.test.ts\"",
-    "check": "tsx scripts/check.ts"
+    "check": "tsx scripts/check.ts",
+    "stale": "tsx scripts/stale.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
