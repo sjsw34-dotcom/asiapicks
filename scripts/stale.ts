@@ -1,6 +1,7 @@
 import { loadContent } from "@/lib/content/loader";
 import { loadOffers } from "@/lib/affiliates/offers";
 import { staleItems, STALE_DAYS } from "@/lib/checks/facts";
+import { staticPageSources } from "@/lib/content/pages";
 
 /**
  * The weekly refresh worklist. `npm run check` mentions stale sources among
@@ -13,7 +14,7 @@ function main() {
   const today = new Date().toISOString().slice(0, 10);
 
   // Review drafts count: they will publish carrying whatever their sources say.
-  const items = staleItems(loadContent({ includeReview: true }), loadOffers(), today, days);
+  const items = staleItems(loadContent({ includeReview: true }), loadOffers(), today, days, staticPageSources());
 
   if (items.length === 0) {
     console.log(`Nothing checked more than ${days} days ago. Refresh queue is empty.`);

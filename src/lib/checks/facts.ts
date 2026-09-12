@@ -24,13 +24,29 @@ export interface StaleItem {
  * threshold, oldest first, so the list is already in the order it should be
  * worked through.
  */
+export interface StaticPageSources {
+  slug: string;
+  file: string;
+  title: string;
+  sources: { title: string; checkedAt: string; url?: string; publisher?: string }[];
+}
+
 export function staleItems(
   idx: ContentIndex,
   offers: Map<string, Offer>,
   today: string,
   days: number = STALE_DAYS,
+  pages: StaticPageSources[] = [],
 ): StaleItem[] {
   const items: StaleItem[] = [];
+  for (const p of pages) {
+    for (const s of p.sources) {
+      const d = age(today, s.checkedAt);
+      if (d > days) {
+        items.push({ kind: "page", path: `/${p.slug}`, file: p.file, title: p.title, source: s.title, checkedAt: s.checkedAt, days: d });
+      }
+    }
+  }
   for (const n of [...idx.hubs, ...idx.articles]) {
     for (const s of n.fm.sources) {
       const d = age(today, s.checkedAt);
