@@ -26,7 +26,7 @@ const HERO = "seoul-bukchon-hanok-street";
  */
 const DECISIONS = [
   { q: "How long do you need?", a: "5 days", note: "Covers Seoul properly. Eight to ten adds Busan or Jeju.", href: "#how-many-days-do-you-need" },
-  { q: "Which month?", a: "October", note: "Seoul highs average 20.1°C (68°F), with less rain than summer.", href: "#which-month-should-you-pick" },
+  { q: "Which month?", a: "October", note: "Seoul highs average 20.2°C (68°F), with less rain than summer.", href: "#which-month-should-you-pick" },
   { q: "Paperwork before you fly?", a: "One free form", note: "Most visitors skip the K-ETA, which is what makes the e-Arrival Card theirs to file.", href: "#do-you-need-a-visa-or-a-k-eta" },
   { q: "What is a subway ride?", a: "KRW 1,550", note: "Seoul, on a transit card. Busan runs KRW 1,600 to 1,800.", href: "#what-does-getting-around-cost" },
 ];
