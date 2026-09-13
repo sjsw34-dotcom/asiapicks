@@ -13,12 +13,15 @@ import FAQ from "@/components/content/FAQ";
 import SourceList from "@/components/content/SourceList";
 import SourcesDisclosure from "@/components/content/SourcesDisclosure";
 import ImageCredits from "@/components/media/ImageCredits";
+import OfferCard from "@/components/affiliate/OfferCard";
+import Disclosure from "@/components/affiliate/Disclosure";
 
 const home = () => getStaticPage("home");
 
 /** Keep a set of four destinations balanced, with room to grow. */
 const gridFor = (n: number) => n <= 1 ? "grid-cols-1" : n <= 4 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3";
 const HERO = "seoul-bukchon-hanok-street";
+const HOME_OFFERS = ["korea-lgu-esim-creatrip", "seoul-hotels-tripcom", "korea-ktx-tripcom"];
 
 /**
  * The four decisions a first trip turns on. Each answer is stated here and
@@ -130,6 +133,18 @@ export default function HomePage() {
           </div>
         </section>
       ) : null}
+
+      {/* The three bookings nearly every first trip makes, placed before the long read so a phone reader meets them. */}
+      <section aria-labelledby="book-essentials" className="mx-auto max-w-7xl px-5 pb-10 sm:px-6">
+        <h2 id="book-essentials" className="font-heading text-2xl font-bold">Book the essentials</h2>
+        <p className="mt-2 text-sm text-text-secondary">
+          Data on landing, a bed near the subway and the train south. Each is compared in its guide before you book.
+        </p>
+        <Disclosure />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {HOME_OFFERS.map((id) => <OfferCard key={id} id={id} sourceSlug="home" />)}
+        </div>
+      </section>
 
       {/* A short planning overview; the answer board links directly to its headings. */}
       <section className="mx-auto max-w-3xl px-5 pb-10 sm:px-6">
