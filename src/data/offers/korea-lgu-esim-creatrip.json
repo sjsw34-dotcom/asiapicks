@@ -1,0 +1,10 @@
+{
+  "id": "korea-lgu-esim-creatrip",
+  "provider": "creatrip",
+  "kind": "ticket",
+  "title": "LG U+ eSIM with a Korean 010 number",
+  "summary": "LG U+ eSIM with unlimited data and no speed cap, from 1 to 90 days. The Korean number works after a passport check at the airport counter.",
+  "targetUrl": "https://creatrip.com/en/spot/12898",
+  "destination": "korea",
+  "tags": ["esim", "sim", "phone-number"]
+}
