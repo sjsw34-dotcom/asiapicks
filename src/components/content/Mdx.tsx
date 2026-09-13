@@ -12,6 +12,7 @@ import BookingCTA from "@/components/affiliate/BookingCTA";
 import Callout from "./Callout";
 import QuickFacts from "./QuickFacts";
 import Verdict from "./Verdict";
+import GuideCard from "./GuideCard";
 
 type P = { children?: React.ReactNode };
 
@@ -47,6 +48,7 @@ export default function Mdx({ source, sourceSlug }: { source: string; sourceSlug
     Callout,
     QuickFacts,
     Verdict,
+    GuideCard,
     Offer: ({ id }: { id: string }) => <OfferCard id={id} sourceSlug={sourceSlug} />,
     OfferList: ({ ids }: { ids: string }) => <OfferList ids={ids} sourceSlug={sourceSlug} />,
     ComparisonTable: ({ ids }: { ids: string }) => <ComparisonTable ids={ids} sourceSlug={sourceSlug} />,

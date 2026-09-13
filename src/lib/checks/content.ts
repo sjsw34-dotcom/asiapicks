@@ -29,6 +29,9 @@ export const primaryOfferId = (body: string): string | null => {
   return first ? parseIdList(first[1])[0] ?? null : null;
 };
 
+/** Paths the body shows as GuideCards. Their featured images render on this page and need crediting. */
+export const guideCardPaths = (body: string) => [...body.matchAll(ATTR("GuideCard", "href"))].map((m) => m[1]);
+
 export const bodyOfferIds = (body: string) => [
   ...[...body.matchAll(ATTR("Offer", "id"))].map((m) => m[1]),
   ...[...body.matchAll(ATTR("BookingCTA", "id"))].map((m) => m[1]),

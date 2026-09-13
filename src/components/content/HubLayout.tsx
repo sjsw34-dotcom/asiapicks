@@ -3,7 +3,7 @@ import type { ContentIndex, Hub } from "@/lib/content/loader";
 import { breadcrumbSchema, destinationSchema, faqSchema } from "@/lib/seo/schema";
 import { getImage } from "@/lib/images/registry";
 import { needsDisclosure, headings } from "@/lib/content/body";
-import { bodyImageIds, primaryOfferId } from "@/lib/checks/content";
+import { bodyImageIds, guideCardPaths, primaryOfferId } from "@/lib/checks/content";
 import TopOffer from "@/components/affiliate/TopOffer";
 import SidebarOffer from "@/components/affiliate/SidebarOffer";
 import Figure from "@/components/media/Figure";
@@ -76,7 +76,7 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
       <FAQ faqs={hub.fm.faqs} />
       <SourcesDisclosure count={hub.fm.sources.length}>
         <SourceList sources={hub.fm.sources} />
-        <ImageCredits ids={[hub.fm.featuredImage, ...bodyImageIds(hub.body), ...cardImageIds(categories.flatMap((c) => c.articles))]} />
+        <ImageCredits ids={[hub.fm.featuredImage, ...bodyImageIds(hub.body), ...cardImageIds(categories.flatMap((c) => c.articles)), ...guideCardPaths(hub.body).map((p) => { const n = idx.byPath.get(p); return n && n.kind !== "category" ? n.fm.featuredImage : undefined; })]} />
       </SourcesDisclosure>
     </article>
   );

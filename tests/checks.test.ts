@@ -43,6 +43,18 @@ test("broken internal link is an error", () => {
   assert.match(linksCheck(bad, live).errors.join("\n"), /\/korea\/nowhere/);
 });
 
+test("an article that links to no other article, or that no article links to, is an error", () => {
+  const isolated = withArticle(idx, (a) => ({ ...a, body: "[Korea](/korea)" }));
+  const errors = linksCheck(isolated, live).errors.join("\n");
+  assert.match(errors, /how-to-pay-in-korea\.mdx: links to 0 other article/);
+  assert.match(errors, /incheon-airport-to-seoul\.mdx: no other article links here/);
+});
+
+test("a GuideCard counts as a link in both directions", () => {
+  const carded = withArticle(idx, (a) => ({ ...a, body: `[Korea](/korea)\n<GuideCard href="/korea/seoul/incheon-airport-to-seoul" />` }));
+  assert.deepEqual(linksCheck(carded, live).errors, []);
+});
+
 test("H1 in body, two booking CTAs, unknown offer are errors", () => {
   const bad = withArticle(idx, (a) => ({
     ...a,
@@ -88,6 +100,10 @@ test("article with no inbound links is an orphan", () => {
     ...h,
     body: h.body.replace("[how to pay in Korea](/korea/how-to-pay-in-korea)", "how to pay in Korea"),
   }));
+  const airport = noLink.articles.find((a) => a.fm.slug === "incheon-airport-to-seoul")!;
+  const unlinked = { ...airport, body: airport.body.replace("[how to pay in Korea](/korea/how-to-pay-in-korea)", "how to pay in Korea") };
+  noLink.articles = noLink.articles.map((a) => (a === airport ? unlinked : a));
+  noLink.byPath.set(unlinked.path, unlinked);
   assert.match(linksCheck(noLink, live).errors.join("\n"), /orphan/);
 });
 

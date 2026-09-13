@@ -29,6 +29,12 @@ First expertise: South Korea. English only. Design spec: `docs/superpowers/specs
 - No word-count targets. No H1 in MDX bodies (the page renders the H1 from `title`).
 - MDX component props are strings only: `<OfferList ids="a,b" />`.
 
+## Connecting articles (every new article, enforced by `npm run check`)
+- Each article links to at least 2 other articles and is linked from at least 1 other article. Hubs and categories do not count toward either.
+- Use `<GuideCard href="/korea/..." />` where the text hands the reader on (a photo card is hard to miss on a phone); plain inline links still count.
+- When publishing a new article, add a GuideCard or inline link to it from the 1–2 most related published articles in the same commit, and link back to them. A link to an unpublished article fails the production build, so the new article and its inbound links ship together.
+- Every hub and article carries a relevant booking option (`<Offer>`/`<OfferList>` at the decision point, one `<BookingCTA>` per article). The page's lead offer is repeated automatically under the answer box and in the desktop sidebar.
+
 ## Templates (every article picks one; it decides the writing, not just the layout)
 
 `template` is an editorial instruction. A site where every piece is shaped the same

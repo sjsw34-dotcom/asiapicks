@@ -1,7 +1,7 @@
 import type { Article, ContentIndex } from "@/lib/content/loader";
 import { relatedArticles, nextStep } from "@/lib/content/links";
 import { needsDisclosure, headings } from "@/lib/content/body";
-import { bodyImageIds, primaryOfferId } from "@/lib/checks/content";
+import { bodyImageIds, guideCardPaths, primaryOfferId } from "@/lib/checks/content";
 import TopOffer from "@/components/affiliate/TopOffer";
 import SidebarOffer from "@/components/affiliate/SidebarOffer";
 import { answerLabel, leadsWithStandfirst } from "@/lib/content/templates";
@@ -69,7 +69,7 @@ export default function ArticleLayout({ article, idx }: { article: Article; idx:
       <RelatedGuides articles={related} />
       <SourcesDisclosure count={fm.sources.length}>
         <SourceList sources={fm.sources} />
-        <ImageCredits ids={[fm.featuredImage, ...bodyImageIds(article.body), ...cardImageIds(related)]} />
+        <ImageCredits ids={[fm.featuredImage, ...bodyImageIds(article.body), ...cardImageIds(related), ...guideCardPaths(article.body).map((p) => { const n = idx.byPath.get(p); return n && n.kind !== "category" ? n.fm.featuredImage : undefined; })]} />
       </SourcesDisclosure>
     </article>
   );
