@@ -93,6 +93,11 @@ headings is not exempt from clarity, only from that specific device.
 - Weekly workflow: Search Console performance and index status (`scripts/search-console.ts`, secret
   `GOOGLE_SERVICE_ACCOUNT_JSON`). Monthly workflow: an issue with `npm run refresh` (pages with prices,
   timetables, hours, dates) plus seasonal guides due from `src/data/calendar.ts`.
+- Weekly batch: every Thursday `.github/workflows/weekly-reminder.yml` opens a GitHub issue (label `weekly-drafts`)
+  telling the owner to open a session and say "다음 주 초안 준비해". That means: pick 3–4 topics for next
+  Monday–Sunday (seasonal entries due in `src/data/calendar.ts` first, then the spec §11 backlog), draft them as
+  `status: review` with staggered `publishedAt`, add inbound links, run the dated checks, ask the owner which to
+  approve, flip approved ones to `published`, `git pull --rebase`, push.
 - Seasonal guides publish about a month before the season (`src/data/calendar.ts`). Refresh: bump `updatedAt`
   only when a fact changed.
 

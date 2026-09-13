@@ -1,0 +1,37 @@
+name: Weekly drafts reminder
+
+# Every Thursday, opens an issue reminding the owner to prepare next week's drafts
+# in a Claude Code session. GitHub emails the repo owner about new issues.
+# Closes last week's reminder if it is still open, so only one is ever open.
+
+on:
+  schedule:
+    # 00:00 UTC Thursday = 09:00 KST Thursday.
+    - cron: "0 0 * * 4"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  issue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Open this week's reminder
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          npx tsx scripts/weekly-reminder.ts > body.md
+          for n in $(gh issue list --label weekly-drafts --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "새 주간 알림으로 대체합니다."
+          done
+          gh label create weekly-drafts --color 7C3AED --description "Weekly drafts reminder" 2>/dev/null || true
+          gh issue create --label weekly-drafts --title "다음 주 초안 준비 ($(TZ=Asia/Seoul date +%m/%d))" --body-file body.md
