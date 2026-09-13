@@ -15,7 +15,8 @@ import Mdx from "./Mdx";
 import Outline, { WithOutline } from "./Outline";
 import FAQ from "./FAQ";
 import SourceList from "./SourceList";
-import ArticleCard from "./ArticleCard";
+import ArticleCard, { cardImageIds } from "./ArticleCard";
+import SourcesDisclosure from "./SourcesDisclosure";
 
 export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex }) {
   const crumbs = breadcrumbsFor(hub);
@@ -69,8 +70,10 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
         </section>
       ))}
       <FAQ faqs={hub.fm.faqs} />
-      <SourceList sources={hub.fm.sources} />
-      <ImageCredits ids={[hub.fm.featuredImage, ...bodyImageIds(hub.body)]} />
+      <SourcesDisclosure count={hub.fm.sources.length}>
+        <SourceList sources={hub.fm.sources} />
+        <ImageCredits ids={[hub.fm.featuredImage, ...bodyImageIds(hub.body), ...cardImageIds(categories.flatMap((c) => c.articles))]} />
+      </SourcesDisclosure>
     </article>
   );
 }

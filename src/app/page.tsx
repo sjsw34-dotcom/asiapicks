@@ -6,11 +6,12 @@ import { getImage } from "@/lib/images/registry";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/seo/schema";
 import { formatDate } from "@/lib/content/body";
-import ArticleCard from "@/components/content/ArticleCard";
+import ArticleCard, { cardImageIds } from "@/components/content/ArticleCard";
 import JsonLd from "@/components/content/JsonLd";
 import Mdx from "@/components/content/Mdx";
 import FAQ from "@/components/content/FAQ";
 import SourceList from "@/components/content/SourceList";
+import SourcesDisclosure from "@/components/content/SourcesDisclosure";
 import ImageCredits from "@/components/media/ImageCredits";
 
 const home = () => getStaticPage("home");
@@ -47,7 +48,7 @@ export default function HomePage() {
   const recent = idx.articles.slice(0, 6);
   const planningGuides = beforeYouGo.length > 0 ? beforeYouGo : recent;
   const cardImages = cityHubs.map((h) => h.fm.featuredImage).filter((id): id is string => !!id);
-  const creditIds = [HERO, ...cardImages];
+  const creditIds = [HERO, ...cardImages, ...cardImageIds(planningGuides)];
 
   return (
     <div>
@@ -151,11 +152,10 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-3xl px-5 pb-4 sm:px-6">
         <FAQ faqs={fm.faqs} collapsible />
-        <details className="mt-8 rounded-xl border border-border p-5">
-          <summary className="cursor-pointer font-heading font-semibold">Sources and verification</summary>
+        <SourcesDisclosure count={fm.sources.length}>
           <SourceList sources={fm.sources} />
           <ImageCredits ids={creditIds} />
-        </details>
+        </SourcesDisclosure>
       </section>
     </div>
   );

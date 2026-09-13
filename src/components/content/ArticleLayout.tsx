@@ -21,6 +21,8 @@ import FAQ from "./FAQ";
 import SourceList from "./SourceList";
 import NextStep from "./NextStep";
 import RelatedGuides from "./RelatedGuides";
+import SourcesDisclosure from "./SourcesDisclosure";
+import { cardImageIds } from "./ArticleCard";
 
 export default function ArticleLayout({ article, idx }: { article: Article; idx: ContentIndex }) {
   const { fm } = article;
@@ -30,6 +32,8 @@ export default function ArticleLayout({ article, idx }: { article: Article; idx:
   const schemas: object[] = [articleSchema(article, image ? absoluteUrl(image.src) : undefined), breadcrumbSchema(crumbs)];
   if (fm.faqs.length > 0) schemas.push(faqSchema(fm.faqs));
   const category = getCategory(article.city ? "city" : "country", fm.category)!;
+  const next = nextStep(article, idx);
+  const related = relatedArticles(article, idx, 5).filter((a) => a.path !== next?.path).slice(0, 4);
 
   return (
     <article className="mx-auto max-w-7xl px-5 py-10 sm:px-6">
@@ -57,10 +61,12 @@ export default function ArticleLayout({ article, idx }: { article: Article; idx:
         </section>
       ) : null}
       <FAQ faqs={fm.faqs} />
-      <SourceList sources={fm.sources} />
-      <ImageCredits ids={[fm.featuredImage, ...bodyImageIds(article.body)]} />
-      <NextStep article={nextStep(article, idx)} />
-      <RelatedGuides articles={relatedArticles(article, idx, 4)} />
+      <NextStep article={next} />
+      <RelatedGuides articles={related} />
+      <SourcesDisclosure count={fm.sources.length}>
+        <SourceList sources={fm.sources} />
+        <ImageCredits ids={[fm.featuredImage, ...bodyImageIds(article.body), ...cardImageIds(related)]} />
+      </SourcesDisclosure>
     </article>
   );
 }

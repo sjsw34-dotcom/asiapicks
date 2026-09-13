@@ -6,6 +6,7 @@ import { SITE } from "@/lib/site";
 import Disclosure from "@/components/affiliate/Disclosure";
 import Mdx from "./Mdx";
 import ImageCredits from "@/components/media/ImageCredits";
+import SourcesDisclosure from "./SourcesDisclosure";
 import { bodyImageIds } from "@/lib/checks/content";
 
 export function staticPageMetadata(slug: string): Metadata {
@@ -21,7 +22,11 @@ export default function StaticPage({ slug }: { slug: string }) {
       <p className="mt-2 text-sm text-text-secondary">Last updated {formatDate(fm.updatedAt)}</p>
       {needsDisclosure(body) ? <Disclosure /> : null}
       <Mdx source={body} sourceSlug={`page-${slug}`} />
-      <ImageCredits ids={bodyImageIds(body)} />
+      {bodyImageIds(body).length > 0 ? (
+        <SourcesDisclosure count={0}>
+          <ImageCredits ids={bodyImageIds(body)} />
+        </SourcesDisclosure>
+      ) : null}
       {slug === "contact" ? (
         SITE.contactEmail ? (
           <p className="mt-6 text-lg">Email: <a className="text-primary underline" href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a></p>

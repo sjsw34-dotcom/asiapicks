@@ -10,9 +10,9 @@ export default function ImageCredits({ ids }: { ids: (string | null | undefined)
   const images = [...new Set(ids.filter((id): id is string => !!id))].map(getImage);
   if (images.length === 0) return null;
   return (
-    <section className="mt-8 border-t border-border pt-6">
-      <h2 className="font-heading text-lg font-semibold">Image credits</h2>
-      <ul className="mt-3 space-y-2 text-sm text-text-secondary">
+    <section className="mt-4">
+      <h2 className="font-semibold text-text-primary">Image credits</h2>
+      <ul className="mt-2 space-y-1">
         {images.map((img) => {
           const credit = img.aiGenerated ? "Illustration (AI-generated)" : `${img.credit} (${img.license})`;
           return (
