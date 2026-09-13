@@ -1,0 +1,13 @@
+{
+  "id": "jeju-hotels-tripcom",
+  "provider": "tripcom",
+  "kind": "hotel",
+  "title": "Jeju hotels",
+  "summary": "Trip.com's Jeju listings, filterable by area, for picking an east or south base once the car question is settled.",
+  "targetUrl": "https://www.trip.com/hotels/jeju-hotels-list-737/",
+  "destination": "korea/jeju",
+  "tags": [
+    "hotel",
+    "jeju"
+  ]
+}

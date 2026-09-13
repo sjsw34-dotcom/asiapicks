@@ -1,0 +1,13 @@
+{
+  "id": "gyeongju-hotels-tripcom",
+  "provider": "tripcom",
+  "kind": "hotel",
+  "title": "Gyeongju hotels",
+  "summary": "Trip.com's Gyeongju listings, for the one night that puts Donggung and Wolji in the evening and Bulguksa in the morning.",
+  "targetUrl": "https://www.trip.com/hotels/gyeongju-hotels-list-3675/",
+  "destination": "korea/gyeongju",
+  "tags": [
+    "hotel",
+    "gyeongju"
+  ]
+}

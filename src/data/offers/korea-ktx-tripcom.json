@@ -1,0 +1,13 @@
+{
+  "id": "korea-ktx-tripcom",
+  "provider": "tripcom",
+  "kind": "rail",
+  "title": "KTX tickets",
+  "summary": "Trip.com's Korail booking in English, with e-tickets for KTX routes such as Seoul to Busan.",
+  "targetUrl": "https://www.trip.com/trains/korail/",
+  "destination": "korea",
+  "tags": [
+    "rail",
+    "ktx"
+  ]
+}
