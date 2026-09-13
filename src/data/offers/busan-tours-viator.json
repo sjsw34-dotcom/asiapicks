@@ -2,9 +2,9 @@
   "id": "busan-tours-viator",
   "provider": "viator",
   "kind": "tour",
-  "title": "Tours from Busan",
-  "summary": "Viator's Busan listings, including guided day trips to Gyeongju that leave from Busan.",
-  "targetUrl": "https://www.viator.com/Busan/d4615-ttd",
+  "title": "Gyeongju day tour from Busan",
+  "summary": "A guided day trip from Busan to Gyeongju's UNESCO-listed sites, for anyone basing themselves in Busan.",
+  "targetUrl": "https://www.viator.com/tours/Busan/Gyeongju-UNESCO-World-Heritage-One-Day-Tour/d4615-48881P43",
   "destination": "korea/busan",
   "tags": [
     "tour",

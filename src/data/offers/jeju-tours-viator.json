@@ -2,9 +2,9 @@
   "id": "jeju-tours-viator",
   "provider": "viator",
   "kind": "tour",
-  "title": "Jeju tours",
-  "summary": "Viator's Jeju listings, including full-day coach tours of the east and west coasts that cover a day without a car.",
-  "targetUrl": "https://www.viator.com/Jeju-Island/d50286-ttd",
+  "title": "Jeju east coast day tour",
+  "summary": "A full-day coach tour of Jeju's east coast from Jeju City, which covers the far side of the island without a car.",
+  "targetUrl": "https://www.viator.com/tours/Jeju-Island/Full-Day-Jeju-East-Course-Tour-with-Lunch/d50286-21130P5",
   "destination": "korea/jeju",
   "tags": [
     "tour",
