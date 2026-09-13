@@ -1,0 +1,14 @@
+{
+  "id": "nami-island-tour-viator",
+  "provider": "viator",
+  "kind": "tour",
+  "title": "Nami Island and Garden of Morning Calm tour from Seoul",
+  "summary": "A day tour from Seoul combining Nami Island with the Garden of Morning Calm and other stops near Gapyeong.",
+  "targetUrl": "https://www.viator.com/tours/Seoul/Nami-with-Petite-France-and-Railbike-and-The-Garden-of-Morning-Calm-Tour/d973-48881P12",
+  "destination": "korea/seoul",
+  "tags": [
+    "tour",
+    "nami-island",
+    "day-trip"
+  ]
+}
