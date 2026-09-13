@@ -1,0 +1,14 @@
+{
+  "id": "arex-express-creatrip",
+  "provider": "creatrip",
+  "kind": "transfer",
+  "title": "AREX express train ticket, Incheon Airport to Seoul Station",
+  "summary": "A one-way AREX express voucher for foreign visitors, exchanged for a ticket at the station kiosk or online. Non-refundable once bought.",
+  "targetUrl": "https://creatrip.com/en/spot/11229",
+  "destination": "korea/seoul",
+  "tags": [
+    "arex",
+    "airport",
+    "transfer"
+  ]
+}
