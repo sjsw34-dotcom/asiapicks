@@ -1,0 +1,44 @@
+name: Search Console
+
+# Weekly read of search performance and index status into the run summary.
+# The ramp from 3-4 posts a week to one a day depends on new posts getting indexed.
+# Run by hand with "sitemap" to submit /sitemap.xml.
+
+on:
+  schedule:
+    # Monday 00:30 UTC = 09:30 KST.
+    - cron: "30 0 * * 1"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "report, inspect or sitemap"
+        required: false
+        default: "report"
+
+permissions:
+  contents: read
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Search Console
+        env:
+          MODE: ${{ inputs.mode }}
+        run: |
+          if [ "$MODE" = "sitemap" ]; then
+            npx tsx scripts/search-console.ts sitemap | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            npx tsx scripts/search-console.ts report --markdown | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            npx tsx scripts/search-console.ts inspect --markdown | tee -a "$GITHUB_STEP_SUMMARY"
+          fi

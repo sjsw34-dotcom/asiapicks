@@ -6,10 +6,13 @@ import { getImage } from "@/lib/images/registry";
 /**
  * A related guide placed inside the body, where the text hands the reader on.
  * A plain underlined link is easy to miss on a phone; a card with a photo is not.
- * The target must be a live page: an unknown path fails the build.
+ * The target must be a live page: an unknown path fails the build. A card for an
+ * article scheduled for a later date renders nothing until that day's rebuild.
  */
 export default function GuideCard({ href }: { href: string }) {
-  const node = getContent().byPath.get(href);
+  const content = getContent();
+  if (content.scheduled.has(href)) return null;
+  const node = content.byPath.get(href);
   if (!node || node.kind === "category") throw new Error(`GuideCard: no article or hub at ${href}`);
   const img = node.fm.featuredImage ? getImage(node.fm.featuredImage) : null;
   return (

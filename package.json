@@ -11,7 +11,10 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx --test \"tests/**/*.test.ts\"",
     "check": "tsx scripts/check.ts",
-    "stale": "tsx scripts/stale.ts"
+    "stale": "tsx scripts/stale.ts",
+    "refresh": "tsx scripts/refresh-list.ts",
+    "release": "tsx scripts/release.ts",
+    "search-console": "tsx scripts/search-console.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

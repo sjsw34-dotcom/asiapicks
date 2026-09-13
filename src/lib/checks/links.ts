@@ -9,7 +9,8 @@ export function linksCheck(idx: ContentIndex, extraLivePaths: Set<string>) {
   const nodes = [...idx.hubs, ...idx.categories, ...idx.articles];
   for (const n of nodes) {
     for (const target of graph.get(n.path)!.out) {
-      if (!idx.byPath.has(target) && !extraLivePaths.has(target)) r.errors.push(`${rel(n.file)}: broken internal link ${target}`);
+      // A scheduled article renders as plain text until its date, so linking ahead to it is fine.
+      if (!idx.byPath.has(target) && !extraLivePaths.has(target) && !idx.scheduled.has(target)) r.errors.push(`${rel(n.file)}: broken internal link ${target}`);
     }
   }
   const articlePaths = new Set(idx.articles.map((a) => a.path));

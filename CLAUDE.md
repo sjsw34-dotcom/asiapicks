@@ -81,7 +81,20 @@ headings is not exempt from clarity, only from that specific device.
 
 ## Publishing
 - Content is produced in Claude Code sessions and published only after the owner approves (`status: published`).
-- No cron publishing. No Google Indexing API. After deploy, ping IndexNow with `npx tsx scripts/indexnow.ts <urls>`.
+  Drafts wait as `status: review`; approval flips them to `published`.
+- Scheduled release: an approved article goes live on its `publishedAt` date (Korea time). The loader hides
+  future-dated articles in production; GuideCards and inline links to them render as nothing / plain text
+  until that day. `npm run check` also checks the site as it will build on every scheduled date.
+- `.github/workflows/publish.yml` runs daily at 06:05 KST: if an approved article is dated today it pushes an
+  empty `release:` commit (Vercel rebuilds), waits until the page is live, then pings IndexNow. On pushes that
+  change content it pings IndexNow for the changed live pages. It never writes, generates or approves content.
+  Release commits land on `main`, so `git pull --rebase` before pushing a session's batch.
+- No auto-generated posts. No Google Indexing API. Manual IndexNow: `npx tsx scripts/indexnow.ts <urls>`.
+- Weekly workflow: Search Console performance and index status (`scripts/search-console.ts`, secret
+  `GOOGLE_SERVICE_ACCOUNT_JSON`). Monthly workflow: an issue with `npm run refresh` (pages with prices,
+  timetables, hours, dates) plus seasonal guides due from `src/data/calendar.ts`.
+- Seasonal guides publish about a month before the season (`src/data/calendar.ts`). Refresh: bump `updatedAt`
+  only when a fact changed.
 
 ## Safety
 - Never print `.env.local`. Never commit it.

@@ -1,0 +1,43 @@
+name: Monthly refresh
+
+# Opens one issue on the 1st of each month: pages with prices, timetables,
+# opening hours or dated events to re-verify, seasonal guides due for drafting,
+# and the Search Console numbers used to decide what to write next.
+
+on:
+  schedule:
+    # 00:00 UTC on the 1st = 09:00 KST.
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  issue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+
+      - name: Build the worklist
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          npx tsx scripts/refresh-list.ts --markdown > body.md
+          echo "" >> body.md
+          npx tsx scripts/search-console.ts report --markdown >> body.md 2> sc.err \
+            || { echo "## Search Console"; echo; echo "Not available: $(cat sc.err)"; } >> body.md
+          echo "" >> body.md
+          npx tsx scripts/search-console.ts inspect --markdown >> body.md 2>> sc.err || true
+
+      - name: Open the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --title "Monthly refresh $(TZ=Asia/Seoul date +%Y-%m)" --body-file body.md

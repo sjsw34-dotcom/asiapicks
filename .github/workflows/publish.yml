@@ -1,0 +1,103 @@
+name: Publish
+
+# Articles go live on their publishedAt date (Korea time). Content is written in
+# Claude Code sessions and approved by the owner (status: published) before it is
+# committed; this workflow never writes or approves content. It only:
+#   - on a release day, pushes an empty commit so Vercel rebuilds and the
+#     day's approved article appears, then pings IndexNow once it is live;
+#   - on every push that changes content, pings IndexNow for the live pages it changed.
+
+on:
+  schedule:
+    # 21:05 UTC = 06:05 KST, just after the Korean date turns over.
+    - cron: "5 21 * * *"
+  push:
+    branches: [main]
+    paths: ["src/content/**"]
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Release date YYYY-MM-DD (default: today in Korea)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+
+      - name: Find articles due today
+        id: due
+        env:
+          DATE: ${{ inputs.date }}
+        run: |
+          npx tsx scripts/release.ts due ${DATE:+--date "$DATE"} > urls.txt 2> due.log
+          cat due.log
+          echo "count=$(grep -c . urls.txt || true)" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger the rebuild
+        if: steps.due.outputs.count != '0'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "release: $(sed 's/^going live //' due.log | paste -sd ';' -)"
+          git push
+
+      - name: Wait until the new article is live
+        if: steps.due.outputs.count != '0'
+        run: npx tsx scripts/release.ts wait "$(head -1 urls.txt)"
+
+      - name: Ping IndexNow
+        if: steps.due.outputs.count != '0'
+        run: npx tsx scripts/indexnow.ts $(cat urls.txt)
+
+  indexnow:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+
+      - name: Live pages changed by this push
+        id: changed
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if ! git cat-file -e "$BEFORE" 2>/dev/null; then BEFORE="${GITHUB_SHA}~1"; fi
+          npx tsx scripts/release.ts changed "$BEFORE" "$GITHUB_SHA" > urls.txt
+          cat urls.txt
+          echo "count=$(grep -c . urls.txt || true)" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for the Vercel deploy
+        if: steps.changed.outputs.count != '0'
+        # Edited pages already answer 200, so give the build time first, then confirm every URL.
+        run: |
+          sleep 240
+          npx tsx scripts/release.ts wait $(cat urls.txt)
+
+      - name: Ping IndexNow
+        if: steps.changed.outputs.count != '0'
+        run: npx tsx scripts/indexnow.ts $(cat urls.txt)

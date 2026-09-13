@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import path from "node:path";
-import { loadContent } from "@/lib/content/loader";
+import { loadContent, contentToday } from "@/lib/content/loader";
 import { articlePath, hubPath, categoryPath } from "@/lib/content/paths";
 
 const root = path.join(process.cwd(), "tests/fixtures/content");
@@ -63,4 +63,28 @@ test("unknown category throws", () => {
 test("duplicate output path throws", () => {
   const badRoot = path.join(process.cwd(), "tests/fixtures/content-duplicate");
   assert.throws(() => loadContent({ root: badRoot, includeReview: false }), /Duplicate path \/korea\/seoul/);
+});
+
+test("approved article with a future publishedAt is scheduled, not built", () => {
+  const idx = loadContent({ root, includeReview: false });
+  assert.equal(idx.byPath.get("/korea/seoul/future-guide"), undefined);
+  assert.equal(idx.scheduled.get("/korea/seoul/future-guide"), "2099-01-01");
+});
+
+test("asOf builds the site as it will be on that date", () => {
+  const idx = loadContent({ root, includeReview: false, asOf: "2099-01-01" });
+  assert.ok(idx.byPath.get("/korea/seoul/future-guide"));
+  assert.equal(idx.scheduled.size, 0);
+  assert.equal(idx.categories.find((c) => c.path === "/korea/seoul/transportation")?.articles.length, 2);
+});
+
+test("previews show scheduled articles when no date is forced", () => {
+  const idx = loadContent({ root, includeReview: true });
+  assert.ok(idx.byPath.get("/korea/seoul/future-guide"));
+});
+
+test("contentToday uses Korea time and honours CONTENT_TODAY", () => {
+  // 2026-09-13 21:30 UTC is already 2026-09-14 in Korea.
+  assert.equal(contentToday({}, Date.parse("2026-09-13T21:30:00Z")), "2026-09-14");
+  assert.equal(contentToday({ CONTENT_TODAY: "2026-01-02" }), "2026-01-02");
 });

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { loadContent, includeReviewByDefault } from "@/lib/content/loader";
+import { loadContent, includeReviewByDefault, contentToday } from "@/lib/content/loader";
 import { loadImages } from "@/lib/images/registry";
 import { loadOffers } from "@/lib/affiliates/offers";
 import { contentCheck } from "@/lib/checks/content";
@@ -15,7 +15,8 @@ import { staticLivePaths, type CheckResult } from "@/lib/checks/types";
 
 function main() {
   const production = process.env.VERCEL_ENV === "production" || process.env.CHECK_PRODUCTION === "1";
-  const idx = loadContent({ includeReview: !production && includeReviewByDefault() });
+  const includeReview = !production && includeReviewByDefault();
+  const idx = loadContent({ includeReview });
   const images = loadImages();
   const offers = loadOffers();
   const inventoryFile = path.join(process.cwd(), "src/data/legacy-inventory.json");
@@ -33,6 +34,16 @@ function main() {
     releaseCheck(idx, offers, process.env, production),
     factsCheck(idx, offers, today),
   ];
+
+  // Scheduled articles go live on later rebuilds nobody watches. Check the site as it
+  // will build on each of those dates now, while the fix is still a local edit.
+  const ahead = loadContent({ includeReview, asOf: contentToday() });
+  for (const date of [...new Set(ahead.scheduled.values())].sort()) {
+    const future = loadContent({ includeReview, asOf: date });
+    for (const r of [contentCheck(future, images, offers, production), linksCheck(future, live), navigationCheck(future, live, production), seoCheck(future)]) {
+      results.push({ name: `${r.name} @${date}`, warnings: [], errors: r.errors.filter((e) => !results.some((x) => x.errors.includes(e))) });
+    }
+  }
 
   let errors = 0;
   for (const r of results) {

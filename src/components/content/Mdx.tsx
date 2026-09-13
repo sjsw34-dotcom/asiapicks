@@ -13,10 +13,12 @@ import Callout from "./Callout";
 import QuickFacts from "./QuickFacts";
 import Verdict from "./Verdict";
 import GuideCard from "./GuideCard";
+import { getContent } from "@/lib/content/loader";
 
 type P = { children?: React.ReactNode };
 
 export default function Mdx({ source, sourceSlug }: { source: string; sourceSlug: string }) {
+  const { scheduled } = getContent();
   const components: MDXComponents = {
     h1: ({ children }: P) => <h2 className="mt-10 mb-4 font-heading text-2xl font-bold">{children}</h2>,
     h2: ({ children, ...rest }: P & { id?: string }) => <h2 {...rest} className="mt-10 mb-4 scroll-mt-20 font-heading text-2xl font-bold">{children}</h2>,
@@ -38,7 +40,10 @@ export default function Mdx({ source, sourceSlug }: { source: string; sourceSlug
     th: ({ children }: P) => <th className="min-w-[9rem] border-b border-border bg-surface px-3 py-2.5 text-left align-bottom font-semibold first:sticky first:left-0 first:z-10 first:min-w-[6.5rem] sm:px-4">{children}</th>,
     td: ({ children }: P) => <td className="min-w-[9rem] border-b border-border px-3 py-2.5 align-top first:sticky first:left-0 first:z-10 first:min-w-[6.5rem] first:bg-background first:font-medium sm:px-4">{children}</td>,
     a: ({ href = "", children }: P & { href?: string }) =>
-      href.startsWith("/") ? (
+      // A link to an article that is not live yet reads as plain text until its date.
+      href.startsWith("/") && scheduled.has(href.split(/[?#]/)[0].replace(/(.)\/$/, "$1")) ? (
+        <>{children}</>
+      ) : href.startsWith("/") ? (
         <Link href={href} className="text-primary underline underline-offset-2">{children}</Link>
       ) : (
         <a href={href} target="_blank" rel="noopener" className="text-primary underline underline-offset-2">{children}</a>

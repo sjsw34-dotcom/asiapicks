@@ -19,10 +19,19 @@ export type ContentIndex = {
   hubs: Hub[];
   categories: CategoryPage[];
   byPath: Map<string, ContentNode>;
+  /** Approved articles whose publishedAt is still ahead: hidden now, live on that date. Path -> publishedAt. */
+  scheduled: Map<string, string>;
 };
 
 const DEFAULT_ROOT = path.join(process.cwd(), "src/content");
 const cache = new Map<string, ContentIndex>();
+
+/** Today's date in Korea (UTC+9), the calendar the site publishes on. CONTENT_TODAY overrides it for checks and tests. */
+export function contentToday(env: Record<string, string | undefined> = process.env, now = Date.now()): string {
+  const fixed = env.CONTENT_TODAY?.trim();
+  if (fixed) return fixed;
+  return new Date(now + 9 * 3_600_000).toISOString().slice(0, 10);
+}
 
 export function includeReviewByDefault(): boolean {
   return process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
@@ -47,16 +56,25 @@ const visible = (status: ContentStatus, includeReview: boolean) =>
 const mdxFiles = (dir: string) =>
   fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith(".mdx") && !f.startsWith("_")) : [];
 
-export function loadContent(opts: { root?: string; includeReview?: boolean } = {}): ContentIndex {
+/**
+ * An article goes live on its publishedAt date, so an approved week of posts can
+ * sit in the repo and appear one a day as the daily rebuild runs. Previews show
+ * future-dated articles unless `asOf` is given; `asOf` makes a check see the site
+ * exactly as it will build on that date.
+ */
+export function loadContent(opts: { root?: string; includeReview?: boolean; asOf?: string } = {}): ContentIndex {
   const root = opts.root ?? DEFAULT_ROOT;
   const includeReview = opts.includeReview ?? includeReviewByDefault();
-  const key = `${root}|${includeReview}`;
+  const enforceDates = opts.asOf !== undefined || !includeReview;
+  const asOf = opts.asOf ?? contentToday();
+  const key = `${root}|${includeReview}|${enforceDates ? asOf : "any"}`;
   const hit = cache.get(key);
   if (hit) return hit;
 
   const articles: Article[] = [];
   const hubs: Hub[] = [];
   const categories: CategoryPage[] = [];
+  const scheduled = new Map<string, string>();
 
   const scopes: { country: string; city: string | null; dir: string }[] = [];
   for (const country of COUNTRIES) {
@@ -87,7 +105,12 @@ export function loadContent(opts: { root?: string; includeReview?: boolean } = {
         throw new Error(`Unknown category "${fm.category}" for ${city ? "city" : "country"} article in ${file}`);
       }
       if (!visible(fm.status, includeReview)) continue;
-      articles.push({ kind: "article", fm, body, country, city, path: articlePath(country, city, fm.slug), file });
+      const p = articlePath(country, city, fm.slug);
+      if (enforceDates && fm.publishedAt > asOf) {
+        scheduled.set(p, fm.publishedAt);
+        continue;
+      }
+      articles.push({ kind: "article", fm, body, country, city, path: p, file });
     }
     const catDir = path.join(dir, "_categories");
     if (fs.existsSync(catDir)) {
@@ -113,7 +136,7 @@ export function loadContent(opts: { root?: string; includeReview?: boolean } = {
     if (byPath.has(node.path)) throw new Error(`Duplicate path ${node.path} (${node.file})`);
     byPath.set(node.path, node);
   }
-  const index = { articles, hubs, categories, byPath };
+  const index = { articles, hubs, categories, byPath, scheduled };
   cache.set(key, index);
   return index;
 }
