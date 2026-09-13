@@ -1,0 +1,14 @@
+{
+  "id": "daehan-hanbok-gyeongbokgung-creatrip",
+  "provider": "creatrip",
+  "kind": "experience",
+  "title": "Daehan Hanbok rental by Gyeongbokgung Station",
+  "summary": "Traditional, fusion and premium hanbok next to Gyeongbokgung Station, with no deposit or ID left at the shop.",
+  "targetUrl": "https://creatrip.com/en/spot/13223",
+  "destination": "korea/seoul",
+  "tags": [
+    "hanbok",
+    "gyeongbokgung",
+    "experience"
+  ]
+}

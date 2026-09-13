@@ -1,0 +1,14 @@
+{
+  "id": "yes-hanbok-gyeongbokgung-creatrip",
+  "provider": "creatrip",
+  "kind": "experience",
+  "title": "YES Hanbok rental by Gyeongbokgung Station",
+  "summary": "2-hour, 4-hour or all-day rental a minute's walk from Gyeongbokgung Station, with hair styling and hair accessories included.",
+  "targetUrl": "https://creatrip.com/en/spot/11006",
+  "destination": "korea/seoul",
+  "tags": [
+    "hanbok",
+    "gyeongbokgung",
+    "experience"
+  ]
+}
