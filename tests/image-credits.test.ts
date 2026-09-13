@@ -58,3 +58,15 @@ test("sources are collapsed at the foot of articles and hubs, below related guid
   const article = read("src/components/content/ArticleLayout.tsx");
   assert.ok(article.indexOf("<RelatedGuides") < article.indexOf("<SourcesDisclosure"), "related guides must come before the collapsed sources");
 });
+
+test("articles and hubs repeat their booking option under the answer and in the desktop margin", async () => {
+  const { primaryOfferId } = await import("../src/lib/checks/content");
+  assert.equal(primaryOfferId('<Offer id="a" />\n<BookingCTA id="b" />'), "b", "the BookingCTA is the page's lead offer");
+  assert.equal(primaryOfferId('<OfferList ids="x, y" />\n<Offer id="z" />'), "x");
+  assert.equal(primaryOfferId("no offers"), null);
+  for (const file of ["src/components/content/ArticleLayout.tsx", "src/components/content/HubLayout.tsx"]) {
+    const src = read(file);
+    assert.match(src, /<TopOffer /, `${file} must show the booking link under the answer box`);
+    assert.match(src, /aside=\{primary \? <SidebarOffer /, `${file} must pin the booking card in the desktop margin`);
+  }
+});

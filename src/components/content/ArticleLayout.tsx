@@ -1,7 +1,9 @@
 import type { Article, ContentIndex } from "@/lib/content/loader";
 import { relatedArticles, nextStep } from "@/lib/content/links";
 import { needsDisclosure, headings } from "@/lib/content/body";
-import { bodyImageIds } from "@/lib/checks/content";
+import { bodyImageIds, primaryOfferId } from "@/lib/checks/content";
+import TopOffer from "@/components/affiliate/TopOffer";
+import SidebarOffer from "@/components/affiliate/SidebarOffer";
 import { answerLabel, leadsWithStandfirst } from "@/lib/content/templates";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/seo/schema";
 import { getImage } from "@/lib/images/registry";
@@ -33,6 +35,7 @@ export default function ArticleLayout({ article, idx }: { article: Article; idx:
   if (fm.faqs.length > 0) schemas.push(faqSchema(fm.faqs));
   const category = getCategory(article.city ? "city" : "country", fm.category)!;
   const next = nextStep(article, idx);
+  const primary = primaryOfferId(article.body);
   const related = relatedArticles(article, idx, 5).filter((a) => a.path !== next?.path).slice(0, 4);
 
   return (
@@ -50,8 +53,9 @@ export default function ArticleLayout({ article, idx }: { article: Article; idx:
       ) : (
         <AnswerBox summary={fm.summary} label={answerLabel(fm.template)} />
       )}
+      {primary ? <TopOffer id={primary} sourceSlug={fm.slug} /> : null}
       {image ? <Figure id={image.id} priority /> : null}
-      <WithOutline outline={<Outline headings={headings(article.body)} checkedAt={fm.sources.length > 0 ? (fm.factCheckedAt ?? fm.updatedAt) : undefined} />}>
+      <WithOutline outline={<Outline headings={headings(article.body)} checkedAt={fm.sources.length > 0 ? (fm.factCheckedAt ?? fm.updatedAt) : undefined} aside={primary ? <SidebarOffer id={primary} sourceSlug={fm.slug} /> : null} />}>
         <Mdx source={article.body} sourceSlug={fm.slug} />
       </WithOutline>
       {fm.offers.length > 0 ? (

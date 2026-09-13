@@ -3,7 +3,9 @@ import type { ContentIndex, Hub } from "@/lib/content/loader";
 import { breadcrumbSchema, destinationSchema, faqSchema } from "@/lib/seo/schema";
 import { getImage } from "@/lib/images/registry";
 import { needsDisclosure, headings } from "@/lib/content/body";
-import { bodyImageIds } from "@/lib/checks/content";
+import { bodyImageIds, primaryOfferId } from "@/lib/checks/content";
+import TopOffer from "@/components/affiliate/TopOffer";
+import SidebarOffer from "@/components/affiliate/SidebarOffer";
 import Figure from "@/components/media/Figure";
 import ImageCredits from "@/components/media/ImageCredits";
 import Disclosure from "@/components/affiliate/Disclosure";
@@ -26,6 +28,7 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
   const cityHubs = hub.city ? [] : idx.hubs.filter((h) => h.country === hub.country && h.city);
   const image = hub.fm.featuredImage ? getImage(hub.fm.featuredImage) : null;
   const slug = hub.city ?? hub.country;
+  const primary = primaryOfferId(hub.body);
 
   return (
     <article className="mx-auto max-w-7xl px-5 py-10 sm:px-6">
@@ -37,6 +40,7 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
       </header>
       {needsDisclosure(hub.body) ? <Disclosure /> : null}
       <AnswerBox summary={hub.fm.summary} />
+      {primary ? <TopOffer id={primary} sourceSlug={`hub-${slug}`} /> : null}
       {image ? <Figure id={image.id} priority /> : null}
       {categories.length > 0 ? (
         <nav aria-label="Guide categories" className="my-6 flex flex-wrap gap-2">
@@ -45,7 +49,7 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
           ))}
         </nav>
       ) : null}
-      <WithOutline outline={<Outline headings={headings(hub.body)} checkedAt={hub.fm.sources.length > 0 ? hub.fm.updatedAt : undefined} />}>
+      <WithOutline outline={<Outline headings={headings(hub.body)} checkedAt={hub.fm.sources.length > 0 ? hub.fm.updatedAt : undefined} aside={primary ? <SidebarOffer id={primary} sourceSlug={`hub-${slug}`} /> : null} />}>
         <Mdx source={hub.body} sourceSlug={`hub-${slug}`} />
       </WithOutline>
       {cityHubs.length > 0 ? (

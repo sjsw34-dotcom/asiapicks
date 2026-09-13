@@ -17,6 +17,18 @@ export const bodyImageIds = (body: string) => [
   ...[...body.matchAll(ATTR("Gallery", "ids"))].flatMap((m) => parseIdList(m[1])),
 ];
 
+/**
+ * The one offer a page leads with: its BookingCTA if it has one, otherwise the
+ * first offer the body places. Drives the link under the answer box and the
+ * desktop sidebar card, so the page's own booking choice is repeated, never a new one.
+ */
+export const primaryOfferId = (body: string): string | null => {
+  const cta = ATTR("BookingCTA", "id").exec(body);
+  if (cta) return cta[1];
+  const first = /<(?:OfferList\s[^>]*?\bids|Offer\s[^>]*?\bid)="([^"]*)"/.exec(body);
+  return first ? parseIdList(first[1])[0] ?? null : null;
+};
+
 export const bodyOfferIds = (body: string) => [
   ...[...body.matchAll(ATTR("Offer", "id"))].map((m) => m[1]),
   ...[...body.matchAll(ATTR("BookingCTA", "id"))].map((m) => m[1]),

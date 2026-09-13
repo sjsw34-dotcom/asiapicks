@@ -7,9 +7,12 @@ import { formatDate } from "@/lib/content/body";
 export default function Outline({
   headings,
   checkedAt,
+  aside,
 }: {
   headings: { text: string; id: string }[];
   checkedAt?: string;
+  /** Desktop-only block under the outline, e.g. the page's booking option. */
+  aside?: React.ReactNode;
 }) {
   if (headings.length < 2) return null;
   const links = (
@@ -37,6 +40,7 @@ export default function Outline({
             Every figure on this page was checked on {formatDate(checkedAt)} against the sources listed at the foot.
           </p>
         ) : null}
+        {aside}
       </div>
     </nav>
   );
