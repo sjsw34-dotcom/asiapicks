@@ -6,7 +6,7 @@ import { result, rel } from "./types";
 export function linksCheck(idx: ContentIndex, extraLivePaths: Set<string>) {
   const r = result("links");
   const graph = buildLinkGraph(idx);
-  const nodes = [...idx.hubs, ...idx.categories, ...idx.articles];
+  const nodes = [...idx.hubs, ...idx.categories, ...idx.areas, ...idx.articles];
   for (const n of nodes) {
     for (const target of graph.get(n.path)!.out) {
       // A scheduled article renders as plain text until its date, so linking ahead to it is fine.

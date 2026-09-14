@@ -15,7 +15,14 @@ First expertise: South Korea. English only. Design spec: `docs/superpowers/specs
   `src/content/{country}/{city}/_hub.mdx`, `src/content/{country}/{city}/{slug}.mdx`,
   category intros in `src/content/{country}/[{city}/]_categories/{category}.mdx`.
 - Frontmatter schema: `src/lib/content/schema.ts` (zod). Invalid content fails the build.
-- Taxonomy (countries, cities, categories = reserved slugs): `src/data/taxonomy.ts`.
+- Taxonomy (countries, cities, categories, neighbourhoods = reserved slugs): `src/data/taxonomy.ts`.
+- Neighbourhoods: a city article set in one area carries `area: seongsu` (slug from `AREAS`). Its URL stays
+  `/korea/{city}/{slug}`, so retagging never moves a page. `/korea/{city}/{area}` exists once
+  `src/content/korea/{city}/_areas/{area}.mdx` is written and at least one live article carries the tag; the intro
+  is editorial content like a category intro. City-wide pieces (a whole-city where-to-stay, transit rules) leave
+  `area` out. Add a new area to `AREAS` before tagging with it.
+- Listing: city hubs show the newest 4 per category plus a link to the category page, and neighbourhood cards
+  when area pages exist. Category pages group by neighbourhood once there is more than one group.
 - Offers: `src/data/offers/{id}.json`. Images: `src/data/images/{id}.json` + files in `public/images/`.
 - Legacy URLs: `src/data/legacy-urls.json` (redirects + gone). `src/proxy.ts` serves 410.
 - All pages are SSG. Client components only for the mobile nav.

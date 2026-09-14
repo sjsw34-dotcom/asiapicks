@@ -15,12 +15,13 @@ export const segmentParams = (idx: ContentIndex) => [
 
 export const slugParams = (idx: ContentIndex) => [
   ...idx.categories.filter((c) => c.city).map((c) => ({ country: c.country, segment: c.city!, slug: c.category })),
+  ...idx.areas.map((a) => ({ country: a.country, segment: a.city, slug: a.area })),
   ...idx.articles.filter((a) => a.city).map((a) => ({ country: a.country, segment: a.city!, slug: a.fm.slug })),
 ];
 
 export function metadataFor(node: ContentNode): Metadata {
   const title = node.fm.seoTitle ?? node.fm.title;
-  const review = node.kind !== "category" && node.fm.status === "review";
+  const review = (node.kind === "article" || node.kind === "hub") && node.fm.status === "review";
   const noindex = review || (node.kind === "article" && node.fm.noindex);
   const imageId = node.kind === "category" ? undefined : node.fm.featuredImage;
   const imageUrl = imageId ? absoluteUrl(getImage(imageId).src) : undefined;

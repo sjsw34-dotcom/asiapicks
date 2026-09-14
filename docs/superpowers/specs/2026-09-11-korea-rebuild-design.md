@@ -70,7 +70,11 @@ AsiaPicks를 "아시아 여행 발견·계획 플랫폼, 첫 전문 분야는 �
 /korea/{city}/{slug}           도시 단위 글
 ```
 
-- `{city}`, `{category}`는 예약어다. 글 slug와 겹치면 빌드 실패(`links:check`).
+- 동네 층(2026-09-14 추가): 도시 글은 frontmatter `area`로 동네를 표시하고 URL은 바뀌지 않는다.
+  `/korea/{city}/{area}`는 `_areas/{area}.mdx` 소개 + 태그된 글 1편 이상일 때만 생성. 도시 허브는 카테고리당
+  최신 4편 + 카테고리 페이지 링크만, 카테고리 페이지는 동네별로 묶는다. 글이 쌓여도 허브·카테고리가 목록 벽이
+  되지 않게 하려는 것.
+- `{city}`, `{category}`, `{area}`는 예약어다. 글 slug와 겹치면 빌드 실패(`links:check`).
 - 향후 `/japan/...`도 같은 틀.
 
 ### 여행 단계(journeyStage)

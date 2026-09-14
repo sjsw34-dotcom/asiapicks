@@ -17,7 +17,7 @@ export function extractInternalLinks(body: string): string[] {
 
 export function buildLinkGraph(idx: ContentIndex) {
   const graph = new Map<string, { out: string[]; in: string[] }>();
-  const nodes: ContentNode[] = [...idx.hubs, ...idx.categories, ...idx.articles];
+  const nodes: ContentNode[] = [...idx.hubs, ...idx.categories, ...idx.areas, ...idx.articles];
   for (const n of nodes) graph.set(n.path, { out: [], in: [] });
   for (const n of nodes) {
     const out = extractInternalLinks(n.body).filter((p) => p !== n.path);
@@ -32,7 +32,10 @@ export function buildLinkGraph(idx: ContentIndex) {
 
 function score(a: Article, b: Article): number {
   if (a.country !== b.country) return 0;
-  if (a.city && a.city === b.city) return a.fm.category === b.fm.category ? 3 : 2;
+  if (a.city && a.city === b.city) {
+    if (a.fm.area && a.fm.area === b.fm.area) return 4;
+    return a.fm.category === b.fm.category ? 3 : 2;
+  }
   if (!a.city && !b.city) return a.fm.category === b.fm.category ? 2 : 1;
   return 1;
 }

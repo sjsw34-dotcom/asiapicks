@@ -22,6 +22,7 @@ export default async function SegmentPage({ params }: Props) {
   const node = idx.byPath.get(`/${country}/${segment}`);
   if (!node) notFound();
   if (node.kind === "hub") return <HubLayout hub={node} idx={idx} />;
-  if (node.kind === "category") return <CategoryLayout page={node} />;
+  if (node.kind === "area") notFound();
+  if (node.kind === "category") return <CategoryLayout page={node} idx={idx} />;
   return <ArticleLayout article={node} idx={idx} />;
 }

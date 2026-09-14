@@ -8,6 +8,7 @@ export function buildSitemapEntries(idx: ContentIndex): { url: string; lastModif
     { url: absoluteUrl("/"), lastModified: latest(idx.articles.map((a) => a.fm.updatedAt).concat(idx.hubs.map((h) => h.fm.updatedAt))) },
     ...idx.hubs.map((h) => ({ url: absoluteUrl(h.path), lastModified: h.fm.updatedAt })),
     ...idx.categories.map((c) => ({ url: absoluteUrl(c.path), lastModified: latest(c.articles.map((a) => a.fm.updatedAt)) })),
+    ...idx.areas.map((a) => ({ url: absoluteUrl(a.path), lastModified: latest(a.articles.map((x) => x.fm.updatedAt)) })),
     ...idx.articles.filter((a) => !a.fm.noindex && !a.fm.canonical).map((a) => ({ url: absoluteUrl(a.path), lastModified: a.fm.updatedAt })),
     ...STATIC_PAGES.map((slug) => ({ url: absoluteUrl(`/${slug}`), lastModified: getStaticPage(slug).fm.updatedAt })),
   ];

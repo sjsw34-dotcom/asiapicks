@@ -1,4 +1,5 @@
-import type { CategoryPage } from "@/lib/content/loader";
+import type { CategoryPage, ContentIndex } from "@/lib/content/loader";
+import { groupByArea } from "@/lib/content/grouping";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 import { needsDisclosure } from "@/lib/content/body";
 import Disclosure from "@/components/affiliate/Disclosure";
@@ -6,12 +7,13 @@ import JsonLd from "./JsonLd";
 import Breadcrumbs, { breadcrumbsFor } from "./Breadcrumbs";
 import AnswerBox from "./AnswerBox";
 import Mdx from "./Mdx";
-import ArticleCard, { cardImageIds } from "./ArticleCard";
+import { cardImageIds } from "./ArticleCard";
+import ArticleGroups from "./ArticleGroups";
 import SourcesDisclosure from "./SourcesDisclosure";
 import ImageCredits from "@/components/media/ImageCredits";
 import { bodyImageIds } from "@/lib/checks/content";
 
-export default function CategoryLayout({ page }: { page: CategoryPage }) {
+export default function CategoryLayout({ page, idx }: { page: CategoryPage; idx: ContentIndex }) {
   const crumbs = breadcrumbsFor(page);
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
@@ -21,9 +23,7 @@ export default function CategoryLayout({ page }: { page: CategoryPage }) {
       {needsDisclosure(page.body) ? <Disclosure /> : null}
       <AnswerBox summary={page.fm.summary} />
       <Mdx source={page.body} sourceSlug={`category-${page.category}`} />
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        {page.articles.map((a) => <ArticleCard key={a.path} article={a} />)}
-      </div>
+      <ArticleGroups groups={groupByArea(page.articles, idx)} />
       <SourcesDisclosure count={0}>
         <ImageCredits ids={[...bodyImageIds(page.body), ...cardImageIds(page.articles)]} />
       </SourcesDisclosure>

@@ -20,6 +20,8 @@ export const articleSchema = z.object({
   description: z.string().min(50),
   slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
   category: z.string().min(1),
+  /** Neighbourhood slug from taxonomy AREAS. City articles only; omit for city-wide pieces. */
+  area: z.string().min(1).optional(),
   template: z.enum(TEMPLATES),
   journeyStage: z.enum(["discovery", "planning", "comparison", "booking", "on-trip"]),
   searchIntent: z.enum(["informational", "commercial", "transactional"]),
@@ -63,6 +65,11 @@ export const categorySchema = z.object({
   summary: z.string().min(1),
 });
 
+export const areaSchema = categorySchema.extend({
+  featuredImage: z.string().optional(),
+});
+
+export type AreaFrontmatter = z.infer<typeof areaSchema>;
 export type ArticleFrontmatter = z.infer<typeof articleSchema>;
 export type HubFrontmatter = z.infer<typeof hubSchema>;
 export type CategoryFrontmatter = z.infer<typeof categorySchema>;

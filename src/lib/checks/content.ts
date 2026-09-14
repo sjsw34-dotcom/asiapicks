@@ -4,7 +4,7 @@ import type { Offer } from "@/lib/affiliates/offers";
 import { parseIdList } from "@/lib/affiliates/offers";
 import { isProviderHost } from "@/lib/affiliates/providers";
 import { bookingCtaCount, hasMdxH1, stripFences } from "@/lib/content/body";
-import { CITY_CATEGORIES, isReservedSegment } from "@/data/taxonomy";
+import { AREAS, CITY_CATEGORIES, isReservedSegment } from "@/data/taxonomy";
 import { hubPath } from "@/lib/content/paths";
 import { result, rel } from "./types";
 
@@ -81,6 +81,7 @@ export function contentCheck(
     if (!catPaths.has(catPath)) r.errors.push(`${where}: missing category intro _categories/${a.fm.category}.mdx for ${catPath}`);
     if (!a.city && isReservedSegment(a.country, a.fm.slug)) r.errors.push(`${where}: slug "${a.fm.slug}" collides with a city or country category`);
     if (a.city && CITY_CATEGORIES.some((c) => c.slug === a.fm.slug)) r.errors.push(`${where}: slug "${a.fm.slug}" collides with a city category`);
+    if (a.city && AREAS.some((x) => x.country === a.country && x.city === a.city && x.slug === a.fm.slug)) r.errors.push(`${where}: slug "${a.fm.slug}" collides with a neighbourhood`);
     if (a.fm.status === "published" && (SEED.test(a.body) || SEED.test(a.fm.summary))) r.errors.push(`${where}: seed content cannot be published`);
     if (hasMdxH1(a.body)) r.errors.push(`${where}: H1 in MDX body (the page renders the H1 from title)`);
     if (bookingCtaCount(a.body) > 1) r.errors.push(`${where}: more than one BookingCTA`);
@@ -99,6 +100,17 @@ export function contentCheck(
     const where = rel(c.file);
     if (production && (SEED.test(c.fm.summary) || SEED.test(c.body))) r.errors.push(`${where}: seed content cannot be published`);
     checkBody(where, c.body);
+  }
+
+  // Neighbourhood intros are optional: an area tag without one just means no page yet.
+  for (const x of AREAS) {
+    if (CITY_CATEGORIES.some((c) => c.slug === x.slug)) r.errors.push(`area "${x.city}/${x.slug}" collides with a city category`);
+  }
+  for (const x of idx.areas) {
+    const where = rel(x.file);
+    if (hasMdxH1(x.body)) r.errors.push(`${where}: H1 in MDX body`);
+    if (production && (SEED.test(x.fm.summary) || SEED.test(x.body))) r.errors.push(`${where}: seed content cannot be published`);
+    checkBody(where, x.body, [x.fm.featuredImage]);
   }
 
   for (const o of offers.values()) {

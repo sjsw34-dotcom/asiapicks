@@ -19,6 +19,7 @@ import FAQ from "./FAQ";
 import SourceList from "./SourceList";
 import ArticleCard, { cardImageIds } from "./ArticleCard";
 import SourcesDisclosure from "./SourcesDisclosure";
+import { HUB_CARDS_PER_CATEGORY } from "@/lib/content/grouping";
 
 export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex }) {
   const crumbs = breadcrumbsFor(hub);
@@ -26,6 +27,9 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
   if (hub.fm.faqs.length > 0) schemas.push(faqSchema(hub.fm.faqs));
   const categories = idx.categories.filter((c) => c.country === hub.country && c.city === hub.city);
   const cityHubs = hub.city ? [] : idx.hubs.filter((h) => h.country === hub.country && h.city);
+  const areas = hub.city ? idx.areas.filter((a) => a.country === hub.country && a.city === hub.city) : [];
+  // A hub is a guide, not an archive: each category shows its newest few and hands over to its own page.
+  const shown = categories.map((c) => ({ c, articles: c.articles.slice(0, HUB_CARDS_PER_CATEGORY) }));
   const image = hub.fm.featuredImage ? getImage(hub.fm.featuredImage) : null;
   const slug = hub.city ?? hub.country;
   const primary = primaryOfferId(hub.body);
@@ -65,18 +69,36 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
           </div>
         </section>
       ) : null}
-      {categories.map((c) => (
+      {areas.length > 0 ? (
+        <section className="mt-12">
+          <h2 className="font-heading text-2xl font-bold">Neighbourhoods</h2>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {areas.map((a) => (
+              <Link key={a.path} href={a.path} className="block rounded-xl border border-border p-5 hover:border-primary">
+                <p className="font-heading text-lg font-semibold">{a.fm.title}</p>
+                <p className="mt-2 text-sm text-text-secondary">{a.fm.summary}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
+      {shown.map(({ c, articles }) => (
         <section key={c.path} className="mt-12">
           <h2 className="font-heading text-2xl font-bold">{c.fm.title}</h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            {c.articles.map((a) => <ArticleCard key={a.path} article={a} />)}
+            {articles.map((a) => <ArticleCard key={a.path} article={a} />)}
           </div>
+          {c.articles.length > articles.length ? (
+            <Link href={c.path} className="mt-4 inline-block text-sm font-semibold text-primary hover:underline">
+              See all {c.articles.length} guides in {c.fm.title}
+            </Link>
+          ) : null}
         </section>
       ))}
       <FAQ faqs={hub.fm.faqs} />
       <SourcesDisclosure count={hub.fm.sources.length}>
         <SourceList sources={hub.fm.sources} />
-        <ImageCredits ids={[hub.fm.featuredImage, ...bodyImageIds(hub.body), ...cardImageIds(categories.flatMap((c) => c.articles)), ...guideCardPaths(hub.body).map((p) => { const n = idx.byPath.get(p); return n && n.kind !== "category" ? n.fm.featuredImage : undefined; })]} />
+        <ImageCredits ids={[hub.fm.featuredImage, ...bodyImageIds(hub.body), ...cardImageIds(shown.flatMap((s) => s.articles)), ...guideCardPaths(hub.body).map((p) => { const n = idx.byPath.get(p); return n && n.kind !== "category" ? n.fm.featuredImage : undefined; })]} />
       </SourcesDisclosure>
     </article>
   );

@@ -3,21 +3,24 @@ import path from "node:path";
 import matter from "gray-matter";
 import type { z } from "zod";
 import {
-  articleSchema, hubSchema, categorySchema,
-  type ArticleFrontmatter, type HubFrontmatter, type CategoryFrontmatter, type ContentStatus,
+  articleSchema, hubSchema, categorySchema, areaSchema,
+  type ArticleFrontmatter, type HubFrontmatter, type CategoryFrontmatter, type AreaFrontmatter, type ContentStatus,
 } from "./schema";
-import { articlePath, categoryPath, hubPath } from "./paths";
-import { COUNTRIES, CITIES, getCategory } from "@/data/taxonomy";
+import { areaPath, articlePath, categoryPath, hubPath } from "./paths";
+import { COUNTRIES, CITIES, getArea, getCategory } from "@/data/taxonomy";
 
 type Base = { body: string; country: string; city: string | null; path: string; file: string };
 export type Article = Base & { kind: "article"; fm: ArticleFrontmatter };
 export type Hub = Base & { kind: "hub"; fm: HubFrontmatter };
 export type CategoryPage = Base & { kind: "category"; fm: CategoryFrontmatter; category: string; articles: Article[] };
-export type ContentNode = Article | Hub | CategoryPage;
+/** A neighbourhood page: `_areas/{area}.mdx` intro plus the city's articles tagged with that area. */
+export type AreaPage = Base & { kind: "area"; fm: AreaFrontmatter; area: string; city: string; articles: Article[] };
+export type ContentNode = Article | Hub | CategoryPage | AreaPage;
 export type ContentIndex = {
   articles: Article[];
   hubs: Hub[];
   categories: CategoryPage[];
+  areas: AreaPage[];
   byPath: Map<string, ContentNode>;
   /** Approved articles whose publishedAt is still ahead: hidden now, live on that date. Path -> publishedAt. */
   scheduled: Map<string, string>;
@@ -74,6 +77,7 @@ export function loadContent(opts: { root?: string; includeReview?: boolean; asOf
   const articles: Article[] = [];
   const hubs: Hub[] = [];
   const categories: CategoryPage[] = [];
+  const areas: AreaPage[] = [];
   const scheduled = new Map<string, string>();
 
   const scopes: { country: string; city: string | null; dir: string }[] = [];
@@ -104,6 +108,9 @@ export function loadContent(opts: { root?: string; includeReview?: boolean; asOf
       if (!getCategory(city ? "city" : "country", fm.category)) {
         throw new Error(`Unknown category "${fm.category}" for ${city ? "city" : "country"} article in ${file}`);
       }
+      if (fm.area && (!city || !getArea(country, city, fm.area))) {
+        throw new Error(`Unknown area "${fm.area}" for ${city ? `city ${city}` : "a country-level"} article in ${file}`);
+      }
       if (!visible(fm.status, includeReview)) continue;
       const p = articlePath(country, city, fm.slug);
       if (enforceDates && fm.publishedAt > asOf) {
@@ -128,15 +135,33 @@ export function loadContent(opts: { root?: string; includeReview?: boolean; asOf
         });
       }
     }
+
+    const areaDir = path.join(dir, "_areas");
+    if (city && fs.existsSync(areaDir)) {
+      for (const name of fs.readdirSync(areaDir).filter((f) => f.endsWith(".mdx"))) {
+        const area = name.replace(/\.mdx$/, "");
+        const file = path.join(areaDir, name);
+        if (!getArea(country, city, area)) throw new Error(`Unknown area "${area}" for city ${city} in ${file}`);
+        const { fm, body } = read(file, areaSchema);
+        const members = articles
+          .filter((a) => a.country === country && a.city === city && a.fm.area === area)
+          .sort(byUpdatedDesc);
+        if (members.length === 0) continue;
+        areas.push({
+          kind: "area", fm, body, country, city, area,
+          path: areaPath(country, city, area), file, articles: members,
+        });
+      }
+    }
   }
 
   articles.sort(byUpdatedDesc);
   const byPath = new Map<string, ContentNode>();
-  for (const node of [...hubs, ...categories, ...articles]) {
+  for (const node of [...hubs, ...categories, ...areas, ...articles]) {
     if (byPath.has(node.path)) throw new Error(`Duplicate path ${node.path} (${node.file})`);
     byPath.set(node.path, node);
   }
-  const index = { articles, hubs, categories, byPath, scheduled };
+  const index = { articles, hubs, categories, areas, byPath, scheduled };
   cache.set(key, index);
   return index;
 }

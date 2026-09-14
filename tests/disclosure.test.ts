@@ -16,7 +16,7 @@ test("every layout that renders MDX shows the disclosure before the answer box a
   const dir = path.join(process.cwd(), "src/components/content");
   const read = (f: string) => fs.readFileSync(path.join(dir, f), "utf-8");
   const layouts = fs.readdirSync(dir).filter((f) => f.endsWith(".tsx") && /<Mdx\b/.test(read(f)));
-  assert.deepEqual(layouts.sort(), ["ArticleLayout.tsx", "CategoryLayout.tsx", "HubLayout.tsx", "StaticPage.tsx"]);
+  assert.deepEqual(layouts.sort(), ["AreaLayout.tsx", "ArticleLayout.tsx", "CategoryLayout.tsx", "HubLayout.tsx", "StaticPage.tsx"]);
   for (const f of layouts) {
     const src = read(f);
     assert.match(src, /needsDisclosure\(/, `${f} does not decide the disclosure with needsDisclosure()`);
