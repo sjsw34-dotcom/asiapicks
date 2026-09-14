@@ -39,15 +39,16 @@ async function main() {
     const idx = loadContent({ includeReview: false, asOf: date });
     const released = releasedOn(idx, date);
     for (const a of released) console.error(`going live ${date}: ${a.path}`);
-    if (released.length) console.log(affectedUrls(released).join("\n"));
+    if (released.length) console.log(affectedUrls(released, idx).join("\n"));
     return;
   }
   if (mode === "changed" && rest.length >= 2) {
     const files = execFileSync("git", ["diff", "--name-only", rest[0], rest[1], "--", "src/content", "src/data/facts"], { encoding: "utf-8" })
       .split("\n")
       .filter(Boolean);
-    const nodes = nodesForFiles(loadContent({ includeReview: false }), files);
-    if (nodes.length) console.log(affectedUrls(nodes).join("\n"));
+    const idx = loadContent({ includeReview: false });
+    const nodes = nodesForFiles(idx, files);
+    if (nodes.length) console.log(affectedUrls(nodes, idx).join("\n"));
     return;
   }
   if (mode === "wait" && rest.length > 0) return wait(rest);

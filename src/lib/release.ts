@@ -10,17 +10,18 @@ export const releasedOn = (idx: ContentIndex, date: string): Article[] =>
 
 /**
  * The pages a new or edited article changes on the live site: itself, the hubs,
- * category and neighbourhood pages that list it, and the home page's latest guides.
+ * category and neighbourhood pages that list it (only those that exist in `idx`:
+ * a tag without an intro page must not send the release workflow waiting on a 404), and the home page's latest guides.
  */
-export function affectedUrls(nodes: ContentNode[]): string[] {
+export function affectedUrls(nodes: ContentNode[], idx: ContentIndex): string[] {
   const paths = new Set<string>();
   for (const n of nodes) {
     paths.add(n.path);
     if (n.kind !== "article") continue;
     paths.add(hubPath(n.country));
     if (n.city) paths.add(hubPath(n.country, n.city));
-    paths.add(categoryPath(n.country, n.city, n.fm.category));
-    if (n.city && n.fm.area) paths.add(areaPath(n.country, n.city, n.fm.area));
+    const listing = [categoryPath(n.country, n.city, n.fm.category), n.city && n.fm.area ? areaPath(n.country, n.city, n.fm.area) : null];
+    for (const p of listing) if (p && idx.byPath.has(p)) paths.add(p);
   }
   if (nodes.some((n) => n.kind === "article")) paths.add("/");
   return [...paths].map(absoluteUrl);

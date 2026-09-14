@@ -59,7 +59,15 @@ test("area page groups its guides by category", () => {
 
 test("releasing a tagged article pings its area page", () => {
   const a = idx.byPath.get("/korea/seoul/bukchon-walk")!;
-  assert.ok(affectedUrls([a]).includes("https://asiapicks.com/korea/seoul/jongno"));
+  assert.ok(affectedUrls([a], idx).includes("https://asiapicks.com/korea/seoul/jongno"));
+});
+
+test("releasing an article tagged with an area that has no page yet does not ping that URL", () => {
+  // Seongsu is tagged but has no intro, so /korea/seoul/seongsu is a 404 the release workflow would wait on until it fails.
+  const a = idx.byPath.get("/korea/seoul/seongsu-cafes")!;
+  const urls = affectedUrls([a], idx);
+  assert.ok(!urls.includes("https://asiapicks.com/korea/seoul/seongsu"));
+  assert.ok(urls.includes("https://asiapicks.com/korea/seoul/things-to-do"));
 });
 
 test("unknown area throws", () => {

@@ -15,7 +15,7 @@ test("releasedOn finds only the article dated that day", () => {
 
 test("affectedUrls pings the article, its hubs, its category and home", () => {
   const idx = loadContent({ root, includeReview: false, asOf: "2099-01-01" });
-  assert.deepEqual(affectedUrls(releasedOn(idx, "2099-01-01")).sort(), [
+  assert.deepEqual(affectedUrls(releasedOn(idx, "2099-01-01"), idx).sort(), [
     "https://asiapicks.com",
     "https://asiapicks.com/korea",
     "https://asiapicks.com/korea/seoul",
