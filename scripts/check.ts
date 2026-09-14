@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { loadEnvConfig } from "@next/env";
 import path from "node:path";
 import { loadContent, includeReviewByDefault, contentToday } from "@/lib/content/loader";
 import { loadImages } from "@/lib/images/registry";
@@ -15,6 +16,10 @@ import { staticLivePaths, type CheckResult } from "@/lib/checks/types";
 import { getStaticPage, STATIC_PAGES } from "@/lib/content/pages";
 
 function main() {
+  // Read the same env files `next dev`/`next build` read, so a local run sees the provider IDs and
+  // CONTACT_EMAIL the site actually builds with instead of warning that they are missing.
+  // On Vercel the variables are already in the environment and nothing is overridden.
+  loadEnvConfig(process.cwd(), false, { info: () => {}, error: console.error });
   const production = process.env.VERCEL_ENV === "production" || process.env.CHECK_PRODUCTION === "1";
   const includeReview = !production && includeReviewByDefault();
   const idx = loadContent({ includeReview });
