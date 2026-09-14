@@ -5,6 +5,8 @@ import { absoluteUrl, SITE } from "@/lib/site";
 const USAGE = `Usage (needs GOOGLE_SERVICE_ACCOUNT_JSON, the shared indexer service account):
   npx tsx scripts/search-console.ts report [--days 28] [--markdown]   clicks and impressions by page and query
   npx tsx scripts/search-console.ts inspect [--markdown]              Google index status of every live article
+  npx tsx scripts/search-console.ts stuck [--days 7]                  issue body listing live articles still not indexed
+                                                                      after that many days; prints nothing if none
   npx tsx scripts/search-console.ts sitemap                           submit /sitemap.xml
 
 The service account must be a user (Full or Owner) on the asiapicks.com property.
@@ -92,6 +94,39 @@ async function report(token: string, site: string) {
   console.log(queries.rows?.length ? table(["query", "clicks", "impressions", "ctr", "position"], fmt(queries.rows)) : "No impressions yet.");
 }
 
+const isIndexed = (coverage: string) => /indexed/i.test(coverage) && !/not indexed/i.test(coverage);
+
+/**
+ * The one indexing step that cannot be automated: Google offers no API for
+ * "Request indexing" on ordinary pages (the Indexing API is limited to job
+ * postings and livestreams). Sitemap submission after every release does the
+ * rest, so this lists only the pages still missing after `--days` and the owner
+ * requests those by hand.
+ */
+async function stuck(token: string, site: string) {
+  const days = Number(arg("--days") ?? 7);
+  const today = contentToday();
+  const cutoff = new Date(Date.parse(`${today}T00:00:00Z`) - days * 86_400_000).toISOString().slice(0, 10);
+  const idx = loadContent({ includeReview: false, asOf: today });
+  const due = idx.articles.filter((a) => a.fm.publishedAt <= cutoff && !a.fm.noindex && !a.fm.canonical);
+  const rows: string[][] = [];
+  for (const a of due.sort((x, y) => x.fm.publishedAt.localeCompare(y.fm.publishedAt))) {
+    const url = absoluteUrl(a.path);
+    const r = await api<{ inspectionResult?: { indexStatusResult?: { coverageState?: string; lastCrawlTime?: string } } }>(
+      token, "https://searchconsole.googleapis.com/v1/urlInspection/index:inspect", { inspectionUrl: url, siteUrl: site },
+    );
+    const s = r.inspectionResult?.indexStatusResult;
+    const coverage = s?.coverageState ?? "unknown";
+    if (!isIndexed(coverage)) rows.push([url, a.fm.publishedAt, coverage, s?.lastCrawlTime?.slice(0, 10) ?? "-"]);
+  }
+  if (rows.length === 0) return;
+  console.log(`공개 후 ${days}일이 지났는데 Google 색인에 없는 글이 ${rows.length}편 있습니다 (${today}, 검사 ${due.length}편).`);
+  console.log("");
+  console.log("사이트맵은 발행할 때마다 자동으로 제출됩니다. 이 목록만 Search Console에서 URL을 붙여넣고 \"색인 생성 요청\"을 눌러 주세요. 같은 글이 몇 주째 남아 있으면 세션에서 원인(내부 링크, 중복, 품질)을 봅니다.");
+  console.log("");
+  for (const [url, published, coverage, crawl] of rows) console.log(`- [ ] ${url} (공개 ${published}, 상태: ${coverage}, 마지막 크롤 ${crawl})`);
+}
+
 async function inspect(token: string, site: string) {
   const idx = loadContent({ includeReview: false, asOf: contentToday() });
   const rows: string[][] = [];
@@ -103,7 +138,7 @@ async function inspect(token: string, site: string) {
     const s = r.inspectionResult?.indexStatusResult;
     rows.push([a.path, a.fm.publishedAt, s?.coverageState ?? "unknown", s?.lastCrawlTime?.slice(0, 10) ?? "-"]);
   }
-  const indexed = rows.filter((r) => /indexed/i.test(r[2]) && !/not indexed/i.test(r[2])).length;
+  const indexed = rows.filter((r) => isIndexed(r[2])).length;
   console.log(`${markdown ? "## " : ""}Index status: ${indexed} of ${rows.length} live articles indexed\n`);
   console.log(table(["article", "published", "coverage", "last crawl"], rows));
 }
@@ -117,7 +152,7 @@ async function sitemap(token: string, site: string) {
 async function main() {
   const mode = process.argv[2];
   const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
-  if (!mode || !["report", "inspect", "sitemap"].includes(mode)) {
+  if (!mode || !["report", "inspect", "sitemap", "stuck"].includes(mode)) {
     console.error(USAGE);
     process.exit(1);
   }
@@ -130,6 +165,7 @@ async function main() {
   if (mode === "report") await report(token, site);
   if (mode === "inspect") await inspect(token, site);
   if (mode === "sitemap") await sitemap(token, site);
+  if (mode === "stuck") await stuck(token, site);
 }
 
 main().catch((e) => {

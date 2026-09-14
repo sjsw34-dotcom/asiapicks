@@ -106,7 +106,12 @@ headings is not exempt from clarity, only from that specific device.
   empty `release:` commit (Vercel rebuilds), waits until the page is live, then pings IndexNow. On pushes that
   change content it pings IndexNow for the changed live pages. It never writes, generates or approves content.
   Release commits land on `main`, so `git pull --rebase` before pushing a session's batch.
-- No auto-generated posts. No Google Indexing API. Manual IndexNow: `npx tsx scripts/indexnow.ts <urls>`.
+- No auto-generated posts. No Google Indexing API (Google limits it to job postings and livestreams). Manual IndexNow:
+  `npx tsx scripts/indexnow.ts <urls>`.
+- Google indexing is automated as far as Google allows: `publish.yml` resubmits `/sitemap.xml` through the Search
+  Console API after every release and content push. Every Monday `search-console.yml` opens one `not-indexed` issue
+  listing live articles still missing from Google 7 days after `publishedAt` (`search-console.ts stuck`), and closes
+  it when none are. Only those URLs need a manual "Request indexing".
 - Weekly workflow: Search Console performance and index status (`scripts/search-console.ts`, secret
   `GOOGLE_SERVICE_ACCOUNT_JSON`). Monthly workflow: an issue with `npm run refresh`: registry facts due for a
   check, then pages with inline prices, timetables, hours or dates whose oldest source reaches 90 days (rolling,

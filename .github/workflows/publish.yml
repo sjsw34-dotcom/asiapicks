@@ -4,8 +4,9 @@ name: Publish
 # Claude Code sessions and approved by the owner (status: published) before it is
 # committed; this workflow never writes or approves content. It only:
 #   - on a release day, pushes an empty commit so Vercel rebuilds and the
-#     day's approved article appears, then pings IndexNow once it is live;
-#   - on every push that changes content, pings IndexNow for the live pages it changed.
+#     day's approved article appears, then pings IndexNow and resubmits the
+#     sitemap to Google once it is live;
+#   - on every push that changes content, does the same for the live pages it changed.
 
 on:
   schedule:
@@ -67,6 +68,15 @@ jobs:
         if: steps.due.outputs.count != '0'
         run: npx tsx scripts/indexnow.ts $(cat urls.txt)
 
+      - name: Tell Google the sitemap changed
+        # Google ignores IndexNow. Resubmitting the sitemap makes it re-read lastmod and find the new or edited pages.
+        if: steps.due.outputs.count != '0'
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$GOOGLE_SERVICE_ACCOUNT_JSON" ]; then echo "GOOGLE_SERVICE_ACCOUNT_JSON secret is not set; skipping"; exit 0; fi
+          npx tsx scripts/search-console.ts sitemap
+
   indexnow:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
@@ -101,3 +111,12 @@ jobs:
       - name: Ping IndexNow
         if: steps.changed.outputs.count != '0'
         run: npx tsx scripts/indexnow.ts $(cat urls.txt)
+
+      - name: Tell Google the sitemap changed
+        # Google ignores IndexNow. Resubmitting the sitemap makes it re-read lastmod and find the new or edited pages.
+        if: steps.changed.outputs.count != '0'
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$GOOGLE_SERVICE_ACCOUNT_JSON" ]; then echo "GOOGLE_SERVICE_ACCOUNT_JSON secret is not set; skipping"; exit 0; fi
+          npx tsx scripts/search-console.ts sitemap

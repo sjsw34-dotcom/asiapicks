@@ -2,7 +2,8 @@ name: Search Console
 
 # Weekly read of search performance and index status into the run summary.
 # The ramp from 3-4 posts a week to one a day depends on new posts getting indexed.
-# Run by hand with "sitemap" to submit /sitemap.xml.
+# Run by hand with "sitemap" to submit /sitemap.xml (publish.yml also does it on every release).
+# Opens a not-indexed issue listing live articles still missing from Google after 7 days, and closes it when none are.
 
 on:
   schedule:
@@ -17,6 +18,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   read:
@@ -41,4 +43,18 @@ jobs:
             npx tsx scripts/search-console.ts report --markdown | tee -a "$GITHUB_STEP_SUMMARY"
             echo "" >> "$GITHUB_STEP_SUMMARY"
             npx tsx scripts/search-console.ts inspect --markdown | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Open or close the not-indexed issue
+        if: inputs.mode == '' || inputs.mode == 'report'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          npx tsx scripts/search-console.ts stuck --days 7 > stuck.md
+          open=$(gh issue list --label not-indexed --state open --json number --jq '.[0].number // empty')
+          if [ -s stuck.md ]; then
+            gh label create not-indexed --color 7C3AED --description "Live article not in Google's index after a week" 2>/dev/null || true
+            if [ -n "$open" ]; then gh issue edit "$open" --body-file stuck.md; else gh issue create --label not-indexed --title "Google 색인 요청 필요 ($(TZ=Asia/Seoul date +%m/%d))" --body-file stuck.md; fi
+          elif [ -n "$open" ]; then
+            gh issue close "$open" --comment "$(TZ=Asia/Seoul date +%Y-%m-%d) 확인: 공개 7일이 지난 글이 모두 색인되었습니다."
           fi
