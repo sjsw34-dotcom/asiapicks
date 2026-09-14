@@ -1,6 +1,7 @@
 name: Weekly drafts reminder
 
 # Every Thursday, opens an issue reminding the owner to prepare next week's drafts
+# (one article a day, so up to seven; the issue lists the empty days)
 # in a Claude Code session. GitHub emails the repo owner about new issues.
 # Closes last week's reminder if it is still open, so only one is ever open.
 

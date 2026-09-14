@@ -49,7 +49,7 @@ AsiaPicks를 "아시아 여행 발견·계획 플랫폼, 첫 전문 분야는 �
 | D12 | 대표 호스트 non-www, 끝 슬래시 없음 | 현재 canonical·robots가 non-www, 트레일링 슬래시는 이미 308 정리 중 |
 | D13 | 쿠키 없는 분석(Vercel Web Analytics) + 제휴 링크 출처 태그 | 현재 분석 도구 없음(GA4 미설치 확인), 전환 측정 필요 |
 | D14 | Google Indexing API 사용 중단, 사이트맵 lastmod + IndexNow(Bing) | Indexing API는 JobPosting·BroadcastEvent 전용 |
-| D15 | 첫 공개 = 허브 5개 + 글 12개, 나머지는 공개 후 주 2~3편 | 승인 발행 방식의 현실적 분량 |
+| D15 | 첫 공개 = 허브 5개 + 글 12개, 나머지는 공개 후 주 2~3편 → 2026-09-14부터 하루 1편(사장님 결정) | 승인은 주 1회 묶음, 공개는 발행일별 자동 |
 
 ---
 

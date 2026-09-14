@@ -30,3 +30,23 @@ export function nodesForFiles(idx: ContentIndex, files: string[], cwd = process.
   const wanted = new Set(files.map((f) => path.resolve(cwd, f.trim())).filter(Boolean));
   return [...idx.hubs, ...idx.articles].filter((n) => wanted.has(path.resolve(n.file)));
 }
+
+/** The posting target: one approved article goes live every day. */
+export const POSTS_PER_DAY = 1;
+
+/**
+ * Days in [from, to] (inclusive, YYYY-MM-DD) with no article going live, counting
+ * both live articles and approved ones still scheduled. These are the slots a
+ * drafting session fills.
+ */
+export function openDays(idx: ContentIndex, from: string, to: string): string[] {
+  const taken = new Map<string, number>();
+  for (const a of idx.articles) taken.set(a.fm.publishedAt, (taken.get(a.fm.publishedAt) ?? 0) + 1);
+  for (const d of idx.scheduled.values()) taken.set(d, (taken.get(d) ?? 0) + 1);
+  const days: string[] = [];
+  for (let t = Date.parse(`${from}T00:00:00Z`); t <= Date.parse(`${to}T00:00:00Z`); t += 86_400_000) {
+    const d = new Date(t).toISOString().slice(0, 10);
+    if ((taken.get(d) ?? 0) < POSTS_PER_DAY) days.push(d);
+  }
+  return days;
+}

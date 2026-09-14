@@ -52,3 +52,11 @@ test("calendar keeps a week between draft and publish, and lists what is due", (
   assert.ok(due.some((e) => e.path === "/korea/seoul/seoul-lantern-festival"));
   assert.ok(!due.some((e) => e.path === "/korea/chuseok-2026"));
 });
+
+test("openDays lists the days with nothing live or scheduled", async () => {
+  const { openDays } = await import("@/lib/release");
+  const idx = loadContent({ root, includeReview: false });
+  // Fixture: live articles on 2026-09-12, future-guide scheduled on 2099-01-01.
+  assert.deepEqual(openDays(idx, "2026-09-11", "2026-09-13"), ["2026-09-11", "2026-09-13"]);
+  assert.deepEqual(openDays(idx, "2098-12-31", "2099-01-01"), ["2098-12-31"]);
+});

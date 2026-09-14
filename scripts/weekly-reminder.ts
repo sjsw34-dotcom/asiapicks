@@ -1,5 +1,6 @@
 import { loadContent, contentToday } from "@/lib/content/loader";
 import { upcomingCalendar } from "@/data/calendar";
+import { openDays } from "@/lib/release";
 
 /**
  * Body of the weekly "prepare next week's drafts" issue, written for the owner
@@ -16,10 +17,11 @@ const live = loadContent({ includeReview: false, asOf: today });
 const all = loadContent({ includeReview: false, asOf: "9999-12-31" });
 const queued = [...live.scheduled.entries()].sort((a, b) => a[1].localeCompare(b[1]));
 const nextWeek = queued.filter(([, d]) => d >= monday && d <= sunday);
+const empty = openDays(all, monday, sunday);
 const seasonal = upcomingCalendar(today, 45).filter((e) => !all.byPath.has(e.path) || e.kind === "refresh");
 
 const out: string[] = [];
-out.push(`다음 주(${monday} ~ ${sunday}) 발행할 초안을 준비할 시간입니다.`);
+out.push(`다음 주(${monday} ~ ${sunday}) 매일 1편씩 발행할 초안을 준비할 시간입니다.`);
 out.push("");
 out.push("## 할 일");
 out.push("");
@@ -32,7 +34,8 @@ out.push("");
 out.push(`## 현재 상태`);
 out.push("");
 out.push(`- 공개된 글: ${live.articles.length}편`);
-out.push(`- 다음 주에 이미 예약된 글: ${nextWeek.length}편 (목표 주 3~4편)`);
+out.push(`- 다음 주에 이미 예약된 글: ${nextWeek.length}편 (목표 7편, 하루 1편)`);
+out.push(`- 비어 있는 날: ${empty.length === 0 ? "없음" : empty.join(", ")}`);
 out.push(`- 공개 대기 중인 예약 글 전체: ${queued.length}편`);
 for (const [p, d] of queued) out.push(`  - ${d} ${p}`);
 out.push("");
