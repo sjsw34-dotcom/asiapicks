@@ -118,6 +118,12 @@ headings is not exempt from clarity, only from that specific device.
   in the issue) with one topic each (seasonal entries due in `src/data/calendar.ts` first, then the spec §11 backlog), draft them as
   `status: review` with one `publishedAt` per open day, add inbound links, run the dated checks, ask the owner which to
   approve, flip approved ones to `published`, `git pull --rebase`, push.
+- Fact watch: every Monday `.github/workflows/fact-watch.yml` fetches each registry fact's source and checks the
+  published value still appears (`scripts/watch-facts.ts`, `src/lib/facts/watch.ts`). Missing values or unreachable
+  sources open one `fact-watch` issue; it closes itself when all values are found. "사실 감시 이슈 처리해" means:
+  re-read each flagged source, then either update the fact (value, previous, since, checkedAt, updatedAt) and reread
+  the pages listed, or point `watch.url`/`watch.expect` at where the value is actually printed. Never change a value
+  from the scrape alone. A fact's `source.url` should be the page that prints the value, not a page about it.
 - Seasonal guides publish about a month before the season (`src/data/calendar.ts`). Refresh: bump `updatedAt`
   only when a fact changed.
 

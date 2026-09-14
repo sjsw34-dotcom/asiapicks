@@ -49,6 +49,16 @@ export const factSchema = z.object({
   /** Last date the value changed on this site. Pages using the fact inherit it as their updatedAt. */
   updatedAt: isoDate,
   note: z.string().optional(),
+  /**
+   * Weekly source watch. Omit to watch `source.url` for the value in its usual
+   * forms. Give `url` when the cited page is not where the value is printed, or
+   * `expect` when the source writes it unusually. `false` turns the watch off
+   * (a news article that will never change); say why in `note`.
+   */
+  watch: z.union([
+    z.literal(false),
+    z.object({ url: z.url().optional(), expect: z.array(z.string().min(1)).optional() }),
+  ]).optional(),
 });
 
 export type Fact = z.infer<typeof factSchema> & { file: string };
