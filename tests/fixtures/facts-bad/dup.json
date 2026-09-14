@@ -1,0 +1,4 @@
+[
+  { "id": "same", "label": "a", "kind": "price", "value": { "type": "won", "amount": 1 }, "source": { "title": "t", "url": "https://e.x/", "publisher": "p" }, "checkedAt": "2026-09-01", "updatedAt": "2026-09-01" },
+  { "id": "same", "label": "b", "kind": "price", "value": { "type": "won", "amount": 2 }, "source": { "title": "t", "url": "https://e.x/", "publisher": "p" }, "checkedAt": "2026-09-01", "updatedAt": "2026-09-01" }
+]

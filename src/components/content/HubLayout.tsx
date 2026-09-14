@@ -19,6 +19,7 @@ import FAQ from "./FAQ";
 import SourceList from "./SourceList";
 import ArticleCard, { cardImageIds } from "./ArticleCard";
 import SourcesDisclosure from "./SourcesDisclosure";
+import { withFactSources } from "@/lib/facts/registry";
 import { HUB_CARDS_PER_CATEGORY } from "@/lib/content/grouping";
 
 export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex }) {
@@ -96,8 +97,8 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
         </section>
       ))}
       <FAQ faqs={hub.fm.faqs} />
-      <SourcesDisclosure count={hub.fm.sources.length}>
-        <SourceList sources={hub.fm.sources} />
+      <SourcesDisclosure count={withFactSources(hub.fm.sources, hub.facts).length}>
+        <SourceList sources={withFactSources(hub.fm.sources, hub.facts)} />
         <ImageCredits ids={[hub.fm.featuredImage, ...bodyImageIds(hub.body), ...cardImageIds(shown.flatMap((s) => s.articles)), ...guideCardPaths(hub.body).map((p) => { const n = idx.byPath.get(p); return n && n.kind !== "category" ? n.fm.featuredImage : undefined; })]} />
       </SourcesDisclosure>
     </article>

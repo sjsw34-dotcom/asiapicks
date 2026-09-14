@@ -12,6 +12,7 @@ import { releaseCheck } from "@/lib/checks/release";
 import { factsCheck } from "@/lib/checks/facts";
 import { navigationCheck } from "@/lib/checks/navigation";
 import { staticLivePaths, type CheckResult } from "@/lib/checks/types";
+import { getStaticPage, STATIC_PAGES } from "@/lib/content/pages";
 
 function main() {
   const production = process.env.VERCEL_ENV === "production" || process.env.CHECK_PRODUCTION === "1";
@@ -32,7 +33,11 @@ function main() {
     seoCheck(idx),
     redirectsCheck(idx, inventory, live, production),
     releaseCheck(idx, offers, process.env, production),
-    factsCheck(idx, offers, today),
+    // Scheduled articles count as users: a fact only they state is still in service.
+    factsCheck(
+      loadContent({ includeReview, asOf: "9999-12-31" }), offers, today, undefined,
+      ["home", ...STATIC_PAGES].flatMap((s) => getStaticPage(s).facts),
+    ),
   ];
 
   // Scheduled articles go live on later rebuilds nobody watches. Check the site as it

@@ -1,6 +1,7 @@
 import { loadContent, contentToday } from "@/lib/content/loader";
 import { upcomingCalendar } from "@/data/calendar";
 import { openDays } from "@/lib/release";
+import { factsExpiring, formatValue, loadFacts } from "@/lib/facts/registry";
 
 /**
  * Body of the weekly "prepare next week's drafts" issue, written for the owner
@@ -39,6 +40,15 @@ out.push(`- 비어 있는 날: ${empty.length === 0 ? "없음" : empty.join(", "
 out.push(`- 공개 대기 중인 예약 글 전체: ${queued.length}편`);
 for (const [p, d] of queued) out.push(`  - ${d} ${p}`);
 out.push("");
+const expiring = factsExpiring(loadFacts(), today, 60);
+if (expiring.length > 0) {
+  out.push("## 60일 안에 효력이 끝나는 사실");
+  out.push("");
+  out.push("날짜가 지나면 이 사실을 쓰는 글이 저절로 틀린 말이 됩니다. 연장·종료 여부를 확인하고, 종료라면 글을 다시 써야 합니다.");
+  out.push("");
+  for (const f of expiring) out.push(`- [ ] ${f.validUntil}: ${f.label} (현재 값 ${formatValue(f.value)}, \`${f.id}\`)`);
+  out.push("");
+}
 out.push("## 45일 안에 초안 마감인 시즌 글");
 out.push("");
 if (seasonal.length === 0) out.push("없음");

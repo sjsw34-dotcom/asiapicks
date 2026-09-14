@@ -43,7 +43,7 @@ async function main() {
     return;
   }
   if (mode === "changed" && rest.length >= 2) {
-    const files = execFileSync("git", ["diff", "--name-only", rest[0], rest[1], "--", "src/content"], { encoding: "utf-8" })
+    const files = execFileSync("git", ["diff", "--name-only", rest[0], rest[1], "--", "src/content", "src/data/facts"], { encoding: "utf-8" })
       .split("\n")
       .filter(Boolean);
     const nodes = nodesForFiles(loadContent({ includeReview: false }), files);

@@ -1,6 +1,6 @@
 import { loadContent } from "@/lib/content/loader";
 import { loadOffers } from "@/lib/affiliates/offers";
-import { staleItems, STALE_DAYS } from "@/lib/checks/facts";
+import { staleFacts, staleItems, STALE_DAYS } from "@/lib/checks/facts";
 import { staticPageSources } from "@/lib/content/pages";
 
 /**
@@ -14,7 +14,7 @@ function main() {
   const today = new Date().toISOString().slice(0, 10);
 
   // Review drafts count: they will publish carrying whatever their sources say.
-  const items = staleItems(loadContent({ includeReview: true }), loadOffers(), today, days, staticPageSources());
+  const items = [...staleFacts(today), ...staleItems(loadContent({ includeReview: true }), loadOffers(), today, days, staticPageSources())];
 
   if (items.length === 0) {
     console.log(`Nothing checked more than ${days} days ago. Refresh queue is empty.`);
@@ -24,7 +24,7 @@ function main() {
   console.log(`${items.length} source(s) checked more than ${days} days ago, oldest first:\n`);
   let current = "";
   for (const i of items) {
-    const head = i.kind === "offer" ? `offer ${i.path}` : `${i.path}  (${i.file})`;
+    const head = i.kind === "offer" ? `offer ${i.path}` : i.kind === "fact" ? `fact ${i.path}  (${i.file}; one edit updates every page using it)` : `${i.path}  (${i.file})`;
     if (head !== current) {
       console.log(`  ${head}`);
       current = head;

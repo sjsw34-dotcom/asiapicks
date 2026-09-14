@@ -1,0 +1,143 @@
+[
+  {
+    "id": "seoul-subway-fare-card",
+    "label": "Seoul subway base fare, transit card (Seoul, Incheon, Gyeonggi)",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 1550
+    },
+    "previous": {
+      "type": "won",
+      "amount": 1400
+    },
+    "since": "2025-06-28",
+    "source": {
+      "title": "Subway: fares and transfers",
+      "url": "https://english.seoul.go.kr/policy/transportation/modes-of-transport/subway/",
+      "publisher": "Seoul Metropolitan Government"
+    },
+    "checkedAt": "2026-09-12",
+    "updatedAt": "2026-09-12",
+    "note": "Several pages explain why guides still quote the previous fare. When the fare changes again, reread those paragraphs: the argument may need rewriting, not just the number."
+  },
+  {
+    "id": "seoul-subway-fare-single",
+    "label": "Seoul subway base fare, single-journey ticket or cash",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 1650
+    },
+    "since": "2025-06-28",
+    "source": {
+      "title": "Subway: fares and transfers",
+      "url": "https://english.seoul.go.kr/policy/transportation/modes-of-transport/subway/",
+      "publisher": "Seoul Metropolitan Government"
+    },
+    "checkedAt": "2026-09-12",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "busan-metro-fare-1-section",
+    "label": "Busan subway fare, one section (first 10km), transit card",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 1600
+    },
+    "source": {
+      "title": "Urban rail fare guide",
+      "url": "https://www2.humetro.busan.kr/homepage/english/page/subLocation.do?menu_no=100601040101",
+      "publisher": "Busan Transportation Corporation"
+    },
+    "checkedAt": "2026-09-12",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "busan-metro-fare-2-sections",
+    "label": "Busan subway fare, two sections (beyond 10km), transit card",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 1800
+    },
+    "source": {
+      "title": "Urban rail fare guide",
+      "url": "https://www2.humetro.busan.kr/homepage/english/page/subLocation.do?menu_no=100601040101",
+      "publisher": "Busan Transportation Corporation"
+    },
+    "checkedAt": "2026-09-12",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "ktx-seoul-busan-standard",
+    "label": "KTX Seoul to Busan, standard class adult fare",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 54400
+    },
+    "previous": {
+      "type": "won",
+      "amount": 59800
+    },
+    "since": "2026-09-01",
+    "source": {
+      "title": "Integrated high-speed rail operation from September (Korean)",
+      "url": "https://info.korail.com/info/selectBbsNttView.do?key=911&bbsNo=199&nttNo=27135",
+      "publisher": "Korail"
+    },
+    "checkedAt": "2026-09-13",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "arex-express-fare",
+    "label": "AREX express train, Incheon Airport to Seoul Station, adult fare",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 13000
+    },
+    "source": {
+      "title": "AREX express guide (Korean)",
+      "url": "https://www.airportrailroad.com/train/express/guide",
+      "publisher": "AREX"
+    },
+    "checkedAt": "2026-09-13",
+    "updatedAt": "2026-09-12",
+    "note": "A promotional fare below the listed normal fare of 18,500 won to Terminal 1. Check whether the promotion still runs."
+  },
+  {
+    "id": "arex-allstop-fare-t1",
+    "label": "AREX all-stop train, Terminal 1 to Seoul Station, transit card",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 4750
+    },
+    "source": {
+      "title": "AREX all-stop fares (Korean)",
+      "url": "https://www.airportrailroad.com/train/normal/fare",
+      "publisher": "AREX"
+    },
+    "checkedAt": "2026-09-13",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "arex-allstop-fare-t2",
+    "label": "AREX all-stop train, Terminal 2 to Seoul Station, transit card",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 5350
+    },
+    "source": {
+      "title": "AREX all-stop fares (Korean)",
+      "url": "https://www.airportrailroad.com/train/normal/fare",
+      "publisher": "AREX"
+    },
+    "checkedAt": "2026-09-13",
+    "updatedAt": "2026-09-12"
+  }
+]

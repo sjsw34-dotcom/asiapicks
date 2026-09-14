@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
 import { z } from "zod";
 import { faqSchema, sourceSchema } from "./schema";
+import { readWithFacts } from "./loader";
 
 export const STATIC_PAGES = [
   "about",
@@ -30,13 +30,8 @@ const DIR = path.join(process.cwd(), "src/content/pages");
 
 export function getStaticPage(slug: string, dir: string = DIR) {
   const file = path.join(dir, `${slug}.mdx`);
-  const { data, content } = matter(fs.readFileSync(file, "utf-8"));
-  const parsed = pageSchema.safeParse(data);
-  if (!parsed.success) {
-    const issues = parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ");
-    throw new Error(`Invalid frontmatter in ${file}: ${issues}`);
-  }
-  return { fm: parsed.data, body: content };
+  const { fm, body, facts, raw } = readWithFacts(file, pageSchema);
+  return { fm, body, facts, raw };
 }
 
 /** Sources declared by non-content pages (the home page today), for the refresh worklist. */

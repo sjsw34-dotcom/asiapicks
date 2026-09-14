@@ -1,6 +1,6 @@
 name: Monthly refresh
 
-# Opens one issue on the 1st of each month: pages with prices, timetables,
+# Opens one issue on the 1st of each month: shared facts due for a check, pages with prices, timetables,
 # opening hours or dated events to re-verify, seasonal guides due for drafting,
 # and the Search Console numbers used to decide what to write next.
 

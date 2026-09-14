@@ -2,6 +2,7 @@ import path from "node:path";
 import type { Article, ContentIndex, ContentNode } from "@/lib/content/loader";
 import { areaPath, categoryPath, hubPath } from "@/lib/content/paths";
 import { absoluteUrl } from "@/lib/site";
+import { loadFacts, type Fact } from "@/lib/facts/registry";
 
 /** Articles whose publish date is exactly this day: the ones a day's rebuild brings live. */
 export const releasedOn = (idx: ContentIndex, date: string): Article[] =>
@@ -25,10 +26,14 @@ export function affectedUrls(nodes: ContentNode[]): string[] {
   return [...paths].map(absoluteUrl);
 }
 
-/** Live hubs and articles behind a list of changed repo files (git diff --name-only output). */
-export function nodesForFiles(idx: ContentIndex, files: string[], cwd = process.cwd()): ContentNode[] {
-  const wanted = new Set(files.map((f) => path.resolve(cwd, f.trim())).filter(Boolean));
-  return [...idx.hubs, ...idx.articles].filter((n) => wanted.has(path.resolve(n.file)));
+/**
+ * Live hubs and articles behind a list of changed repo files (git diff --name-only
+ * output). A changed fact file counts for every page using a fact defined in it.
+ */
+export function nodesForFiles(idx: ContentIndex, files: string[], cwd = process.cwd(), facts: Map<string, Fact> = loadFacts()): ContentNode[] {
+  const wanted = new Set(files.map((f) => f.trim()).filter(Boolean).map((f) => path.resolve(cwd, f)));
+  const changedFacts = new Set([...facts.values()].filter((f) => wanted.has(path.resolve(f.file))).map((f) => f.id));
+  return [...idx.hubs, ...idx.articles].filter((n) => wanted.has(path.resolve(n.file)) || n.facts.some((id) => changedFacts.has(id)));
 }
 
 /** The posting target: one approved article goes live every day. */

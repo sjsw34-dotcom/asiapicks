@@ -9,6 +9,7 @@ import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/seo/schema";
 import { getImage } from "@/lib/images/registry";
 import { absoluteUrl } from "@/lib/site";
 import { getCategory } from "@/data/taxonomy";
+import { withFactSources } from "@/lib/facts/registry";
 import Figure from "@/components/media/Figure";
 import ImageCredits from "@/components/media/ImageCredits";
 import Disclosure from "@/components/affiliate/Disclosure";
@@ -67,8 +68,8 @@ export default function ArticleLayout({ article, idx }: { article: Article; idx:
       <FAQ faqs={fm.faqs} />
       <NextStep article={next} />
       <RelatedGuides articles={related} />
-      <SourcesDisclosure count={fm.sources.length}>
-        <SourceList sources={fm.sources} />
+      <SourcesDisclosure count={withFactSources(fm.sources, article.facts).length}>
+        <SourceList sources={withFactSources(fm.sources, article.facts)} />
         <ImageCredits ids={[fm.featuredImage, ...bodyImageIds(article.body), ...cardImageIds(related), ...guideCardPaths(article.body).map((p) => { const n = idx.byPath.get(p); return n && n.kind !== "category" ? n.fm.featuredImage : undefined; })]} />
       </SourcesDisclosure>
     </article>

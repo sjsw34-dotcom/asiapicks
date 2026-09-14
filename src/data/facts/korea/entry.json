@@ -1,0 +1,21 @@
+[
+  {
+    "id": "k-eta-exemption-end",
+    "label": "Last day of the temporary K-ETA exemption for eligible visa-free nationals",
+    "kind": "date",
+    "value": {
+      "type": "date",
+      "date": "2026-12-31"
+    },
+    "validUntil": "2026-12-31",
+    "recheckDays": 60,
+    "source": {
+      "title": "K-ETA Exemption Period Extended Until 2026",
+      "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=251923",
+      "publisher": "Korea Tourism Organization"
+    },
+    "checkedAt": "2026-09-12",
+    "updatedAt": "2026-09-12",
+    "note": "Extended a year at a time so far. If it is extended, change the date. If it lapses, the pages that say 'exempt' need rewriting, not a new date."
+  }
+]

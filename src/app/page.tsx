@@ -11,6 +11,7 @@ import JsonLd from "@/components/content/JsonLd";
 import Mdx from "@/components/content/Mdx";
 import FAQ from "@/components/content/FAQ";
 import SourceList from "@/components/content/SourceList";
+import { withFactSources } from "@/lib/facts/registry";
 import SourcesDisclosure from "@/components/content/SourcesDisclosure";
 import ImageCredits from "@/components/media/ImageCredits";
 import OfferCard from "@/components/affiliate/OfferCard";
@@ -42,7 +43,8 @@ export const metadata = buildMetadata({
 });
 
 export default function HomePage() {
-  const { fm, body } = home();
+  const { fm, body, facts } = home();
+  const sources = withFactSources(fm.sources, facts);
   const idx = getContent();
   const hero = getImage(HERO);
   const countryHub = idx.hubs.find((h) => h.country === "korea" && !h.city);
@@ -167,8 +169,8 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-3xl px-5 pb-4 sm:px-6">
         <FAQ faqs={fm.faqs} collapsible />
-        <SourcesDisclosure count={fm.sources.length}>
-          <SourceList sources={fm.sources} />
+        <SourcesDisclosure count={sources.length}>
+          <SourceList sources={sources} />
           <ImageCredits ids={creditIds} />
         </SourcesDisclosure>
       </section>

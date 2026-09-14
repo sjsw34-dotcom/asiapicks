@@ -1,0 +1,66 @@
+[
+  {
+    "id": "nami-island-admission-adult",
+    "label": "Nami Island adult admission, including the return ferry",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 19000
+    },
+    "source": {
+      "title": "Admission Fees",
+      "url": "https://namisum-en.imweb.me/163",
+      "publisher": "Naminara Republic"
+    },
+    "checkedAt": "2026-09-13",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "dmz-third-tunnel-ticket-monorail",
+    "label": "Paju DMZ Peace Tourism adult ticket with the Third Tunnel monorail",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 12200
+    },
+    "source": {
+      "title": "DMZ Peace Tourism fees (Korean)",
+      "url": "https://dmz.paju.go.kr:8443/Home/H20000/H20200/html",
+      "publisher": "Paju City"
+    },
+    "checkedAt": "2026-09-13",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "dmz-third-tunnel-ticket-walking",
+    "label": "Paju DMZ Peace Tourism adult ticket, walking down into the Third Tunnel",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 9200
+    },
+    "source": {
+      "title": "DMZ Peace Tourism fees (Korean)",
+      "url": "https://dmz.paju.go.kr:8443/Home/H20000/H20200/html",
+      "publisher": "Paju City"
+    },
+    "checkedAt": "2026-09-13",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "seorak-cable-car-adult-return",
+    "label": "Seorak cable car adult return ticket",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 16000
+    },
+    "source": {
+      "title": "Seorak Cablecar fares, access and FAQ (Korean)",
+      "url": "https://www.sorakcablecar.co.kr/guide",
+      "publisher": "Seorak Cablecar"
+    },
+    "checkedAt": "2026-09-13",
+    "updatedAt": "2026-09-12"
+  }
+]

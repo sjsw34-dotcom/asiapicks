@@ -1,0 +1,24 @@
+[
+  {
+    "id": "test-fare",
+    "label": "Test subway fare",
+    "kind": "price",
+    "value": { "type": "won", "amount": 1550 },
+    "previous": { "type": "won", "amount": 1400 },
+    "since": "2025-06-28",
+    "source": { "title": "Fare page", "url": "https://example.gov/fares", "publisher": "Example City" },
+    "checkedAt": "2026-09-01",
+    "updatedAt": "2026-09-20"
+  },
+  {
+    "id": "test-deadline",
+    "label": "Test exemption end",
+    "kind": "date",
+    "value": { "type": "date", "date": "2026-12-31" },
+    "validUntil": "2026-12-31",
+    "recheckDays": 30,
+    "source": { "title": "Page cites this too", "url": "https://example.gov/page-source", "publisher": "Example Ministry" },
+    "checkedAt": "2026-09-01",
+    "updatedAt": "2026-09-01"
+  }
+]

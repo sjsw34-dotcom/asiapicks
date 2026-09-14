@@ -2,6 +2,8 @@
 
 AsiaPicks is an Asia travel discovery and planning website for international travelers.
 First expertise: South Korea. English only. Design spec: `docs/superpowers/specs/2026-09-11-korea-rebuild-design.md`.
+Long-term direction (principles, capacity limit on publishing, lifecycle, phases, review rhythm): `docs/MASTERPLAN.md`.
+Read it before changing structure, cadence or scope; record new standing decisions in its §10.
 
 ## Entity
 - Brand: `AsiaPicks`. Description: `AsiaPicks, an Asia travel discovery and planning website`.
@@ -23,6 +25,10 @@ First expertise: South Korea. English only. Design spec: `docs/superpowers/specs
   `area` out. Add a new area to `AREAS` before tagging with it.
 - Listing: city hubs show the newest 4 per category plus a link to the category page, and neighbourhood cards
   when area pages exist. Category pages group by neighbourhood once there is more than one group.
+- Shared facts: `src/data/facts/{country}/{topic}.json` (schema and helpers in `src/lib/facts/registry.ts`).
+  Pages write `{{id}}`, `{{id|number}}`, `{{id.previous}}`, `{{id.since}}`; the loader resolves them in body,
+  summary and FAQs (never in `sources`). An unknown id fails the build. A page using a fact inherits the fact's
+  `updatedAt` and shows its source.
 - Offers: `src/data/offers/{id}.json`. Images: `src/data/images/{id}.json` + files in `public/images/`.
 - Legacy URLs: `src/data/legacy-urls.json` (redirects + gone). `src/proxy.ts` serves 410.
 - All pages are SSG. Client components only for the mobile nav.
@@ -32,6 +38,10 @@ First expertise: South Korea. English only. Design spec: `docs/superpowers/specs
 - Self-contained sentences with specific nouns, no vague pronouns, no filler.
 - Label recommendations as "Our pick"; keep facts, editorial judgment and affiliate options distinct.
 - Every price, rule, opening time or fee has a source in `sources` with `checkedAt`. Unverified facts are not written.
+- A fact that appears on two or more pages, or is a baseline other guides will quote (transit base fares, entry
+  rules, major admission fees), goes in the fact registry and is written as a token. Check the registry before
+  typing a number. When changing a registry value, reread the pages that use it: a sentence built around the
+  old value ("why guides still say X") may need rewriting, not just the number.
 - Never claim first-hand visits ("I visited", "we tried"). The site is research-based curation.
 - No word-count targets. No H1 in MDX bodies (the page renders the H1 from `title`).
 - MDX component props are strings only: `<OfferList ids="a,b" />`.
@@ -98,8 +108,10 @@ headings is not exempt from clarity, only from that specific device.
   Release commits land on `main`, so `git pull --rebase` before pushing a session's batch.
 - No auto-generated posts. No Google Indexing API. Manual IndexNow: `npx tsx scripts/indexnow.ts <urls>`.
 - Weekly workflow: Search Console performance and index status (`scripts/search-console.ts`, secret
-  `GOOGLE_SERVICE_ACCOUNT_JSON`). Monthly workflow: an issue with `npm run refresh` (pages with prices,
-  timetables, hours, dates) plus seasonal guides due from `src/data/calendar.ts`.
+  `GOOGLE_SERVICE_ACCOUNT_JSON`). Monthly workflow: an issue with `npm run refresh`: registry facts due for a
+  check, then pages with inline prices, timetables, hours or dates whose oldest source reaches 90 days (rolling,
+  not every page every month), plus seasonal guides due from `src/data/calendar.ts`. After re-verifying, update
+  the fact's or source's `checkedAt`; bump `updatedAt` only when a value changed.
 - Weekly batch: every Thursday `.github/workflows/weekly-reminder.yml` opens a GitHub issue (label `weekly-drafts`)
   telling the owner to open a session and say "다음 주 초안 준비해". Cadence is one article a day
   (`POSTS_PER_DAY` in `src/lib/release.ts`). That means: fill every open day next Monday–Sunday (`openDays`, listed

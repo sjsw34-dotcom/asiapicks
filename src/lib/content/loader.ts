@@ -8,8 +8,16 @@ import {
 } from "./schema";
 import { areaPath, articlePath, categoryPath, hubPath } from "./paths";
 import { COUNTRIES, CITIES, getArea, getCategory } from "@/data/taxonomy";
+import { loadFacts, resolveDeep, resolveFacts, type Fact } from "@/lib/facts/registry";
 
-type Base = { body: string; country: string; city: string | null; path: string; file: string };
+/** What a page says before fact tokens are resolved: the refresh scan reads this, so registry facts are not re-listed per page. */
+export type RawText = { summary: string; faqs: string; body: string };
+type Base = {
+  body: string; country: string; city: string | null; path: string; file: string;
+  /** Registry fact ids the page uses. */
+  facts: string[];
+  raw: RawText;
+};
 export type Article = Base & { kind: "article"; fm: ArticleFrontmatter };
 export type Hub = Base & { kind: "hub"; fm: HubFrontmatter };
 export type CategoryPage = Base & { kind: "category"; fm: CategoryFrontmatter; category: string; articles: Article[] };
@@ -40,16 +48,31 @@ export function includeReviewByDefault(): boolean {
   return process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
 }
 
-function read<T extends z.ZodType>(file: string, schema: T): { fm: z.infer<T>; body: string } {
-  const raw = fs.readFileSync(file, "utf-8");
-  const { data, content } = matter(raw);
-  const parsed = schema.safeParse(data);
+export function readWithFacts<T extends z.ZodType>(file: string, schema: T, facts: Map<string, Fact> = loadFacts()) {
+  const { data, content } = matter(fs.readFileSync(file, "utf-8"));
+  const used = new Set<string>();
+  const resolved = resolveDeep(data, facts, file, used);
+  const body = resolveFacts(content, facts, file, used);
+  const parsed = schema.safeParse(resolved);
   if (!parsed.success) {
     const issues = parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ");
     throw new Error(`Invalid frontmatter in ${file}: ${issues}`);
   }
-  return { fm: parsed.data, body: content };
+  const fm = parsed.data as z.infer<T>;
+  // A page restates its facts, so a fact that changed after the page was written changes the page.
+  if (fm && typeof fm === "object" && "updatedAt" in fm) {
+    const latest = [...used].map((id) => facts.get(id)!.updatedAt).reduce((a, b) => (b > a ? b : a), (fm as { updatedAt: string }).updatedAt);
+    (fm as { updatedAt: string }).updatedAt = latest;
+  }
+  const rawData = data as { summary?: unknown; faqs?: unknown };
+  const raw: RawText = {
+    summary: typeof rawData.summary === "string" ? rawData.summary : "",
+    faqs: Array.isArray(rawData.faqs) ? rawData.faqs.map((f: { a?: string }) => f?.a ?? "").join("\n") : "",
+    body: content,
+  };
+  return { fm, body, facts: [...used].sort(), raw };
 }
+
 
 const byUpdatedDesc = (a: Article, b: Article) => b.fm.updatedAt.localeCompare(a.fm.updatedAt);
 
@@ -65,12 +88,14 @@ const mdxFiles = (dir: string) =>
  * future-dated articles unless `asOf` is given; `asOf` makes a check see the site
  * exactly as it will build on that date.
  */
-export function loadContent(opts: { root?: string; includeReview?: boolean; asOf?: string } = {}): ContentIndex {
+export function loadContent(opts: { root?: string; includeReview?: boolean; asOf?: string; factsDir?: string } = {}): ContentIndex {
   const root = opts.root ?? DEFAULT_ROOT;
   const includeReview = opts.includeReview ?? includeReviewByDefault();
   const enforceDates = opts.asOf !== undefined || !includeReview;
   const asOf = opts.asOf ?? contentToday();
-  const key = `${root}|${includeReview}|${enforceDates ? asOf : "any"}`;
+  const key = `${root}|${includeReview}|${enforceDates ? asOf : "any"}|${opts.factsDir ?? ""}`;
+  const factMap = loadFacts(opts.factsDir);
+  const read = <T extends z.ZodType>(file: string, schema: T) => readWithFacts(file, schema, factMap);
   const hit = cache.get(key);
   if (hit) return hit;
 
@@ -94,14 +119,14 @@ export function loadContent(opts: { root?: string; includeReview?: boolean; asOf
   for (const { country, city, dir } of scopes) {
     const hubFile = path.join(dir, "_hub.mdx");
     if (fs.existsSync(hubFile)) {
-      const { fm, body } = read(hubFile, hubSchema);
+      const { fm, body, facts, raw } = read(hubFile, hubSchema);
       if (visible(fm.status, includeReview)) {
-        hubs.push({ kind: "hub", fm, body, country, city, path: hubPath(country, city), file: hubFile });
+        hubs.push({ kind: "hub", fm, body, facts, raw, country, city, path: hubPath(country, city), file: hubFile });
       }
     }
     for (const name of mdxFiles(dir)) {
       const file = path.join(dir, name);
-      const { fm, body } = read(file, articleSchema);
+      const { fm, body, facts, raw } = read(file, articleSchema);
       if (fm.slug !== name.replace(/\.mdx$/, "")) {
         throw new Error(`Slug "${fm.slug}" does not match file name in ${file}`);
       }
@@ -117,20 +142,20 @@ export function loadContent(opts: { root?: string; includeReview?: boolean; asOf
         scheduled.set(p, fm.publishedAt);
         continue;
       }
-      articles.push({ kind: "article", fm, body, country, city, path: p, file });
+      articles.push({ kind: "article", fm, body, facts, raw, country, city, path: p, file });
     }
     const catDir = path.join(dir, "_categories");
     if (fs.existsSync(catDir)) {
       for (const name of fs.readdirSync(catDir).filter((f) => f.endsWith(".mdx"))) {
         const category = name.replace(/\.mdx$/, "");
         const file = path.join(catDir, name);
-        const { fm, body } = read(file, categorySchema);
+        const { fm, body, facts, raw } = read(file, categorySchema);
         const members = articles
           .filter((a) => a.country === country && a.city === city && a.fm.category === category)
           .sort(byUpdatedDesc);
         if (members.length === 0) continue;
         categories.push({
-          kind: "category", fm, body, country, city, category,
+          kind: "category", fm, body, facts, raw, country, city, category,
           path: categoryPath(country, city, category), file, articles: members,
         });
       }
@@ -142,13 +167,13 @@ export function loadContent(opts: { root?: string; includeReview?: boolean; asOf
         const area = name.replace(/\.mdx$/, "");
         const file = path.join(areaDir, name);
         if (!getArea(country, city, area)) throw new Error(`Unknown area "${area}" for city ${city} in ${file}`);
-        const { fm, body } = read(file, areaSchema);
+        const { fm, body, facts, raw } = read(file, areaSchema);
         const members = articles
           .filter((a) => a.country === country && a.city === city && a.fm.area === area)
           .sort(byUpdatedDesc);
         if (members.length === 0) continue;
         areas.push({
-          kind: "area", fm, body, country, city, area,
+          kind: "area", fm, body, facts, raw, country, city, area,
           path: areaPath(country, city, area), file, articles: members,
         });
       }
