@@ -139,5 +139,22 @@
     },
     "checkedAt": "2026-09-13",
     "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "airport-limousine-fare-adult",
+    "label": "Airport Limousine bus adult fare, Incheon Airport to Seoul routes",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 17000
+    },
+    "source": {
+      "title": "Airport bus fares (Korean)",
+      "url": "https://www.airportlimousine.co.kr/sub/sub02_01.php",
+      "publisher": "Airport Limousine"
+    },
+    "checkedAt": "2026-09-13",
+    "updatedAt": "2026-09-12",
+    "note": "K Limousine routes cost more (18,000 won) and are written inline; this fact is Airport Limousine only."
   }
 ]

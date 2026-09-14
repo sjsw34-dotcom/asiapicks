@@ -62,5 +62,86 @@
     },
     "checkedAt": "2026-09-13",
     "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "seoul-palace-admission-adult",
+    "label": "Gyeongbokgung and Changdeokgung adult admission (aged 19 to 64), without hanbok",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 3000
+    },
+    "source": {
+      "title": "Admission fees and free admission (Korean)",
+      "url": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do",
+      "publisher": "Korea Heritage Service"
+    },
+    "checkedAt": "2026-09-14",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "bukchon-red-zone-fine",
+    "label": "Fine for tourists in the Bukchon red zone outside 10am to 5pm",
+    "kind": "rule",
+    "value": {
+      "type": "won",
+      "amount": 100000
+    },
+    "source": {
+      "title": "Bukchon special management zone (Korean)",
+      "url": "https://culture.jongno.go.kr/media/ko/conts/111/web.do",
+      "publisher": "Jongno-gu Office"
+    },
+    "checkedAt": "2026-09-14",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "n-seoul-tower-observatory-adult",
+    "label": "N Seoul Tower observatory adult ticket",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 29000
+    },
+    "source": {
+      "title": "N Seoul Tower admission",
+      "url": "https://www.nseoultower.co.kr/eng/visit/use2.asp",
+      "publisher": "N Seoul Tower"
+    },
+    "checkedAt": "2026-09-14",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "donggung-wolji-admission-adult",
+    "label": "Donggung Palace and Wolji Pond adult admission",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 3000
+    },
+    "source": {
+      "title": "Admission fees (Korean)",
+      "url": "https://www.gyeongju.go.kr/tour/page.do?mnu_uid=4838",
+      "publisher": "Gyeongju City"
+    },
+    "checkedAt": "2026-09-14",
+    "updatedAt": "2026-09-12"
+  },
+  {
+    "id": "cheonmachong-admission-adult",
+    "label": "Cheonmachong tomb (Daereungwon) adult admission",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 3000
+    },
+    "source": {
+      "title": "Admission fees (Korean)",
+      "url": "https://www.gyeongju.go.kr/tour/page.do?mnu_uid=4838",
+      "publisher": "Gyeongju City"
+    },
+    "checkedAt": "2026-09-14",
+    "updatedAt": "2026-09-12",
+    "note": "Gyeongju City lists it as Daereungwon/Cheonmachong; the pages say the park is free and the tomb costs this."
   }
 ]
