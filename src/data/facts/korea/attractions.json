@@ -143,5 +143,38 @@
     "checkedAt": "2026-09-14",
     "updatedAt": "2026-09-12",
     "note": "Gyeongju City lists it as Daereungwon/Cheonmachong; the pages say the park is free and the tomb costs this."
+  },
+  {
+    "id": "busan-tower-admission-adult",
+    "label": "Busan Tower (Yongdusan Park) adult admission",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 12000
+    },
+    "source": {
+      "title": "Busan Tower",
+      "url": "https://www.visitbusan.net/index.do?menuCd=DOM_000000201001001000&uc_seq=550&lang_cd=en",
+      "publisher": "Visit Busan"
+    },
+    "checkedAt": "2026-09-17",
+    "updatedAt": "2026-09-13"
+  },
+  {
+    "id": "blueline-sky-capsule-two",
+    "label": "Blueline Park Sky Capsule fare per capsule for two people",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 50000
+    },
+    "source": {
+      "title": "Blueline Park fares",
+      "url": "https://www.bluelinepark.com/eng/fare.do",
+      "publisher": "Haeundae Blueline Park"
+    },
+    "checkedAt": "2026-09-17",
+    "updatedAt": "2026-09-13",
+    "note": "Priced per capsule. The Busan 2-day itinerary also gives the three- and four-person fares inline; reread them if this changes."
   }
 ]

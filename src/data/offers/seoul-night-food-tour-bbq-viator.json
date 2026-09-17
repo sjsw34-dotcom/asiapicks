@@ -1,0 +1,14 @@
+{
+  "id": "seoul-night-food-tour-bbq-viator",
+  "provider": "viator",
+  "kind": "tour",
+  "title": "Small-group night food tour in Seoul with Korean BBQ",
+  "summary": "A guided evening walk through Jongno with a Korean barbecue stop, where the guide handles the ordering, plus soju and makgeolli.",
+  "targetUrl": "https://www.viator.com/tours/Seoul/Small-Group-Korean-Night-Food-Tour/d973-5583FOOD",
+  "destination": "korea/seoul",
+  "tags": [
+    "tour",
+    "food",
+    "korean-bbq"
+  ]
+}

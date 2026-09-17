@@ -1,0 +1,12 @@
+{
+  "id": "seoul-the-show-ticket-creatrip",
+  "provider": "creatrip",
+  "kind": "ticket",
+  "title": "The Show broadcast with an MVP Seoul tour",
+  "summary": "Tuesday The Show broadcast near Digital Media City Station, bundled with a Seoul walking route. Foreigners only, with five places per date.",
+  "priceText": "From US$115.88",
+  "priceCheckedAt": "2026-09-17",
+  "targetUrl": "https://creatrip.com/en/spot/11985",
+  "destination": "korea/seoul",
+  "tags": ["k-pop", "music-show", "the-show", "ticket"]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "olive-young-gift-card-creatrip",
+  "provider": "creatrip",
+  "kind": "ticket",
+  "title": "Olive Young mobile gift certificate",
+  "summary": "Digital Olive Young voucher, valid in stores across Korea and on the Olive Young app. No cancellation or change after payment.",
+  "targetUrl": "https://creatrip.com/en/spot/15201",
+  "destination": "korea",
+  "tags": ["olive-young", "beauty", "shopping"]
+}

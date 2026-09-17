@@ -1,0 +1,12 @@
+{
+  "id": "seoul-inkigayo-ticket-creatrip",
+  "provider": "creatrip",
+  "kind": "ticket",
+  "title": "SBS Inkigayo admission with a Seoul half-day tour",
+  "summary": "Sunday Inkigayo broadcast at SBS's Deungchon open hall, bundled with a guided morning in Seoul. No changes or cancellations after payment; refunded if SBS cancels the broadcast.",
+  "priceText": "From US$188.31",
+  "priceCheckedAt": "2026-09-17",
+  "targetUrl": "https://creatrip.com/en/spot/14605",
+  "destination": "korea/seoul",
+  "tags": ["k-pop", "music-show", "inkigayo", "ticket"]
+}

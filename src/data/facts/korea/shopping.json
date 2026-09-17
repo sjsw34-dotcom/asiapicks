@@ -1,0 +1,62 @@
+[
+  {
+    "id": "tax-refund-min-purchase",
+    "label": "Minimum purchase per transaction for a tourist tax refund",
+    "kind": "rule",
+    "value": {
+      "type": "won",
+      "amount": 15000
+    },
+    "source": {
+      "title": "Comprehensive Tax Refund Guide",
+      "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=248765",
+      "publisher": "Korea Tourism Organization"
+    },
+    "checkedAt": "2026-09-17",
+    "updatedAt": "2026-09-13",
+    "watch": {
+      "expect": ["KRW 15,000"]
+    }
+  },
+  {
+    "id": "instant-refund-per-purchase-cap",
+    "label": "Instant tax refund at the till: each purchase must be under this amount",
+    "kind": "rule",
+    "value": {
+      "type": "won",
+      "amount": 1000000
+    },
+    "since": "2024-01-01",
+    "source": {
+      "title": "Comprehensive Tax Refund Guide",
+      "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=248765",
+      "publisher": "Korea Tourism Organization"
+    },
+    "checkedAt": "2026-09-17",
+    "updatedAt": "2026-09-13",
+    "watch": {
+      "expect": ["KRW 1 million"]
+    },
+    "note": "Raised on 1 January 2024. The pay guide says a guide quoting lower caps is out of date; reread that sentence if the cap changes."
+  },
+  {
+    "id": "instant-refund-total-cap",
+    "label": "Instant tax refund at the till: total per trip",
+    "kind": "rule",
+    "value": {
+      "type": "won",
+      "amount": 5000000
+    },
+    "since": "2024-01-01",
+    "source": {
+      "title": "Comprehensive Tax Refund Guide",
+      "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=248765",
+      "publisher": "Korea Tourism Organization"
+    },
+    "checkedAt": "2026-09-17",
+    "updatedAt": "2026-09-13",
+    "watch": {
+      "expect": ["KRW 5 million"]
+    }
+  }
+]
