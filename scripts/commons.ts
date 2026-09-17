@@ -76,9 +76,13 @@ async function search(query: string, limit: number) {
   console.log(`  npx tsx scripts/commons.ts add "${usable[0].title}" <image-id> --alt "<alt text>"`);
 }
 
-/** Re-encode at the stored width. Keeps the source format so PNG stays PNG. */
+/**
+ * Re-encode at the stored width. Keeps the source format so PNG stays PNG.
+ * rotate() applies the EXIF orientation first; re-encoding drops the tag, so a
+ * phone photo would otherwise be saved on its side.
+ */
 async function resize(input: Buffer, mime: string, width: number): Promise<Buffer> {
-  const img = sharp(input).resize({ width, withoutEnlargement: true });
+  const img = sharp(input).rotate().resize({ width, withoutEnlargement: true });
   if (mime === "image/png") return img.png({ compressionLevel: 9 }).toBuffer();
   if (mime === "image/webp") return img.webp({ quality: 82 }).toBuffer();
   return img.jpeg({ quality: 82, mozjpeg: true }).toBuffer();
@@ -98,7 +102,8 @@ async function add(title: string, id: string, alt: string, caption?: string) {
   if (!res.ok) throw new Error(`Download failed (${res.status}) for ${candidate.fileUrl}`);
   const original = Buffer.from(await res.arrayBuffer());
 
-  const dimensions = targetDimensions(candidate.width, candidate.height);
+  const upright = await sharp(original).rotate().metadata();
+  const dimensions = targetDimensions(upright.autoOrient?.width ?? candidate.width, upright.autoOrient?.height ?? candidate.height);
   const bytes = await resize(original, candidate.mime, dimensions.width);
   // Rebuild with the dimensions actually on disk, so next/image is not told a lie.
   const stored = toImageEntry(candidate, { id, alt, caption, dimensions });
