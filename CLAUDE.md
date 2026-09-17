@@ -31,7 +31,12 @@ Read it before changing structure, cadence or scope; record new standing decisio
   `updatedAt` and shows its source.
 - Offers: `src/data/offers/{id}.json`. Images: `src/data/images/{id}.json` + files in `public/images/`.
 - Legacy URLs: `src/data/legacy-urls.json` (redirects + gone). `src/proxy.ts` serves 410.
-- All pages are SSG. Client components only for the mobile nav.
+- All pages are SSG. Client components only for the mobile nav and the search page.
+- Search: `/search-index.json` is built from live content (`src/lib/search/build-index.ts`); `/search` queries it in the
+  browser (`src/lib/search/query.ts`: synonyms, FAQ answers first, `POPULAR_QUESTIONS`). FAQ questions carry anchor ids
+  (`faqId`) so an answer links to its exact question. When a new topic brings new traveller words ("wifi" for eSIM),
+  add them to `SYNONYMS`. Searches are logged as the Vercel Analytics event `search` (query, results, answers);
+  queries with 0 results are candidates for new articles.
 
 ## Writing rules (every article)
 - Under every question-style H2, the first 1–3 sentences answer the question directly.

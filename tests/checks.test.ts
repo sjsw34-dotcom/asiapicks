@@ -254,8 +254,8 @@ test("provider URLs hardcoded in MDX bodies are errors", () => {
 });
 
 test("a live page under a gone prefix is an error (the proxy would 410 it)", () => {
-  const withSearch: ContentIndex = { ...idx, byPath: new Map(idx.byPath) };
-  withSearch.byPath.set("/search", idx.hubs[0]);
-  assert.match(redirectsCheck(withSearch, [], live, false).errors.join("\n"), /\/search.*410/);
+  const withGone: ContentIndex = { ...idx, byPath: new Map(idx.byPath) };
+  withGone.byPath.set("/deals", idx.hubs[0]);
+  assert.match(redirectsCheck(withGone, [], live, false).errors.join("\n"), /\/deals.*410/);
   assert.equal(redirectsCheck(idx, [], live, false).errors.some((e) => e.includes("410")), false);
 });

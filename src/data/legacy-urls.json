@@ -18,5 +18,5 @@
     { "from": "/blog/busan-day-trip-from-seoul", "to": "/korea/busan" },
     { "from": "/blog/best-hotels-jeju-island-by-area", "to": "/korea/jeju" }
   ],
-  "gonePrefixes": ["/blog", "/destinations", "/saju-travel", "/deals", "/search", "/admin", "/api/admin", "/ads.txt"]
+  "gonePrefixes": ["/blog", "/destinations", "/saju-travel", "/deals", "/admin", "/api/admin", "/ads.txt"]
 }
