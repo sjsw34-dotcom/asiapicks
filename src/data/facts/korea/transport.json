@@ -88,8 +88,9 @@
       "url": "https://info.korail.com/info/selectBbsNttView.do?key=911&bbsNo=199&nttNo=27135",
       "publisher": "Korail"
     },
-    "checkedAt": "2026-09-13",
-    "updatedAt": "2026-09-12"
+    "checkedAt": "2026-09-24",
+    "updatedAt": "2026-09-12",
+    "note": "This site refuses GitHub runners (overseas IPs), so the weekly watch lists it as unreachable; the recheck date covers it."
   },
   {
     "id": "arex-express-fare",
@@ -104,9 +105,9 @@
       "url": "https://www.airportrailroad.com/train/express/introduce",
       "publisher": "AREX"
     },
-    "checkedAt": "2026-09-13",
+    "checkedAt": "2026-09-24",
     "updatedAt": "2026-09-12",
-    "note": "A promotional fare below the listed normal fare of 18,500 won to Terminal 1. Check whether the promotion still runs."
+    "note": "A promotional fare below the listed normal fare of 18,500 won to Terminal 1. Check whether the promotion still runs. This site refuses GitHub runners (overseas IPs), so the weekly watch lists it as unreachable; the recheck date covers it."
   },
   {
     "id": "arex-allstop-fare-t1",
@@ -121,8 +122,9 @@
       "url": "https://www.airportrailroad.com/train/normal/fare",
       "publisher": "AREX"
     },
-    "checkedAt": "2026-09-13",
-    "updatedAt": "2026-09-12"
+    "checkedAt": "2026-09-24",
+    "updatedAt": "2026-09-12",
+    "note": "This site refuses GitHub runners (overseas IPs), so the weekly watch lists it as unreachable; the recheck date covers it."
   },
   {
     "id": "arex-allstop-fare-t2",
@@ -137,8 +139,9 @@
       "url": "https://www.airportrailroad.com/train/normal/fare",
       "publisher": "AREX"
     },
-    "checkedAt": "2026-09-13",
-    "updatedAt": "2026-09-12"
+    "checkedAt": "2026-09-24",
+    "updatedAt": "2026-09-12",
+    "note": "This site refuses GitHub runners (overseas IPs), so the weekly watch lists it as unreachable; the recheck date covers it."
   },
   {
     "id": "airport-limousine-fare-adult",

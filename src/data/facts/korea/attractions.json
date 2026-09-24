@@ -92,8 +92,14 @@
       "url": "https://culture.jongno.go.kr/media/ko/conts/111/web.do",
       "publisher": "Jongno-gu Office"
     },
-    "checkedAt": "2026-09-14",
-    "updatedAt": "2026-09-12"
+    "checkedAt": "2026-09-24",
+    "updatedAt": "2026-09-12",
+    "watch": {
+      "expect": [
+        "10만원",
+        "100,000"
+      ]
+    }
   },
   {
     "id": "n-seoul-tower-observatory-adult",

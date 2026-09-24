@@ -53,7 +53,9 @@ async function main() {
     console.log(`\n${found} found, ${missing.length} missing, ${unreachable.length} unreachable, ${results.length - found - missing.length - unreachable.length} skipped`);
     return;
   }
-  if (missing.length === 0 && unreachable.length === 0) return;
+  // Unreachable alone does not open an issue: several Korean operators (AREX, Korail) refuse GitHub's
+  // overseas runners every week, which is not news. Their recheck date in the monthly list still covers them.
+  if (missing.length === 0) return;
 
   const out: string[] = [];
   out.push(`출처 페이지에서 우리가 게시한 값이 보이지 않는 사실이 있습니다 (${new Date().toISOString().slice(0, 10)}).`);
@@ -71,7 +73,7 @@ async function main() {
   }
   if (unreachable.length) {
     out.push("", `## 출처에 접속하지 못한 사실 (${unreachable.length})`);
-    out.push("", "세 번 시도해도 열리지 않았습니다. 한 주만 그렇다면 일시 장애일 수 있습니다. 2주 이상 이어지면 출처 URL이 바뀌었는지 확인하세요.");
+    out.push("", "세 번 시도해도 열리지 않았습니다. AREX·코레일처럼 해외 서버(GitHub)의 접속을 막는 사이트는 매주 여기 뜨며, 월간 확인 목록이 재확인 날짜로 챙깁니다. 다른 사이트가 2주 이상 뜨면 출처 URL이 바뀌었는지 확인하세요.");
     for (const r of unreachable) out.push(`- [ ] \`${r.fact.id}\`: ${r.url} (${r.detail ?? "error"})`);
   }
   out.push("", `확인된 사실 ${found}개는 출처에 값이 그대로 있습니다.`);

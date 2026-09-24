@@ -33,7 +33,9 @@ jobs:
       - run: npm ci
 
       - name: Check sources
-        run: npx tsx scripts/watch-facts.ts --markdown > body.md
+        run: |
+          npx tsx scripts/watch-facts.ts | tee -a "$GITHUB_STEP_SUMMARY"
+          npx tsx scripts/watch-facts.ts --markdown > body.md
 
       - name: Open, update or close the issue
         env:
