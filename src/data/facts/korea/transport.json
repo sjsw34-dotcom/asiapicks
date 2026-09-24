@@ -159,5 +159,21 @@
     "checkedAt": "2026-09-13",
     "updatedAt": "2026-09-12",
     "note": "K Limousine routes cost more (18,000 won) and are written inline; this fact is Airport Limousine only."
+  },
+  {
+    "id": "gyeongju-city-bus-fare",
+    "label": "Gyeongju city bus adult cash fare (50 won less with a transit card)",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 1500
+    },
+    "source": {
+      "title": "Bus fares (Korean)",
+      "url": "https://its.gyeongju.go.kr/busCharge.do",
+      "publisher": "Gyeongju Transport Information Centre"
+    },
+    "checkedAt": "2026-09-24",
+    "updatedAt": "2026-09-17"
   }
 ]

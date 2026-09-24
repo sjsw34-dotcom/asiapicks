@@ -49,7 +49,9 @@ test("volatileLines flags prices, times and dates, not plain prose or components
 test("calendar keeps a week between draft and publish, and lists what is due", () => {
   for (const e of CALENDAR) assert.ok(e.draftBy <= e.publishBy, e.topic);
   const due = upcomingCalendar("2026-10-01", 45);
-  assert.ok(due.some((e) => e.path === "/korea/seoul/seoul-lantern-festival"));
+  assert.ok(due.some((e) => e.path === "/korea/busan/busan-fireworks-festival"));
+  // Announced late (December start): not due in October.
+  assert.ok(!due.some((e) => e.path === "/korea/seoul/seoul-lantern-festival"));
   assert.ok(!due.some((e) => e.path === "/korea/chuseok-2026"));
 });
 
