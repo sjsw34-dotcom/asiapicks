@@ -355,6 +355,48 @@ Seoul vs Busan, autumn foliage(계절), things to do in Seoul(허브 보강형 �
 best Korean BBQ in Seoul(직접 경험 필요), 피부과·시술(의료 위험), K-ETA 신청(공식·사칭 사이트).
 검색량은 자동완성·SERP 기반 추정이다. Bing Webmaster 키워드 조사로 확인하는 단계를 `keyword-brief`에 넣는다.
 
+### 백로그 2차 (2026-10-13 추가, 우선순위 순)
+
+1차 백로그는 2026-10-04까지 전부 공개됐다(things to do in Seoul 제외, 피하는 키워드). 주간 초안은 시즌 캘린더
+(`src/data/calendar.ts`) 다음으로 이 표를 위에서부터 쓴다. 초안으로 옮긴 행은 지운다.
+
+고른 기준: 예약 직전 단계의 검색 의도(이동 수단·입장권 비교), 제휴 상품이 자연스럽게 붙는 주제, 도시·템플릿 배합
+(지금까지 guide 편중, essay 0편), 변동 사실이 적은 동네·에세이 비중(마스터플랜 §5), 동네 층 채우기(§7 1~2단계).
+검색량은 추정이고 Search Console 데이터가 쌓이면 순서를 다시 본다. 슬러그는 가칭이며 초안 때 확정한다
+(동네 슬러그 `myeongdong`·`gangnam` 등은 예약어라 글 슬러그로 쓸 수 없다).
+
+| # | 주제 (가칭 URL) | template | 대표 제휴 |
+|---|---|---|---|
+| 1 | Seoul to Busan: KTX, SRT, flight or bus (`/korea/seoul-to-busan`) | comparison | Trip.com KTX |
+| 2 | Lotte World vs Everland (`/korea/seoul/lotte-world-vs-everland`) | comparison | Creatrip 입장권 |
+| 3 | Haeundae Blueline Park: Sky Capsule and Beach Train booking (`/korea/busan/haeundae-blueline-park`, area haeundae) | guide | Creatrip / Viator |
+| 4 | N Seoul Tower: cable car, bus or walk (`/korea/seoul/n-seoul-tower`) | guide | Creatrip 전망대 |
+| 5 | Myeongdong: what it is good for and what it is not (`/korea/seoul/myeongdong-guide`, area myeongdong + `_areas` 소개) | essay | Trip.com 명동 호텔 |
+| 6 | Tax refund in Korea for tourists (`/korea/tax-refund-korea`) | guide | Creatrip Olive Young |
+| 7 | Jjimjilbang for first-timers (`/korea/jjimjilbang-guide`) | guide | Creatrip 스파 |
+| 8 | Jeju 3-day itinerary (`/korea/jeju/jeju-3-day-itinerary`) | itinerary | Trip.com + Viator |
+| 9 | KORAIL Pass: is it worth it (`/korea/korail-pass`) | comparison | Trip.com KTX |
+| 10 | Ikseon-dong and Insadong (`/korea/seoul/ikseon-dong-and-insadong`, area jongno + `_areas` 소개) | essay | Creatrip 한복 / Trip.com |
+| 11 | Bulguksa and Seokguram (`/korea/gyeongju/bulguksa-and-seokguram`) | guide | Viator / Trip.com 경주 호텔 |
+| 12 | How to order and eat at a Korean restaurant: kiosks, call buttons, solo dining (`/korea/how-to-order-food-in-korea`) | guide | Viator 푸드 투어 |
+| 13 | Seongsan Ilchulbong and Udo in one day (`/korea/jeju/seongsan-ilchulbong-and-udo`, area seongsan) | guide | Viator 제주 투어 |
+| 14 | Incheon Airport layover: what fits in 6 to 12 hours (`/korea/incheon/incheon-airport-layover`) | guide | Viator |
+| 15 | Everland from Seoul: shuttle, subway, tickets (`/korea/seoul/everland-from-seoul`) | guide | Creatrip 입장권 |
+| 16 | Gyeongju 2-day itinerary (`/korea/gyeongju/gyeongju-2-day-itinerary`) | itinerary | Trip.com 경주 호텔 |
+| 17 | Korea in winter: what the cold changes (`/korea/korea-in-winter`) | essay | Viator / 시즌 글 연결 |
+| 18 | Jagalchi Market and Nampo-dong (`/korea/busan/jagalchi-market`, area nampo-dong) | guide | Viator 부산 투어 |
+| 19 | Templestay in Korea: how to book and what a night involves (`/korea/templestay`) | guide | Viator |
+| 20 | Jeonju Hanok Village from Seoul (`/korea/seoul/jeonju-from-seoul`) | guide | Trip.com KTX |
+| 21 | Gangnam: who should actually stay or go there (`/korea/seoul/gangnam-guide`, area gangnam + `_areas` 소개) | essay | Trip.com 강남 호텔 |
+
+메모:
+- 14번은 Incheon 허브(`src/content/korea/incheon/_hub.mdx`)를 같은 커밋에 써야 한다(§11 첫 줄).
+- 2·3·4·7·15번은 Creatrip에 해당 상품이 있는지 초안 때 확인하고, 없으면 Viator로 바꾸거나 순서를 내린다.
+- 17번은 "best time to visit Korea"(피하는 키워드)를 노리지 않는다. 겨울 시즌 글(스키·크리스마스·겨울 축제)을 묶는
+  에세이로 11월 말 공개가 맞다.
+- 1·9·20번은 KTX 요금을 쓴다. 레지스트리에 있는 값부터 확인하고 없는 구간은 등록한다.
+- 6번의 환급 한도·최소 구매액은 여러 글이 인용할 기준값이라 레지스트리에 넣는다.
+
 ---
 
 ## 12. 전환 계획
