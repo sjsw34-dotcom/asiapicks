@@ -182,5 +182,39 @@
     "checkedAt": "2026-09-17",
     "updatedAt": "2026-09-13",
     "note": "Priced per capsule. The Busan 2-day itinerary also gives the three- and four-person fares inline; reread them if this changes."
+  },
+  {
+    "id": "huwon-admission-adult",
+    "label": "Changdeokgung Secret Garden (Huwon) adult ticket, on top of the palace ticket",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 5000
+    },
+    "source": {
+      "title": "Admission fees and free admission (Korean)",
+      "url": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do",
+      "publisher": "Korea Heritage Service"
+    },
+    "checkedAt": "2026-10-08",
+    "updatedAt": "2026-10-08",
+    "note": "Not covered by hanbok or the integrated palace ticket. The foliage guide, the Seoul and Korea itineraries and the palaces ranking state it."
+  },
+  {
+    "id": "seoul-palace-pass",
+    "label": "Integrated palace ticket: Gyeongbokgung, Changdeokgung, Changgyeonggung, Deoksugung and Jongmyo once each within six months, Secret Garden excluded",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 6000
+    },
+    "source": {
+      "title": "Admission fees and free admission (Korean)",
+      "url": "https://royal.khs.go.kr/ROYAL/contents/R703000000.do",
+      "publisher": "Korea Heritage Service"
+    },
+    "checkedAt": "2026-10-08",
+    "updatedAt": "2026-10-08",
+    "note": "The Korean fee page says six months; some English KHS pages still print an older 10,000 won, three-month pass. Watch the Korean page."
   }
 ]
