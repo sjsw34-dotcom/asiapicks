@@ -179,7 +179,7 @@
       "url": "https://www.bluelinepark.com/eng/fare.do",
       "publisher": "Haeundae Blueline Park"
     },
-    "checkedAt": "2026-09-17",
+    "checkedAt": "2026-10-15",
     "updatedAt": "2026-09-13",
     "note": "Priced per capsule. The Busan 2-day itinerary also gives the three- and four-person fares inline; reread them if this changes."
   },
@@ -216,5 +216,81 @@
     "checkedAt": "2026-10-08",
     "updatedAt": "2026-10-08",
     "note": "The Korean fee page says six months; some English KHS pages still print an older 10,000 won, three-month pass. Watch the Korean page."
+  },
+  {
+    "id": "blueline-beach-train-one-way-end",
+    "label": "Haeundae Beach Train one-ride ticket per person from Mipo or Songjeong",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 10000
+    },
+    "source": {
+      "title": "Blueline Park fares",
+      "url": "https://www.bluelinepark.com/eng/fare.do",
+      "publisher": "Haeundae Blueline Park"
+    },
+    "checkedAt": "2026-10-15",
+    "updatedAt": "2026-10-15",
+    "watch": {
+      "expect": [
+        "10,000WON"
+      ]
+    },
+    "note": "One ride, no re-boarding. Fares effective 1 May 2026."
+  },
+  {
+    "id": "blueline-beach-train-one-way-cheongsapo",
+    "label": "Haeundae Beach Train one-ride ticket per person from Cheongsapo or an intermediate stop",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 8000
+    },
+    "source": {
+      "title": "Blueline Park fares",
+      "url": "https://www.bluelinepark.com/eng/fare.do",
+      "publisher": "Haeundae Blueline Park"
+    },
+    "checkedAt": "2026-10-15",
+    "updatedAt": "2026-10-15",
+    "watch": {
+      "expect": [
+        "8,000WON"
+      ]
+    },
+    "note": "The Busan 2-day itinerary quotes this fare inline (8,000 won); switch it to the token."
+  },
+  {
+    "id": "namsan-cable-car-adult-return",
+    "label": "Namsan cable car adult return ticket (ages 13 and over)",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 15000
+    },
+    "source": {
+      "title": "Fares, hours, directions and free shuttle bus (Korean)",
+      "url": "https://namsancablecar.com/usage.html",
+      "publisher": "Namsan Cable Car"
+    },
+    "checkedAt": "2026-10-15",
+    "updatedAt": "2026-10-15"
+  },
+  {
+    "id": "namsan-cable-car-adult-one-way",
+    "label": "Namsan cable car adult one-way ticket (ages 13 and over)",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 12000
+    },
+    "source": {
+      "title": "Fares, hours, directions and free shuttle bus (Korean)",
+      "url": "https://namsancablecar.com/usage.html",
+      "publisher": "Namsan Cable Car"
+    },
+    "checkedAt": "2026-10-15",
+    "updatedAt": "2026-10-15"
   }
 ]
