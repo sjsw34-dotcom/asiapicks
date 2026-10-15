@@ -292,5 +292,48 @@
     },
     "checkedAt": "2026-10-15",
     "updatedAt": "2026-10-15"
+  },
+  {
+    "id": "lotte-world-park-pass-adult",
+    "label": "Lotte World Adventure 1 Day park pass, adult (19 and over), gate price",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 64000
+    },
+    "source": {
+      "title": "Tickets",
+      "url": "https://adventure.lotteworld.com/price/price",
+      "publisher": "Lotte World Adventure"
+    },
+    "checkedAt": "2026-10-15",
+    "updatedAt": "2026-10-15",
+    "watch": {
+      "expect": [
+        "64,000"
+      ]
+    },
+    "note": "Park pass excludes the Folk Museum. The Lotte World vs Everland comparison also quotes the After4 (52,000), youth (56,000) and child (49,000) park-pass prices inline; reread them if this changes."
+  },
+  {
+    "id": "lotte-world-full-day-pass-adult",
+    "label": "Lotte World Adventure 1 Day full-day pass with the Folk Museum, adult (19 and over), gate price",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 67000
+    },
+    "source": {
+      "title": "Tickets",
+      "url": "https://adventure.lotteworld.com/price/price",
+      "publisher": "Lotte World Adventure"
+    },
+    "checkedAt": "2026-10-15",
+    "updatedAt": "2026-10-15",
+    "watch": {
+      "expect": [
+        "67,000"
+      ]
+    }
   }
 ]
