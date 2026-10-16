@@ -1,0 +1,13 @@
+{
+  "id": "busan-seomyeon-hotels-agoda",
+  "provider": "agoda",
+  "kind": "hotel",
+  "title": "Hotels in Seomyeon",
+  "summary": "Seomyeon listings on Agoda, the central interchange district rather than the beach.",
+  "targetUrl": "https://www.agoda.com/seo-myeon/maps/busan-kr.html",
+  "destination": "korea/busan",
+  "tags": [
+    "hotel",
+    "seomyeon"
+  ]
+}

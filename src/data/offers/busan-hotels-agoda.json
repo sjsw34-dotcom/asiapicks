@@ -1,0 +1,13 @@
+{
+  "id": "busan-hotels-agoda",
+  "provider": "agoda",
+  "kind": "hotel",
+  "title": "Busan hotels",
+  "summary": "Agoda's Busan listings, filterable by area, for comparing Haeundae, Gwangalli and the centre on your dates.",
+  "targetUrl": "https://www.agoda.com/city/busan-kr.html",
+  "destination": "korea/busan",
+  "tags": [
+    "hotel",
+    "busan"
+  ]
+}

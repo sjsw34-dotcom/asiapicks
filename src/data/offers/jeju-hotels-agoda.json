@@ -1,0 +1,13 @@
+{
+  "id": "jeju-hotels-agoda",
+  "provider": "agoda",
+  "kind": "hotel",
+  "title": "Jeju hotels",
+  "summary": "Agoda's Jeju listings, for comparing Jeju City, the east and the south coast on your dates.",
+  "targetUrl": "https://www.agoda.com/city/jeju-kr.html",
+  "destination": "korea/jeju",
+  "tags": [
+    "hotel",
+    "jeju"
+  ]
+}

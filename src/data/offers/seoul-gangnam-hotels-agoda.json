@@ -1,0 +1,13 @@
+{
+  "id": "seoul-gangnam-hotels-agoda",
+  "provider": "agoda",
+  "kind": "hotel",
+  "title": "Hotels in Gangnam",
+  "summary": "Gangnam listings on Agoda, south of the river, for comparing rates on your dates.",
+  "targetUrl": "https://www.agoda.com/gangnam/maps/seoul-kr.html",
+  "destination": "korea/seoul",
+  "tags": [
+    "hotel",
+    "gangnam"
+  ]
+}

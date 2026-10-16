@@ -1,0 +1,13 @@
+{
+  "id": "seoul-hotels-agoda",
+  "provider": "agoda",
+  "kind": "hotel",
+  "title": "Seoul hotels",
+  "summary": "Agoda's Seoul listings, filterable by neighbourhood, as a second price check on the same dates.",
+  "targetUrl": "https://www.agoda.com/city/seoul-kr.html",
+  "destination": "korea/seoul",
+  "tags": [
+    "hotel",
+    "seoul"
+  ]
+}
