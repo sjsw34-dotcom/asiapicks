@@ -10,6 +10,7 @@ const env = {
   VIATOR_PID: "P00000001", VIATOR_MCID: "11111",
   CREATRIP_AFF_CODE: "testcode",
   TRIPCOM_ALLIANCE_ID: "1234567", TRIPCOM_SID: "7654321",
+  AGODA_CID: "9999999",
 } as unknown as NodeJS.ProcessEnv;
 
 const dir = path.join(process.cwd(), "tests/fixtures/offers");
@@ -39,6 +40,12 @@ test("trip.com link carries Allianceid, SID, trip_sub1", () => {
   assert.equal(u.searchParams.get("Allianceid"), "1234567");
   assert.equal(u.searchParams.get("SID"), "7654321");
   assert.equal(u.searchParams.get("trip_sub1"), "where-to-stay-in-seoul");
+});
+
+test("agoda link carries cid and tag", () => {
+  const u = new URL(buildAffiliateUrl("agoda", "https://www.agoda.com/city/seoul-kr.html", "where-to-stay-in-seoul", env).url);
+  assert.equal(u.searchParams.get("cid"), "9999999");
+  assert.equal(u.searchParams.get("tag"), "where-to-stay-in-seoul");
 });
 
 test("missing ids produce a plain link", () => {

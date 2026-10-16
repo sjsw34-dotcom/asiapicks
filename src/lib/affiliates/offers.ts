@@ -6,7 +6,7 @@ import { PROVIDER_HOSTS, type ProviderId } from "./providers";
 export const offerSchema = z
   .object({
     id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
-    provider: z.enum(["viator", "creatrip", "tripcom"]),
+    provider: z.enum(["viator", "creatrip", "tripcom", "agoda"]),
     kind: z.enum(["tour", "experience", "hotel", "ticket", "transfer", "rail"]),
     title: z.string().min(1),
     summary: z.string().min(1),

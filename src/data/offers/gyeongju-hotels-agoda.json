@@ -1,0 +1,13 @@
+{
+  "id": "gyeongju-hotels-agoda",
+  "provider": "agoda",
+  "kind": "hotel",
+  "title": "Gyeongju hotels",
+  "summary": "Agoda's Gyeongju listings, for a second price check on the night near Donggung and Wolji.",
+  "targetUrl": "https://www.agoda.com/city/gyeongju-si-kr.html",
+  "destination": "korea/gyeongju",
+  "tags": [
+    "hotel",
+    "gyeongju"
+  ]
+}

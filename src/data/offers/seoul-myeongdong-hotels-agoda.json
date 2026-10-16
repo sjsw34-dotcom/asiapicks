@@ -1,0 +1,13 @@
+{
+  "id": "seoul-myeongdong-hotels-agoda",
+  "provider": "agoda",
+  "kind": "hotel",
+  "title": "Hotels near Myeongdong",
+  "summary": "Myeongdong listings on Agoda, for checking the same area against a second set of prices.",
+  "targetUrl": "https://www.agoda.com/myeong-dong/maps/seoul-kr.html",
+  "destination": "korea/seoul",
+  "tags": [
+    "hotel",
+    "myeongdong"
+  ]
+}
