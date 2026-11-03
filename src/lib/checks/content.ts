@@ -63,7 +63,7 @@ export function contentCheck(
 ) {
   const r = result("content");
   const hubPaths = new Set(idx.hubs.map((h) => h.path));
-  const catPaths = new Set(idx.categories.map((c) => c.path));
+  const catPaths = new Set([...idx.categories, ...idx.mergedCategories].map((c) => c.path));
 
   const checkBody = (where: string, body: string, extraImageIds: (string | undefined)[] = [], extraOfferIds: string[] = []) => {
     for (const id of [...extraImageIds, ...bodyImageIds(body)]) if (id && !images.has(id)) r.errors.push(`${where}: unknown image "${id}"`);

@@ -1,8 +1,9 @@
-import type { ContentNode } from "@/lib/content/loader";
+import type { ContentIndex, ContentNode } from "@/lib/content/loader";
 import { getCategory, getCity, getCountry } from "@/data/taxonomy";
 import { categoryPath, hubPath } from "@/lib/content/paths";
 
-export function breadcrumbsFor(node: ContentNode): { name: string; path: string }[] {
+/** With `idx`, an article's category crumb is left out when that listing is not a page (301ed into an article). */
+export function breadcrumbsFor(node: ContentNode, idx?: ContentIndex): { name: string; path: string }[] {
   const items = [{ name: "Home", path: "/" }];
   const country = getCountry(node.country)!;
   if (node.kind === "hub" && !node.city) return [...items, { name: country.name, path: hubPath(node.country) }];
@@ -12,7 +13,8 @@ export function breadcrumbsFor(node: ContentNode): { name: string; path: string 
   if (node.kind === "article") {
     const level = node.city ? "city" : "country";
     const cat = getCategory(level, node.fm.category)!;
-    items.push({ name: cat.label, path: categoryPath(node.country, node.city, node.fm.category) });
+    const catPath = categoryPath(node.country, node.city, node.fm.category);
+    if (!idx || idx.byPath.has(catPath)) items.push({ name: cat.label, path: catPath });
     items.push({ name: node.fm.title, path: node.path });
   }
   return items;

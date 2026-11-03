@@ -63,6 +63,11 @@ export const categorySchema = z.object({
   seoTitle: z.string().min(1).optional(),
   description: z.string().min(50),
   summary: z.string().min(1),
+  /**
+   * A listing that is only navigation (a short intro and a few cards) stays reachable but out of
+   * Google's index (robots noindex, follow; left out of the sitemap), so it does not compete with the guides it lists.
+   */
+  noindex: z.boolean().default(false),
 });
 
 export const areaSchema = categorySchema.extend({
