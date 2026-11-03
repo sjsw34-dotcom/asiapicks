@@ -12,6 +12,7 @@ import { redirectsCheck } from "@/lib/checks/redirects";
 import { releaseCheck } from "@/lib/checks/release";
 import { factsCheck } from "@/lib/checks/facts";
 import { navigationCheck } from "@/lib/checks/navigation";
+import { typographyCheck } from "@/lib/checks/typography";
 import { staticLivePaths, type CheckResult } from "@/lib/checks/types";
 import { getStaticPage, STATIC_PAGES } from "@/lib/content/pages";
 
@@ -36,6 +37,7 @@ function main() {
     navigationCheck(idx, live, production),
     imagesCheck(images, path.join(process.cwd(), "public")),
     seoCheck(idx),
+    typographyCheck(),
     redirectsCheck(idx, inventory, live, production),
     releaseCheck(idx, offers, process.env, production),
     // Scheduled articles count as users: a fact only they state is still in service.

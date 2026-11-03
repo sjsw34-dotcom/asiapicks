@@ -18,7 +18,7 @@ export default function GuideCard({ href }: { href: string }) {
   return (
     <Link href={href} className="group my-6 flex overflow-hidden rounded-xl border border-border bg-white hover:border-primary">
       {img ? (
-        <Image src={img.src} width={img.width} height={img.height} alt="" sizes="160px"
+        <Image src={img.src} width={img.width} height={img.height} alt={img.decorative ? "" : img.alt} sizes="160px"
           className="w-28 shrink-0 object-cover sm:w-40" />
       ) : null}
       <span className="flex min-w-0 flex-col justify-center gap-1 px-4 py-3">

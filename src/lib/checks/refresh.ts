@@ -12,7 +12,7 @@ import { factsDue, loadFacts, recheckBy, type Fact } from "@/lib/facts/registry"
 export const VOLATILE_KINDS = {
   price: /₩\s?\d|\bKRW\b|\b\d{1,3}(?:,\d{3})+\s?won\b|\b\d+\s?won\b|\bUS\$\s?\d|\$\d/i,
   schedule: /\b(?:every|each)\s\d+\s?min|\bfirst (?:train|bus|ferry)|\blast (?:train|bus|ferry|entry|admission)|\btimetable|\bdepart(?:s|ures)?\b.*\d/i,
-  hours: /\b\d{1,2}(?::\d{2})?\s?(?:a\.m\.|p\.m\.|am|pm)\b|\b\d{1,2}:\d{2}\s?(?:–|-|to)\s?\d{1,2}:\d{2}\b|\bopen(?:s|ing hours)?\s(?:from|until|daily|at|\d)|\bclosed on\b|\bopening hours\b/i,
+  hours: /\b\d{1,2}(?::\d{2})?\s?(?:a\.m\.|p\.m\.|am|pm)\b|\b\d{1,2}:\d{2}\s?(?:\u2013|-|to)\s?\d{1,2}:\d{2}\b|\bopen(?:s|ing hours)?\s(?:from|until|daily|at|\d)|\bclosed on\b|\bopening hours\b/i,
   dated: /\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s\d{1,2}\b|\b\d{1,2}\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\b/,
 } as const;
 

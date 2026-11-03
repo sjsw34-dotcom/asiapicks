@@ -18,7 +18,7 @@ export default function ArticleCard({ article }: { article: Article }) {
           src={img.src}
           width={img.width}
           height={img.height}
-          alt=""
+          alt={img.decorative ? "" : img.alt}
           sizes="(max-width: 640px) 100vw, 600px"
           className="aspect-[2/1] w-full object-cover"
         />

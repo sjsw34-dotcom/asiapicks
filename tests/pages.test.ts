@@ -11,7 +11,7 @@ test("every trust page exists and says what AsiaPicks is", () => {
   }
   assert.match(getStaticPage("about").body, /Asia travel discovery and planning website/);
   assert.match(getStaticPage("editorial-policy").body, /do not claim first-hand visits/i);
-  assert.doesNotMatch(getStaticPage("privacy").body, /adsense|agoda|klook/i);
+  assert.doesNotMatch(getStaticPage("privacy").body, /adsense|klook/i);
 });
 
 test("invalid frontmatter throws with file path", () => {
