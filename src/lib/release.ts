@@ -28,13 +28,23 @@ export function affectedUrls(nodes: ContentNode[], idx: ContentIndex): string[] 
 }
 
 /**
- * Live hubs and articles behind a list of changed repo files (git diff --name-only
- * output). A changed fact file counts for every page using a fact defined in it.
+ * Live pages behind a list of changed repo files (git diff --name-only output): hubs,
+ * articles, and category or neighbourhood listings whose intro changed (a title or a
+ * noindex switch). A changed fact file counts for every page using a fact defined in it.
  */
 export function nodesForFiles(idx: ContentIndex, files: string[], cwd = process.cwd(), facts: Map<string, Fact> = loadFacts()): ContentNode[] {
   const wanted = new Set(files.map((f) => f.trim()).filter(Boolean).map((f) => path.resolve(cwd, f)));
   const changedFacts = new Set([...facts.values()].filter((f) => wanted.has(path.resolve(f.file))).map((f) => f.id));
-  return [...idx.hubs, ...idx.articles].filter((n) => wanted.has(path.resolve(n.file)) || n.facts.some((id) => changedFacts.has(id)));
+  return [...idx.hubs, ...idx.categories, ...idx.areas, ...idx.articles]
+    .filter((n) => wanted.has(path.resolve(n.file)) || n.facts.some((id) => changedFacts.has(id)));
+}
+
+type Redirect = { from: string; to: string };
+
+/** Redirects added between two versions of src/data/legacy-urls.json: their sources now answer 301, which crawlers should re-read. */
+export function addedRedirects(before: { redirects: Redirect[] }, after: { redirects: Redirect[] }): Redirect[] {
+  const old = new Map(before.redirects.map((r) => [r.from, r.to]));
+  return after.redirects.filter((r) => old.get(r.from) !== r.to);
 }
 
 /** The posting target: one approved article goes live every day. */
