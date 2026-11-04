@@ -16,7 +16,18 @@
     { "from": "/blog/seoul-subway-guide", "to": "/korea/seoul/transportation" },
     { "from": "/blog/busan-weekend-trip", "to": "/korea/busan" },
     { "from": "/blog/busan-day-trip-from-seoul", "to": "/korea/busan" },
-    { "from": "/blog/best-hotels-jeju-island-by-area", "to": "/korea/jeju" }
+    { "from": "/blog/best-hotels-jeju-island-by-area", "to": "/korea/jeju" },
+    { "from": "/korea/seoul/where-to-stay", "to": "/korea/seoul/where-to-stay-in-seoul" },
+    { "from": "/korea/busan/where-to-stay", "to": "/korea/busan/where-to-stay-in-busan" },
+    { "from": "/korea/jeju/where-to-stay", "to": "/korea/jeju/where-to-stay-in-jeju" },
+    { "from": "/korea/gyeongju/where-to-stay", "to": "/korea/gyeongju/where-to-stay-in-gyeongju" },
+    { "from": "/korea/seoul/seongsu", "to": "/korea/seoul/seongsu-dong" },
+    { "from": "/korea/seoul/day-trips", "to": "/korea/seoul/day-trips-from-seoul" },
+    { "from": "/korea/seoul/itineraries", "to": "/korea/seoul/seoul-3-day-itinerary" },
+    { "from": "/korea/busan/itineraries", "to": "/korea/busan/busan-2-day-itinerary" },
+    { "from": "/korea/itineraries", "to": "/korea/korea-7-day-itinerary" },
+    { "from": "/korea/busan/day-trips", "to": "/korea/busan/gyeongju-day-trip-from-busan" },
+    { "from": "/korea/jeju/transportation", "to": "/korea/jeju/jeju-without-a-car" }
   ],
   "gonePrefixes": ["/blog", "/destinations", "/saju-travel", "/deals", "/admin", "/api/admin", "/ads.txt"]
 }

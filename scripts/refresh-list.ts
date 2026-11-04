@@ -43,10 +43,10 @@ if (markdown) {
   out.push(`Pages whose oldest source reaches ${PAGE_RECHECK_DAYS} days within the month. ${notDue} other page(s) with inline prices, times or dates are not due yet. After re-verifying a page, update the \`checkedAt\` of the sources you re-opened; that moves it out of the next lists.`);
   for (const p of pages) {
     out.push("");
-    out.push(`- [ ] **${p.title}** — \`${p.path}\` (${p.kinds.join(", ")}), due ${p.dueBy}`);
+    out.push(`- [ ] **${p.title}**: \`${p.path}\` (${p.kinds.join(", ")}), due ${p.dueBy}`);
     for (const line of p.lines.slice(0, 8)) out.push(`  - ${line.replace(/\s+/g, " ").slice(0, 220)}`);
     if (p.lines.length > 8) out.push(`  - …and ${p.lines.length - 8} more line(s) in \`${p.file}\``);
-    for (const s of p.sources) out.push(`  - source: [${s.title}](${s.url}) — checked ${s.checkedAt}`);
+    for (const s of p.sources) out.push(`  - source: [${s.title}](${s.url}): checked ${s.checkedAt}`);
   }
   if (pricedOffers.length) {
     out.push("", "## Offer prices");
@@ -54,7 +54,7 @@ if (markdown) {
   }
   out.push("", "## Seasonal guides due in the next 45 days");
   if (calendar.length === 0) out.push("Nothing due.");
-  for (const e of calendar) out.push(`- [ ] ${e.kind === "refresh" ? "Refresh" : "Draft"} **${e.topic}** — \`${e.path}\`, draft by ${e.draftBy}, live by ${e.publishBy} (season: ${e.season})${e.note ? `. ${e.note}` : ""}`);
+  for (const e of calendar) out.push(`- [ ] ${e.kind === "refresh" ? "Refresh" : "Draft"} **${e.topic}**: \`${e.path}\`, draft by ${e.draftBy}, live by ${e.publishBy} (season: ${e.season})${e.note ? `. ${e.note}` : ""}`);
 } else {
   out.push(`${dueFacts.length} shared fact(s) due within 31 days:`);
   for (const d of dueFacts) out.push(`  ${d.recheckBy}  ${d.fact.id} = ${formatValue(d.fact.value)}  (${d.usedOn.length} page(s))`);

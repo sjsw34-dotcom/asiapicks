@@ -14,7 +14,7 @@ on:
     - cron: "5 21 * * *"
   push:
     branches: [main]
-    paths: ["src/content/**", "src/data/facts/**"]
+    paths: ["src/content/**", "src/data/facts/**", "src/data/legacy-urls.json"]
   workflow_dispatch:
     inputs:
       date:

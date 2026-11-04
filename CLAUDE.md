@@ -25,6 +25,15 @@ Read it before changing structure, cadence or scope; record new standing decisio
   `area` out. Add a new area to `AREAS` before tagging with it.
 - Listing: city hubs show the newest 4 per category plus a link to the category page, and neighbourhood cards
   when area pages exist. Category pages group by neighbourhood once there is more than one group.
+- One search, one indexed page. A listing (category or area) that only repeats one article's query is merged:
+  add `{ from: listing, to: article }` to `src/data/legacy-urls.json` (301). The loader then drops the page
+  (`idx.merged`), the hub keeps the section under the intro's title with its chip pointing at the article, and the
+  article breadcrumb skips the category. A listing that stays as navigation but is thin gets `noindex: true` in its
+  intro frontmatter (robots noindex, follow; out of the sitemap). The sitemap lists only 200, indexable,
+  self-canonical pages.
+- Displayed text uses no em dash, en dash or "--" (ranges read "3 to 5"); `npm run check` fails on them
+  (`src/lib/checks/typography.ts`). Card thumbnails carry the image registry's `alt`.
+- www.asiapicks.com 301s to the apex on every path (`vercel.json`, with `src/proxy.ts` as fallback).
 - Shared facts: `src/data/facts/{country}/{topic}.json` (schema and helpers in `src/lib/facts/registry.ts`).
   Pages write `{{id}}`, `{{id|number}}`, `{{id.previous}}`, `{{id.since}}`; the loader resolves them in body,
   summary and FAQs (never in `sources`). An unknown id fails the build. A page using a fact inherits the fact's

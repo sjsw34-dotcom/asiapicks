@@ -6,12 +6,15 @@ if (urls.length === 0) {
   process.exit(1);
 }
 async function main() {
-  const res = await fetch("https://api.indexnow.org/IndexNow", {
+  const res = await fetch("https://api.indexnow.org/indexnow", {
     method: "POST",
     headers: { "content-type": "application/json; charset=utf-8" },
     body: JSON.stringify(indexNowPayload(urls, findIndexNowKey())),
   });
-  console.log(`IndexNow ${res.status} for ${urls.length} URL(s)`);
+  // 200 = received, 202 = accepted (key check pending). Anything else is logged with the reply for the workflow log.
+  console.log(`IndexNow ${res.status} ${res.statusText} for ${urls.length} URL(s)`);
+  if (!res.ok) console.log(await res.text().catch(() => ""));
+  for (const u of urls) console.log(`  ${u}`);
   process.exit(res.ok ? 0 : 1);
 }
 

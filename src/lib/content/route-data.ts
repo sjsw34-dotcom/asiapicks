@@ -22,7 +22,7 @@ export const slugParams = (idx: ContentIndex) => [
 export function metadataFor(node: ContentNode): Metadata {
   const title = node.fm.seoTitle ?? node.fm.title;
   const review = (node.kind === "article" || node.kind === "hub") && node.fm.status === "review";
-  const noindex = review || (node.kind === "article" && node.fm.noindex);
+  const noindex = review || ("noindex" in node.fm && node.fm.noindex === true);
   const imageId = node.kind === "category" ? undefined : node.fm.featuredImage;
   const imageUrl = imageId ? absoluteUrl(getImage(imageId).src) : undefined;
   return buildMetadata({

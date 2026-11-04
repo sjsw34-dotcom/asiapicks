@@ -120,7 +120,7 @@ export default function HomePage() {
                       src={img.src}
                       width={img.width}
                       height={img.height}
-                      alt=""
+                      alt={img.decorative ? "" : img.alt}
                       sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 616px"
                       className="h-44 w-full object-cover sm:h-48"
                     />

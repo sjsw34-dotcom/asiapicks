@@ -9,6 +9,7 @@ import {
 import { areaPath, articlePath, categoryPath, hubPath } from "./paths";
 import { COUNTRIES, CITIES, getArea, getCategory } from "@/data/taxonomy";
 import { loadFacts, resolveDeep, resolveFacts, type Fact } from "@/lib/facts/registry";
+import legacyUrls from "@/data/legacy-urls.json";
 
 /** What a page says before fact tokens are resolved: the refresh scan reads this, so registry facts are not re-listed per page. */
 export type RawText = { summary: string; faqs: string; body: string };
@@ -20,9 +21,13 @@ type Base = {
 };
 export type Article = Base & { kind: "article"; fm: ArticleFrontmatter };
 export type Hub = Base & { kind: "hub"; fm: HubFrontmatter };
-export type CategoryPage = Base & { kind: "category"; fm: CategoryFrontmatter; category: string; articles: Article[] };
+/**
+ * `redirectTo` is set when the listing was folded into one article: its path 301s there
+ * (an entry in src/data/legacy-urls.json), so it has no page of its own.
+ */
+export type CategoryPage = Base & { kind: "category"; fm: CategoryFrontmatter; category: string; articles: Article[]; redirectTo?: string };
 /** A neighbourhood page: `_areas/{area}.mdx` intro plus the city's articles tagged with that area. */
-export type AreaPage = Base & { kind: "area"; fm: AreaFrontmatter; area: string; city: string; articles: Article[] };
+export type AreaPage = Base & { kind: "area"; fm: AreaFrontmatter; area: string; city: string; articles: Article[]; redirectTo?: string };
 export type ContentNode = Article | Hub | CategoryPage | AreaPage;
 export type ContentIndex = {
   articles: Article[];
@@ -32,6 +37,13 @@ export type ContentIndex = {
   byPath: Map<string, ContentNode>;
   /** Approved articles whose publishedAt is still ahead: hidden now, live on that date. Path -> publishedAt. */
   scheduled: Map<string, string>;
+  /**
+   * Category listings that 301 to the one article answering the same search. They are not pages
+   * (absent from `categories` and `byPath`), but a hub still shows their articles under the intro's title.
+   */
+  mergedCategories: CategoryPage[];
+  /** Every listing path (category or neighbourhood) that 301s to an article. Path -> target. */
+  merged: Map<string, string>;
 };
 
 const DEFAULT_ROOT = path.join(process.cwd(), "src/content");
@@ -88,12 +100,16 @@ const mdxFiles = (dir: string) =>
  * future-dated articles unless `asOf` is given; `asOf` makes a check see the site
  * exactly as it will build on that date.
  */
-export function loadContent(opts: { root?: string; includeReview?: boolean; asOf?: string; factsDir?: string } = {}): ContentIndex {
+export function loadContent(
+  opts: { root?: string; includeReview?: boolean; asOf?: string; factsDir?: string; redirects?: { from: string; to: string }[] } = {},
+): ContentIndex {
   const root = opts.root ?? DEFAULT_ROOT;
+  // The site's 301s decide which listings are merged into an article; test fixtures pass their own.
+  const redirectTo = new Map((opts.redirects ?? (root === DEFAULT_ROOT ? legacyUrls.redirects : [])).map((r) => [r.from, r.to]));
   const includeReview = opts.includeReview ?? includeReviewByDefault();
   const enforceDates = opts.asOf !== undefined || !includeReview;
   const asOf = opts.asOf ?? contentToday();
-  const key = `${root}|${includeReview}|${enforceDates ? asOf : "any"}|${opts.factsDir ?? ""}`;
+  const key = `${root}|${includeReview}|${enforceDates ? asOf : "any"}|${opts.factsDir ?? ""}|${[...redirectTo.keys()].join(",")}`;
   const factMap = loadFacts(opts.factsDir);
   const read = <T extends z.ZodType>(file: string, schema: T) => readWithFacts(file, schema, factMap);
   const hit = cache.get(key);
@@ -104,6 +120,8 @@ export function loadContent(opts: { root?: string; includeReview?: boolean; asOf
   const categories: CategoryPage[] = [];
   const areas: AreaPage[] = [];
   const scheduled = new Map<string, string>();
+  const mergedCategories: CategoryPage[] = [];
+  const merged = new Map<string, string>();
 
   const scopes: { country: string; city: string | null; dir: string }[] = [];
   for (const country of COUNTRIES) {
@@ -154,10 +172,15 @@ export function loadContent(opts: { root?: string; includeReview?: boolean; asOf
           .filter((a) => a.country === country && a.city === city && a.fm.category === category)
           .sort(byUpdatedDesc);
         if (members.length === 0) continue;
-        categories.push({
-          kind: "category", fm, body, facts, raw, country, city, category,
-          path: categoryPath(country, city, category), file, articles: members,
-        });
+        const p = categoryPath(country, city, category);
+        const page: CategoryPage = { kind: "category", fm, body, facts, raw, country, city, category, path: p, file, articles: members };
+        const target = redirectTo.get(p);
+        if (target) {
+          merged.set(p, target);
+          mergedCategories.push({ ...page, redirectTo: target });
+        } else {
+          categories.push(page);
+        }
       }
     }
 
@@ -172,10 +195,13 @@ export function loadContent(opts: { root?: string; includeReview?: boolean; asOf
           .filter((a) => a.country === country && a.city === city && a.fm.area === area)
           .sort(byUpdatedDesc);
         if (members.length === 0) continue;
-        areas.push({
-          kind: "area", fm, body, facts, raw, country, city, area,
-          path: areaPath(country, city, area), file, articles: members,
-        });
+        const p = areaPath(country, city, area);
+        const target = redirectTo.get(p);
+        if (target) {
+          merged.set(p, target);
+          continue;
+        }
+        areas.push({ kind: "area", fm, body, facts, raw, country, city, area, path: p, file, articles: members });
       }
     }
   }
@@ -186,7 +212,7 @@ export function loadContent(opts: { root?: string; includeReview?: boolean; asOf
     if (byPath.has(node.path)) throw new Error(`Duplicate path ${node.path} (${node.file})`);
     byPath.set(node.path, node);
   }
-  const index = { articles, hubs, categories, areas, byPath, scheduled };
+  const index = { articles, hubs, categories, areas, byPath, scheduled, mergedCategories, merged };
   cache.set(key, index);
   return index;
 }

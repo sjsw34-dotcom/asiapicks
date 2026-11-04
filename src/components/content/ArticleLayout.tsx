@@ -29,7 +29,7 @@ import { cardImageIds } from "./ArticleCard";
 
 export default function ArticleLayout({ article, idx }: { article: Article; idx: ContentIndex }) {
   const { fm } = article;
-  const crumbs = breadcrumbsFor(article);
+  const crumbs = breadcrumbsFor(article, idx);
   const hasAffiliate = needsDisclosure(article.body, fm.offers);
   const image = fm.featuredImage ? getImage(fm.featuredImage) : null;
   const schemas: object[] = [articleSchema(article, image ? absoluteUrl(image.src) : undefined), breadcrumbSchema(crumbs)];

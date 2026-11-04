@@ -26,7 +26,10 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
   const crumbs = breadcrumbsFor(hub);
   const schemas: object[] = [destinationSchema(hub), breadcrumbSchema(crumbs)];
   if (hub.fm.faqs.length > 0) schemas.push(faqSchema(hub.fm.faqs));
-  const categories = idx.categories.filter((c) => c.country === hub.country && c.city === hub.city);
+  // Merged listings have no page but still head a section of the hub; their chip goes to the article they 301 to.
+  const categories = [...idx.categories, ...idx.mergedCategories]
+    .filter((c) => c.country === hub.country && c.city === hub.city)
+    .sort((a, b) => a.category.localeCompare(b.category));
   const cityHubs = hub.city ? [] : idx.hubs.filter((h) => h.country === hub.country && h.city);
   const areas = hub.city ? idx.areas.filter((a) => a.country === hub.country && a.city === hub.city) : [];
   // A hub is a guide, not an archive: each category shows its newest few and hands over to its own page.
@@ -50,7 +53,7 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
       {categories.length > 0 ? (
         <nav aria-label="Guide categories" className="my-6 flex flex-wrap gap-2">
           {categories.map((c) => (
-            <Link key={c.path} href={c.path} className="rounded-full border border-border px-3 py-1 text-sm hover:border-primary">{c.fm.title}</Link>
+            <Link key={c.path} href={c.redirectTo ?? c.path} className="rounded-full border border-border px-3 py-1 text-sm hover:border-primary">{c.fm.title}</Link>
           ))}
         </nav>
       ) : null}
@@ -89,7 +92,7 @@ export default function HubLayout({ hub, idx }: { hub: Hub; idx: ContentIndex })
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             {articles.map((a) => <ArticleCard key={a.path} article={a} />)}
           </div>
-          {c.articles.length > articles.length ? (
+          {c.articles.length > articles.length && !c.redirectTo ? (
             <Link href={c.path} className="mt-4 inline-block text-sm font-semibold text-primary hover:underline">
               See all {c.articles.length} guides in {c.fm.title}
             </Link>

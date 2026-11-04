@@ -6,7 +6,7 @@ export function proxy(req: NextRequest) {
   const host = (req.headers.get("host") ?? "").toLowerCase();
   if (host.startsWith("www.")) {
     // Build the target from the canonical base URL, never from the raw Host header.
-    return NextResponse.redirect(`${SITE.baseUrl}${req.nextUrl.pathname}${req.nextUrl.search}`, 308);
+    return NextResponse.redirect(`${SITE.baseUrl}${req.nextUrl.pathname}${req.nextUrl.search}`, 301);
   }
   if (isGone(req.nextUrl.pathname)) {
     return new NextResponse(GONE_HTML, {
