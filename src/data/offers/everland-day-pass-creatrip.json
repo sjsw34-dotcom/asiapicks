@@ -1,0 +1,17 @@
+{
+  "id": "everland-day-pass-creatrip",
+  "provider": "creatrip",
+  "kind": "ticket",
+  "title": "Everland full-day pass",
+  "summary": "Date-specific full-day pass for Everland in Yongin, entered with a mobile voucher without exchanging it at the ticket office.",
+  "priceText": "From US$36.31",
+  "priceCheckedAt": "2026-10-15",
+  "targetUrl": "https://creatrip.com/en/spot/11350",
+  "destination": "korea/seoul",
+  "tags": [
+    "theme-park",
+    "everland",
+    "yongin",
+    "ticket"
+  ]
+}
