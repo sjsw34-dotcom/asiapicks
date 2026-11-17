@@ -1,0 +1,17 @@
+{
+  "id": "n-seoul-tower-observatory-creatrip",
+  "provider": "creatrip",
+  "kind": "ticket",
+  "title": "N Seoul Tower observatory admission voucher",
+  "summary": "A foreigners-only observatory voucher at one price for adults and children, exchanged for a ticket at the kiosk at the observatory entrance. The cable car is not included, and the voucher cannot be refunded once issued.",
+  "priceText": "KRW 20,500",
+  "priceCheckedAt": "2026-10-15",
+  "targetUrl": "https://creatrip.com/en/spot/11239",
+  "destination": "korea/seoul",
+  "tags": [
+    "n-seoul-tower",
+    "namsan",
+    "observatory",
+    "ticket"
+  ]
+}

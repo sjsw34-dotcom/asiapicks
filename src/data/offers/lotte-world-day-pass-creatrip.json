@@ -1,0 +1,17 @@
+{
+  "id": "lotte-world-day-pass-creatrip",
+  "provider": "creatrip",
+  "kind": "ticket",
+  "title": "Lotte World full-day pass",
+  "summary": "Date-specific full-day pass for Lotte World Adventure in Jamsil, entered with a mobile QR code without exchanging it at the ticket office. No cancellations or changes after payment.",
+  "priceText": "From US$32.93",
+  "priceCheckedAt": "2026-10-15",
+  "targetUrl": "https://creatrip.com/en/spot/6418",
+  "destination": "korea/seoul",
+  "tags": [
+    "theme-park",
+    "lotte-world",
+    "jamsil",
+    "ticket"
+  ]
+}

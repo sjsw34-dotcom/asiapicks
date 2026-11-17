@@ -12,10 +12,12 @@
       "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=248765",
       "publisher": "Korea Tourism Organization"
     },
-    "checkedAt": "2026-09-17",
+    "checkedAt": "2026-10-15",
     "updatedAt": "2026-09-13",
     "watch": {
-      "expect": ["KRW 15,000"]
+      "expect": [
+        "KRW 15,000"
+      ]
     }
   },
   {
@@ -32,10 +34,12 @@
       "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=248765",
       "publisher": "Korea Tourism Organization"
     },
-    "checkedAt": "2026-09-17",
+    "checkedAt": "2026-10-15",
     "updatedAt": "2026-09-13",
     "watch": {
-      "expect": ["KRW 1 million"]
+      "expect": [
+        "KRW 1 million"
+      ]
     },
     "note": "Raised on 1 January 2024. The pay guide says a guide quoting lower caps is out of date; reread that sentence if the cap changes."
   },
@@ -53,10 +57,12 @@
       "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=248765",
       "publisher": "Korea Tourism Organization"
     },
-    "checkedAt": "2026-09-17",
+    "checkedAt": "2026-10-15",
     "updatedAt": "2026-09-13",
     "watch": {
-      "expect": ["KRW 5 million"]
+      "expect": [
+        "KRW 5 million"
+      ]
     }
   }
 ]

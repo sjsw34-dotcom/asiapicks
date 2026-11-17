@@ -175,5 +175,42 @@
     },
     "checkedAt": "2026-09-24",
     "updatedAt": "2026-09-17"
+  },
+  {
+    "id": "ktx-suseo-busan-standard",
+    "label": "KTX (former SRT) Suseo to Busan, standard class adult fare",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 52900
+    },
+    "since": "2026-09-01",
+    "source": {
+      "title": "Train fares (from 1 September 2026) and timetable (Korean)",
+      "url": "https://etk.srail.kr/cms/archive.do?pageId=TK0402050000",
+      "publisher": "SR, now operated by Korail"
+    },
+    "checkedAt": "2026-10-15",
+    "updatedAt": "2026-10-15",
+    "note": "The value is printed in the downloadable fare table (xls, sheet '11. 수서~부산'), not in the page HTML, so the weekly watch cannot read it; recheck by hand. Same table confirms Seoul to Busan 54,400 won and first class 78,900 (Seoul) / 76,700 (Suseo). Older news quotes 52,600 won, the pre-merger SRT fare.",
+    "watch": false
+  },
+  {
+    "id": "express-bus-seoul-busan-excellent",
+    "label": "Express bus, Seoul Express Bus Terminal (Gyeongbu) to Busan, excellent class (udeung) adult daytime fare",
+    "kind": "price",
+    "value": {
+      "type": "won",
+      "amount": 43300
+    },
+    "source": {
+      "title": "Express bus timetable, Seoul Gyeongbu to Busan (Korean)",
+      "url": "https://www.kobus.co.kr/oprninf/alcninqr/oprnAlcnPage.do",
+      "publisher": "KOBUS, Korea Express Bus Lines Association"
+    },
+    "checkedAt": "2026-10-15",
+    "updatedAt": "2026-10-15",
+    "note": "Read from the KOBUS timetable search (departure 서울경부 010, arrival 부산 700, date 2026-10-21). The page loads fares by script, so the weekly watch cannot read it; recheck by hand. Same search: premium 56,200, regular 29,100, late-night excellent 51,900, late-night premium 67,400 (22:00 to 04:00 departures), 32 departures, 4 h scheduled, 380.4 km.",
+    "watch": false
   }
 ]
